@@ -79,13 +79,13 @@
                                  data-stellar-background-ratio="0.5">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
-                                        <!-- One Second (1/2) Column &ndash;&gt;-->
+                                        <!-- One Second (1/2) Column -->
                                         <div class="column one-second column_placeholder">
                                             <div class="placeholder">
                                                 &nbsp;
                                             </div>
                                         </div>
-                                        <!-- One Second (1/2) Column &ndash;&gt;-->
+                                        <!-- One Second (1/2) Column -->
                                         <div class="column one-second column_column ">
                                             <div class="column_attr animate" data-anim-type="fadeInRight">
                                                 <div style="padding: 40px; box-sizing: border-box; -webkit-box-sizing: border-box;">
@@ -116,7 +116,7 @@
                             <div class="section equal-height " style="padding-top:90px; padding-bottom:50px; ">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
-                                        <!--One Second (1/2) Column &ndash;&gt;-->
+                                        <!--One Second (1/2) Column -->
                                         <div class="column one-second column_column ">
                                             <div class="column_attr" style=" padding:0 8% 0 0;">
                                                 <hr class="no_line" style="margin: 0 auto 50px;"/>
@@ -132,7 +132,7 @@
                                                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
                                                     ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                                                     aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                    reprehenderit in voluptate.-->
+                                                    reprehenderit in voluptate.
                                                 </p>
                                                 <hr class="no_line hrmargin_b_30"/>
                                                 <p>
@@ -145,14 +145,14 @@
                                                     fugit, sed quia consequuntur magni dolores eos qui ratione
                                                     voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
                                                     ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-                                                    numquam eius modi tempora incidunt ut labore et dooluptatem.-->
+                                                    numquam eius modi tempora incidunt ut labore et dooluptatem.
                                                 </p>
                                                 <hr class="no_line hrmargin_b_30"/>
                                                 <a class="button button_large button_theme button_js" href=""><span
                                                         class="button_label">Read more</span></a>
                                             </div>
                                         </div>
-                                        <!-- One Second (1/2) Column &ndash;&gt;-->
+                                        <!-- One Second (1/2) Column -->
                                         <div class="column one-second column_column space-border">
                                             <div class="column_attr" style=" padding:0 0 0 9%;">
                                                 <hr class="no_line hrmargin_b_40"/>
@@ -166,18 +166,18 @@
                                                 <ul class="list_check" style="font-size: 13px;">
                                                     <li style="background: url(content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
                                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.-->
+                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
                                                     </li>
                                                     <li style="background: url(content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
                                                         Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                        cillum dolore eu fugiat nulla pariatur.-->
+                                                        cillum dolore eu fugiat nulla pariatur.
                                                     </li>
                                                     <li style="background: url(content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
                                                         Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                                        qui officia deserunt mollit anim id est laborum.-->
+                                                        qui officia deserunt mollit anim id est laborum.
                                                     </li>
                                                     <li style="background: url(content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
-                                                        Incidunt ut labore et dolore magnam aliquam.-->
+                                                        Incidunt ut labore et dolore magnam aliquam.
                                                     </li>
                                                 </ul>
                                                 <hr class="no_line hrmargin_b_20"/>
@@ -189,9 +189,9 @@
                             <div class="section full-width sections_style_0 ">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
-                                        <!-- One full width row&ndash;&gt;-->
+                                        <!-- One full width row-->
                                         <div class="column one column_slider_plugin ">
-                                            <!-- Revolution slider area&ndash;&gt;-->
+                                            <!-- Revolution slider area-->
                                             <div class="mfn-main-slider">
                                                 <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700"
                                                       rel="stylesheet" property="stylesheet" type="text/css"
@@ -564,7 +564,7 @@
                             <div class="section" style="padding-top:90px; padding-bottom:50px; ">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
-<!--                                         One Fourth (1/4) Column &ndash;&gt;&ndash;&gt;-->
+<!--                                         One Fourth (1/4) Column -->
                                         <div class="column one-fourth column_column ">
                                             <div class="column_attr" style=" padding:0 8% 0 0;">
                                                 <hr class="no_line hrmargin_b_40"/>
@@ -575,7 +575,7 @@
                                                         class="button_label">Read more</span></a>
                                             </div>
                                         </div>
-                                        &lt;!&ndash; Three Fourth (3/4) Column &ndash;&gt;-->
+                                        <!-- Three Fourth (3/4) Column -->
                                         <div class="column three-fourth column_column space-border">
                                             <div class="column_attr" style=" padding:0 0 0 8%;">
                                                 <hr class="no_line hrmargin_b_40"/>
@@ -586,7 +586,7 @@
                                                         nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
                                                         in reprehenderit in voluptate velit esse.</h6>
                                                 </div>
-                                                &lt;!&ndash; One Third (1/3) Column &ndash;&gt;-->
+                                                <!-- One Third (1/3) Column -->
                                                 <div class="column one-third">
                                                     <div style="margin-right: 20%;">
                                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
@@ -601,11 +601,11 @@
                                                         <p>
                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                                                             sed do eiusmod tempor incididunt ut labore et dolorsi
-                                                            architecto beatae vitae dicta sunt explicabo.-->
+                                                            architecto beatae vitae dicta sunt explicabo.
                                                         </p>
                                                     </div>
                                                 </div>
-<!--                                             One Third (1/3) Column &ndash;&gt;&ndash;&gt;-->
+<!--                                             One Third (1/3) Column -->
                                                 <div class="column one-third">
                                                     <div style="margin-right: 20%;">
                                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
@@ -651,7 +651,7 @@
                                  style="padding-top:0px; padding-bottom:0px; background-color:#090b14; background-image:url(content/space/images/home_space_sectionbg2.jpg); background-repeat:no-repeat; background-position:center top; ">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
-                                        <!-- One Second (1/2) Column &ndash;&gt;-->
+                                        <!-- One Second (1/2) Column -->
                                         <div class="column one-second column_column ">
                                             <div class="column_attr">
                                                 <div style="padding: 60px 40px 70px; background: url(content/space/images/home_space_box_bg.png) no-repeat top right; height: 100%; box-sizing: border-box; -webkit-box-sizing: border-box;">
@@ -669,7 +669,7 @@
                                                                 Vivamus tincidunt nisl dolor, sit amet posuere lorem
                                                                 viverra sed. Sed scelerisque, ex a pretium egestas,
                                                                 tortor ex faucibus orci, eget placerat lacus elit
-                                                                amet.-->
+                                                                amet.
                                                             </div>
                                                         </div>
                                                     </div>
@@ -685,7 +685,7 @@
                                                             <div class="desc">
                                                                 Suspendisse at purus nec nunc porttitor rutrum at auctor
                                                                 turpis. Aliquam tellus magna, tempor non iaculis in,
-                                                                tincidunt commodo enim.-->
+                                                                tincidunt commodo enim.
                                                             </div>
                                                         </div>
                                                     </div>
@@ -701,14 +701,14 @@
                                                             <div class="desc">
                                                                 Sed quis nisl pulvinar, vehicula augue ut, efficitur
                                                                 ipsum. Maecenas bibendum tortor auctor, scelerisque mi
-                                                                id, laoreet risus.-->
+                                                                id, laoreet risus.
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- One Second (1/2) Column &ndash;&gt;-->
+                                        <!-- One Second (1/2) Column -->
                                         <div class="column one-second column_column ">
                                             <div class="column_attr" style=" padding:60px 40px 70px;">
                                                 <h3 style="color: #fff;">Lorem ipsum dolor mit samet</h3>
@@ -719,14 +719,14 @@
                                                 <ul class="list_check" style="font-size: 13px; color: #fff;">
                                                     <li style="background: url(content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
                                                         Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                        cillum dolore eu fugiat nulla pariatur.-->
+                                                        cillum dolore eu fugiat nulla pariatur.
                                                     </li>
                                                     <li style="background: url(content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
                                                         Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                                        qui officia deserunt mollit anim id est laborum.-->
+                                                        qui officia deserunt mollit anim id est laborum.
                                                     </li>
                                                     <li style="background: url(content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
-                                                        Incidunt ut labore et dolore magnam aliquam.-->
+                                                        Incidunt ut labore et dolore magnam aliquam.
                                                     </li>
                                                 </ul>
                                             </div>
@@ -745,10 +745,10 @@
             </div>
             <!-- Footer-->
             <footer id="Footer" class="clearfix">
-                <!-- Footer - First area &ndash;&gt;-->
+                <!-- Footer - First area -->
                 <div class="footer_action">
                     <div class="container">
-<!--                         One full width row&ndash;&gt;&ndash;&gt;-->
+<!--                         One full width row-->
                         <div class="column one column_column">
                             <h4 style="color: #a6a6a8; margin: 15px 0;">Vestibulum commodo volutpat convallis ac</h4>
                         </div>
@@ -756,9 +756,9 @@
                 </div>
                 <div class="widgets_wrapper">
                     <div class="container">
-                        <!--One Fourth (1/4) Column &ndash;&gt;-->
+                        <!--One Fourth (1/4) Column -->
                         <div class="column one-fourth">
-                            <!--Meta Links Area &ndash;&gt;-->
+                            <!--Meta Links Area -->
                             <aside id="meta-2" class="widget widget_meta">
                                 <h4>Useful links</h4>
                                 <ul>
@@ -778,9 +778,9 @@
                                 </ul>
                             </aside>
                         </div>
-                        <!--One Fourth (1/4) Column &ndash;&gt;-->
+                        <!--One Fourth (1/4) Column -->
                         <div class="column one-fourth">
-                            <!--Recent Comments Area &ndash;&gt;-->
+                            <!--Recent Comments Area -->
                             <aside class="widget widget_mfn_recent_comments">
                                 <h4>Latest comments</h4>
                                 <div class="Recent_comments">
@@ -809,7 +809,7 @@
                         </div>
                         <!-- One Fourth (1/4) Column -->
                         <div class="column one-fourth">
-                            <!-- Text Area &ndash;&gt;-->
+                            <!-- Text Area -->
                             <aside class="widget widget_text">
                                 <h4>About us</h4>
                                 <div class="textwidget">
@@ -817,14 +817,14 @@
                                         nisi a ex.</h6>
                                     <p>
                                         Praesent vel iaculis erat. Mauris congue tortor a aliquam sodales. Duis quis
-                                        odio id dolor fermentum bibendum. Nam iaculis viverra urna.-->
+                                        odio id dolor fermentum bibendum. Nam iaculis viverra urna.
                                     </p>
                                 </div>
                             </aside>
                         </div>
-                        <!-- One Fourth (1/4) Column &ndash;&gt;-->
+                        <!-- One Fourth (1/4) Column -->
                         <div class="column one-fourth">
-                            <!--Tag Cloud &ndash;&gt;-->
+                            <!--Tag Cloud -->
                             <aside class="widget widget_tag_cloud">
                                 <h4>Tags</h4>
                                 <div class="tagcloud">
@@ -852,7 +852,7 @@
                                 &copy; 2017 BeSpace - BeTheme. Muffin group - HTML by <a target="_blank" rel="nofollow"
                                                                                          href="http://bit.ly/1M6lijQ">BeantownThemes</a>
                             </div>
-                            <!--Social info area&ndash;&gt;-->
+                            <!--Social info area-->
                             <ul class="social"></ul>
                         </div>
                     </div>
