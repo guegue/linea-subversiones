@@ -564,7 +564,7 @@
                             <div class="section" style="padding-top:90px; padding-bottom:50px; ">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
-                                        &lt;!&ndash; One Fourth (1/4) Column &ndash;&gt;-->
+<!--                                         One Fourth (1/4) Column &ndash;&gt;&ndash;&gt;-->
                                         <div class="column one-fourth column_column ">
                                             <div class="column_attr" style=" padding:0 8% 0 0;">
                                                 <hr class="no_line hrmargin_b_40"/>
@@ -605,7 +605,7 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                                &lt;!&ndash; One Third (1/3) Column &ndash;&gt;-->
+<!--                                             One Third (1/3) Column &ndash;&gt;&ndash;&gt;-->
                                                 <div class="column one-third">
                                                     <div style="margin-right: 20%;">
                                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
@@ -638,7 +638,7 @@
                                                         <h5>Labore et dolorsi architecto</h5>
                                                         <p>
                                                             Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                                            laboris nisi ut aliquip ex ea commodo consequat.-->
+                                                            laboris nisi ut aliquip ex ea commodo consequat.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -748,7 +748,7 @@
                 <!-- Footer - First area &ndash;&gt;-->
                 <div class="footer_action">
                     <div class="container">
-                        &lt;!&ndash; One full width row&ndash;&gt;-->
+<!--                         One full width row&ndash;&gt;&ndash;&gt;-->
                         <div class="column one column_column">
                             <h4 style="color: #a6a6a8; margin: 15px 0;">Vestibulum commodo volutpat convallis ac</h4>
                         </div>
