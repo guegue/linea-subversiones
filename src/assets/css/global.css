@@ -38,7 +38,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	/*font: inherit;*/
 	vertical-align: baseline;
 }
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -55,7 +55,7 @@ blockquote, q {
 }
 blockquote:before, blockquote:after, q:before, q:after {
 	content: '';
-	content: none;
+	/*content: none;*/
 }
 table {
 	border-collapse: collapse;
@@ -283,7 +283,7 @@ iframe {
 }
 .with_aside .section_wrapper {
 	max-width: 98%;
-	max-width: calc( 100% - 20px);
+	/*max-width: calc( 100% - 20px);*/
 }
 .with_aside .four.columns {
 	float: right;
@@ -363,7 +363,7 @@ iframe {
 .column.column_divider {
 	margin-bottom: 0 !important;
 }
-.column-margin-0px .column {
+.column-margin-0 .column {
 	margin-bottom: 0 !important;
 }
 .column-margin-10px .column {
@@ -383,7 +383,7 @@ iframe {
 }
 /* set in item options */
 
-.column-margin-0px.column {
+.column-margin-0.column {
 	margin-bottom: 0 !important;
 }
 .column-margin-10px.column {
@@ -3162,9 +3162,9 @@ a.mfn-link-1:after {
 }
 a:hover.mfn-link-1:before, a:hover.mfn-link-1:after, a.hover.mfn-link-1:before, a.hover.mfn-link-1:after {
 	opacity: 1;
-	-webkit-transform: translateX(0px);
-	-moz-transform: translateX(0px);
-	transform: translateX(0px)
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	transform: translateX(0)
 }
 /* Effect 2: 3D rolling links */
 
@@ -3233,9 +3233,9 @@ a.mfn-link-3:after {
 }
 a:hover.mfn-link-3:after, a.hover.mfn-link-3:after {
 	opacity: 1;
-	-webkit-transform: translateY(0px);
-	-moz-transform: translateY(0px);
-	transform: translateY(0px)
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	transform: translateY(0)
 }
 /* Effect 4: second border slides up */
 
@@ -3598,7 +3598,6 @@ a.mfn-link-2 span, a:hover.mfn-link-2 span:before, a.hover.mfn-link-2 span:befor
 	position: absolute;
 	left: 27px;
 	top: 20px;
-	font-weight: bold
 }
 .faq .question .answer {
 	padding: 0 20px 20px 80px;
@@ -3682,7 +3681,7 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
+	/*-ms-transition: all .3s ease-in-out;*/
 	transition: all .3s ease-in-out
 }
 /* Feature list ---------------------------------------------------------------------- */
@@ -3738,7 +3737,7 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 	-webkit-transition: all .1s ease-in-out;
 	-moz-transition: all .1s ease-in-out;
 	-o-transition: all .1s ease-in-out;
-	-ms-transition: all .1s ease-in-out;
+	/*-ms-transition: all .1s ease-in-out;*/
 	transition: all .1s ease-in-out
 }
 /* Columns */
@@ -4168,7 +4167,7 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 .offer .offer_li .desc_wrapper {
 	float: left;
 	width: 570px;
-	width: calc(50% - 42px);
+	/*width: calc(50% - 42px);*/
 	margin: 30px 12px 30px 30px
 }
 .offer .offer_li .desc_wrapper .title {
@@ -4579,7 +4578,7 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
+	/*-ms-transition: all .3s ease-in-out;*/
 	transition: all .3s ease-in-out
 }
 .Latest_news ul li .desc_footer .button-love a:hover.mfn-love i:last-child, .Latest_news ul li .desc_footer .button-love a.loved.mfn-love i:last-child {
@@ -4767,7 +4766,7 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
+	/*-ms-transition: all .3s ease-in-out;*/
 	transition: all .3s ease-in-out
 }
 .helper .helper_content .item {
@@ -4888,7 +4887,7 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 	-webkit-transition: background-color .3s ease-in-out;
 	-moz-transition: background-color .3s ease-in-out;
 	-o-transition: background-color .3s ease-in-out;
-	-ms-transition: background-color .3s ease-in-out;
+	/*-ms-transition: background-color .3s ease-in-out;*/
 	transition: background-color .3s ease-in-out
 }
 .icon_box .icon_wrapper {
@@ -5004,7 +5003,7 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
+	/*-ms-transition: all .3s ease-in-out;*/
 	transition: all .3s ease-in-out
 }
 .sliding_box:hover .photo_wrapper {
@@ -5014,7 +5013,7 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 	-webkit-transition: all .5s ease-in-out;
 	-moz-transition: all .5s ease-in-out;
 	-o-transition: all .5s ease-in-out;
-	-ms-transition: all .5s ease-in-out;
+	/*-ms-transition: all .5s ease-in-out;*/
 	transition: all .5s ease-in-out
 }
 .sliding_box:hover .desc_wrapper:after {
@@ -5066,7 +5065,7 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
+	/*-ms-transition: all .3s ease-in-out;*/
 	transition: all .3s ease-in-out
 }
 /* Promo box ------------------------------------------------------------------------- */
@@ -5581,8 +5580,8 @@ body.table-hover:not(.woocommerce-page) table tr:hover td {
 	transform: translateX(15px)
 }
 .flat_box:hover .photo_wrapper img.photo, .flat_box a:hover .photo_wrapper img.photo {
-	-webkit-transform: translateX(0px);
-	transform: translateX(0px)
+	-webkit-transform: translateX(0);
+	transform: translateX(0)
 }
 .flat_box .desc_wrapper {
 	margin-left: 90px
@@ -6485,7 +6484,7 @@ ul.clients li .client_wrapper, ul.clients li .client_wrapper img {
 	-webkit-transition: all .4s ease-in-out;
 	-moz-transition: all .4s ease-in-out;
 	-o-transition: all .4s ease-in-out;
-	-ms-transition: all .4s ease-in-out;
+	/*-ms-transition: all .4s ease-in-out;*/
 	transition: all .4s ease-in-out
 }
 /* Clients slider -------------------------------------------------------------------- */
@@ -6692,7 +6691,7 @@ ul.clients li .client_wrapper, ul.clients li .client_wrapper img {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
+	/*-ms-transition: all .3s ease-in-out;*/
 	transition: all .3s ease-in-out
 }
 /* Shop slider ----------------------------------------------------------------------- */
@@ -7082,7 +7081,7 @@ ul.portfolio_grid li .image_frame {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
+	/*-ms-transition: all .3s ease-in-out;*/
 	transition: all .3s ease-in-out
 }
 /* Testimonials slider - Single photo */
@@ -7408,7 +7407,7 @@ ul.portfolio_grid li .image_frame {
 	width: 0;
 	height: 0;
 	border-style: solid;
-	border-width: 5.5px 0 5.5px 5px;
+	border-width: 5px 0 5px 5px;
 	border-color: transparent
 }
 .date_label, .timeline_items li h3 span {
@@ -7421,7 +7420,7 @@ ul.portfolio_grid li .image_frame {
 @media only screen and (min-width: 768px) {
 	.timeline_items li:nth-child(2n) h3 span::after {
 		border-right-color: #f8f8f8;
-		border-width: 5.5px 5.5px 5.5px 0;
+		border-width: 5px 5px 5px 0;
 		left: -5px;
 		right: auto
 	}
@@ -7597,12 +7596,16 @@ a.icon_bar {
 .ui-tabs .ui-tabs-nav li.ui-state-active a:after, body.table-hover:not(.woocommerce-page) table tr:hover td, body.table-hover:not(.woocommerce-page) table tr:hover td a {
 	color: #fff
 }
-.accordion .question .answer, .ui-tabs .ui-tabs-panel, .ui-tabs .ui-tabs-nav li.ui-state-active a, .ui-tabs .ui-tabs-nav li.ui-tabs-selected:after, .ui-tabs .ui-tabs-nav li.ui-state-active:after, .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-state-active a {
+.accordion .question .answer, .ui-tabs .ui-tabs-panel, .ui-tabs .ui-tabs-nav li.ui-state-active a,
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected:after, .ui-tabs .ui-tabs-nav li.ui-state-active:after, .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-state-active a {
 	background-color: #fff
 }
 /* Pricing */
 
-.pricing-box-box.pricing-box-featured, .pricing-box-box.pricing-box-featured .plan-header h2, .pricing-box-box.pricing-box-featured .plan-header .price sup.currency, .pricing-box-box.pricing-box-featured .plan-header .price>span, .pricing-box-box.pricing-box-featured .plan-header .price sup.period, .pricing-box-box.pricing-box-featured .plan-header p.subtitle, .pricing-box-box.pricing-box-featured .plan-inside ul {
+.pricing-box-box.pricing-box-featured, .pricing-box-box.pricing-box-featured .plan-header h2,
+.pricing-box-box.pricing-box-featured .plan-header .price sup.currency, .pricing-box-box.pricing-box-featured .plan-header .price>span,
+.pricing-box-box.pricing-box-featured .plan-header .price sup.period, .pricing-box-box.pricing-box-featured .plan-header p.subtitle,
+.pricing-box-box.pricing-box-featured .plan-inside ul {
 	color: #fff
 }
 .pricing-box-box.pricing-box-featured .plan-header hr {
@@ -7616,7 +7619,8 @@ a.icon_bar {
 /* Mobile menu */
 
 @media only screen and (max-width: 959px) {
-	#Header #menu>ul>li.current-menu-item>a, #Header #menu>ul>li.current_page_item>a, #Header #menu>ul>li.current-menu-parent>a, #Header #menu>ul>li.current-page-parent>a, #Header #menu>ul>li.current-menu-ancestor>a, #Header #menu>ul>li.current_page_ancestor>a {
+	#Header #menu>ul>li.current-menu-item>a, #Header #menu>ul>li.current_page_item>a, #Header #menu>ul>li.current-menu-parent>a,
+	#Header #menu>ul>li.current-page-parent>a, #Header #menu>ul>li.current-menu-ancestor>a, #Header #menu>ul>li.current_page_ancestor>a {
 		background: rgba(0, 0, 0, .02)
 	}
 }
@@ -7638,10 +7642,12 @@ a.icon_bar {
 	display: inline-block;
 	float: none
 }
-.style-simple .ui-tabs .ui-tabs-nav li.ui-state-active a, .style-simple .ui-tabs .ui-tabs-nav li.ui-tabs-selected:after, .style-simple .ui-tabs .ui-tabs-nav li.ui-state-active:after {
+.style-simple .ui-tabs .ui-tabs-nav li.ui-state-active a, .style-simple .ui-tabs .ui-tabs-nav li.ui-tabs-selected:after,
+.style-simple .ui-tabs .ui-tabs-nav li.ui-state-active:after {
 	background-color: transparent
 }
-.style-simple .ui-tabs .ui-tabs-nav li.ui-tabs-selected a:after, .style-simple .ui-tabs .ui-tabs-nav li.ui-state-disabled a:after, .style-simple .ui-tabs .ui-tabs-nav li.ui-state-processing a:after, .style-simple .ui-tabs .ui-tabs-nav li.ui-state-active a:after {
+.style-simple .ui-tabs .ui-tabs-nav li.ui-tabs-selected a:after, .style-simple .ui-tabs .ui-tabs-nav li.ui-state-disabled a:after,
+.style-simple .ui-tabs .ui-tabs-nav li.ui-state-processing a:after, .style-simple .ui-tabs .ui-tabs-nav li.ui-state-active a:after {
 	bottom: -1px;
 	height: 2px;
 	margin-left: -50%;
@@ -7653,7 +7659,8 @@ a.icon_bar {
 .style-simple .tabs_vertical.ui-tabs .ui-tabs-nav {
 	border: 0
 }
-.style-simple .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-tabs-selected a:after, .style-simple .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-state-disabled a:after, .style-simple .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-state-processing a:after, .style-simple .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-state-active a:after {
+.style-simple .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-tabs-selected a:after, .style-simple .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-state-disabled a:after,
+.style-simple .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-state-processing a:after, .style-simple .tabs_vertical.ui-tabs .ui-tabs-nav li.ui-state-active a:after {
 	display: block;
 	width: 2px;
 	height: 100%;
@@ -8468,7 +8475,7 @@ a.icon_bar {
 .animate.fadeIn {
 	-webkit-animation-name: fadeIn;
 	-moz-animation-name: fadeIn;
-	-ms-animation-name: fadeIn;
+	/*-ms-animation-name: fadeIn;*/
 	-o-animation-name: fadeIn;
 	animation-name: fadeIn;
 }
@@ -8525,7 +8532,7 @@ a.icon_bar {
 .animate.fadeInUp {
 	-webkit-animation-name: fadeInUp;
 	-moz-animation-name: fadeInUp;
-	-ms-animation-name: fadeInUp;
+	/*-ms-animation-name: fadeInUp;*/
 	-o-animation-name: fadeInUp;
 	animation-name: fadeInUp;
 }
@@ -8582,7 +8589,7 @@ a.icon_bar {
 .animate.fadeInDown {
 	-webkit-animation-name: fadeInDown;
 	-moz-animation-name: fadeInDown;
-	-ms-animation-name: fadeInDown;
+	/*-ms-animation-name: fadeInDown;*/
 	-o-animation-name: fadeInDown;
 	animation-name: fadeInDown;
 }
@@ -8639,7 +8646,7 @@ a.icon_bar {
 .animate.fadeInLeft {
 	-webkit-animation-name: fadeInLeft;
 	-moz-animation-name: fadeInLeft;
-	-ms-animation-name: fadeInLeft;
+	/*-ms-animation-name: fadeInLeft;*/
 	-o-animation-name: fadeInLeft;
 	animation-name: fadeInLeft;
 }
@@ -8696,7 +8703,7 @@ a.icon_bar {
 .animate.fadeInRight {
 	-webkit-animation-name: fadeInRight;
 	-moz-animation-name: fadeInRight;
-	-ms-animation-name: fadeInRight;
+	/*-ms-animation-name: fadeInRight;*/
 	-o-animation-name: fadeInRight;
 	animation-name: fadeInRight;
 }
@@ -8753,7 +8760,7 @@ a.icon_bar {
 .animate.fadeInUpLarge {
 	-webkit-animation-name: fadeInUpLarge;
 	-moz-animation-name: fadeInUpLarge;
-	-ms-animation-name: fadeInUpLarge;
+	/*-ms-animation-name: fadeInUpLarge;*/
 	-o-animation-name: fadeInUpLarge;
 	animation-name: fadeInUpLarge;
 }
@@ -8810,7 +8817,7 @@ a.icon_bar {
 .animate.fadeInDownLarge {
 	-webkit-animation-name: fadeInDownLarge;
 	-moz-animation-name: fadeInDownLarge;
-	-ms-animation-name: fadeInDownLarge;
+	/*-ms-animation-name: fadeInDownLarge;*/
 	-o-animation-name: fadeInDownLarge;
 	animation-name: fadeInDownLarge;
 }
@@ -8867,7 +8874,7 @@ a.icon_bar {
 .animate.fadeInLeftLarge {
 	-webkit-animation-name: fadeInLeftLarge;
 	-moz-animation-name: fadeInLeftLarge;
-	-ms-animation-name: fadeInLeftLarge;
+	/*-ms-animation-name: fadeInLeftLarge;*/
 	-o-animation-name: fadeInLeftLarge;
 	animation-name: fadeInLeftLarge;
 }
@@ -8924,7 +8931,7 @@ a.icon_bar {
 .animate.fadeInRightLarge {
 	-webkit-animation-name: fadeInRightLarge;
 	-moz-animation-name: fadeInRightLarge;
-	-ms-animation-name: fadeInRightLarge;
+	/*-ms-animation-name: fadeInRightLarge;*/
 	-o-animation-name: fadeInRightLarge;
 	animation-name: fadeInRightLarge;
 }
@@ -8971,7 +8978,7 @@ a.icon_bar {
 .animate.fadeOut {
 	-webkit-animation-name: fadeOut;
 	-moz-animation-name: fadeOut;
-	-ms-animation-name: fadeOut;
+	/*-ms-animation-name: fadeOut;*/
 	-o-animation-name: fadeOut;
 	animation-name: fadeOut;
 }
@@ -9028,7 +9035,7 @@ a.icon_bar {
 .animate.fadeOutUp {
 	-webkit-animation-name: fadeOutUp;
 	-moz-animation-name: fadeOutUp;
-	-ms-animation-name: fadeOutUp;
+	/*-ms-animation-name: fadeOutUp;*/
 	-o-animation-name: fadeOutUp;
 	animation-name: fadeOutUp;
 }
@@ -9085,7 +9092,7 @@ a.icon_bar {
 .animate.fadeOutDown {
 	-webkit-animation-name: fadeOutDown;
 	-moz-animation-name: fadeOutDown;
-	-ms-animation-name: fadeOutDown;
+	/*-ms-animation-name: fadeOutDown;*/
 	-o-animation-name: fadeOutDown;
 	animation-name: fadeOutDown;
 }
@@ -9142,7 +9149,7 @@ a.icon_bar {
 .animate.fadeOutLeft {
 	-webkit-animation-name: fadeOutLeft;
 	-moz-animation-name: fadeOutLeft;
-	-ms-animation-name: fadeOutLeft;
+	/*-ms-animation-name: fadeOutLeft;*/
 	-o-animation-name: fadeOutLeft;
 	animation-name: fadeOutLeft;
 }
@@ -9199,7 +9206,7 @@ a.icon_bar {
 .animate.fadeOutRight {
 	-webkit-animation-name: fadeOutRight;
 	-moz-animation-name: fadeOutRight;
-	-ms-animation-name: fadeOutRight;
+	/*-ms-animation-name: fadeOutRight;*/
 	-o-animation-name: fadeOutRight;
 	animation-name: fadeOutRight;
 }
@@ -9256,7 +9263,7 @@ a.icon_bar {
 .animate.fadeOutUpLarge {
 	-webkit-animation-name: fadeOutUpLarge;
 	-moz-animation-name: fadeOutUpLarge;
-	-ms-animation-name: fadeOutUpLarge;
+	/*-ms-animation-name: fadeOutUpLarge;*/
 	-o-animation-name: fadeOutUpLarge;
 	animation-name: fadeOutUpLarge;
 }
@@ -9313,7 +9320,7 @@ a.icon_bar {
 .animate.fadeOutDownLarge {
 	-webkit-animation-name: fadeOutDownLarge;
 	-moz-animation-name: fadeOutDownLarge;
-	-ms-animation-name: fadeOutDownLarge;
+	/*-ms-animation-name: fadeOutDownLarge;*/
 	-o-animation-name: fadeOutDownLarge;
 	animation-name: fadeOutDownLarge;
 }
@@ -9370,7 +9377,7 @@ a.icon_bar {
 .animate.fadeOutLeftLarge {
 	-webkit-animation-name: fadeOutLeftLarge;
 	-moz-animation-name: fadeOutLeftLarge;
-	-ms-animation-name: fadeOutLeftLarge;
+	/*-ms-animation-name: fadeOutLeftLarge;*/
 	-o-animation-name: fadeOutLeftLarge;
 	animation-name: fadeOutLeftLarge;
 }
@@ -9427,7 +9434,7 @@ a.icon_bar {
 .animate.fadeOutRightLarge {
 	-webkit-animation-name: fadeOutRightLarge;
 	-moz-animation-name: fadeOutRightLarge;
-	-ms-animation-name: fadeOutRightLarge;
+	/*-ms-animation-name: fadeOutRightLarge;*/
 	-o-animation-name: fadeOutRightLarge;
 	animation-name: fadeOutRightLarge;
 }
@@ -9484,7 +9491,7 @@ a.icon_bar {
 .animate.zoomIn {
 	-webkit-animation-name: zoomIn;
 	-moz-animation-name: zoomIn;
-	-ms-animation-name: zoomIn;
+	/*-ms-animation-name: zoomIn;*/
 	-o-animation-name: zoomIn;
 	animation-name: zoomIn;
 }
@@ -9541,7 +9548,7 @@ a.icon_bar {
 .animate.zoomInUp {
 	-webkit-animation-name: zoomInUp;
 	-moz-animation-name: zoomInUp;
-	-ms-animation-name: zoomInUp;
+	/*-ms-animation-name: zoomInUp;*/
 	-o-animation-name: zoomInUp;
 	animation-name: zoomInUp;
 }
@@ -9598,7 +9605,7 @@ a.icon_bar {
 .animate.zoomInDown {
 	-webkit-animation-name: zoomInDown;
 	-moz-animation-name: zoomInDown;
-	-ms-animation-name: zoomInDown;
+	/*-ms-animation-name: zoomInDown;*/
 	-o-animation-name: zoomInDown;
 	animation-name: zoomInDown;
 }
@@ -9655,7 +9662,7 @@ a.icon_bar {
 .animate.zoomInLeft {
 	-webkit-animation-name: zoomInLeft;
 	-moz-animation-name: zoomInLeft;
-	-ms-animation-name: zoomInLeft;
+	/*-ms-animation-name: zoomInLeft;*/
 	-o-animation-name: zoomInLeft;
 	animation-name: zoomInLeft;
 }
@@ -9712,7 +9719,7 @@ a.icon_bar {
 .animate.zoomInRight {
 	-webkit-animation-name: zoomInRight;
 	-moz-animation-name: zoomInRight;
-	-ms-animation-name: zoomInRight;
+	/*-ms-animation-name: zoomInRight;*/
 	-o-animation-name: zoomInRight;
 	animation-name: zoomInRight;
 }
@@ -9769,7 +9776,7 @@ a.icon_bar {
 .animate.zoomInUpLarge {
 	-webkit-animation-name: zoomInUpLarge;
 	-moz-animation-name: zoomInUpLarge;
-	-ms-animation-name: zoomInUpLarge;
+	/*-ms-animation-name: zoomInUpLarge;*/
 	-o-animation-name: zoomInUpLarge;
 	animation-name: zoomInUpLarge;
 }
@@ -9826,7 +9833,7 @@ a.icon_bar {
 .animate.zoomInDownLarge {
 	-webkit-animation-name: zoomInDownLarge;
 	-moz-animation-name: zoomInDownLarge;
-	-ms-animation-name: zoomInDownLarge;
+	/*-ms-animation-name: zoomInDownLarge;*/
 	-o-animation-name: zoomInDownLarge;
 	animation-name: zoomInDownLarge;
 }
@@ -9883,7 +9890,7 @@ a.icon_bar {
 .animate.zoomInLeftLarge {
 	-webkit-animation-name: zoomInLeftLarge;
 	-moz-animation-name: zoomInLeftLarge;
-	-ms-animation-name: zoomInLeftLarge;
+	/*-ms-animation-name: zoomInLeftLarge;*/
 	-o-animation-name: zoomInLeftLarge;
 	animation-name: zoomInLeftLarge;
 }
@@ -9940,7 +9947,7 @@ a.icon_bar {
 .animate.zoomInRightLarge {
 	-webkit-animation-name: zoomInRightLarge;
 	-moz-animation-name: zoomInRightLarge;
-	-ms-animation-name: zoomInRightLarge;
+	/*-ms-animation-name: zoomInRightLarge;*/
 	-o-animation-name: zoomInRightLarge;
 	animation-name: zoomInRightLarge;
 }
@@ -9997,7 +10004,7 @@ a.icon_bar {
 .animate.zoomOut {
 	-webkit-animation-name: zoomOut;
 	-moz-animation-name: zoomOut;
-	-ms-animation-name: zoomOut;
+	/*-ms-animation-name: zoomOut;*/
 	-o-animation-name: zoomOut;
 	animation-name: zoomOut;
 }
@@ -10054,7 +10061,7 @@ a.icon_bar {
 .animate.zoomOutUp {
 	-webkit-animation-name: zoomOutUp;
 	-moz-animation-name: zoomOutUp;
-	-ms-animation-name: zoomOutUp;
+	/*-ms-animation-name: zoomOutUp;*/
 	-o-animation-name: zoomOutUp;
 	animation-name: zoomOutUp;
 }
@@ -10111,7 +10118,7 @@ a.icon_bar {
 .animate.zoomOutDown {
 	-webkit-animation-name: zoomOutDown;
 	-moz-animation-name: zoomOutDown;
-	-ms-animation-name: zoomOutDown;
+	/*-ms-animation-name: zoomOutDown;*/
 	-o-animation-name: zoomOutDown;
 	animation-name: zoomOutDown;
 }
@@ -10168,7 +10175,7 @@ a.icon_bar {
 .animate.zoomOutLeft {
 	-webkit-animation-name: zoomOutLeft;
 	-moz-animation-name: zoomOutLeft;
-	-ms-animation-name: zoomOutLeft;
+	/*-ms-animation-name: zoomOutLeft;*/
 	-o-animation-name: zoomOutLeft;
 	animation-name: zoomOutLeft;
 }
@@ -10225,7 +10232,7 @@ a.icon_bar {
 .animate.zoomOutRight {
 	-webkit-animation-name: zoomOutRight;
 	-moz-animation-name: zoomOutRight;
-	-ms-animation-name: zoomOutRight;
+	/*-ms-animation-name: zoomOutRight;*/
 	-o-animation-name: zoomOutRight;
 	animation-name: zoomOutRight;
 }
@@ -10282,7 +10289,7 @@ a.icon_bar {
 .animate.zoomOutUpLarge {
 	-webkit-animation-name: zoomOutUpLarge;
 	-moz-animation-name: zoomOutUpLarge;
-	-ms-animation-name: zoomOutUpLarge;
+	/*-ms-animation-name: zoomOutUpLarge;*/
 	-o-animation-name: zoomOutUpLarge;
 	animation-name: zoomOutUpLarge;
 }
@@ -10339,7 +10346,7 @@ a.icon_bar {
 .animate.zoomOutDownLarge {
 	-webkit-animation-name: zoomOutDownLarge;
 	-moz-animation-name: zoomOutDownLarge;
-	-ms-animation-name: zoomOutDownLarge;
+	/*-ms-animation-name: zoomOutDownLarge;*/
 	-o-animation-name: zoomOutDownLarge;
 	animation-name: zoomOutDownLarge;
 }
@@ -10396,7 +10403,7 @@ a.icon_bar {
 .animate.zoomOutLeftLarge {
 	-webkit-animation-name: zoomOutLeftLarge;
 	-moz-animation-name: zoomOutLeftLarge;
-	-ms-animation-name: zoomOutLeftLarge;
+	/*-ms-animation-name: zoomOutLeftLarge;*/
 	-o-animation-name: zoomOutLeftLarge;
 	animation-name: zoomOutLeftLarge;
 }
@@ -10453,7 +10460,7 @@ a.icon_bar {
 .animate.zoomOutRightLarge {
 	-webkit-animation-name: zoomOutRightLarge;
 	-moz-animation-name: zoomOutRightLarge;
-	-ms-animation-name: zoomOutRightLarge;
+	/*-ms-animation-name: zoomOutRightLarge;*/
 	-o-animation-name: zoomOutRightLarge;
 	animation-name: zoomOutRightLarge;
 }
@@ -10550,7 +10557,7 @@ a.icon_bar {
 .animate.bounceIn {
 	-webkit-animation-name: bounceIn;
 	-moz-animation-name: bounceIn;
-	-ms-animation-name: bounceIn;
+	/*-ms-animation-name: bounceIn;*/
 	-o-animation-name: bounceIn;
 	animation-name: bounceIn;
 }
@@ -10647,7 +10654,7 @@ a.icon_bar {
 .animate.bounceInUp {
 	-webkit-animation-name: bounceInUp;
 	-moz-animation-name: bounceInUp;
-	-ms-animation-name: bounceInUp;
+	/*-ms-animation-name: bounceInUp;*/
 	-o-animation-name: bounceInUp;
 	animation-name: bounceInUp;
 }
@@ -10744,7 +10751,7 @@ a.icon_bar {
 .animate.bounceInDown {
 	-webkit-animation-name: bounceInDown;
 	-moz-animation-name: bounceInDown;
-	-ms-animation-name: bounceInDown;
+	/*-ms-animation-name: bounceInDown;*/
 	-o-animation-name: bounceInDown;
 	animation-name: bounceInDown;
 }
@@ -10841,7 +10848,7 @@ a.icon_bar {
 .animate.bounceInLeft {
 	-webkit-animation-name: bounceInLeft;
 	-moz-animation-name: bounceInLeft;
-	-ms-animation-name: bounceInLeft;
+	/*-ms-animation-name: bounceInLeft;*/
 	-o-animation-name: bounceInLeft;
 	animation-name: bounceInLeft;
 }
@@ -10938,7 +10945,7 @@ a.icon_bar {
 .animate.bounceInRight {
 	-webkit-animation-name: bounceInRight;
 	-moz-animation-name: bounceInRight;
-	-ms-animation-name: bounceInRight;
+	/*-ms-animation-name: bounceInRight;*/
 	-o-animation-name: bounceInRight;
 	animation-name: bounceInRight;
 }
@@ -11035,7 +11042,7 @@ a.icon_bar {
 .animate.bounceOut {
 	-webkit-animation-name: bounceOut;
 	-moz-animation-name: bounceOut;
-	-ms-animation-name: bounceOut;
+	/*-ms-animation-name: bounceOut;*/
 	-o-animation-name: bounceOut;
 	animation-name: bounceOut;
 }
@@ -11112,7 +11119,7 @@ a.icon_bar {
 .animate.bounceOutUp {
 	-webkit-animation-name: bounceOutUp;
 	-moz-animation-name: bounceOutUp;
-	-ms-animation-name: bounceOutUp;
+	/*-ms-animation-name: bounceOutUp;*/
 	-o-animation-name: bounceOutUp;
 	animation-name: bounceOutUp;
 }
@@ -11189,7 +11196,7 @@ a.icon_bar {
 .animate.bounceOutDown {
 	-webkit-animation-name: bounceOutDown;
 	-moz-animation-name: bounceOutDown;
-	-ms-animation-name: bounceOutDown;
+	/*-ms-animation-name: bounceOutDown;*/
 	-o-animation-name: bounceOutDown;
 	animation-name: bounceOutDown;
 }
@@ -11266,7 +11273,7 @@ a.icon_bar {
 .animate.bounceOutLeft {
 	-webkit-animation-name: bounceOutLeft;
 	-moz-animation-name: bounceOutLeft;
-	-ms-animation-name: bounceOutLeft;
+	/*-ms-animation-name: bounceOutLeft;*/
 	-o-animation-name: bounceOutLeft;
 	animation-name: bounceOutLeft;
 }
@@ -11343,7 +11350,7 @@ a.icon_bar {
 .animate.bounceOutRight {
 	-webkit-animation-name: bounceOutRight;
 	-moz-animation-name: bounceOutRight;
-	-ms-animation-name: bounceOutRight;
+	/*-ms-animation-name: bounceOutRight;*/
 	-o-animation-name: bounceOutRight;
 	animation-name: bounceOutRight;
 }
@@ -11390,7 +11397,7 @@ a.icon_bar {
 .hover-flash:hover, .trigger.flash {
 	-webkit-animation-name: flash;
 	-moz-animation-name: flash;
-	-ms-animation-name: flash;
+	/*-ms-animation-name: flash;*/
 	-o-animation-name: flash;
 	animation-name: flash;
 }
@@ -11437,7 +11444,7 @@ a.icon_bar {
 .hover-strobe:hover, .trigger.strobe {
 	-webkit-animation-name: strobe;
 	-moz-animation-name: strobe;
-	-ms-animation-name: strobe;
+	/*-ms-animation-name: strobe;*/
 	-o-animation-name: strobe;
 	animation-name: strobe;
 }
@@ -11499,7 +11506,7 @@ a.icon_bar {
 .hover-shakeH:hover, .trigger.shakeH {
 	-webkit-animation-name: shakeH;
 	-moz-animation-name: shakeH;
-	-ms-animation-name: shakeH;
+	/*-ms-animation-name: shakeH;*/
 	-o-animation-name: shakeH;
 	animation-name: shakeH;
 }
@@ -11561,7 +11568,7 @@ a.icon_bar {
 .hover-shakeV:hover, .trigger.shakeV {
 	-webkit-animation-name: shakeV;
 	-moz-animation-name: shakeV;
-	-ms-animation-name: shakeV;
+	/*-ms-animation-name: shakeV;*/
 	-o-animation-name: shakeV;
 	animation-name: shakeV;
 }
@@ -11623,7 +11630,7 @@ a.icon_bar {
 .hover-bounce:hover, .trigger.bounce {
 	-webkit-animation-name: bounce;
 	-moz-animation-name: bounce;
-	-ms-animation-name: bounce;
+	/*-ms-animation-name: bounce;*/
 	-o-animation-name: bounce;
 	animation-name: bounce;
 }
@@ -11700,7 +11707,7 @@ a.icon_bar {
 .hover-tada:hover, .trigger.tada {
 	-webkit-animation-name: tada;
 	-moz-animation-name: tada;
-	-ms-animation-name: tada;
+	/*-ms-animation-name: tada;*/
 	-o-animation-name: tada;
 	animation-name: tada;
 }
@@ -11792,7 +11799,7 @@ a.icon_bar {
 .hover-wave:hover {
 	-webkit-animation-name: wave;
 	-moz-animation-name: wave;
-	-ms-animation-name: wave;
+	/*-ms-animation-name: wave;*/
 	-o-animation-name: wave;
 	animation-name: wave;
 }
@@ -11839,7 +11846,7 @@ a.icon_bar {
 .hover-spinCW:hover, .trigger.spinCW {
 	-webkit-animation-name: spinCW;
 	-moz-animation-name: spinCW;
-	-ms-animation-name: spinCW;
+	/*-ms-animation-name: spinCW;*/
 	-o-animation-name: spinCW;
 	animation-name: spinCW;
 }
@@ -11886,7 +11893,7 @@ a.icon_bar {
 .hover-spinCCW:hover, .trigger.spinCCW {
 	-webkit-animation-name: spinCCW;
 	-moz-animation-name: spinCCW;
-	-ms-animation-name: spinCCW;
+	/*-ms-animation-name: spinCCW;*/
 	-o-animation-name: spinCCW;
 	animation-name: spinCCW;
 }
@@ -11948,7 +11955,7 @@ a.icon_bar {
 .hover-slingshotCW:hover, .trigger.slingshotCW {
 	-webkit-animation-name: slingshotCW;
 	-moz-animation-name: slingshotCW;
-	-ms-animation-name: slingshotCW;
+	/*-ms-animation-name: slingshotCW;*/
 	-o-animation-name: slingshotCW;
 	animation-name: slingshotCW;
 }
@@ -12010,13 +12017,13 @@ a.icon_bar {
 .hover-slingshotCCW:hover, .trigger.slingshotCCW {
 	-webkit-animation-name: slingshotCCW;
 	-moz-animation-name: slingshotCCW;
-	-ms-animation-name: slingshotCCW;
+	/*-ms-animation-name: slingshotCCW;*/
 	-o-animation-name: slingshotCCW;
 	animation-name: slingshotCCW;
 }
 @-webkit-keyframes wobble {
 	0% {
-		-webkit-transform: translateX(0px);
+		-webkit-transform: translateX(0);
 	}
 	15% {
 		-webkit-transform: translateX(-25px) rotate(-5deg);
@@ -12034,12 +12041,12 @@ a.icon_bar {
 		-webkit-transform: translateX(-5px) rotate(-1deg);
 	}
 	100% {
-		-webkit-transform: translateX(0px);
+		-webkit-transform: translateX(0);
 	}
 }
 @-moz-keyframes wobble {
 	0% {
-		-moz-transform: translateX(0px);
+		-moz-transform: translateX(0);
 	}
 	15% {
 		-moz-transform: translateX(-25px) rotate(-5deg);
@@ -12057,12 +12064,12 @@ a.icon_bar {
 		-moz-transform: translateX(-5px) rotate(-1deg);
 	}
 	100% {
-		-moz-transform: translateX(0px);
+		-moz-transform: translateX(0);
 	}
 }
 @-ms-keyframes wobble {
 	0% {
-		-ms-transform: translateX(0px);
+		-ms-transform: translateX(0);
 	}
 	15% {
 		-ms-transform: translateX(-25px) rotate(-5deg);
@@ -12080,12 +12087,12 @@ a.icon_bar {
 		-ms-transform: translateX(-5px) rotate(-1deg);
 	}
 	100% {
-		-ms-transform: translateX(0px);
+		-ms-transform: translateX(0);
 	}
 }
 @-o-keyframes wobble {
 	0% {
-		-o-transform: translateX(0px);
+		-o-transform: translateX(0);
 	}
 	15% {
 		-o-transform: translateX(-25px) rotate(-5deg);
@@ -12103,12 +12110,12 @@ a.icon_bar {
 		-o-transform: translateX(-5px) rotate(-1deg);
 	}
 	100% {
-		-o-transform: translateX(0px);
+		-o-transform: translateX(0);
 	}
 }
 @keyframes wobble {
 	0% {
-		transform: translateX(0px);
+		transform: translateX(0);
 	}
 	15% {
 		transform: translateX(-25px) rotate(-5deg);
@@ -12126,13 +12133,13 @@ a.icon_bar {
 		transform: translateX(-5px) rotate(-1deg);
 	}
 	100% {
-		transform: translateX(0px);
+		transform: translateX(0);
 	}
 }
 .hover-wobble:hover, .trigger.wobble {
 	-webkit-animation-name: wobble;
 	-moz-animation-name: wobble;
-	-ms-animation-name: wobble;
+	/*-ms-animation-name: wobble;*/
 	-o-animation-name: wobble;
 	animation-name: wobble;
 }
@@ -12179,7 +12186,7 @@ a.icon_bar {
 .hover-pulse:hover, .trigger.pulse {
 	-webkit-animation-name: pulse;
 	-moz-animation-name: pulse;
-	-ms-animation-name: pulse;
+	/*-ms-animation-name: pulse;*/
 	-o-animation-name: pulse;
 	animation-name: pulse;
 }
@@ -12226,7 +12233,7 @@ a.icon_bar {
 .hover-pulsate:hover, .trigger.pulsate {
 	-webkit-animation-name: pulsate;
 	-moz-animation-name: pulsate;
-	-ms-animation-name: pulsate;
+	/*-ms-animation-name: pulsate;*/
 	-o-animation-name: pulsate;
 	animation-name: pulsate;
 }
@@ -12273,7 +12280,7 @@ a.icon_bar {
 .hover-heartbeat:hover, .trigger.heartbeat {
 	-webkit-animation-name: heartbeat;
 	-moz-animation-name: heartbeat;
-	-ms-animation-name: heartbeat;
+	/*-ms-animation-name: heartbeat;*/
 	-o-animation-name: heartbeat;
 	animation-name: heartbeat;
 }
@@ -12380,7 +12387,7 @@ a.icon_bar {
 .hover-panic:hover, .trigger.panic {
 	-webkit-animation-name: panic;
 	-moz-animation-name: panic;
-	-ms-animation-name: panic;
+	/*-ms-animation-name: panic;*/
 	-o-animation-name: panic;
 	animation-name: panic;
 }
@@ -15877,7 +15884,7 @@ body.mobile-side-slide {
 #Side_slide {
 	display: block;
 	position: fixed;
-	top: 0px;
+	top: 0;
 	right: -250px;
 	width: 250px;
 	height: 100%;
@@ -16359,7 +16366,7 @@ body.mobile-side-slide {
 	-webkit-transition: all .2s ease-in-out;
 	-moz-transition: all .2s ease-in-out;
 	-o-transition: all .2s ease-in-out;
-	-ms-transition: all .2s ease-in-out;
+	/*-ms-transition: all .2s ease-in-out;*/
 	transition: all .2s ease-in-out
 }
 /* Slick Slider ---------------------------------------------------------------------- */
@@ -17867,7 +17874,7 @@ body.nice-scroll:not(.layout-boxed) {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
+	/*-ms-transition: all .3s ease-in-out;*/
 	transition: all .3s ease-in-out
 }
 .post-header .button-love a:hover.mfn-love i:last-child, .post-header .button-love a.loved.mfn-love i:last-child {
@@ -18070,7 +18077,7 @@ body.nice-scroll:not(.layout-boxed) {
 /* Section post related - simple */
 
 .section-post-related .simple .post-related .image_frame {
-	margin-left: 0px;
+	margin-left: 0;
 }
 .section-post-related .simple .post-related .date_label {
 	margin-bottom: 5px;
@@ -18086,13 +18093,13 @@ body.nice-scroll:not(.layout-boxed) {
 	display: none;
 }
 .section-post-related .simple .post-related a.button {
-	margin-left: 0px;
+	margin-left: 0;
 }
 .section-post-related .simple .post-related.format-quote .date_label {
 	margin-bottom: 10px;
 }
 .section-post-related .simple .format-quote blockquote {
-	margin-top: 0px;
+	margin-top: 0;
 }
 /* Format | Link */
 
@@ -18798,7 +18805,7 @@ body.nice-scroll:not(.layout-boxed) {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
+	/*-ms-transition: all .3s ease-in-out;*/
 	transition: all .3s ease-in-out
 }
 .portfolio_group .portfolio-item .desc .title_wrapper .button-love a:hover.mfn-love i:last-child, .portfolio_group .portfolio-item .desc .title_wrapper .button-love a.loved.mfn-love i:last-child {
@@ -19408,7 +19415,7 @@ body:not(.with_aside) .portfolio_group.list .portfolio-item .portfolio-item-fw-w
 	-webkit-transition: all .2s ease-in-out;
 	-moz-transition: all .2s ease-in-out;
 	-o-transition: all .2s ease-in-out;
-	-ms-transition: all .2s ease-in-out;
+	/*-ms-transition: all .2s ease-in-out;*/
 	transition: all .2s ease-in-out
 }
 .portfolio_slider_ul, ul.testimonials-slider {
@@ -19444,21 +19451,20 @@ pre {
 	display: block;
 	line-height: 21px!important;
 	background: #fff;
-	background: -moz-linear-gradient(top, #fff 50%, #fafafa 50%);
-	background: -webkit-linear-gradient(top, #fff 50%, #fafafa 50%);
-	background: -o-linear-gradient(top, #fff 50%, #fafafa 50%);
-	background: linear-gradient(top, #fff 50%, #fafafa 50%);
+	background: -moz-linear-gradient(to top, #fff 50%, #fafafa 50%);
+	background: -webkit-linear-gradient(to top, #fff 50%, #fafafa 50%);
+	background: -o-linear-gradient(to top, #fff 50%, #fafafa 50%);
+	background: linear-gradient(to top, #fff 50%, #fafafa 50%);
 	background-size: 42px 42px;
 	white-space: pre-wrap;
 	white-space: -moz-pre-wrap;
-	white-space: -pre-wrap;
 	white-space: -o-pre-wrap;
 }
 code p, pre p {
 	margin-bottom: 0!important
 }
 
-#contactWrapper.no_border input, #contactWrapper.no_border select, #contactWrapper.no_border textarea{border-width:0px}
+#contactWrapper.no_border input, #contactWrapper.no_border select, #contactWrapper.no_border textarea{border-width:0}
 @media only screen and (max-width: 767px){	.mcb-wrap[data-mobile="no-up"]	{margin-top:0!important}}
 
 
@@ -19479,7 +19485,7 @@ code p, pre p {
 .share-simple-wrapper .mfn-love{position:relative;display:inline-block;padding-left:24px;margin-left:5px}
 .share-simple-wrapper .mfn-love i{position:absolute;left:0;top:0;font-size:16px}
 .share-simple-wrapper .mfn-love:hover{text-decoration:none}
-.share-simple-wrapper .mfn-love i:last-child{opacity:0;filter:alpha(opacity=0);-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;-ms-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
+/*.share-simple-wrapper .mfn-love i:last-child{opacity:0;filter:alpha(opacity=0);-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;-ms-transition:all .3s ease-in-out;transition:all .3s ease-in-out}*/
 .share-simple-wrapper .mfn-love:hover i:last-child,
 .share-simple-wrapper .mfn-love.loved i:last-child{opacity:1;filter:alpha(opacity=100)}
 
@@ -19514,5 +19520,5 @@ a.action_button:hover{text-decoration:none}
 
 
 #Content.no-padding, .template-slider #Content, .with_aside #Content {
-    padding-top: 0px !important;
+    padding-top: 0 !important;
 }
