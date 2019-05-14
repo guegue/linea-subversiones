@@ -473,7 +473,7 @@
                                                                 data-title="Vestibulum ante ipsum primis"
                                                                 data-param1="Earth"
                                                                 data-description="Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
-                                                                <img src="content/space/images/home_space_blog3.jpg"
+                                                                <img src="@/assets/content/space/images/home_space_blog3.jpg"
                                                                      alt="" width="1920" height="1280"
                                                                      data-bgposition="center center" data-bgfit="cover"
                                                                      data-bgrepeat="no-repeat" data-bgparallax="10"
@@ -591,7 +591,7 @@
                                                     <div style="margin-right: 20%;">
                                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                                             <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                            src="content/space/images/home_space_staff1.jpg"
+                                                                                            src="@/assets/content/space/images/e.jpg"
                                                                                             alt="" width="380"
                                                                                             height="342"/>
                                                             </div>
@@ -610,7 +610,7 @@
                                                     <div style="margin-right: 20%;">
                                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                                             <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                            src="content/space/images/home_space_staff2.jpg"
+                                                                                            src="@/assets/content/space/images/home_space_staff2.jpg"
                                                                                             alt="" width="380"
                                                                                             height="342"/>
                                                             </div>
@@ -629,7 +629,7 @@
                                                     <div style="margin-right: 20%;">
                                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                                             <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                            src="content/space/images/home_space_staff3.jpg"
+                                                                                            src="@/assets/content/space/images/home_space_staff3.jpg"
                                                                                             alt="" width="380"
                                                                                             height="342"/>
                                                             </div>
@@ -654,12 +654,12 @@
                                         <!-- One Second (1/2) Column -->
                                         <div class="column one-second column_column ">
                                             <div class="column_attr">
-                                                <div style="padding: 60px 40px 70px; background: url(content/space/images/home_space_box_bg.png) no-repeat top right; height: 100%; box-sizing: border-box; -webkit-box-sizing: border-box;">
+                                                <div style="padding: 60px 40px 70px; background: url(@/assets/content/space/images/home_space_box_bg.png) no-repeat top right; height: 100%; box-sizing: border-box; -webkit-box-sizing: border-box;">
                                                     <h4>Dolor et omnien quan:</h4>
                                                     <hr class="no_line hrmargin_b_30"/>
                                                     <div class="list_item lists_2 clearfix">
                                                         <div class="list_left list_image"><img
-                                                                src="content/space/images/home_space_list_1.png"
+                                                                src="@/assets/content/space/images/home_space_list_1.png"
                                                                 alt="Tincidunt mauris" class="scale-with-grid"
                                                                 width="58" height="65"/>
                                                         </div>
@@ -676,7 +676,7 @@
                                                     <hr class="no_line hrmargin_b_30"/>
                                                     <div class="list_item lists_2 clearfix">
                                                         <div class="list_left list_image"><img
-                                                                src="content/space/images/home_space_list_2.png"
+                                                                src="@/assets/content/space/images/home_space_list_2.png"
                                                                 alt="Vestibulum commodo" class="scale-with-grid"
                                                                 width="58" height="65"/>
                                                         </div>
@@ -692,7 +692,7 @@
                                                     <hr class="no_line hrmargin_b_30"/>
                                                     <div class="list_item lists_2 clearfix">
                                                         <div class="list_left list_image"><img
-                                                                src="content/space/images/home_space_list_3.png"
+                                                                src="@/assets/content/space/images/home_space_list_3.png"
                                                                 alt="Malesuada fames" class="scale-with-grid" width="58"
                                                                 height="65"/>
                                                         </div>
@@ -717,15 +717,15 @@
                                                     Etiam porttitor semper sem at mollis turpis duis.</h5>
                                                 <hr class="no_line hrmargin_b_30"/>
                                                 <ul class="list_check" style="font-size: 13px; color: #fff;">
-                                                    <li style="background: url(content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
+                                                    <li style="background: url(@/assets/content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
                                                         Duis aute irure dolor in reprehenderit in voluptate velit esse
                                                         cillum dolore eu fugiat nulla pariatur.
                                                     </li>
-                                                    <li style="background: url(content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
+                                                    <li style="background: url(@/assets/content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
                                                         Excepteur sint occaecat cupidatat non proident, sunt in culpa
                                                         qui officia deserunt mollit anim id est laborum.
                                                     </li>
-                                                    <li style="background: url(content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
+                                                    <li style="background: url(@/assets/content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
                                                         Incidunt ut labore et dolore magnam aliquam.
                                                     </li>
                                                 </ul>
