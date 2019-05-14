@@ -591,7 +591,7 @@
                                                     <div style="margin-right: 20%;">
                                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                                             <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                            src="@/assets/content/space/images/e.jpg"
+                                                                                            src="@/assets/content/space/images/home_space_staff1.jpg"
                                                                                             alt="" width="380"
                                                                                             height="342"/>
                                                             </div>
