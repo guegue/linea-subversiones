@@ -74,8 +74,8 @@
                 <div class="content_wrapper clearfix">
                     <div class="sections_group">
                         <div class="entry-content">
-                            <div class="section full-screen full-width highlight-right section-border-bottom "
-                                 style="padding-top:0; padding-bottom:0; background-image:url(@/assets/content/space/images/home_space_sectionbg1.jpg); background-repeat:no-repeat; background-position:center top; background-attachment:fixed; background-size:cover; -webkit-background-size:cover"
+                            <div class="section full-screen full-width highlight-right section-border-bottom img-background"
+                                 style="padding-top:0; padding-bottom:0;background-repeat:no-repeat; background-position:center top; background-attachment:fixed; background-size:cover; -webkit-background-size:cover"
                                  data-stellar-background-ratio="0.5">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
@@ -164,19 +164,19 @@
                                                 </div>
                                                 <hr class="no_line hrmargin_b_30"/>
                                                 <ul class="list_check" style="font-size: 13px;">
-                                                    <li style="background: url(@/assets/content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
+                                                    <li class="icons-list">
                                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                                                         eiusmod tempor incididunt ut labore et dolore magna aliqua.
                                                     </li>
-                                                    <li style="background: url(@/assets/content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
+                                                    <li class="icons-list">
                                                         Duis aute irure dolor in reprehenderit in voluptate velit esse
                                                         cillum dolore eu fugiat nulla pariatur.
                                                     </li>
-                                                    <li style="background: url(@/assets/content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
+                                                    <li class="icons-list">
                                                         Excepteur sint occaecat cupidatat non proident, sunt in culpa
                                                         qui officia deserunt mollit anim id est laborum.
                                                     </li>
-                                                    <li style="background: url(@/assets/content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
+                                                    <li class="icons-list">
                                                         Incidunt ut labore et dolore magnam aliquam.
                                                     </li>
                                                 </ul>
@@ -647,14 +647,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="section no-margin equal-height "
-                                 style="padding-top:0; padding-bottom:0; background-color:#090b14; background-image:url(content/space/images/home_space_sectionbg2.jpg); background-repeat:no-repeat; background-position:center top; ">
+                            <div class="section no-margin equal-height background-document"
+                                 style="">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
                                         <!-- One Second (1/2) Column -->
                                         <div class="column one-second column_column ">
                                             <div class="column_attr">
-                                                <div style="padding: 60px 40px 70px; background: url(@/assets/content/space/images/home_space_box_bg.png) no-repeat top right; height: 100%; box-sizing: border-box; -webkit-box-sizing: border-box;">
+                                                <div class="img-background-document">
                                                     <h4>Dolor et omnien quan:</h4>
                                                     <hr class="no_line hrmargin_b_30"/>
                                                     <div class="list_item lists_2 clearfix">
@@ -717,15 +717,15 @@
                                                     Etiam porttitor semper sem at mollis turpis duis.</h5>
                                                 <hr class="no_line hrmargin_b_30"/>
                                                 <ul class="list_check" style="font-size: 13px; color: #fff;">
-                                                    <li style="background: url(@/assets/content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
+                                                    <li class="icons-list-w">
                                                         Duis aute irure dolor in reprehenderit in voluptate velit esse
                                                         cillum dolore eu fugiat nulla pariatur.
                                                     </li>
-                                                    <li style="background: url(@/assets/content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
+                                                    <li class="icons-list-w">
                                                         Excepteur sint occaecat cupidatat non proident, sunt in culpa
                                                         qui officia deserunt mollit anim id est laborum.
                                                     </li>
-                                                    <li style="background: url(@/assets/content/space/images/home_space_list_w.png) no-repeat; padding-left: 30px;">
+                                                    <li class="icons-list-w">
                                                         Incidunt ut labore et dolore magnam aliquam.
                                                     </li>
                                                 </ul>

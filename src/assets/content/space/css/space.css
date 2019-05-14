@@ -1,5 +1,27 @@
 #Header_wrapper {
-	background-color: #000;
+	/*background-color: #000;*/
+	background: none;
+}
+.icons-list{
+	list-style: none;
+	background: url('../images/home_space_list.png') no-repeat !important;
+	padding-left: 30px;
+}
+.icons-list-w{
+	list-style: none;
+	background: url('../images/home_space_list_w.png') no-repeat !important;
+	padding-left: 30px;
+}
+.background-document{
+	padding-top:0;
+	padding-bottom:0;
+	/*background-image:url(content/space/images/home_space_sectionbg2.jpg); */
+	background: #0d182c no-repeat center top;
+}
+.img-background-document{
+	padding: 60px 40px 70px;
+	background: url('../images/home_space_box_bg.png') no-repeat top right;
+	height: 100%; box-sizing: border-box; -webkit-box-sizing: border-box;
 }
 #Subheader {
 	background-color: rgba(0, 0, 0, 0);
@@ -353,7 +375,8 @@ html {
 	background-color: #fff;
 }
 body:not(.template-slider) #Header_wrapper {
-	background-image: url("../images/home_space_subheader2.jpg");
+	/*background-image: url("../images/home_space_subheader2.jpg");*/
+	background-image: none;
 }
 body, button, span.date_label, .timeline_items li h3 span, input[type="submit"], input[type="reset"], input[type="button"], input[type="text"], input[type="password"], input[type="tel"], input[type="email"], textarea, select, .offer_li .title h3 {
 	font-family: "Lato", Arial, Tahoma, sans-serif;

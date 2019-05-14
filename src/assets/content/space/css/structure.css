@@ -9,23 +9,15 @@
 | 2.0 Layout
 | 3.0 Responsive-1240
 | 4.0 Responsive
-|
 */
-
 
 /*
 |--------------------------------------------------------------------------
 |  1.0 Grid
-|  
 |--------------------------------------------------------------------------
-|
-| 
-|
 */
 
-
 /* Grid 1240px ----------------------------------------------------------------------- */
-
 body {
 	min-width: 960px;
 }
@@ -93,85 +85,57 @@ body.admin-bar {
 }
 
 /* Sizes ----------------------------------------------------------------------------- */
-
-
 /* .mcb-wrap */
-
 .one-sixth.mcb-wrap {
 	width: 16.666%;
 }
-
 /* 1/6 */
-
 .one-fifth.mcb-wrap {
 	width: 20%;
 }
-
 /* 1/5 */
-
 .one-fourth.mcb-wrap {
 	width: 25%;
 }
-
 /* 1/4 */
-
 .one-third.mcb-wrap {
 	width: 33.333%;
 }
-
 /* 1/3 */
-
 .two-fifth.mcb-wrap {
 	width: 40%;
 }
-
 /* 2/5 */
-
 .one-second.mcb-wrap {
 	width: 50%;
 }
-
 /* 1/2 */
-
 .three-fifth.mcb-wrap {
 	width: 60%;
 }
-
 /* 3/5 */
-
 .two-third.mcb-wrap {
 	width: 66.666%;
 }
-
 /* 2/3 */
-
 .three-fourth.mcb-wrap {
 	width: 75%;
 }
-
 /* 3/4 */
-
 .four-fifth.mcb-wrap {
 	width: 80%;
 }
-
 /* 4/5 */
-
 .five-sixth.mcb-wrap {
 	width: 83.333%;
 }
-
 /* 5/6 */
-
 .one.mcb-wrap {
 	width: 100%;
 }
-
 /* 1/1 */
 
-
 /* .column */
-
 .one-sixth.column {
 	width: 14.666%;
 }
@@ -1204,14 +1168,13 @@ body:not(.template-slider) #Header_wrapper.bg-fixed {
 	position: relative;
 }
 body:not(.template-slider) #Header {
-	min-height: 250px;
+	/*min-height: 250px;*/
 }
 .header-transparent .header_placeholder, .header-empty .header_placeholder {
 	height: 0 !important;
 }
 
 /* Minimalist Header */
-
 body.minimalist-header:not(.template-slider) #Header {
 	min-height: 0;
 	background-image: none !important;
