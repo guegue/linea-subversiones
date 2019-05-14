@@ -75,7 +75,7 @@
                     <div class="sections_group">
                         <div class="entry-content">
                             <div class="section full-screen full-width highlight-right section-border-bottom "
-                                 style="padding-top:0; padding-bottom:0; background-image:url(content/space/images/home_space_sectionbg1.jpg); background-repeat:no-repeat; background-position:center top; background-attachment:fixed; background-size:cover; -webkit-background-size:cover"
+                                 style="padding-top:0; padding-bottom:0; background-image:url(@/assets/content/space/images/home_space_sectionbg1.jpg); background-repeat:no-repeat; background-position:center top; background-attachment:fixed; background-size:cover; -webkit-background-size:cover"
                                  data-stellar-background-ratio="0.5">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
@@ -96,7 +96,7 @@
                                                     <hr class="no_line hrmargin_b_30"/>
                                                     <div style="position: relative; margin-left: -20%;"><img
                                                             class="scale-with-grid"
-                                                            src="content/space/images/home_space_hr.png" alt="">
+                                                            src="@/assets/content/space/images/home_space_hr.png" alt="">
                                                     </div>
                                                     <hr class="no_line hrmargin_b_30"/>
                                                     <h6 style="margin-right: 30%;">Dolor sit amet, consectetur
@@ -158,25 +158,25 @@
                                                 <hr class="no_line hrmargin_b_40"/>
                                                 <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                                     <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                    src="content/space/images/home_space_pic1.jpg"
+                                                                                    src="@/assets/content/space/images/home_space_pic1.jpg"
                                                                                     alt="" width="442" height="313"/>
                                                     </div>
                                                 </div>
                                                 <hr class="no_line hrmargin_b_30"/>
                                                 <ul class="list_check" style="font-size: 13px;">
-                                                    <li style="background: url(content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
+                                                    <li style="background: url(@/assets/content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
                                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                                                         eiusmod tempor incididunt ut labore et dolore magna aliqua.
                                                     </li>
-                                                    <li style="background: url(content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
+                                                    <li style="background: url(@/assets/content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
                                                         Duis aute irure dolor in reprehenderit in voluptate velit esse
                                                         cillum dolore eu fugiat nulla pariatur.
                                                     </li>
-                                                    <li style="background: url(content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
+                                                    <li style="background: url(@/assets/content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
                                                         Excepteur sint occaecat cupidatat non proident, sunt in culpa
                                                         qui officia deserunt mollit anim id est laborum.
                                                     </li>
-                                                    <li style="background: url(content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
+                                                    <li style="background: url(@/assets/content/space/images/home_space_list.png) no-repeat; padding-left: 30px;">
                                                         Incidunt ut labore et dolore magnam aliquam.
                                                     </li>
                                                 </ul>
@@ -208,14 +208,14 @@
                                                             <li data-index="rs-2279" data-transition="parallaxvertical"
                                                                 data-slotamount="default" data-easein="default"
                                                                 data-easeout="default" data-masterspeed="default"
-                                                                data-thumb="content/space/images/home_space_blog2-100x50.jpg"
+                                                                data-thumb="@/assets/content/space/images/home_space_blog2-100x50.jpg"
                                                                 data-rotate="0" data-fstransition="fade"
                                                                 data-fsmasterspeed="1500" data-fsslotamount="7"
                                                                 data-saveperformance="off"
                                                                 data-title="Quisque lorem tortor fringilla"
                                                                 data-param1="Universe"
                                                                 data-description="Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer ultrices posuere cubilia Curae, Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat.">
-                                                                <img src="content/space/images/home_space_blog2.jpg"
+                                                                <img src="@/assets/content/space/images/home_space_blog2.jpg"
                                                                      alt="" width="1920" height="1280"
                                                                      data-bgposition="center center" data-bgfit="cover"
                                                                      data-bgrepeat="no-repeat" data-bgparallax="10"
@@ -301,7 +301,7 @@
                                                                 data-title="Vivamus sit amet metus sem uspendisse pellen"
                                                                 data-param1="Technology"
                                                                 data-description="Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis.">
-                                                                <img src="content/space/images/home_space_blog4.jpg"
+                                                                <img src="@/assets/content/space/images/home_space_blog4.jpg"
                                                                      alt="" width="1920" height="1280"
                                                                      data-bgposition="center center" data-bgfit="cover"
                                                                      data-bgrepeat="no-repeat" data-bgparallax="10"
@@ -387,7 +387,7 @@
                                                                 data-title="Vestibulum commodo volutpat laoreet"
                                                                 data-param1="Planets"
                                                                 data-description="Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.">
-                                                                <img src="content/space/images/home_space_blog1.jpg"
+                                                                <img src="@/assets/content/space/images/home_space_blog1.jpg"
                                                                      alt="" width="1920" height="1280"
                                                                      data-bgposition="center center" data-bgfit="cover"
                                                                      data-bgrepeat="no-repeat" data-bgparallax="10"
@@ -468,7 +468,7 @@
                                                             <li data-index="rs-2275" data-transition="parallaxvertical"
                                                                 data-slotamount="default" data-easein="default"
                                                                 data-easeout="default" data-masterspeed="default"
-                                                                data-thumb="content/space/images/home_space_blog3-100x50.jpg"
+                                                                data-thumb="@/assets/content/space/images/home_space_blog3-100x50.jpg"
                                                                 data-rotate="0" data-saveperformance="off"
                                                                 data-title="Vestibulum ante ipsum primis"
                                                                 data-param1="Earth"
