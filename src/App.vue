@@ -16,12 +16,12 @@
                                     <!--  Logo-->
                                     <div class="logo">
                                         <a id="logo" href="" title="BeSpace - BeTheme"> <img
-                                                class="logo-main scale-with-grid" src="content/space/images/space.png"
+                                                class="logo-main scale-with-grid" src="@/assets/content/space/images/space.png"
                                                 alt="BeSpace - BeTheme"/> <img class="logo-sticky scale-with-grid"
-                                                                               src="content/space/images/space.png"
+                                                                               src="@/assets/content/space/images/space.png"
                                                                                alt=""> <img
                                                 class="logo-mobile scale-with-grid"
-                                                src="content/space/images/space-responsive.png" alt=""> </a>
+                                                src="@/assets/content/space/images/space-responsive.png" alt=""> </a>
                                     </div>
                                     <!--  Main menu-->
                                     <div class="menu_wrapper">
@@ -44,7 +44,7 @@
                                                 </li>
                                                 <li>
                                                     <a target="_blank" href=""><span><span
-                                                            style="padding: 0px; color:#AAA;">BUY NOW</span></span></a>
+                                                            style="padding: 0; color:#AAA;">BUY NOW</span></span></a>
                                                 </li>
                                             </ul>
                                         </nav>
@@ -75,7 +75,7 @@
                     <div class="sections_group">
                         <div class="entry-content">
                             <div class="section full-screen full-width highlight-right section-border-bottom "
-                                 style="padding-top:0px; padding-bottom:0px; background-image:url(content/space/images/home_space_sectionbg1.jpg); background-repeat:no-repeat; background-position:center top; background-attachment:fixed; background-size:cover; -webkit-background-size:cover"
+                                 style="padding-top:0; padding-bottom:0; background-image:url(content/space/images/home_space_sectionbg1.jpg); background-repeat:no-repeat; background-position:center top; background-attachment:fixed; background-size:cover; -webkit-background-size:cover"
                                  data-stellar-background-ratio="0.5">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
@@ -201,7 +201,7 @@
                                                       media="all"/>
                                                 <div id="rev_slider_4_1_wrapper"
                                                      class="rev_slider_wrapper fullwidthbanner-container"
-                                                     style="margin:0px auto;background-color:#fff;padding:0px;margin-top:0px;margin-bottom:0px;">
+                                                     style="margin:0 auto;background-color:#fff;padding:0;margin-top:0;margin-bottom:0;">
                                                     <div id="rev_slider_4_1" class="rev_slider fullwidthabanner"
                                                          data-version="5.0.6">
                                                         <ul>
@@ -247,7 +247,7 @@
                                                                      data-transform_idle="o:1;"
                                                                      data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                     data-mask_in="x:0px;y:0px;"
+                                                                     data-mask_in="x:0;y:0;"
                                                                      data-mask_out="x:0;y:0;" data-start="1000"
                                                                      data-splitin="none" data-splitout="none"
                                                                      data-responsive_offset="on"
@@ -266,7 +266,7 @@
                                                                      data-whitespace="nowrap" data-transform_idle="o:1;"
                                                                      data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                     data-mask_in="x:0px;y:0px;"
+                                                                     data-mask_in="x:0;y:0;"
                                                                      data-mask_out="x:0;y:0;" data-start="1000"
                                                                      data-splitin="none" data-splitout="none"
                                                                      data-responsive_offset="on"
@@ -286,7 +286,7 @@
                                                                    data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);cursor:pointer;"
                                                                    data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                    data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                   data-mask_in="x:0px;y:0px;" data-mask_out="x:0;y:0;"
+                                                                   data-mask_in="x:0;y:0;" data-mask_out="x:0;y:0;"
                                                                    data-start="1000" data-splitin="none"
                                                                    data-splitout="none" data-actions=''
                                                                    data-responsive_offset="on" data-responsive="off"
@@ -333,7 +333,7 @@
                                                                      data-transform_idle="o:1;"
                                                                      data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                     data-mask_in="x:0px;y:0px;"
+                                                                     data-mask_in="x:0;y:0;"
                                                                      data-mask_out="x:0;y:0;" data-start="1000"
                                                                      data-splitin="none" data-splitout="none"
                                                                      data-responsive_offset="on"
@@ -352,7 +352,7 @@
                                                                      data-whitespace="nowrap" data-transform_idle="o:1;"
                                                                      data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                     data-mask_in="x:0px;y:0px;"
+                                                                     data-mask_in="x:0;y:0;"
                                                                      data-mask_out="x:0;y:0;" data-start="1000"
                                                                      data-splitin="none" data-splitout="none"
                                                                      data-responsive_offset="on"
@@ -372,7 +372,7 @@
                                                                    data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);cursor:pointer;"
                                                                    data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                    data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                   data-mask_in="x:0px;y:0px;" data-mask_out="x:0;y:0;"
+                                                                   data-mask_in="x:0;y:0;" data-mask_out="x:0;y:0;"
                                                                    data-start="1000" data-splitin="none"
                                                                    data-splitout="none" data-actions=''
                                                                    data-responsive_offset="on" data-responsive="off"
@@ -419,7 +419,7 @@
                                                                      data-transform_idle="o:1;"
                                                                      data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                     data-mask_in="x:0px;y:0px;"
+                                                                     data-mask_in="x:0;y:0;"
                                                                      data-mask_out="x:0;y:0;" data-start="1000"
                                                                      data-splitin="none" data-splitout="none"
                                                                      data-responsive_offset="on"
@@ -438,7 +438,7 @@
                                                                      data-whitespace="nowrap" data-transform_idle="o:1;"
                                                                      data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                     data-mask_in="x:0px;y:0px;"
+                                                                     data-mask_in="x:0;y:0;"
                                                                      data-mask_out="x:0;y:0;" data-start="1000"
                                                                      data-splitin="none" data-splitout="none"
                                                                      data-responsive_offset="on"
@@ -458,7 +458,7 @@
                                                                    data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);cursor:pointer;"
                                                                    data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                    data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                   data-mask_in="x:0px;y:0px;" data-mask_out="x:0;y:0;"
+                                                                   data-mask_in="x:0;y:0;" data-mask_out="x:0;y:0;"
                                                                    data-start="1000" data-splitin="none"
                                                                    data-splitout="none" data-actions=''
                                                                    data-responsive_offset="on" data-responsive="off"
@@ -505,7 +505,7 @@
                                                                      data-transform_idle="o:1;"
                                                                      data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                     data-mask_in="x:0px;y:0px;"
+                                                                     data-mask_in="x:0;y:0;"
                                                                      data-mask_out="x:0;y:0;" data-start="1000"
                                                                      data-splitin="none" data-splitout="none"
                                                                      data-responsive_offset="on"
@@ -524,7 +524,7 @@
                                                                      data-whitespace="nowrap" data-transform_idle="o:1;"
                                                                      data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                      data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                     data-mask_in="x:0px;y:0px;"
+                                                                     data-mask_in="x:0;y:0;"
                                                                      data-mask_out="x:0;y:0;" data-start="1000"
                                                                      data-splitin="none" data-splitout="none"
                                                                      data-responsive_offset="on"
@@ -544,7 +544,7 @@
                                                                    data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);cursor:pointer;"
                                                                    data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                                                                    data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
-                                                                   data-mask_in="x:0px;y:0px;" data-mask_out="x:0;y:0;"
+                                                                   data-mask_in="x:0;y:0;" data-mask_out="x:0;y:0;"
                                                                    data-start="1000" data-splitin="none"
                                                                    data-splitout="none" data-actions=''
                                                                    data-responsive_offset="on" data-responsive="off"
@@ -648,7 +648,7 @@
                                 </div>
                             </div>
                             <div class="section no-margin equal-height "
-                                 style="padding-top:0px; padding-bottom:0px; background-color:#090b14; background-image:url(content/space/images/home_space_sectionbg2.jpg); background-repeat:no-repeat; background-position:center top; ">
+                                 style="padding-top:0; padding-bottom:0; background-color:#090b14; background-image:url(content/space/images/home_space_sectionbg2.jpg); background-repeat:no-repeat; background-position:center top; ">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
                                         <!-- One Second (1/2) Column -->
