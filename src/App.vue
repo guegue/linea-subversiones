@@ -16,7 +16,8 @@
                                     <!--  Logo-->
                                     <div class="logo">
                                         <a id="logo" href="" title="BeSpace - BeTheme"> <img
-                                                class="logo-main scale-with-grid" src="@/assets/content/space/images/space.png"
+                                                class="logo-main scale-with-grid"
+                                                src="@/assets/content/space/images/space.png"
                                                 alt="BeSpace - BeTheme"/> <img class="logo-sticky scale-with-grid"
                                                                                src="@/assets/content/space/images/space.png"
                                                                                alt=""> <img
@@ -96,7 +97,8 @@
                                                     <hr class="no_line hrmargin_b_30"/>
                                                     <div style="position: relative; margin-left: -20%;"><img
                                                             class="scale-with-grid"
-                                                            src="@/assets/content/space/images/home_space_hr.png" alt="">
+                                                            src="@/assets/content/space/images/home_space_hr.png"
+                                                            alt="">
                                                     </div>
                                                     <hr class="no_line hrmargin_b_30"/>
                                                     <h6 style="margin-right: 30%;">Dolor sit amet, consectetur
@@ -564,7 +566,7 @@
                             <div class="section" style="padding-top:90px; padding-bottom:50px; ">
                                 <div class="section_wrapper clearfix">
                                     <div class="items_group clearfix">
-<!--                                         One Fourth (1/4) Column -->
+                                        <!--                                         One Fourth (1/4) Column -->
                                         <div class="column one-fourth column_column ">
                                             <div class="column_attr" style=" padding:0 8% 0 0;">
                                                 <hr class="no_line hrmargin_b_40"/>
@@ -605,7 +607,7 @@
                                                         </p>
                                                     </div>
                                                 </div>
-<!--                                             One Third (1/3) Column -->
+                                                <!--                                             One Third (1/3) Column -->
                                                 <div class="column one-third">
                                                     <div style="margin-right: 20%;">
                                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
@@ -748,7 +750,7 @@
                 <!-- Footer - First area -->
                 <div class="footer_action">
                     <div class="container">
-<!--                         One full width row-->
+                        <!--                         One full width row-->
                         <div class="column one column_column">
                             <h4 style="color: #a6a6a8; margin: 15px 0;">Vestibulum commodo volutpat convallis ac</h4>
                         </div>
@@ -868,6 +870,14 @@
     require('@/assets/content/space/css/space.css');
     require('@/assets/content/space/css/custom.css');
     require('@/assets/plugins/rs-plugin/css/settings.css');
+
+    // require('@/assets/js/jquery-2.1.4.min.js');
+
+    // import '@/assets/js/jquery-2.1.4.min.js';
+    // import jQuery from '@/assets/js/jquery-2.1.4.min.js';
+
+    window.$ = window.jQuery = require("@/assets/js/jquery-2.1.4.min.js");
+    import '@/assets/js/mfn.menu.js'
     export default {
         name: 'app',
         components: {}
