@@ -91,7 +91,7 @@
                                             <div class="column_attr animate" data-anim-type="fadeInRight">
                                                 <div style="padding: 40px; box-sizing: border-box; -webkit-box-sizing: border-box;">
                                                     <h5 style="letter-spacing: 4px;">New at Be Space</h5>
-                                                    <h2 style="margin-right: 10%;">The new way-->
+                                                    <h2 style="margin-right: 10%;">The new way
                                                         <br>
                                                         of exploring space</h2>
                                                     <hr class="no_line hrmargin_b_30"/>
@@ -871,13 +871,6 @@
     require('@/assets/content/space/css/custom.css');
     require('@/assets/plugins/rs-plugin/css/settings.css');
 
-    // require('@/assets/js/jquery-2.1.4.min.js');
-
-    // import '@/assets/js/jquery-2.1.4.min.js';
-    // import jQuery from '@/assets/js/jquery-2.1.4.min.js';
-
-    window.$ = window.jQuery = require("@/assets/js/jquery-2.1.4.min.js");
-    import '@/assets/js/mfn.menu.js'
     export default {
         name: 'app',
         components: {}
