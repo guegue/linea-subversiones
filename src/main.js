@@ -3,10 +3,10 @@ import App from './App.vue'
 import router from './router'
 
 //css
-import '@/assets/css/global.min.css';
-import '@/assets/content/space/css/structure.min.css';
-import '@/assets/content/space/css/space.min.css';
-import '@/assets/plugins/rs-plugin/css/settings.min.css';
+import '@/assets/css/global.css';
+import '@/assets/content/space/css/structure.css';
+import '@/assets/content/space/css/space.css';
+import '@/assets/plugins/rs-plugin/css/settings.css';
 
 Vue.config.productionTip = false;
 
