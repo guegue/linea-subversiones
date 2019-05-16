@@ -19483,5 +19483,5 @@ a.action_button:hover{text-decoration:none}
 }
 
 .img-background{
-	background: url(../content/space/images/home_space_section.jpg);
+	background: url(../content/space/images/home_space_section.jpg) no-repeat fixed center top;
 }
