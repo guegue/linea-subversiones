@@ -868,7 +868,6 @@
     require('@/assets/css/global.css');
     require('@/assets/content/space/css/structure.css');
     require('@/assets/content/space/css/space.css');
-    require('@/assets/content/space/css/custom.css');
     require('@/assets/plugins/rs-plugin/css/settings.css');
 
     export default {

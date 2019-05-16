@@ -218,12 +218,8 @@ a.mfn-link-6:before {
 #Footer, #Footer .widget_recent_entries ul li a {
 	color: #636467;
 }
-#Footer a {
-	color: #cccdcd;
-}
-#Footer a:hover {
-	color: #b4b4b6;
-}
+#Footer a {	color: #cccdcd;}
+#Footer a:hover {	color: #b4b4b6;}
 #Footer h1, #Footer h1 a, #Footer h1 a:hover, #Footer h2, #Footer h2 a, #Footer h2 a:hover, #Footer h3, #Footer h3 a, #Footer h3 a:hover, #Footer h4, #Footer h4 a, #Footer h4 a:hover, #Footer h5, #Footer h5 a, #Footer h5 a:hover, #Footer h6, #Footer h6 a, #Footer h6 a:hover {
 	color: #cccdcd;
 }
@@ -368,10 +364,7 @@ table tr:hover td {
 		background: #fff !important;
 	}
 }
-html {
-	background-color: #fff;
-}
-#Wrapper, #Content {
+html,#Wrapper, #Content {
 	background-color: #fff;
 }
 body:not(.template-slider) #Header_wrapper {
@@ -386,33 +379,17 @@ body, button, span.date_label, .timeline_items li h3 span, input[type="submit"],
 	font-family: "Orbitron", Arial, Tahoma, sans-serif;
 	font-weight: 400;
 }
-#Subheader .title {
+#Subheader .title, h6 {
 	font-family: "Lato", Arial, Tahoma, sans-serif;
 	font-weight: 400;
 }
-h1, .text-logo #logo {
-	font-family: "Lato", Arial, Tahoma, sans-serif;
-	font-weight: 300;
-}
-h2 {
-	font-family: "Lato", Arial, Tahoma, sans-serif;
-	font-weight: 300;
-}
-h3 {
-	font-family: "Lato", Arial, Tahoma, sans-serif;
-	font-weight: 300;
-}
-h4 {
+h1, .text-logo #logo, h2, h3, h4 {
 	font-family: "Lato", Arial, Tahoma, sans-serif;
 	font-weight: 300;
 }
 h5 {
 	font-family: "Lato", Arial, Tahoma, sans-serif;
 	font-weight: 700;
-}
-h6 {
-	font-family: "Lato", Arial, Tahoma, sans-serif;
-	font-weight: 400;
 }
 blockquote {
 	font-family: "Lato", Arial, Tahoma, sans-serif;
@@ -460,36 +437,17 @@ h6 {
 		font-size: 54px;
 		line-height: 54px;
 	}
-	h2 {
-		font-size: 63px;
-		line-height: 63px;
-	}
-	h3 {
-		font-size: 34px;
-		line-height: 36px;
-	}
-	h4 {
-		font-size: 22px;
-		line-height: 26px;
-	}
-	h5 {
-		font-size: 16px;
-		line-height: 20px;
-	}
-	h6 {
-		font-size: 14px;
-		line-height: 20px;
-	}
-	blockquote {
-		font-size: 15px;
-	}
+	h2 {	font-size: 63px;	line-height: 63px;}
+	h3 {	font-size: 34px;	line-height: 36px;}
+	h4 {	font-size: 22px;	line-height: 26px;}
+	h5 {	font-size: 16px;	line-height: 20px;}
+	h6 {	font-size: 14px;	line-height: 20px;}
+	blockquote {	font-size: 15px;}
 	.the_content_wrapper ul, .the_content_wrapper ol {
 		font-size: 14px;
 		line-height: 19px;
 	}
-	.faq .question .title {
-		font-size: 14px;
-	}
+	.faq .question .title {	font-size: 14px;}
 	.pricing-box .plan-header h2 {
 		font-size: 27px;
 		line-height: 27px;
@@ -540,43 +498,22 @@ h6 {
 		font-size: 13px;
 		line-height: 20px;
 	}
-	#menu>ul>li>a {
-		font-size: 13px;
-	}
+	#menu>ul>li>a {	font-size: 13px;}
 	h1, #Subheader .title, .text-logo #logo {
 		font-size: 48px;
 		line-height: 48px;
 	}
-	h2 {
-		font-size: 56px;
-		line-height: 56px;
-	}
-	h3 {
-		font-size: 30px;
-		line-height: 32px;
-	}
-	h4 {
-		font-size: 19px;
-		line-height: 23px;
-	}
-	h5 {
-		font-size: 14px;
-		line-height: 18px;
-	}
-	h6 {
-		font-size: 13px;
-		line-height: 18px;
-	}
-	blockquote {
-		font-size: 14px;
-	}
+	h2 {	font-size: 56px;	line-height: 56px;}
+	h3 {	font-size: 30px;	line-height: 32px;}
+	h4 {	font-size: 19px;	line-height: 23px;}
+	h5 {	font-size: 14px;	line-height: 18px;}
+	h6 {	font-size: 13px;	line-height: 18px;}
+	blockquote {	font-size: 14px;}
 	.the_content_wrapper ul, .the_content_wrapper ol {
 		font-size: 13px;
 		line-height: 16px;
 	}
-	.faq .question .title {
-		font-size: 13px;
-	}
+	.faq .question .title {	font-size: 13px;}
 	.pricing-box .plan-header h2 {
 		font-size: 24px;
 		line-height: 24px;
@@ -709,18 +646,10 @@ h6 {
 		line-height: 60px;
 	}
 }
-.with_aside .sidebar.columns {
-	width: 23%;
-}
-.with_aside .sections_group {
-	width: 75%;
-}
-.aside_both .sidebar.columns {
-	width: 18%;
-}
-.aside_both .sidebar-1 {
-	margin-left: -79%;
-}
+.with_aside .sidebar.columns {	width: 23%;}
+.with_aside .sections_group {	width: 75%;}
+.aside_both .sidebar.columns {	width: 18%;}
+.aside_both .sidebar-1 {	margin-left: -79%;}
 .aside_both .sections_group {
 	width: 60%;
 	margin-left: 20%;
@@ -733,26 +662,12 @@ h6 {
 		max-width: 1020px;
 	}
 }
-h1 {
-	font-weight: 400;
-}
+h1, h4, h5, h6 {	font-weight: 400;}
 h2 {
 	font-weight: 900;
 	letter-spacing: 1px;
 }
-h3 {
-	font-weight: 900;
-}
-h4 {
-	font-weight: 400;
-	;
-}
-h5 {
-	font-weight: 400;
-}
-h6 {
-	font-weight: 400;
-}
+h3 {	font-weight: 900;}
 .section-border-bottom {
 	border-bottom: 1px solid #b2b2b2;
 }
@@ -779,23 +694,14 @@ h6 {
 	font-weight: 700;
 	letter-spacing: 1px;
 }
-#Top_bar:not(.is-sticky) .menu_wrapper {
-	background: #fff;
-}
+#Top_bar:not(.is-sticky) .menu_wrapper {	background: #fff;}
 @media only screen and (max-width: 767px) {
-	#Top_bar .logo #logo {
-		margin: 5px 50px 15px;
-	}
+	#Top_bar .logo #logo {		margin: 5px 50px 15px;	}
 }
 
 /* Revolution slider */
-.hebe .tp-tab-title {
-	color: #fff !important;
-}
-.hebe .tp-tab-desc {
-	color: #fff;
-	font-family: Lato;
-}
+.hebe .tp-tab-title {	color: #fff !important;}
+.hebe .tp-tab-desc {	color: #fff;	font-family: Lato;}
 
 /* Subheader */
 
@@ -804,9 +710,7 @@ h6 {
 	background-position: center top;
 }
 @media only screen and (max-width: 767px) {
-	#Subheader {
-		padding: 160px 0;
-	}
+	#Subheader {	padding: 160px 0;}
 }
 #Subheader .title {
 	letter-spacing: 2px;
@@ -838,7 +742,6 @@ h6 {
 }
 
 /* Image frame*/
-
 .image_frame, .wp-caption {
 	border: 0;
 }
@@ -859,7 +762,6 @@ h6 {
 }
 
 /* Button */
-
 .button-stroke a.button:not(.action_button), .button-stroke:not(.header-plain) a.button.action_button, .button-stroke a.tp-button, .button-stroke button, .button-stroke input[type="submit"], .button-stroke input[type="reset"], .button-stroke input[type="button"] {
 	border-radius: 15px;
 	border-width: 1px;
@@ -867,15 +769,9 @@ h6 {
 }
 
 /* Footer */
-#Footer .footer_action {
-	background: none;
-}
-#Footer .footer_copy {
-	border: 0;
-}
-#Footer .widgets_wrapper {
-	padding: 0;
-}
+#Footer .footer_action {	background: none;}
+#Footer .footer_copy {	border: 0;}
+#Footer .widgets_wrapper {	padding: 0;}
 #Footer .widgets_wrapper .container {
 	border-bottom: 1px solid rgba(255, 255, 255, .3);
 	border-top: 1px solid rgba(255, 255, 255, .3);
@@ -896,9 +792,7 @@ h6 {
 	text-decoration: none;
 	text-align: left;
 	background-color: rgba(255, 255, 255, 0);
-	border-color: rgba(255, 255, 255, 1.00);
-	border-style: solid;
-	border-width: 1px;
+	border: 1px solid rgba(255, 255, 255, 1.00);
 	border-radius: 15px 15px 15px 15px;
 	letter-spacing: 2px;
 }
@@ -906,9 +800,7 @@ h6 {
 	color: rgba(0, 0, 0, 1.00);
 	text-decoration: none;
 	background-color: rgba(255, 255, 255, 1.00);
-	border-color: rgba(255, 255, 255, 1.00);
-	border-style: solid;
-	border-width: 1px;
+	border: 1px solid rgba(255, 255, 255, 1.00);
 	border-radius: 15px 15px 15px 15px
 }
 .tp-caption.Newspaper-Subtitle, .Newspaper-Subtitle {
@@ -922,9 +814,7 @@ h6 {
 	text-decoration: none;
 	text-align: left;
 	background-color: transparent;
-	border-color: transparent;
-	border-style: none;
-	border-width: 0;
+	border: 0 none transparent;
 	border-radius: 0 0 0 0;
 }
 .tp-caption.Newspaper-Title, .Newspaper-Title {
@@ -938,9 +828,7 @@ h6 {
 	text-decoration: none;
 	text-align: left;
 	background-color: transparent;
-	border-color: transparent;
-	border-style: none;
-	border-width: 0;
+	border: 0 none transparent;
 	border-radius: 0 0 0 0;
 }
 
@@ -1007,19 +895,13 @@ h6 {
 	text-align: left;
 }
 
-/*
- |--------------------------------------------------------------------------
- |   Demo Styles
- |--------------------------------------------------------------------------
- */
+/* Demo Styles */
 
 body.contact #Content, body.content_no_padding #Content {
 	padding-top: 0 !important;
 }
 
-/* ------------------------------------------- *
- * font awesome
- * ------------------------------------------- */
+/* font awesome */
 .the-icons.span3 {
 	float: left;
 	width: 25%;
@@ -1066,14 +948,7 @@ body.contact #Content, body.content_no_padding #Content {
 		width: 100%;
 	}
 }
-
-/* ------------------------------------------- *
- * demo
- * ------------------------------------------- */
-
-
 /* sections */
-
 .parallax-video .content_video iframe {
 	border: 35px solid #efefef;
 	-webkit-border-radius: 5px 5px 5px 5px;

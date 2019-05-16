@@ -1,17 +1,12 @@
 /*-----------------------------------------------------------------------------
-
 -	Revolution Slider 5.0 Default Style Settings -
-
 Screen Stylesheet
-
 version:   	5.0.0
 date:      	29/10/15
 author:		themepunch
 email:     	info@themepunch.com
 website:   	http://www.themepunch.com
 -----------------------------------------------------------------------------*/
-
-
 @font-face {
   font-family: 'revicons';
   src: url('../fonts/revicons/revicons.eot?5510888');
@@ -97,16 +92,11 @@ website:   	http://www.themepunch.com
 .revicon-popup:before { content: '\e828'; } /* '' */
 
 
-
-/******************************
-	-	BASIC STYLES		-
-******************************/
-
+/**** -	BASIC STYLES - ****/
 .rev_slider_wrapper{
 	position:relative;
 	z-index: 0;
 }
-
 
 .rev_slider{
 	position:relative;
@@ -150,9 +140,8 @@ website:   	http://www.themepunch.com
 	padding:0 !important;
 	overflow-x: visible;
 	overflow-y: visible;
-	background-image:none;
-	background-position:0 0;
-	text-indent: 0em;
+	background: none 0 0;
+	text-indent: 0;
 	top:0;left:0;
 }
 
@@ -419,7 +408,6 @@ img.tp-slider-alternative-image	{
 	-webkit-transition: opacity .3s;
 	-moz-transition: opacity .3s;
 	-o-transition: opacity .3s;
-	-ms-transition: opacity .3s;
 	transition: opacity .3s;
 	background-image: linear-gradient(to bottom, rgb(0,0,0) 13%, rgb(50,50,50) 100%);
 	background-image: -o-linear-gradient(to bottom, rgb(0,0,0) 13%, rgb(50,50,50) 100%);
@@ -446,37 +434,27 @@ img.tp-slider-alternative-image	{
 	margin:0;
 	outline: none;
 	}
-.tp-video-button:hover 				{	cursor: pointer;}
+.tp-video-button:hover 	{	cursor: pointer;}
 
 
 .tp-video-button-wrap,
 .tp-video-seek-bar-wrap,
-.tp-video-vol-bar-wrap 				{ 	padding:0 5px;display:table-cell; }
+.tp-video-vol-bar-wrap 	{ 	padding:0 5px;display:table-cell; }
 
-.tp-video-seek-bar-wrap				{	width:80%}
-.tp-video-vol-bar-wrap				{	width:20%}
+.tp-video-seek-bar-wrap	{	width:80%}
+.tp-video-vol-bar-wrap	{	width:20%}
 
 .tp-volume-bar,
-.tp-seek-bar						{	width:100%; cursor: pointer;  outline:none; line-height:12px;margin:0; padding:0;}
-
-
-.rs-fullvideo-cover					{	width:100%;height:100%;top:0;left:0;position: absolute; background:transparent;z-index:5;}
-
-
-.rs-background-video-layer video::-webkit-media-controls { display:none !important;}
-
-
-/********************************
-	-	DOTTED OVERLAYS	-
-*********************************/
+.tp-seek-bar			{	width:100%; cursor: pointer;  outline:none; line-height:12px;margin:0; padding:0;}
+.rs-fullvideo-cover		{	width:100%;height:100%;top:0;left:0;position: absolute; background:transparent;z-index:5;}
+/*.rs-background-video-layer video::-webkit-media-controls { display:none !important;}*/
+/**** -	DOTTED OVERLAYS	- ****/
 .tp-dottedoverlay						{	background-repeat:repeat;width:100%;height:100%;position:absolute;top:0;left:0;z-index:3}
 .tp-dottedoverlay.twoxtwo				{	background:url(../assets/gridtile.png)}
 .tp-dottedoverlay.twoxtwowhite			{	background:url(../assets/gridtile_white.png)}
 .tp-dottedoverlay.threexthree			{	background:url(../assets/gridtile_3x3.png)}
 .tp-dottedoverlay.threexthreewhite		{	background:url(../assets/gridtile_3x3_white.png)}
-/******************************
-	-	SHADOWS		-
-******************************/
+/**** -	SHADOWS	- ****/
 .tp-shadowcover	{	width:100%;height:100%;top:0;left:0;background: #fff;position: absolute; z-index: -1;}
 .tp-shadow1 {
 	-webkit-box-shadow: 0 10px 6px -6px rgba(0,0,0,0.8);
@@ -540,10 +518,7 @@ img.tp-slider-alternative-image	{
     border-radius:100px / 20px;
 }
 
-/******************************
-	-	BUTTONS	-
-*******************************/
-
+/**** -	BUTTONS	- ****/
 .tp-button{
 	padding:6px 13px 5px;
 	border-radius: 3px;
@@ -557,71 +532,48 @@ img.tp-slider-alternative-image	{
 }
 
 .tp-button.big	{	color:#fff; text-shadow:0 1px 1px rgba(0, 0, 0, 0.6); font-weight:bold; padding:9px 20px; font-size:19px;  line-height:57px !important; }
-
-
 .purchase:hover,
 .tp-button:hover,
 .tp-button.big:hover {	background-position:bottom, 15px 11px}
 
-
 /*	BUTTON COLORS	*/
-
 .tp-button.green, .tp-button:hover.green,
 .purchase.green, .purchase:hover.green			{ background-color:#21a117; -webkit-box-shadow:  0 3px 0 0 #104d0b;        -moz-box-shadow:   0 3px 0 0 #104d0b;        box-shadow:   0 3px 0 0 #104d0b;  }
-
 .tp-button.blue, .tp-button:hover.blue,
 .purchase.blue, .purchase:hover.blue			{ background-color:#1d78cb; -webkit-box-shadow:  0 3px 0 0 #0f3e68;        -moz-box-shadow:   0 3px 0 0 #0f3e68;        box-shadow:   0 3px 0 0 #0f3e68}
-
 .tp-button.red, .tp-button:hover.red,
 .purchase.red, .purchase:hover.red				{ background-color:#cb1d1d; -webkit-box-shadow:  0 3px 0 0 #7c1212;        -moz-box-shadow:   0 3px 0 0 #7c1212;        box-shadow:   0 3px 0 0 #7c1212}
-
 .tp-button.orange, .tp-button:hover.orange,
 .purchase.orange, .purchase:hover.orange		{ background-color:#ff7700; -webkit-box-shadow:  0 3px 0 0 #a34c00;        -moz-box-shadow:   0 3px 0 0 #a34c00;        box-shadow:   0 3px 0 0 #a34c00}
-
 .tp-button.darkgrey,.tp-button.grey,
 .tp-button:hover.darkgrey,.tp-button:hover.grey,
 .purchase.darkgrey, .purchase:hover.darkgrey	{ background-color:#555; -webkit-box-shadow:  0 3px 0 0 #222;        -moz-box-shadow:   0 3px 0 0 #222;        box-shadow:   0 3px 0 0 #222}
-
 .tp-button.lightgrey, .tp-button:hover.lightgrey,
 .purchase.lightgrey, .purchase:hover.lightgrey	{ background-color:#888; -webkit-box-shadow:  0 3px 0 0 #555;        -moz-box-shadow:   0 3px 0 0 #555;        box-shadow:   0 3px 0 0 #555}
-
-
-
 /* TP BUTTONS DESKTOP SIZE */
-
 .rev-btn,
 .rev-btn:visited						{ 	outline:none !important; box-shadow:none !important; text-decoration: none !important; line-height: 44px; font-size: 17px; font-weight: 500; padding: 12px 35px; box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;  font-family: "Roboto", sans-serif;  cursor: pointer;}
-
 .rev-btn.rev-uppercase,
 .rev-btn.rev-uppercase:visited			{ 	text-transform: uppercase; letter-spacing: 1px; font-size: 15px; font-weight: 900; }
-
-.rev-btn.rev-withicon i					{ 	font-size: 15px; font-weight: normal; position: relative; top: 0; -webkit-transition: all 0.2s ease-out !important; -moz-transition: all 0.2s ease-out !important; -o-transition: all 0.2s ease-out !important; -ms-transition: all 0.2s ease-out !important; margin-left:10px !important;}
-
-.rev-btn.rev-hiddenicon i				{ 	font-size: 15px; font-weight: normal; position: relative; top: 0; -webkit-transition: all 0.2s ease-out !important; -moz-transition: all 0.2s ease-out !important; -o-transition: all 0.2s ease-out !important; -ms-transition: all 0.2s ease-out !important; opacity: 0; margin-left:0 !important; width:0 !important;  }
+.rev-btn.rev-withicon i					{ 	font-size: 15px; font-weight: normal; position: relative; top: 0; -webkit-transition: all 0.2s ease-out !important; -moz-transition: all 0.2s ease-out !important; -o-transition: all 0.2s ease-out !important; margin-left:10px !important;}
+.rev-btn.rev-hiddenicon i				{ 	font-size: 15px; font-weight: normal; position: relative; top: 0; -webkit-transition: all 0.2s ease-out !important; -moz-transition: all 0.2s ease-out !important; -o-transition: all 0.2s ease-out !important; opacity: 0; margin-left:0 !important; width:0 !important;  }
 .rev-btn.rev-hiddenicon:hover i			{   opacity: 1 !important; margin-left:10px !important; width:auto !important;}
 
 /* REV BUTTONS MEDIUM */
 .rev-btn.rev-medium,
 .rev-btn.rev-medium:visited				{	 line-height: 36px; font-size: 14px; padding: 10px 30px; }
-
 .rev-btn.rev-medium.rev-withicon i		{ 	font-size: 14px; top: 0; }
-
 .rev-btn.rev-medium.rev-hiddenicon i	{ 	font-size: 14px; top: 0; }
-
 
 /* REV BUTTONS SMALL */
 .rev-btn.rev-small,
 .rev-btn.rev-small:visited				{	line-height: 28px; font-size: 12px; padding: 7px 20px; }
-
 .rev-btn.rev-small.rev-withicon i		{	font-size: 12px; top: 0; }
-
 .rev-btn.rev-small.rev-hiddenicon i		{ 	font-size: 12px; top: 0; }
-
 
 /* ROUNDING OPTIONS */
 .rev-maxround 							{ 	-webkit-border-radius: 30px; -moz-border-radius: 30px; border-radius: 30px; }
 .rev-minround 							{ 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
-
 
 /* BURGER BUTTON */
 .rev-burger {
@@ -674,36 +626,11 @@ img.tp-slider-alternative-image	{
 .rev-burger.revb-white span {
   background: #fff;
 }
-.rev-burger.revb-whitenoborder {
-  border: 0;
-}
-.rev-burger.revb-whitenoborder span {
-  background: #fff;
-}
-.rev-burger.revb-darknoborder {
-  border: 0;
-}
-.rev-burger.revb-darknoborder span {
-  background: #333;
-}
-
-.rev-burger.revb-whitefull {
-  background: #fff;
-  border:none;
-}
-
-.rev-burger.revb-whitefull span {
-	background:#333;
-}
-
-.rev-burger.revb-darkfull {
-  background: #333;
-  border:none;
-}
-
-.rev-burger.revb-darkfull span {
-	background:#fff;
-}
+.rev-burger.revb-whitenoborder,.rev-burger.revb-darknoborder {  border: 0;}
+.rev-burger.revb-whitefull {  background: #fff;  border:none;}
+.rev-burger.revb-whitefull span, .rev-burger.revb-darknoborder span {	background:#333;}
+.rev-burger.revb-darkfull {  background: #333;  border:none;}
+.rev-burger.revb-darkfull span, .rev-burger.revb-whitenoborder span {	background:#fff;}
 
 
 /* SCROLL DOWN BUTTON */
@@ -810,7 +737,7 @@ img.tp-slider-alternative-image	{
 	line-height: 60px;
 	font-weight: 400;
 	font-style: normal;
-	font-family: Raleway;
+	font-family: Raleway, serif;
 	text-decoration: none;
 	text-align: center;
 	background-color: #000;
@@ -838,7 +765,6 @@ img.tp-slider-alternative-image	{
 	background-color: rgba(255,255,255, 0.75);
 }
 
-
 .rev-sbutton {
 	line-height: 37px;
 	width:37px;
@@ -858,12 +784,9 @@ img.tp-slider-alternative-image	{
 
 
 
-/************************************
--	TP BANNER TIMER		-
-*************************************/
+/**** -	TP BANNER TIMER	- ****/
 .tp-bannertimer								{	visibility: hidden; width:100%; height:5px; /*background:url(../assets/timer.png);*/ background: #fff; background: rgba(0,0,0,0.15); position:absolute; z-index:200; top:0}
 .tp-bannertimer.tp-bottom					{	top:auto; bottom:0 !important;height:5px}
-
 
 /*********************************************
 -	BASIC SETTINGS FOR THE BANNER	-
@@ -883,23 +806,15 @@ img.tp-slider-alternative-image	{
 	zoom: 1;
 }
 
-
-
 /*  CAPTION SLIDELINK   **/
 .caption.slidelink a div,
 .tp-caption.slidelink a div {	width:3000px; height:1500px;  background:url(../assets/coloredbg.png) repeat}
 .tp-caption.slidelink a span{	background:url(../assets/coloredbg.png) repeat}
 .tp-shape {	width:100%;height:100%;}
 
-
-
-/*********************************************
--	WOOCOMMERCE STYLES	-
-***********************************************/
-
+/**** -	WOOCOMMERCE STYLES	- *****/
 .tp-caption .rs-starring				{	display: inline-block}
 .tp-caption .rs-starring .star-rating	{	float: none;}
-
 .tp-caption .rs-starring .star-rating {
 	color: #FFC321 !important;
 	display: inline-block;
@@ -910,9 +825,8 @@ img.tp-slider-alternative-image	{
 .tp-caption .rs-starring-page .star-rating {
 	position: relative;
 	height: 1em;
-
 	width: 5.4em;
-	font-family: star;
+	font-family: star, serif;
 }
 
 .tp-caption  .rs-starring .star-rating:before,
@@ -947,19 +861,13 @@ img.tp-slider-alternative-image	{
 	color: #FFC321 !important;
 }
 
-
 .tp-caption .rs-starring .star-rating,
 .tp-caption .rs-starring-page .star-rating {
-
 	font-size: 1em !important;
 	font-family: star;
 }
 
-
-/******************************
-	-	LOADER FORMS	-
-********************************/
-
+/**** - LOADER FORMS - ****/
 .tp-loader 	{
 	top:50%; left:50%;
 	z-index:10000;
@@ -969,7 +877,6 @@ img.tp-slider-alternative-image	{
 .tp-loader.spinner0 {
 	width: 40px;
 	height: 40px;
-	background-color: #fff;
 	background:url(../assets/loader.gif) no-repeat center center;
 	box-shadow: 0 0 20px 0 rgba(0,0,0,0.15);
 	-webkit-box-shadow: 0 0 20px 0 rgba(0,0,0,0.15);
@@ -998,18 +905,14 @@ img.tp-slider-alternative-image	{
 	-webkit-border-radius: 3px;
 }
 
-
-
 .tp-loader.spinner5 	{
 	background:url(../assets/loader.gif) no-repeat 10px 10px;
-	background-color:#fff;
 	margin:-22px -22px;
 	width:44px;height:44px;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
-
 
 @-webkit-keyframes tp-rotateplane {
   0% { -webkit-transform: perspective(120px) }
@@ -1022,7 +925,6 @@ img.tp-slider-alternative-image	{
   50% { transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);}
   100% { transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);}
 }
-
 
 .tp-loader.spinner2 {
 	width: 40px;
@@ -1045,7 +947,6 @@ img.tp-slider-alternative-image	{
   0% {transform: scale(0.0);-webkit-transform: scale(0.0);}
   100% {transform: scale(1.0);-webkit-transform: scale(1.0);opacity: 0;}
 }
-
 
 .tp-loader.spinner3 {
   margin: -9px 0 0 -35px;
@@ -1089,9 +990,6 @@ img.tp-slider-alternative-image	{
   0%, 80%, 100% {transform: scale(0.0);}
   40% {transform: scale(1.0);}
 }
-
-
-
 
 .tp-loader.spinner4 {
   margin: -20px 0 0 -20px;
@@ -1139,10 +1037,7 @@ img.tp-slider-alternative-image	{
 
 
 
-/***********************************************
-	-  STANDARD NAVIGATION SETTINGS
-***********************************************/
-
+/**** -  STANDARD NAVIGATION SETTINGS - ****/
 
 .tp-thumbs.navbar,
 .tp-bullets.navbar,
@@ -1185,15 +1080,11 @@ img.tp-slider-alternative-image	{
 .tparrows.tp-rightarrow:before	{	content: '\e825'; }
 
 
-/***************************
-	- 3D SHADOW MODE -
-***************************/
+/**** - 3D SHADOW MODE - ****/
 
 .dddwrappershadow { box-shadow:0 45px 100px rgba(0, 0, 0, 0.4);}
 
-/*******************
-	- DEBUG MODE -
-*******************/
+/**** - DEBUG MODE - ****/
 
 .hglayerinfo				   {	  position: fixed;
   bottom: 0;
@@ -1208,5 +1099,5 @@ img.tp-slider-alternative-image	{
   white-space: normal;}
 .hginfo 					   { 	position:absolute;top:-2px;left:-2px;color:#e74c3c;font-size:12px;font-weight:600; background:#000;padding:2px 5px;}
 .indebugmode .tp-caption:hover { 	border:1px dashed #c0392b !important;}
-.helpgrid 					   { 	border:2px dashed #c0392b;position:absolute;top:0;peft:0;z-index:0 }
+.helpgrid 					   { 	border:2px dashed #c0392b;position:absolute;top:0;left:0;z-index:0 }
 #revsliderlogloglog				{	padding:15px;color:#fff;position:fixed; top:0;left:0;width:200px;height:150px;background:rgba(0,0,0,0.7); z-index:100000; font-size:10px; overflow:scroll;}
