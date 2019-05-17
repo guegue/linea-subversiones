@@ -10,13 +10,11 @@
                         <div class="top_bar_left clearfix">
                             <!--  Logo-->
                             <div class="logo">
-                                <a id="logo" href="" title="BeSpace - BeTheme"> <img
+                                <a id="logo" href="" title="BeSpace - BeTheme">
+                                    <img
                                         class="logo-main scale-with-grid"
                                         src="@/assets/content/space/images/space.png"
                                         alt="BeSpace - BeTheme"/>
-                                    <img class="logo-sticky scale-with-grid"
-                                                                       src="@/assets/content/space/images/space.png"
-                                                                       alt="logo-no-resposive">
                                     <img
                                         class="logo-mobile scale-with-grid"
                                         src="@/assets/content/space/images/space-responsive.png" alt="logo-no-resposive">
