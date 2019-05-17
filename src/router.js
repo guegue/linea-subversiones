@@ -2,8 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Portada from './views/Portada'
 
-
-
 Vue.use(VueRouter);
 
 export default new VueRouter({
