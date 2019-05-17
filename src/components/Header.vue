@@ -44,7 +44,7 @@
                                         </li>
                                     </ul>
                                 </nav>
-                                <a class="responsive-menu-toggle" href="#"><i class="icon-menu"></i></a>
+                                <!--<a class="responsive-menu-toggle" href="#"><i class="icon-menu"></i></a>-->
                             </div>
                             <!--Secondary menu area - only for certain pages -->
                             <div class="secondary_menu_wrapper"></div>
@@ -64,12 +64,23 @@
                 </div>
             </div>
         </header>
+        <!--prueba-->
+        <Slide right>
+            <a id="home" href="#">
+                <span>Home</span>
+            </a>
+        </Slide>
     </div>
 </template>
 
 <script>
+    import { Slide } from 'vue-burger-menu'
+
     export default {
         name: "Menu",
+        components:{
+            Slide
+        },
         mounted() {
             window.addEventListener('scroll', () => {
                 // eslint-disable-next-line no-console
@@ -82,8 +93,6 @@
                 } else {
                     menu.classList.remove('float-menu');
                 }
-                //
-                // menu.classList.add('float-menu');
             });
         }
     }
@@ -94,17 +103,14 @@
         position: fixed;
         top: 0;
         background-color: rgba(22,22,22,0.8);
-        transition: all .3s ease;
 
     }
     .float-menu .container .menu_wrapper{
         background-color: transparent !important;
         color: #fff !important;
-        transition: all .3s ease;
     }
 
     .float-menu .menu>li>a{
         color: #fff !important;
-        transition: all .3s ease;
     }
 </style>

@@ -1193,9 +1193,7 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
 #Top_bar .wpml-languages a.active {
 	display: block;
 	padding: 8px 6px 8px 10px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #e8e8e8;
+	border: 1px solid #e8e8e8;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
@@ -1277,9 +1275,7 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
 	margin-right: 0;
 }
 
-/* #menu
-================================================== */
-
+/* #menu */
 
 /* main menu 1st level */
 
@@ -1658,13 +1654,6 @@ body.header-below:not(.template-slider) #Header {
 	width: 100%;
 	margin: 0;
 	text-align: center;
-}
-@media only screen and (min-width: 1240px) {
-	.header-split #Header .top_bar_left .logo {
-		position: absolute;
-		left: 38%;
-		width: 24%;
-	}
 }
 .header-split #Top_bar .top_bar_right {
 	position: absolute;
@@ -4123,6 +4112,11 @@ html, body {
 
 /*	> 1240 */
 @media only screen and (min-width: 1240px) {
+	.header-split #Header .top_bar_left .logo {
+		position: absolute;
+		left: 38%;
+		width: 24%;
+	}
 	body:not(.header-simple) #Top_bar #menu {
 		display: block !important;
 	}
@@ -4358,7 +4352,7 @@ html, body {
 		border-bottom: 0;
 	}
 	.header-simple #Top_bar #menu ul.mfn-megamenu li .menu-toggle {
-		display: none;
+		/*display: none;*/
 	}
 	/* main menu 2nd level */
 	.header-simple #Top_bar #menu ul li ul {
@@ -4782,10 +4776,13 @@ html, body {
 	}
 }
 
-/* 																								< 1240
-===================================================================================================== */
-
+/*< 1240*/
 @media only screen and (max-width: 1239px) {
+	.bm-burger-button{
+		display: block;
+		color: #000;
+		z-index: 10000;
+	}
 	/* Header */
 	#Top_bar #menu {
 		display: none;
@@ -5108,8 +5105,7 @@ html, body {
 	}
 }
 
-/* #Header Creative always Open 															1240 - 1489
-====================================================================================================== */
+/* #Header Creative always Open 1240 - 1489 */
 
 @media only screen and (min-width: 1240px) and (max-width: 1489px) {
 	body.header-open {
@@ -5124,7 +5120,6 @@ html, body {
 	.header-open.with_aside .section_wrapper {
 		width: 100%;
 	}
-	/* ======================================================= */
 	/* Google maps */
 	.header-open .column_map .google-map-contact-wrapper {
 		width: 921px;
@@ -5163,16 +5158,7 @@ html, body {
 	}
 }
 
-/*
-|--------------------------------------------------------------------------
-|  4.0 Responsive
-|
-|--------------------------------------------------------------------------
-|
-|
-|
-*/
-
+/* 4.0 Responsive */
 #Top_bar #logo img.logo-sticky, #Top_bar #logo img.logo-mobile {
 	display: none;
 }
@@ -5180,8 +5166,7 @@ body {
 	overflow-x: hidden;
 }
 
-/* #Tablet (Landscape) 																			> 960
-===================================================================================================== */
+/* #Tablet (Landscape) > 960*/
 
 @media only screen and (min-width: 960px) {
 	.hide-desktop {
@@ -5189,8 +5174,7 @@ body {
 	}
 }
 
-/* #Tablet (Landscape) 																		768 - 959
-===================================================================================================== */
+/* #Tablet (Landscape) 768 - 959*/
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
 	body {
