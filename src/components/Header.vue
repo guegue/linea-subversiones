@@ -13,11 +13,14 @@
                                 <a id="logo" href="" title="BeSpace - BeTheme"> <img
                                         class="logo-main scale-with-grid"
                                         src="@/assets/content/space/images/space.png"
-                                        alt="BeSpace - BeTheme"/> <img class="logo-sticky scale-with-grid"
+                                        alt="BeSpace - BeTheme"/>
+                                    <img class="logo-sticky scale-with-grid"
                                                                        src="@/assets/content/space/images/space.png"
-                                                                       alt=""> <img
+                                                                       alt="logo-no-resposive">
+                                    <img
                                         class="logo-mobile scale-with-grid"
-                                        src="@/assets/content/space/images/space-responsive.png" alt=""> </a>
+                                        src="@/assets/content/space/images/space-responsive.png" alt="logo-no-resposive">
+                                </a>
                             </div>
                             <!--  Main menu-->
                             <div class="menu_wrapper">
@@ -74,21 +77,18 @@
 </template>
 
 <script>
-    import { Slide } from 'vue-burger-menu'
+    import {Slide} from 'vue-burger-menu'
 
     export default {
         name: "Menu",
-        components:{
+        components: {
             Slide
         },
         mounted() {
             window.addEventListener('scroll', () => {
-                // eslint-disable-next-line no-console
-                // console.log(window.scrollY);
                 let menu = document.getElementById('Top_bar');
-
-                if (window.scrollY > 0) {
-                    // eslint-disable-next-line no-console
+                let windowWidth = window.innerWidth;
+                if (window.scrollY > 0 && windowWidth >= 1240) {
                     menu.classList.add('float-menu');
                 } else {
                     menu.classList.remove('float-menu');
@@ -102,15 +102,16 @@
     .float-menu .container {
         position: fixed;
         top: 0;
-        background-color: rgba(22,22,22,0.8);
+        background-color: rgba(22, 22, 22, 0.8);
 
     }
-    .float-menu .container .menu_wrapper{
+
+    .float-menu .container .menu_wrapper {
         background-color: transparent !important;
         color: #fff !important;
     }
 
-    .float-menu .menu>li>a{
+    .float-menu .menu > li > a {
         color: #fff !important;
     }
 </style>
