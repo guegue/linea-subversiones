@@ -1,10 +1,9 @@
 <template>
-    <!--               Header Wrapper -->
+    <!-- Header Wrapper -->
     <div id="Header_wrapper">
-        <!--                 Header-->
+        <!--Header-->
         <header id="Header">
-
-            <!--                     Header -  Logo and Menu area -->
+            <!-- Header -  Logo and Menu area -->
             <div id="Top_bar">
                 <div class="container">
                     <div class="column one">
@@ -70,10 +69,42 @@
 
 <script>
     export default {
-        name: "Menu"
+        name: "Menu",
+        mounted() {
+            window.addEventListener('scroll', () => {
+                // eslint-disable-next-line no-console
+                // console.log(window.scrollY);
+                let menu = document.getElementById('Top_bar');
+
+                if (window.scrollY > 0) {
+                    // eslint-disable-next-line no-console
+                    menu.classList.add('float-menu');
+                } else {
+                    menu.classList.remove('float-menu');
+                }
+                //
+                // menu.classList.add('float-menu');
+            });
+        }
     }
 </script>
 
 <style scoped>
+    .float-menu .container {
+        position: fixed;
+        top: 0;
+        background-color: rgba(22,22,22,0.8);
+        transition: all .3s ease;
 
+    }
+    .float-menu .container .menu_wrapper{
+        background-color: transparent !important;
+        color: #fff !important;
+        transition: all .3s ease;
+    }
+
+    .float-menu .menu>li>a{
+        color: #fff !important;
+        transition: all .3s ease;
+    }
 </style>

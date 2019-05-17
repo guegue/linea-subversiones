@@ -16,10 +16,10 @@
                                     </div>
                                 </div>
                                 <!-- One Second (1/2) Column -->
-                                <div class="column one-second column_column ">
-                                    <div class="column_attr " data-anim-type="fadeInRight">
+                                <div class="column one-second column_column">
+                                    <div class="column_attr" style="margin-bottom:5px;">
                                         <div style="padding: 40px; box-sizing: border-box; -webkit-box-sizing: border-box;">
-                                            <h5 style="letter-spacing: 4px;">New at Be Space</h5>
+                                            <h5 style="letter-spacing: 4px;margin-top: 50px">New at Be Space</h5>
                                             <h2 style="margin-right: 10%;">The new way
                                                 <br>
                                                 of exploring space</h2>
@@ -37,7 +37,8 @@
                                                 consequat. Duis aute irure dolor in reprehenderit</h6>
                                             <hr class="no_line hrmargin_b_40"/>
                                             <a class="button button_large button_theme button_js"
-                                               href="content/space/about.html"><span class="button_label">Read more</span></a>
+                                               href="content/space/about.html"><span
+                                                    class="button_label">Read more</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -307,9 +308,10 @@
 
 <script>
     import SliderPortada from '../components/SliderPortada';
+
     export default {
         name: "Container",
-        components:{
+        components: {
             SliderPortada
         }
     }
