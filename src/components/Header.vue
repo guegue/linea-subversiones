@@ -1,6 +1,7 @@
 <template>
     <!-- Header Wrapper -->
     <div id="Header_wrapper">
+        {{information}}
         <!--Header-->
         <header id="Header">
             <!-- Header -  Logo and Menu area -->
@@ -12,12 +13,13 @@
                             <div class="logo">
                                 <a id="logo" href="" title="BeSpace - BeTheme">
                                     <img
-                                        class="logo-main scale-with-grid"
-                                        src="@/assets/content/space/images/space.png"
-                                        alt="BeSpace - BeTheme"/>
+                                            class="logo-main scale-with-grid"
+                                            src="@/assets/content/space/images/space.png"
+                                            alt="BeSpace - BeTheme"/>
                                     <img
-                                        class="logo-mobile scale-with-grid"
-                                        src="@/assets/content/space/images/space-responsive.png" alt="logo-no-resposive">
+                                            class="logo-mobile scale-with-grid"
+                                            src="@/assets/content/space/images/space-responsive.png"
+                                            alt="logo-no-resposive">
                                 </a>
                             </div>
                             <!--  Main menu-->
@@ -80,9 +82,17 @@
     export default {
         name: "Menu",
         components: {
-            Slide
+            Slide,
+        },
+        data() {
+            return {
+                information: null,
+                opcionesMenu: [],
+            }
         },
         mounted() {
+            this.construirMenu();
+
             window.addEventListener('scroll', () => {
                 let menu = document.getElementById('Top_bar');
                 let windowWidth = window.innerWidth;
@@ -92,6 +102,15 @@
                     menu.classList.remove('float-menu');
                 }
             });
+        },
+        methods: {
+            construirMenu() {
+                let url = this.$domainOmeka + 'api/site_pages';
+                this.$axios(url)
+                    .then((response) => {
+                        this.information = response;
+                    })
+            }
         }
     }
 </script>

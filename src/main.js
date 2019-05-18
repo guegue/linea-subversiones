@@ -12,6 +12,7 @@ import '@/assets/plugins/rs-plugin/css/settings.css';
 Vue.config.productionTip = false;
 
 //variables globales
+Vue.prototype.$domainOmeka='https://sub-versiones.hijosdeperu.org/';
 Vue.prototype.$axios = Axios;
 
 new Vue({
