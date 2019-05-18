@@ -10,9 +10,11 @@
                             <div class="items_group clearfix">
                                 <div id="slider">
                                     <transition-group tag="div" :name="transitionName" class="slides-group">
-                                        <div v-if="show" :key="current" class="slide" :class="slides[current].className">
+                                        <div v-if="show" :key="current" class="slide"
+                                             :class="slides[current].className">
                                             <div style="width: 100%;height: 550px; !important;">
-                                                <img :src="slides[current].image" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                                                <img :src="slides[current].image" alt=""
+                                                     style="width: 100%; height: 100%; object-fit: cover;">
                                             </div>
                                             <div style="height: 100%;width: 50%;background-color: white;z-index: 10001;position: absolute;right: 0;">
                                                 <br>
@@ -309,6 +311,7 @@
             return {
                 current: 0,
                 direction: 1,
+                info: null,
                 transitionName: "fade",
                 show: false,
                 slides: [
@@ -349,6 +352,8 @@
         },
         mounted() {
             this.show = true;
+            this.$axios('https://api.coindesk.com/v1/bpi/currentprice.json')
+                .then((response) => (this.info = response))
         }
     }
 </script>
