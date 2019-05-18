@@ -14,6 +14,16 @@
                                             <div style="width: 100%;height: 550px; !important;">
                                                 <img :src="slides[current].image" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                                             </div>
+                                            <div style="height: 100%;width: 50%;background-color: white;z-index: 10001;position: absolute;right: 0;">
+                                                <br>
+                                                <div style="margin-top: 75px"></div>
+                                                <h1 style="padding-left: 10px">
+                                                    {{slides[current].title}}
+                                                </h1>
+                                                <br>
+                                                <div style="margin-top: 30px"></div>
+                                                <p style="padding-left: 10px">{{slides[current].description}}</p>
+                                            </div>
                                         </div>
                                     </transition-group>
                                     <div class="btn btn-prev" aria-label="Previous slide" @click="slide(-1)">
@@ -306,8 +316,6 @@
                         title: 'Title',
                         image: 'https://img.peru21.pe/files/ec_article_multimedia_gallery/uploads/2018/11/13/5beb1304124cb.jpeg',
                         description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.',
-                        date: '01/02/2018',
-                        place: 'Cusco, Peru'
                     },
                     {
                         title: 'Title',
@@ -320,15 +328,11 @@
                         title: 'Title',
                         image: 'https://static1.squarespace.com/static/5140cb0ee4b0bcb4a1dd98e6/5a5cf75b53450ac12050c2d4/5a5e05179140b7de43b736c9/1544102590316/PERU+with+WHOA5.jpg?format=1500w',
                         description: 'This card has supporting text below as a natural lead-in to additional content.',
-                        date: '31/12/2000',
-                        place: 'Lima, Peru'
                     },
                     {
                         title: 'Title',
                         image: 'https://assets.trome.pe/files/ec_article_multimedia_gallery/uploads/2018/07/17/5b4e18fcac2e6.jpeg',
                         description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
-                        date: '10/03/2012',
-                        place: 'Arequipa, Peru'
                     }
                 ]
             }
