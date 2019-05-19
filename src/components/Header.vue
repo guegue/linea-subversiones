@@ -1,7 +1,6 @@
 <template>
     <!-- Header Wrapper -->
     <div id="Header_wrapper">
-        {{information}}
         <!--Header-->
         <header id="Header">
             <!-- Header -  Logo and Menu area -->
@@ -26,20 +25,9 @@
                             <div class="menu_wrapper">
                                 <nav id="menu" class="menu-main-menu-container">
                                     <ul id="menu-main-menu" class="menu">
-                                        <li class="current_page_item">
-                                            <a href=""><span>HOME</span></a>
-                                        </li>
-                                        <li>
-                                            <a href=""><span>TECHNOLOGY</span></a>
-                                        </li>
-                                        <li>
-                                            <a href=""><span>STAFF</span></a>
-                                        </li>
-                                        <li>
-                                            <a href=""><span>ARTICLES</span></a>
-                                        </li>
-                                        <li>
-                                            <a href=""><span>ABOUT</span></a>
+                                        <li class="current_page_item" v-for="(option,index) in opcionesMenu"
+                                            :key="index">
+                                            <a :href="option.url"><span>{{option.title}}</span></a>
                                         </li>
                                         <li>
                                             <a target="_blank" href=""><span><span
@@ -69,9 +57,12 @@
         </header>
         <!--prueba-->
         <Slide right>
-            <a id="home" href="#">
-                <span>Home</span>
+            <a v-for="option in opcionesMenu" :key="option.id" :href="option.url">
+                <span>{{option.title}}</span>
             </a>
+            <!--            <a id="home" href="#">-->
+            <!--                <span>Home</span>-->
+            <!--            </a>-->
         </Slide>
     </div>
 </template>
@@ -86,8 +77,9 @@
         },
         data() {
             return {
-                information: null,
-                opcionesMenu: [],
+                optionMenu: [],
+                pageSites: [],
+                urlSite: '',
             }
         },
         mounted() {
@@ -104,12 +96,34 @@
             });
         },
         methods: {
-            construirMenu() {
-                let url = this.$domainOmeka + 'api/site_pages';
-                this.$axios(url)
+            buildMenu() {
+                this.urlSite = this.$domainOmeka + 'api/sites/3';//3 = leon page
+                this.$axios(this.urlSite)
                     .then((response) => {
-                        this.information = response;
-                    })
+                        if (response.data['o:page'] !== undefined) {
+                            let pages = response.data['o:page'];
+                            pages.forEach((page) => {
+                                this.pageSites.push(page['@id']);
+                            })
+                        }
+                        if (this.pageSites.length > 0) {
+                            this.pageSites.forEach((page) => {
+                                this.$axios(page)
+                                    .then((response) => {
+                                        let dataResponse = response.data;
+
+                                        let pageData = {
+                                            id: dataResponse['o:ID'],
+                                            url: dataResponse['@id'],
+                                            slug: dataResponse['o:slug'],
+                                            title: dataResponse['o:title'],
+                                        };
+
+                                        this.optionMenu.push(pageData)
+                                    })
+                            })
+                        }
+                    });
             }
         }
     }
