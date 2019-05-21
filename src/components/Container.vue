@@ -10,10 +10,9 @@
                             <div class="items_group clearfix">
                                 <div id="slider">
                                     <transition-group tag="div" :name="transitionName" class="slides-group">
-                                        <div v-if="show" :key="current" class="slide"
-                                             :class="slides[current].className">
+                                        <div v-if="show" :key="current" class="slide">
                                             <div style="width: 100%;height: 550px; !important;">
-                                                <img :src="slides[current].image" alt=""
+                                                <img :src="slides[current].urlMedia" alt=""
                                                      style="width: 100%; height: 100%; object-fit: cover;">
                                             </div>
                                             <div style="height: 100%;width: 50%;background-color: white;z-index: 10001;position: absolute;right: 0;">
@@ -307,6 +306,7 @@
         components: {
             SliderPortada
         },
+        props:['slides'],
         data() {
             return {
                 current: 0,
@@ -314,30 +314,30 @@
                 info: null,
                 transitionName: "fade",
                 show: false,
-                slides: [
-                    {
-                        title: 'Title',
-                        image: 'https://img.peru21.pe/files/ec_article_multimedia_gallery/uploads/2018/11/13/5beb1304124cb.jpeg',
-                        description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.',
-                    },
-                    {
-                        title: 'Title',
-                        image: 'http://viajarbienybarato.com/wp-content/uploads/2013/12/lama-and-machu-picchu-peru-1600x1067.jpg',
-                        description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.',
-                        date: '01/10/2020',
-                        place: 'Lima, Peru'
-                    },
-                    {
-                        title: 'Title',
-                        image: 'https://static1.squarespace.com/static/5140cb0ee4b0bcb4a1dd98e6/5a5cf75b53450ac12050c2d4/5a5e05179140b7de43b736c9/1544102590316/PERU+with+WHOA5.jpg?format=1500w',
-                        description: 'This card has supporting text below as a natural lead-in to additional content.',
-                    },
-                    {
-                        title: 'Title',
-                        image: 'https://assets.trome.pe/files/ec_article_multimedia_gallery/uploads/2018/07/17/5b4e18fcac2e6.jpeg',
-                        description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
-                    }
-                ]
+                // slides: [
+                //     {
+                //         title: 'Title',
+                //         image: 'https://img.peru21.pe/files/ec_article_multimedia_gallery/uploads/2018/11/13/5beb1304124cb.jpeg',
+                //         description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.',
+                //     },
+                //     {
+                //         title: 'Title',
+                //         image: 'http://viajarbienybarato.com/wp-content/uploads/2013/12/lama-and-machu-picchu-peru-1600x1067.jpg',
+                //         description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.',
+                //         date: '01/10/2020',
+                //         place: 'Lima, Peru'
+                //     },
+                //     {
+                //         title: 'Title',
+                //         image: 'https://static1.squarespace.com/static/5140cb0ee4b0bcb4a1dd98e6/5a5cf75b53450ac12050c2d4/5a5e05179140b7de43b736c9/1544102590316/PERU+with+WHOA5.jpg?format=1500w',
+                //         description: 'This card has supporting text below as a natural lead-in to additional content.',
+                //     },
+                //     {
+                //         title: 'Title',
+                //         image: 'https://assets.trome.pe/files/ec_article_multimedia_gallery/uploads/2018/07/17/5b4e18fcac2e6.jpeg',
+                //         description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
+                //     }
+                // ]
             }
         },
         methods: {

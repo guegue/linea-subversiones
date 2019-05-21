@@ -25,7 +25,7 @@
                             <div class="menu_wrapper">
                                 <nav id="menu" class="menu-main-menu-container">
                                     <ul id="menu-main-menu" class="menu">
-                                        <li class="current_page_item" v-for="(option,index) in opcionesMenu"
+                                        <li class="current_page_item" v-for="(option,index) in optionMenu"
                                             :key="index">
                                             <a :href="option.url"><span>{{option.title}}</span></a>
                                         </li>
@@ -57,12 +57,9 @@
         </header>
         <!--prueba-->
         <Slide right>
-            <a v-for="option in opcionesMenu" :key="option.id" :href="option.url">
+            <a v-for="option in optionMenu" :key="option.id" :href="option.url">
                 <span>{{option.title}}</span>
             </a>
-            <!--            <a id="home" href="#">-->
-            <!--                <span>Home</span>-->
-            <!--            </a>-->
         </Slide>
     </div>
 </template>
@@ -75,16 +72,8 @@
         components: {
             Slide,
         },
-        data() {
-            return {
-                optionMenu: [],
-                pageSites: [],
-                urlSite: '',
-            }
-        },
+        props: ['optionMenu'],
         mounted() {
-            this.construirMenu();
-
             window.addEventListener('scroll', () => {
                 let menu = document.getElementById('Top_bar');
                 let windowWidth = window.innerWidth;
@@ -94,37 +83,6 @@
                     menu.classList.remove('float-menu');
                 }
             });
-        },
-        methods: {
-            buildMenu() {
-                this.urlSite = this.$domainOmeka + 'api/sites/3';//3 = leon page
-                this.$axios(this.urlSite)
-                    .then((response) => {
-                        if (response.data['o:page'] !== undefined) {
-                            let pages = response.data['o:page'];
-                            pages.forEach((page) => {
-                                this.pageSites.push(page['@id']);
-                            })
-                        }
-                        if (this.pageSites.length > 0) {
-                            this.pageSites.forEach((page) => {
-                                this.$axios(page)
-                                    .then((response) => {
-                                        let dataResponse = response.data;
-
-                                        let pageData = {
-                                            id: dataResponse['o:ID'],
-                                            url: dataResponse['@id'],
-                                            slug: dataResponse['o:slug'],
-                                            title: dataResponse['o:title'],
-                                        };
-
-                                        this.optionMenu.push(pageData)
-                                    })
-                            })
-                        }
-                    });
-            }
         }
     }
 </script>
