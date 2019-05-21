@@ -35,7 +35,6 @@
                                         </li>
                                     </ul>
                                 </nav>
-                                <!--<a class="responsive-menu-toggle" href="#"><i class="icon-menu"></i></a>-->
                             </div>
                             <!--Secondary menu area - only for certain pages -->
                             <div class="secondary_menu_wrapper"></div>

@@ -426,10 +426,10 @@
     }
 
     .btn {
-        z-index: 10;
+        z-index: 20000;
         cursor: pointer;
         border-color: transparent;
-        color: white;
+        color: black;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -448,7 +448,7 @@
     }
 
     .btn:hover {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 
 </style>
