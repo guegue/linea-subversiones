@@ -10,20 +10,26 @@
                             <div class="items_group clearfix">
                                 <div id="slider">
                                     <transition-group tag="div" :name="transitionName" class="slides-group">
-                                        <div v-if="show" :key="current" class="slide">
+                                        <div v-if="slides.length > 0" :key="current" class="slide">
                                             <div style="width: 100%;height: 550px; !important;">
-                                                <img :src="slides[current].urlMedia" alt=""
+                                                <img :src="slides[current].mediaurl" alt=""
                                                      style="width: 100%; height: 100%; object-fit: cover;">
                                             </div>
                                             <div style="height: 100%;width: 50%;background-color: white;z-index: 10001;position: absolute;right: 0;">
                                                 <br>
                                                 <div style="margin-top: 75px"></div>
-                                                <h1 style="padding-left: 10px">
+                                                <h1 style="padding: 15px;text-align: justify">
                                                     {{slides[current].title}}
                                                 </h1>
                                                 <br>
-                                                <div style="margin-top: 30px"></div>
-                                                <p style="padding-left: 10px">{{slides[current].description}}</p>
+                                                <div style="position: relative; margin-left: -15%;"><img
+                                                        class="scale-with-grid"
+                                                        src="@/assets/content/space/images/home_space_hr.png"
+                                                        alt="">
+                                                </div>
+                                                <div style="margin-top: 20px"></div>
+                                                <p style="padding: 10px;text-align: justify;margin: 5px">
+                                                    {{slides[current].description}}</p>
                                             </div>
                                         </div>
                                     </transition-group>
@@ -44,34 +50,11 @@
                                 <div class="column one-second column_column ">
                                     <div class="column_attr" style=" padding:0 8% 0 0;">
                                         <hr class="no_line" style="margin: 0 auto 50px;"/>
-                                        <h3>New way of traveling</h3>
-                                        <hr class="no_line hrmargin_b_30"/>
-                                        <h6>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit.</h6>
-                                        <hr class="no_line hrmargin_b_30"/>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                            reprehenderit in voluptate.
-                                        </p>
-                                        <hr class="no_line hrmargin_b_30"/>
-                                        <p>
-                                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                            officia deserunt mollit anim id est laborum. Sed ut perspiciatis
-                                            unde omnis iste natus error sit voluptatem accusantium doloremque
-                                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                                            veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                            fugit, sed quia consequuntur magni dolores eos qui ratione
-                                            voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-                                            ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-                                            numquam eius modi tempora incidunt ut labore et dooluptatem.
-                                        </p>
-                                        <hr class="no_line hrmargin_b_30"/>
+                                        <h3>Sobre el sitio</h3>
+                                        <div v-for="(paragraph,index) in aboutSite" :key="index">
+                                            <p v-if="paragraph !== '' ">{{paragraph}}</p>
+                                            <hr v-if="paragraph !== '' " class="no_line hrmargin_b_30"/>
+                                        </div>
                                         <a class="button button_large button_theme button_js" href=""><span
                                                 class="button_label">Read more</span></a>
                                     </div>
@@ -306,38 +289,13 @@
         components: {
             SliderPortada
         },
-        props:['slides'],
+        props: ['slides', 'aboutSite'],
         data() {
             return {
                 current: 0,
                 direction: 1,
                 info: null,
-                transitionName: "fade",
-                show: false,
-                // slides: [
-                //     {
-                //         title: 'Title',
-                //         image: 'https://img.peru21.pe/files/ec_article_multimedia_gallery/uploads/2018/11/13/5beb1304124cb.jpeg',
-                //         description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.',
-                //     },
-                //     {
-                //         title: 'Title',
-                //         image: 'http://viajarbienybarato.com/wp-content/uploads/2013/12/lama-and-machu-picchu-peru-1600x1067.jpg',
-                //         description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.',
-                //         date: '01/10/2020',
-                //         place: 'Lima, Peru'
-                //     },
-                //     {
-                //         title: 'Title',
-                //         image: 'https://static1.squarespace.com/static/5140cb0ee4b0bcb4a1dd98e6/5a5cf75b53450ac12050c2d4/5a5e05179140b7de43b736c9/1544102590316/PERU+with+WHOA5.jpg?format=1500w',
-                //         description: 'This card has supporting text below as a natural lead-in to additional content.',
-                //     },
-                //     {
-                //         title: 'Title',
-                //         image: 'https://assets.trome.pe/files/ec_article_multimedia_gallery/uploads/2018/07/17/5b4e18fcac2e6.jpeg',
-                //         description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
-                //     }
-                // ]
+                transitionName: "fade"
             }
         },
         methods: {
@@ -349,11 +307,6 @@
                 var len = this.slides.length;
                 this.current = (this.current + dir % len + len) % len;
             }
-        },
-        mounted() {
-            this.show = true;
-            this.$axios('https://api.coindesk.com/v1/bpi/currentprice.json')
-                .then((response) => (this.info = response))
         }
     }
 </script>

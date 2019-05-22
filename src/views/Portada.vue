@@ -3,8 +3,9 @@
         <div class="layout-full-width mobile-tb-left button-stroke no-content-padding header-transparent header-fw minimalist-header
          sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
             <div id="Wrapper">
+                <pre>{{dataContribuitors}}</pre>
                 <Header v-bind:optionMenu="optionMenu"></Header>
-                <Container v-bind:slides="containerImgs"></Container>
+                <Container v-bind:slides="containerImgs" v-bind:aboutSite="aboutSite"></Container>
                 <Footer></Footer>
             </div>
         </div>
@@ -32,7 +33,9 @@
                 urlListItem: this.$domainOmeka + 'api/items?item_set_id=',
                 urlImage: this.$domainOmeka + 'api/media/',
                 id_items: [],
-                containerImgs: []
+                containerImgs: [],
+                aboutSite: '',
+                dataContribuitors: []
             }
         },
         mounted() {
@@ -41,12 +44,12 @@
         methods: {
             buildMenu() {
                 let idSite = 13;
-                // this.urlSite += '13';//3 = leon page
                 this.$axios(this.urlSite + idSite)
                     .then((response) => {
                         if (response.data['o:page'] !== undefined) {
                             let pages = response.data['o:page'];
                             let items = response.data['o:item_pool'];
+                            this.aboutSite = response.data['o:summary'].replace(/\r/g, '').split('\n');
 
                             pages.forEach((page) => {
                                 this.pageSites.push(page['@id']);
@@ -98,7 +101,7 @@
                                                             id: dataResponse['o:media'][0]['o:id'],
                                                             title: dataResponse['dcterms:title'][0]['@value'],
                                                             description: dataResponse['dcterms:description'][0]['@value'],
-                                                            urlMedia: response.data['o:original_url'],
+                                                            mediaurl: response.data['o:original_url'],
                                                         };
                                                         this.containerImgs.push(dataImage);
 
@@ -109,6 +112,22 @@
                                         });
 
 
+                                } else {
+                                    this.$axios(this.urlListItem + id_item)
+                                        .then((response2) => {
+                                            response2.data.forEach((item) => {
+                                                this.$axios(item['o:media'][0]['@id'])
+                                                    .then((response3) => {
+                                                        let dataContribuitors = {
+                                                            title: response3.data['o:original_url'],
+                                                            descripcion: item['dcterms:description'][0]['@value'],
+                                                            list: item['bibo:contributorList'][0]['@value'],
+                                                        };
+                                                        this.dataContribuitors.push(dataContribuitors);
+
+                                                    })
+                                            })
+                                        });
                                 }
 
                             }
@@ -121,7 +140,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

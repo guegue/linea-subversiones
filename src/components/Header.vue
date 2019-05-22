@@ -54,7 +54,7 @@
                 </div>
             </div>
         </header>
-        <!--prueba-->
+        <!--menu lateral derecho-->
         <Slide right>
             <a v-for="option in optionMenu" :key="option.id" :href="option.url">
                 <span>{{option.title}}</span>
