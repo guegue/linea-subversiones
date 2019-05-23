@@ -59,32 +59,21 @@
                                                 class="button_label">Read more</span></a>
                                     </div>
                                 </div>
+
                                 <!-- One Second (1/2) Column -->
                                 <div class="column one-second column_column space-border">
-                                    <div class="column_attr" style=" padding:0 0 0 9%;">
+                                    <div v-for="(contribuitor,index) in constribuitors" :key="index" class="column_attr" style=" padding:0 0 0 9%;">
                                         <hr class="no_line hrmargin_b_40"/>
                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
-                                            <div class="image_wrapper"><img class="scale-with-grid"
-                                                                            src="@/assets/content/space/images/home_space_pic1.jpg"
+                                            <div class="image_wrapper">
+                                                <img class="scale-with-grid" :src="contribuitor.img"
                                                                             alt="" width="442" height="313"/>
                                             </div>
                                         </div>
                                         <hr class="no_line hrmargin_b_30"/>
                                         <ul class="list_check" style="font-size: 13px;">
-                                            <li class="icons-list">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                            </li>
-                                            <li class="icons-list">
-                                                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                cillum dolore eu fugiat nulla pariatur.
-                                            </li>
-                                            <li class="icons-list">
-                                                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                                qui officia deserunt mollit anim id est laborum.
-                                            </li>
-                                            <li class="icons-list">
-                                                Incidunt ut labore et dolore magnam aliquam.
+                                            <li v-for="(person,index) in contribuitor.list" :key="index" class="icons-list">
+                                                {{person}}
                                             </li>
                                         </ul>
                                         <hr class="no_line hrmargin_b_20"/>
@@ -289,7 +278,7 @@
         components: {
             SliderPortada
         },
-        props: ['slides', 'aboutSite'],
+        props: ['slides', 'aboutSite','constribuitors'],
         data() {
             return {
                 current: 0,

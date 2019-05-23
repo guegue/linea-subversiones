@@ -3,9 +3,8 @@
         <div class="layout-full-width mobile-tb-left button-stroke no-content-padding header-transparent header-fw minimalist-header
          sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
             <div id="Wrapper">
-                <pre>{{dataContribuitors}}</pre>
                 <Header v-bind:optionMenu="optionMenu"></Header>
-                <Container v-bind:slides="containerImgs" v-bind:aboutSite="aboutSite"></Container>
+                <Container v-bind:slides="containerImgs" v-bind:aboutSite="aboutSite" v-bind:constribuitors="dataContribuitors"></Container>
                 <Footer></Footer>
             </div>
         </div>
@@ -119,9 +118,9 @@
                                                 this.$axios(item['o:media'][0]['@id'])
                                                     .then((response3) => {
                                                         let dataContribuitors = {
-                                                            title: response3.data['o:original_url'],
+                                                            img: response3.data['o:original_url'],
                                                             descripcion: item['dcterms:description'][0]['@value'],
-                                                            list: item['bibo:contributorList'][0]['@value'],
+                                                            list: item['bibo:contributorList'][0]['@value'].split('\n'),
                                                         };
                                                         this.dataContribuitors.push(dataContribuitors);
 
