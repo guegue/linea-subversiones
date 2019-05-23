@@ -56,7 +56,7 @@
                                             <hr v-if="paragraph !== '' " class="no_line hrmargin_b_30"/>
                                         </div>
                                         <a class="button button_large button_theme button_js" href=""><span
-                                                class="button_label">Read more</span></a>
+                                                class="button_label">Leer m&aacute;s</span></a>
                                     </div>
                                 </div>
 
@@ -93,11 +93,11 @@
                                 <div class="column one-fourth column_column ">
                                     <div class="column_attr" style=" padding:0 8% 0 0;">
                                         <hr class="no_line hrmargin_b_40"/>
-                                        <h3>Meet scientists</h3>
+                                        <h3>Videos</h3>
                                         <hr class="no_line hrmargin_b_30"/>
                                         <a class="button button_large button_theme button_js"
                                            href="content/space/stuff.html"><span
-                                                class="button_label">Read more</span></a>
+                                                class="button_label">Leer m&aacute;s</span></a>
                                     </div>
                                 </div>
                                 <!-- Three Fourth (3/4) Column -->

@@ -1,7 +1,7 @@
 <template>
     <div class="img-container">
         <img src="@/assets/MachuPicchu.jpg" alt="MachuPicchu.jpg">
-        <h1>Machu Picchu</h1>
+        <h1>Linea de tiempo</h1>
     </div>
 </template>
 
