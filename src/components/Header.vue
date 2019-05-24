@@ -29,10 +29,6 @@
                                             :key="index">
                                             <a :href="option.url"><span>{{option.title}}</span></a>
                                         </li>
-                                        <li>
-                                            <a target="_blank" href=""><span><span
-                                                    style="padding: 0; color:#AAA;">BUY NOW</span></span></a>
-                                        </li>
                                     </ul>
                                 </nav>
                             </div>

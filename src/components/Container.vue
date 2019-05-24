@@ -28,7 +28,7 @@
                                                         alt="">
                                                 </div>
                                                 <div style="margin-top: 20px"></div>
-                                                <p style="padding: 10px;text-align: justify;margin: 5px">
+                                                <p style="padding: 10px;text-align: justify;margin-top: 35px !important;">
                                                     {{slides[current].description}}</p>
                                             </div>
                                         </div>
@@ -83,13 +83,13 @@
                         </div>
                     </div>
 
-                    <!--Slider Portada-->
-                    <Slider-Portada></Slider-Portada>
-                    <!--Slider Portada-->
+                    <!--Timeline Portada-->
+                    <Timeline></Timeline>
+                    <!--Timeline Portada-->
                     <div class="section" style="padding-top:90px; padding-bottom:50px; ">
                         <div class="section_wrapper clearfix">
                             <div class="items_group clearfix">
-                                <!--                                         One Fourth (1/4) Column -->
+                                <!--One Fourth (1/4) Column -->
                                 <div class="column one-fourth column_column ">
                                     <div class="column_attr" style=" padding:0 8% 0 0;">
                                         <hr class="no_line hrmargin_b_40"/>
@@ -97,7 +97,7 @@
                                         <hr class="no_line hrmargin_b_30"/>
                                         <a class="button button_large button_theme button_js"
                                            href="content/space/stuff.html"><span
-                                                class="button_label">Leer m&aacute;s</span></a>
+                                                class="button_label">Ver m&aacute;s</span></a>
                                     </div>
                                 </div>
                                 <!-- Three Fourth (3/4) Column -->
@@ -271,12 +271,12 @@
 </template>
 
 <script>
-    import SliderPortada from '../components/SliderPortada';
+    import Timeline from './Timeline';
 
     export default {
         name: "Container",
         components: {
-            SliderPortada
+            Timeline
         },
         props: ['slides', 'aboutSite','constribuitors'],
         data() {

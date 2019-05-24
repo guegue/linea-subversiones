@@ -4,7 +4,8 @@
          sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
             <div id="Wrapper">
                 <Header v-bind:optionMenu="optionMenu"></Header>
-                <Container v-bind:slides="containerImgs" v-bind:aboutSite="aboutSite" v-bind:constribuitors="dataContribuitors"></Container>
+                <Container v-bind:slides="containerImgs" v-bind:aboutSite="aboutSite"
+                           v-bind:constribuitors="dataContribuitors"></Container>
                 <Footer></Footer>
             </div>
         </div>
@@ -80,54 +81,49 @@
                     });
             },
             buildCarousel(id_items) {
+                //recorremos los ids de los items
                 id_items.forEach((id_item) => {
-
+                    //consultamos a una url para obtener detalles de cada item que es recorrido
                     this.$axios(this.urlItem + id_item)
                         .then((response) => {
 
-                            let dataItem = response.data;
+                            let dataItem = response.data;//almacenamos la respuesta
+
+                            //validamos si la propiedad 'o:resource_class' existe previamente
                             if (dataItem['o:resource_class'] !== null) {
 
-                                if (dataItem['o:resource_class']['o:id'] === 27) {
+                                this.$axios(this.urlListItem + id_item)
+                                    .then((response2) => {
+                                        response2.data.forEach((dataResponse) => {
 
-                                    this.$axios(this.urlListItem + id_item)
-                                        .then((response2) => {
-                                            response2.data.forEach((dataResponse) => {
-
-                                                this.$axios(dataResponse['o:media'][0]['@id'])
-                                                    .then((response) => {
+                                            this.$axios(dataResponse['o:media'][0]['@id'])
+                                                .then((response3) => {
+                                                    console.log(dataItem);
+                                                    // valor 27 (interactive-resource)
+                                                    if (dataItem['o:resource_class']['o:id'] === 27) {
                                                         let dataImage = {
                                                             id: dataResponse['o:media'][0]['o:id'],
                                                             title: dataResponse['dcterms:title'][0]['@value'],
                                                             description: dataResponse['dcterms:description'][0]['@value'],
-                                                            mediaurl: response.data['o:original_url'],
+                                                            mediaurl: response3.data['o:original_url'],
                                                         };
                                                         this.containerImgs.push(dataImage);
+                                                    } /*else if (dataItem['o:resource_class']['o:id'] === 38) {
+                                                        console.log(dataItem);
+                                                    }*/ else {
+                                                        if (dataResponse['bibo:contributorList'] !== undefined) {
+                                                            let dataContribuitors = {
+                                                                img: response3.data['o:original_url'],
+                                                                descripcion: dataResponse['dcterms:description'][0]['@value'],
+                                                                list: dataResponse['bibo:contributorList'][0]['@value'].split('\n'),
+                                                            };
+                                                            this.dataContribuitors.push(dataContribuitors);
+                                                        }
 
-                                                    });
-                                            })
-
-
-                                        });
-
-
-                                } else {
-                                    this.$axios(this.urlListItem + id_item)
-                                        .then((response2) => {
-                                            response2.data.forEach((item) => {
-                                                this.$axios(item['o:media'][0]['@id'])
-                                                    .then((response3) => {
-                                                        let dataContribuitors = {
-                                                            img: response3.data['o:original_url'],
-                                                            descripcion: item['dcterms:description'][0]['@value'],
-                                                            list: item['bibo:contributorList'][0]['@value'].split('\n'),
-                                                        };
-                                                        this.dataContribuitors.push(dataContribuitors);
-
-                                                    })
-                                            })
-                                        });
-                                }
+                                                    }
+                                                });
+                                        })
+                                    });
 
                             }
 
