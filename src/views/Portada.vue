@@ -35,7 +35,8 @@
                 id_items: [],
                 containerImgs: [],
                 aboutSite: '',
-                dataContribuitors: []
+                dataContribuitors: [],
+                dataVideos: []
             }
         },
         mounted() {
@@ -89,17 +90,18 @@
 
                             let dataItem = response.data;//almacenamos la respuesta
 
+
                             //validamos si la propiedad 'o:resource_class' existe previamente
                             if (dataItem['o:resource_class'] !== null) {
 
                                 this.$axios(this.urlListItem + id_item)
                                     .then((response2) => {
                                         response2.data.forEach((dataResponse) => {
-
+                                            // console.log(dataResponse);
                                             this.$axios(dataResponse['o:media'][0]['@id'])
                                                 .then((response3) => {
-                                                    console.log(dataItem);
-                                                    // valor 27 (interactive-resource)
+
+                                                    // 27 = InteractiveResource, 38 = AudioVisualDocument
                                                     if (dataItem['o:resource_class']['o:id'] === 27) {
                                                         let dataImage = {
                                                             id: dataResponse['o:media'][0]['o:id'],
@@ -108,9 +110,16 @@
                                                             mediaurl: response3.data['o:original_url'],
                                                         };
                                                         this.containerImgs.push(dataImage);
-                                                    } /*else if (dataItem['o:resource_class']['o:id'] === 38) {
-                                                        console.log(dataItem);
-                                                    }*/ else {
+                                                    } else if (dataItem['o:resource_class']['o:id'] === 38) {
+                                                        console.log(response3.data);
+                                                        let dataVideo = {
+                                                            id: response3.data['o:item']['o:id'],
+                                                            title: dataResponse['dcterms:title'][0]['@value'],
+                                                            mediaurl: response3.data['o:original_url'],
+                                                            type: response3.data['o:ingester']
+                                                        };
+                                                        this.dataVideos.push(dataVideo);
+                                                    } else {
                                                         if (dataResponse['bibo:contributorList'] !== undefined) {
                                                             let dataContribuitors = {
                                                                 img: response3.data['o:original_url'],
