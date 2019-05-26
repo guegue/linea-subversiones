@@ -281,11 +281,9 @@
         },
         created() {
             this.$nextTick(() => {
-                setTimeout(
-                    lightGallery(document.getElementById('video-gallery'), {
-                        videojs: true
-                    }),
-                    1000);
+                lightGallery(document.getElementById('video-gallery'), {
+                    videojs: true
+                })
             });
         }
     }
