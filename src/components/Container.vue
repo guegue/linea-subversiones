@@ -62,17 +62,19 @@
 
                                 <!-- One Second (1/2) Column -->
                                 <div class="column one-second column_column space-border">
-                                    <div v-for="(contribuitor,index) in constribuitors" :key="index" class="column_attr" style=" padding:0 0 0 9%;">
+                                    <div v-for="(contribuitor,index) in constribuitors" :key="index" class="column_attr"
+                                         style=" padding:0 0 0 9%;">
                                         <hr class="no_line hrmargin_b_40"/>
                                         <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                             <div class="image_wrapper">
                                                 <img class="scale-with-grid" :src="contribuitor.img"
-                                                                            alt="" width="442" height="313"/>
+                                                     alt="" width="442" height="313"/>
                                             </div>
                                         </div>
                                         <hr class="no_line hrmargin_b_30"/>
                                         <ul class="list_check" style="font-size: 13px;">
-                                            <li v-for="(person,index) in contribuitor.list" :key="index" class="icons-list">
+                                            <li v-for="(person,index) in contribuitor.list" :key="index"
+                                                class="icons-list">
                                                 {{person}}
                                             </li>
                                         </ul>
@@ -86,6 +88,31 @@
                     <!--Timeline Portada-->
                     <Timeline></Timeline>
                     <!--Timeline Portada-->
+
+                    <span v-for="(video,index) in videos" :key="'a'+index">
+                        <div v-if="video.typeUpload === 'upload'" class="d-none" :id="'video'+index">
+                            <video class="lg-video-object lg-html5 video-js vjs-default-skin" controls preload="none">
+                                <source :src="video.mediaurl"
+                                        :type="video.typefile">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>
+
+                        <div v-else-if="video.typeUpload === 'vimeo'" class="d-none" :id="'video'+indice">
+                             <iframe class="lg-video-object lg-vimeo" width="560" height="315"
+                                     :src="video.mediaurl" frameborder="0"
+                                     webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">
+                             </iframe>
+                        </div>
+
+                           <div v-else-if="video.typeUpload === 'youtube'" style="display:none;" :id="'video'+indice">
+                              <iframe class="lg-video-object lg-youtube" width="560" height="315"
+                                      :src="video.mediaurl"
+                                      frameborder="0" allowfullscreen=""></iframe>
+                          </div>
+                    </span>
+
+
                     <div class="section" style="padding-top:90px; padding-bottom:50px; ">
                         <div class="section_wrapper clearfix">
                             <div class="items_group clearfix">
@@ -104,69 +131,24 @@
                                 <div class="column three-fourth column_column space-border">
                                     <div class="column_attr" style=" padding:0 0 0 8%;">
                                         <hr class="no_line hrmargin_b_40"/>
-                                        <div class="column one">
-                                            <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                in reprehenderit in voluptate velit esse.</h6>
-                                        </div>
-                                        <!-- One Third (1/3) Column -->
-                                        <div class="column one-third">
-                                            <div style="margin-right: 20%;">
-                                                <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
-                                                    <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                    src="@/assets/content/space/images/home_space_staff1.jpg"
-                                                                                    alt="" width="380"
-                                                                                    height="342"/>
+
+                                        <ul id="video-gallery" class="video list-unstyled">
+                                            <li class="column one-third video"
+                                                v-for="(video,index) in videos"
+                                                :key="index"
+                                                data-poster="@/assets/content/space/images/home_space_staff1.jpg"
+                                                :data-sub-html="video.title"
+                                                :data-html="'#video'+index">
+                                                <a href="" onclick="return false">
+                                                    <img src="@/assets/content/space/images/home_space_staff1.jpg"
+                                                         alt="">
+                                                    <div class="demo-gallery-poster">
+                                                        <img src="http://sachinchoolur.github.io/lightgallery.js/static/img/play-button.png"
+                                                             alt="">
                                                     </div>
-                                                </div>
-                                                <hr class="no_line hrmargin_b_20"/>
-                                                <h5>Martines walanti</h5>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                    sed do eiusmod tempor incididunt ut labore et dolorsi
-                                                    architecto beatae vitae dicta sunt explicabo.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!--                                             One Third (1/3) Column -->
-                                        <div class="column one-third">
-                                            <div style="margin-right: 20%;">
-                                                <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
-                                                    <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                    src="@/assets/content/space/images/home_space_staff2.jpg"
-                                                                                    alt="" width="380"
-                                                                                    height="342"/>
-                                                    </div>
-                                                </div>
-                                                <hr class="no_line hrmargin_b_20"/>
-                                                <h5>Quoponum allen rolenpa</h5>
-                                                <p>
-                                                    Consectetur adipisicing elit, sed do eiusmod tempor
-                                                    incididunt ut labore et dolorsi architecto beatae vitae
-                                                    dicta sunt explicabo.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!-- One Third (1/3) Column -->
-                                        <div class="column one-third">
-                                            <div style="margin-right: 20%;">
-                                                <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
-                                                    <div class="image_wrapper"><img class="scale-with-grid"
-                                                                                    src="@/assets/content/space/images/home_space_staff3.jpg"
-                                                                                    alt="" width="380"
-                                                                                    height="342"/>
-                                                    </div>
-                                                </div>
-                                                <hr class="no_line hrmargin_b_20"/>
-                                                <h5>Labore et dolorsi architecto</h5>
-                                                <p>
-                                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                                    laboris nisi ut aliquip ex ea commodo consequat.
-                                                </p>
-                                            </div>
-                                        </div>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -278,7 +260,7 @@
         components: {
             Timeline
         },
-        props: ['slides', 'aboutSite','constribuitors'],
+        props: ['slides', 'aboutSite', 'constribuitors', 'videos'],
         data() {
             return {
                 current: 0,
@@ -296,6 +278,15 @@
                 var len = this.slides.length;
                 this.current = (this.current + dir % len + len) % len;
             }
+        },
+        created() {
+            this.$nextTick(() => {
+                setTimeout(
+                    lightGallery(document.getElementById('video-gallery'), {
+                        videojs: true
+                    }),
+                    1000);
+            });
         }
     }
 </script>
@@ -393,4 +384,11 @@
         transform: scale(1.2);
     }
 
+    .d-none {
+        display: none;
+    }
+
+    .list-unstyled li {
+        list-style-type: none;
+    }
 </style>

@@ -4,8 +4,10 @@
          sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
             <div id="Wrapper">
                 <Header v-bind:optionMenu="optionMenu"></Header>
-                <Container v-bind:slides="containerImgs" v-bind:aboutSite="aboutSite"
-                           v-bind:constribuitors="dataContribuitors"></Container>
+                <Container v-bind:slides="containerImgs"
+                           v-bind:aboutSite="aboutSite"
+                           v-bind:constribuitors="dataContribuitors"
+                           v-bind:videos="dataVideos"></Container>
                 <Footer></Footer>
             </div>
         </div>
@@ -100,7 +102,6 @@
                                             // console.log(dataResponse);
                                             this.$axios(dataResponse['o:media'][0]['@id'])
                                                 .then((response3) => {
-
                                                     // 27 = InteractiveResource, 38 = AudioVisualDocument
                                                     if (dataItem['o:resource_class']['o:id'] === 27) {
                                                         let dataImage = {
@@ -111,12 +112,12 @@
                                                         };
                                                         this.containerImgs.push(dataImage);
                                                     } else if (dataItem['o:resource_class']['o:id'] === 38) {
-                                                        console.log(response3.data);
                                                         let dataVideo = {
                                                             id: response3.data['o:item']['o:id'],
                                                             title: dataResponse['dcterms:title'][0]['@value'],
                                                             mediaurl: response3.data['o:original_url'],
-                                                            type: response3.data['o:ingester']
+                                                            typefile: response3.data['o:media_type'],
+                                                            typeUpload: response3.data['o:ingester'].toLowerCase(),
                                                         };
                                                         this.dataVideos.push(dataVideo);
                                                     } else {
