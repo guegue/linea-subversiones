@@ -89,6 +89,8 @@
                     <Timeline></Timeline>
                     <!--Timeline Portada-->
 
+                    <pre>{{videos}}</pre>
+                    <div v-if="videos.length > 0">
                     <span v-for="(video,index) in videos" :key="'a'+index">
                         <div v-if="video.typeUpload === 'upload'" class="d-none" :id="'video'+index">
                             <video class="lg-video-object lg-html5 video-js vjs-default-skin" controls preload="none">
@@ -105,13 +107,13 @@
                              </iframe>
                         </div>
 
-                           <div v-else-if="video.typeUpload === 'youtube'" style="display:none;" :id="'video'+indice">
+                           <div v-else-if="video.typeUpload === 'youtube'" class="d-none" :id="'video'+indice">
                               <iframe class="lg-video-object lg-youtube" width="560" height="315"
                                       :src="video.mediaurl"
                                       frameborder="0" allowfullscreen=""></iframe>
                           </div>
                     </span>
-
+                    </div>
 
                     <div class="section" style="padding-top:90px; padding-bottom:50px; ">
                         <div class="section_wrapper clearfix">
@@ -279,9 +281,9 @@
                 this.current = (this.current + dir % len + len) % len;
             }
         },
-        created() {
+        updated() {
             this.$nextTick(() => {
-                lightGallery(document.getElementById('video-gallery'), {
+                window.lightGallery(document.getElementById('video-gallery'), {
                     videojs: true
                 })
             });
