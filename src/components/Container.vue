@@ -88,9 +88,7 @@
                     <!--Timeline Portada-->
                     <Timeline></Timeline>
                     <!--Timeline Portada-->
-
-                    <pre>{{videos}}</pre>
-                    <div v-if="videos.length > 0">
+                    <!--html list of videos from the website-->
                     <span v-for="(video,index) in videos" :key="'a'+index">
                         <div v-if="video.typeUpload === 'upload'" class="d-none" :id="'video'+index">
                             <video class="lg-video-object lg-html5 video-js vjs-default-skin" controls preload="none">
@@ -113,8 +111,7 @@
                                       frameborder="0" allowfullscreen=""></iframe>
                           </div>
                     </span>
-                    </div>
-
+                    <!--Video Section-->
                     <div class="section" style="padding-top:90px; padding-bottom:50px; ">
                         <div class="section_wrapper clearfix">
                             <div class="items_group clearfix">
@@ -133,7 +130,7 @@
                                 <div class="column three-fourth column_column space-border">
                                     <div class="column_attr" style=" padding:0 0 0 8%;">
                                         <hr class="no_line hrmargin_b_40"/>
-
+                                        <!--square of videos-->
                                         <ul id="video-gallery" class="video list-unstyled">
                                             <li class="column one-third video"
                                                 v-for="(video,index) in videos"

@@ -62,7 +62,7 @@
                                 this.id_items.push(id);
                             })
                         }
-                        this.buildCarousel(this.id_items);
+                        this.buildBodyPage(this.id_items);
 
                         if (this.pageSites.length > 0) {
                             this.pageSites.forEach((page) => {
@@ -83,23 +83,19 @@
                         }
                     });
             },
-            buildCarousel(id_items) {
+            buildBodyPage(id_items) {
                 //recorremos los ids de los items
                 id_items.forEach((id_item) => {
                     //consultamos a una url para obtener detalles de cada item que es recorrido
                     this.$axios(this.urlItem + id_item)
                         .then((response) => {
-
                             let dataItem = response.data;//almacenamos la respuesta
-
-
                             //validamos si la propiedad 'o:resource_class' existe previamente
                             if (dataItem['o:resource_class'] !== null) {
 
                                 this.$axios(this.urlListItem + id_item)
                                     .then((response2) => {
                                         response2.data.forEach((dataResponse) => {
-                                            // console.log(dataResponse);
                                             this.$axios(dataResponse['o:media'][0]['@id'])
                                                 .then((response3) => {
                                                     // 27 = InteractiveResource, 38 = AudioVisualDocument
