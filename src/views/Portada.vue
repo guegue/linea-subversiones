@@ -42,11 +42,19 @@
             }
         },
         mounted() {
-            this.buildMenu();
+            this.$axios(this.$domainOmeka + 'api/sites')
+                .then((response) => {
+                    response.data.forEach((page) => {
+                        let siteName = this.$route.params.namepage;
+                        if (page['o:slug'] === siteName) {
+                            this.buildMenu(page['o:id']);
+                        }
+                    })
+                });
+
         },
         methods: {
-            buildMenu() {
-                let idSite = 13;
+            buildMenu(idSite) {
                 this.$axios(this.urlSite + idSite)
                     .then((response) => {
                         if (response.data['o:page'] !== undefined) {
@@ -92,7 +100,6 @@
                             let dataItem = response.data;//almacenamos la respuesta
                             //validamos si la propiedad 'o:resource_class' existe previamente
                             if (dataItem['o:resource_class'] !== null) {
-
                                 this.$axios(this.urlListItem + id_item)
                                     .then((response2) => {
                                         response2.data.forEach((dataResponse) => {
