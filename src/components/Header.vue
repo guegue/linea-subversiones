@@ -11,14 +11,7 @@
                             <!--  Logo-->
                             <div class="logo">
                                 <a id="logo" href="" title="BeSpace - BeTheme">
-                                    <img
-                                            class="logo-main scale-with-grid"
-                                            src="@/assets/content/space/images/space.png"
-                                            alt="BeSpace - BeTheme"/>
-                                    <img
-                                            class="logo-mobile scale-with-grid"
-                                            src="@/assets/content/space/images/space-responsive.png"
-                                            alt="logo-no-resposive">
+                                    <h3>{{nameSite}}</h3>
                                 </a>
                             </div>
                             <!--  Main menu-->
@@ -67,7 +60,7 @@
         components: {
             Slide,
         },
-        props: ['optionMenu'],
+        props: ['optionMenu', 'nameSite'],
         mounted() {
             window.addEventListener('scroll', () => {
                 let menu = document.getElementById('Top_bar');
@@ -87,7 +80,6 @@
         position: fixed;
         top: 0;
         background-color: rgba(22, 22, 22, 0.8);
-
     }
 
     .float-menu .container .menu_wrapper {
@@ -95,7 +87,14 @@
         color: #fff !important;
     }
 
-    .float-menu .menu > li > a {
+    .float-menu .menu > li > a, .float-menu .logo a h3 {
         color: #fff !important;
+        transition: color ease-in-out 1s;
     }
+
+    .float-menu .logo a h3{
+        transition: color ease-in-out 0.3s;
+    }
+
+
 </style>

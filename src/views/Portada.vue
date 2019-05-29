@@ -3,7 +3,7 @@
         <div class="layout-full-width mobile-tb-left button-stroke no-content-padding header-transparent header-fw minimalist-header
          sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
             <div id="Wrapper">
-                <Header v-bind:optionMenu="optionMenu"></Header>
+                <Header v-bind:optionMenu="optionMenu" v-bind:name-site="nameSite"></Header>
                 <Container v-bind:slides="containerImgs"
                            v-bind:aboutSite="aboutSite"
                            v-bind:constribuitors="dataContribuitors"
@@ -30,6 +30,7 @@
             return {
                 optionMenu: [],
                 pageSites: [],
+                nameSite: '',
                 urlSite: this.$domainOmeka + 'api/sites/',
                 urlItem: this.$domainOmeka + 'api/item_sets/',
                 urlListItem: this.$domainOmeka + 'api/items?item_set_id=',
@@ -48,6 +49,7 @@
                         let siteName = this.$route.params.namepage;
                         if (page['o:slug'] === siteName) {
                             this.buildMenu(page['o:id']);
+                            this.nameSite = page['o:title'];
                         }
                     })
                 });
