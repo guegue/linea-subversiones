@@ -43,19 +43,61 @@
             }
         },
         mounted() {
-            this.$axios(this.$domainOmeka + 'api/sites')
+            this.getItemsSetId()
                 .then((response) => {
-                    response.data.forEach((page) => {
-                        let siteName = this.$route.params.namepage;
-                        if (page['o:slug'] === siteName) {
-                            this.buildMenu(page['o:id']);
-                            this.nameSite = page['o:title'];
-                        }
-                    })
+                    this.getDetailsSite(response);
                 });
+
 
         },
         methods: {
+            getItemsSetId() {
+                return new Promise((resolve, reject) => {
+                    let item_set_id = [];
+                    this.$axios(this.$domainOmeka + 'api/item_sets?resource_class_id=27')
+                        .then((response) => {
+                            //recorro los items
+                            response.data.forEach((item) => {
+                                // consulto a la url guardada en la propiedad ['o:items']['@id'] del item para obtener los detalles
+                                this.$axios(item['o:items']['@id'])
+                                    .then((response2) => {
+                                        // consulto a la url guardada en la propiedad [0]['o:media'][0]['@id'] de los detalles de un item
+                                        this.$axios(response2.data[0]['o:media'][0]['@id'])
+                                            .then((response3) => {
+
+                                                item_set_id.push({
+                                                    id_item_set: item['o:id'],
+                                                    url_img_site: response3.data['o:original_url'],
+                                                });
+                                                resolve(item_set_id);
+                                            });
+
+                                    });
+                            });
+
+                        });
+                })
+            },
+            getDetailsSite(array_items) {
+                // console.log(array_items);
+                // array_items[0]['id'] = 1;
+                // console.log(array_items[0]);
+                this.$axios(this.$domainOmeka + 'api/sites')
+                    .then((response) => {
+                        let siteName = this.$route.params.namepage;
+                        let idSite = 0;
+                        response.data.forEach((page) => {
+                            console.log(page['o:item_pool']['item_set_id']);
+                            if (page['o:slug'] === siteName) {
+                                idSite = page['o:id'];
+                                this.nameSite = page['o:title'];
+                            }
+
+
+                        });
+                        this.buildMenu(idSite);
+                    });
+            },
             buildMenu(idSite) {
                 this.$axios(this.urlSite + idSite)
                     .then((response) => {
