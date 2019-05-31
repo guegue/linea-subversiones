@@ -11,6 +11,7 @@ import '@/assets/plugins/rs-plugin/css/settings.css';
 import 'lightgallery.js/dist/css/lightgallery.min.css';
 import 'lightgallery.js/dist/css/lg-fb-comment-box.min.css';
 import 'lightgallery.js/dist/css/lg-transitions.min.css';
+import '@/assets/style.css';
 
 //js
 import 'lightgallery.js/src/js/lightgallery.js';

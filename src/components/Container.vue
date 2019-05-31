@@ -153,14 +153,18 @@
                             </div>
                         </div>
                     </div>
-                    <!--Sites Details-->
 
+                    <!--carousel sites cards-->
+                    <CarouselSites v-bind:details-site="detailsSite"></CarouselSites>
+
+                    <!--Sites Details-->
                     <div class="section no-margin equal-height background-document"
                          style="">
                         <div class="section_wrapper clearfix">
                             <div class="items_group clearfix">
                                 <!-- One Second (1/2) Column -->
                                 <div class="column one-second column_column ">
+
                                     <div class="column_attr">
                                         <div class="img-background-document">
                                             <h4>Otros Sitios Relacionados:</h4>
@@ -176,7 +180,8 @@
                                                             </a>
                                                         </div>
                                                         <div class="list_right">
-                                                            <h4><a :href="'/'+site.slug" style="color:black">{{site.title_site}}</a></h4>
+                                                            <h4><a :href="'/'+site.slug" style="color:black">{{site.title_site}}</a>
+                                                            </h4>
                                                             <div class="desc">
                                                                 description
                                                             </div>
@@ -226,11 +231,13 @@
 
 <script>
     import Timeline from './Timeline';
+    import CarouselSites from './CarouselSites'
 
     export default {
         name: "Container",
         components: {
-            Timeline
+            Timeline,
+            CarouselSites
         },
         props: [
             'slides',
@@ -367,4 +374,6 @@
     .list-unstyled li {
         list-style-type: none;
     }
+
+
 </style>
