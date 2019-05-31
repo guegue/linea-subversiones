@@ -8,7 +8,7 @@
                            v-bind:aboutSite="aboutSite"
                            v-bind:constribuitors="dataContribuitors"
                            v-bind:videos="dataVideos"></Container>
-                <Footer></Footer>
+                <Footer v-bind:details-site="detailsSite"></Footer>
             </div>
         </div>
     </div>
@@ -31,6 +31,7 @@
                 optionMenu: [],
                 pageSites: [],
                 nameSite: '',
+                detailsSite: [],
                 urlSite: this.$domainOmeka + 'api/sites/',
                 urlItem: this.$domainOmeka + 'api/item_sets/',
                 urlListItem: this.$domainOmeka + 'api/items?item_set_id=',
@@ -52,7 +53,7 @@
         },
         methods: {
             getItemsSetId() {
-                return new Promise((resolve, reject) => {
+                return new Promise((resolve) => {
                     let item_set_id = [];
                     this.$axios(this.$domainOmeka + 'api/item_sets?resource_class_id=27')
                         .then((response) => {
@@ -79,22 +80,29 @@
                 })
             },
             getDetailsSite(array_items) {
-                // console.log(array_items);
-                // array_items[0]['id'] = 1;
-                // console.log(array_items[0]);
                 this.$axios(this.$domainOmeka + 'api/sites')
                     .then((response) => {
                         let siteName = this.$route.params.namepage;
                         let idSite = 0;
                         response.data.forEach((page) => {
-                            console.log(page['o:item_pool']['item_set_id']);
+
                             if (page['o:slug'] === siteName) {
                                 idSite = page['o:id'];
                                 this.nameSite = page['o:title'];
                             }
 
-
+                            array_items.forEach((data, index) => {
+                                let found = page['o:item_pool']['item_set_id'].indexOf(data.id_item_set.toString());
+                                if (found > -1 && page['o:id'] !== idSite) {
+                                    array_items[index]["title_sitio"] = page['o:title'];
+                                    array_items[index]["slug"] = page['o:title'];
+                                    array_items[index]["exist_img"] = true;
+                                } else {
+                                    array_items[index]["exist_img"] = false;
+                                }
+                            });
                         });
+                        this.detailsSite = array_items;
                         this.buildMenu(idSite);
                     });
             },
