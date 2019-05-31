@@ -153,6 +153,8 @@
                             </div>
                         </div>
                     </div>
+                    <!--Sites Details-->
+
                     <div class="section no-margin equal-height background-document"
                          style="">
                         <div class="section_wrapper clearfix">
@@ -161,53 +163,24 @@
                                 <div class="column one-second column_column ">
                                     <div class="column_attr">
                                         <div class="img-background-document">
-                                            <h4>Dolor et omnien quan:</h4>
-                                            <hr class="no_line hrmargin_b_30"/>
-                                            <div class="list_item lists_2 clearfix">
-                                                <div class="list_left list_image"><img
-                                                        src="@/assets/content/space/images/home_space_list_1.png"
-                                                        alt="Tincidunt mauris" class="scale-with-grid"
-                                                        width="58" height="65"/>
-                                                </div>
-                                                <div class="list_right">
-                                                    <h4>Tincidunt mauris</h4>
-                                                    <div class="desc">
-                                                        Vivamus tincidunt nisl dolor, sit amet posuere lorem
-                                                        viverra sed. Sed scelerisque, ex a pretium egestas,
-                                                        tortor ex faucibus orci, eget placerat lacus elit
-                                                        amet.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr class="no_line hrmargin_b_30"/>
-                                            <div class="list_item lists_2 clearfix">
-                                                <div class="list_left list_image"><img
-                                                        src="@/assets/content/space/images/home_space_list_2.png"
-                                                        alt="Vestibulum commodo" class="scale-with-grid"
-                                                        width="58" height="65"/>
-                                                </div>
-                                                <div class="list_right">
-                                                    <h4>Vestibulum commodo</h4>
-                                                    <div class="desc">
-                                                        Suspendisse at purus nec nunc porttitor rutrum at auctor
-                                                        turpis. Aliquam tellus magna, tempor non iaculis in,
-                                                        tincidunt commodo enim.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr class="no_line hrmargin_b_30"/>
-                                            <div class="list_item lists_2 clearfix">
-                                                <div class="list_left list_image"><img
-                                                        src="@/assets/content/space/images/home_space_list_3.png"
-                                                        alt="Malesuada fames" class="scale-with-grid" width="58"
-                                                        height="65"/>
-                                                </div>
-                                                <div class="list_right">
-                                                    <h4>Malesuada fames</h4>
-                                                    <div class="desc">
-                                                        Sed quis nisl pulvinar, vehicula augue ut, efficitur
-                                                        ipsum. Maecenas bibendum tortor auctor, scelerisque mi
-                                                        id, laoreet risus.
+                                            <h4>Otros Sitios Relacionados:</h4>
+                                            <div v-for="(site) in detailsSite" :key="site.id_item_set">
+                                                <div v-if="site.exist_img">
+                                                    <hr class="no_line hrmargin_b_30"/>
+                                                    <div class="list_item lists_2 clearfix">
+                                                        <div class="list_left list_image">
+                                                            <a :href="'/'+site.slug"><img
+                                                                    :src="site.url_img_site"
+                                                                    alt="Tincidunt mauris" class="scale-with-grid"
+                                                                    width="100" height="100"/>
+                                                            </a>
+                                                        </div>
+                                                        <div class="list_right">
+                                                            <h4><a :href="'/'+site.slug" style="color:black">{{site.title_site}}</a></h4>
+                                                            <div class="desc">
+                                                                description
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -259,7 +232,13 @@
         components: {
             Timeline
         },
-        props: ['slides', 'aboutSite', 'constribuitors', 'videos'],
+        props: [
+            'slides',
+            'aboutSite',
+            'constribuitors',
+            'videos',
+            'detailsSite'
+        ],
         data() {
             return {
                 current: 0,

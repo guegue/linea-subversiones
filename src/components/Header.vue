@@ -20,7 +20,7 @@
                                     <ul id="menu-main-menu" class="menu">
                                         <li class="current_page_item" v-for="(option,index) in optionMenu"
                                             :key="index">
-                                            <a :href="option.url"><span>{{option.title}}</span></a>
+                                            <a href="javascript:"><span>{{option.title}}</span></a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -92,7 +92,7 @@
         transition: color ease-in-out 1s;
     }
 
-    .float-menu .logo a h3{
+    .float-menu .logo a h3 {
         transition: color ease-in-out 0.3s;
     }
 

@@ -7,8 +7,9 @@
                 <Container v-bind:slides="containerImgs"
                            v-bind:aboutSite="aboutSite"
                            v-bind:constribuitors="dataContribuitors"
-                           v-bind:videos="dataVideos"></Container>
-                <Footer v-bind:details-site="detailsSite"></Footer>
+                           v-bind:videos="dataVideos"
+                           v-bind:details-site="detailsSite"></Container>
+                <Footer></Footer>
             </div>
         </div>
     </div>
@@ -94,10 +95,10 @@
                             array_items.forEach((data, index) => {
                                 let found = page['o:item_pool']['item_set_id'].indexOf(data.id_item_set.toString());
                                 if (found > -1 && page['o:id'] !== idSite) {
-                                    array_items[index]["title_sitio"] = page['o:title'];
-                                    array_items[index]["slug"] = page['o:title'];
+                                    array_items[index]["title_site"] = page['o:title'];
+                                    array_items[index]["slug"] = page['o:slug'];
                                     array_items[index]["exist_img"] = true;
-                                } else {
+                                } else if (found <= -1 && array_items[index]["exist_img"] !== undefined && array_items[index]["exist_img"] !== true) {
                                     array_items[index]["exist_img"] = false;
                                 }
                             });

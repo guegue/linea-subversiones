@@ -118,8 +118,7 @@
 
 <script>
     export default {
-        name: "Footer",
-        props:['detailsSite']
+        name: "Footer"
     }
 </script>
 
