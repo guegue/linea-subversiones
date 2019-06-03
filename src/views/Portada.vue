@@ -91,12 +91,12 @@
                                 idSite = page['o:id'];
                                 this.nameSite = page['o:title'];
                             }
-
                             array_items.forEach((data, index) => {
                                 let found = page['o:item_pool']['item_set_id'].indexOf(data.id_item_set.toString());
                                 if (found > -1 && page['o:id'] !== idSite) {
                                     array_items[index]["title_site"] = page['o:title'];
                                     array_items[index]["slug"] = page['o:slug'];
+                                    array_items[index]["description"] = page['o:summary'];
                                     array_items[index]["exist_img"] = true;
                                 } else if (found <= -1 && array_items[index]["exist_img"] !== undefined && array_items[index]["exist_img"] !== true) {
                                     array_items[index]["exist_img"] = false;
@@ -113,7 +113,9 @@
                         if (response.data['o:page'] !== undefined) {
                             let pages = response.data['o:page'];
                             let items = response.data['o:item_pool'];
-                            this.aboutSite = response.data['o:summary'].replace(/\r/g, '').split('\n');
+                            if (response.data['o:summary'] !== null){
+                                this.aboutSite = response.data['o:summary'].replace(/\r/g, '').split('\n');
+                            }
 
                             pages.forEach((page) => {
                                 this.pageSites.push(page['@id']);
@@ -123,13 +125,12 @@
                                 this.id_items.push(id);
                             })
                         }
-                        this.buildBodyPage(this.id_items);
 
                         if (this.pageSites.length > 0) {
                             this.pageSites.forEach((page) => {
                                 this.$axios(page)
-                                    .then((response) => {
-                                        let dataResponse = response.data;
+                                    .then((response2) => {
+                                        let dataResponse = response2.data;
 
                                         let pageData = {
                                             id: dataResponse['o:ID'],
@@ -142,6 +143,8 @@
                                     })
                             })
                         }
+
+                        this.buildBodyPage(this.id_items);
                     });
             },
             buildBodyPage(id_items) {

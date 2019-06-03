@@ -1,30 +1,64 @@
-.VueCarousel-slide {
-    position: relative;
-    /*background: #42b983;*/
-    color: #fff;
-    font-family: Arial;
-    font-size: 24px;
-    text-align: center;
-    min-height: 100px;
-}
-
-.label {
+.cuadro {
+    height: 100%;
+    width: 50%;
+    background-color: white;
+    z-index: 10001;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 0;
+    padding: 40px;
 }
 
-button.VueCarousel-dot {
-    margin-top: 20px !important;
-    padding: 10px !important;
-    width: 10px;
-    background-color: rgba(0, 0, 0, 0.5) !important;
+.cuadro-carousel {
+    padding: 40px;
+    margin-top: 25px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
-button.VueCarousel-dot--active {
-    margin-top: 20px !important;
-    padding: 10px !important;
-    width: 10px;
-    background-color: rgb(0, 0, 0) !important;
+.text-white {
+    color: #fff;
+}
+.text-dark {
+    color: #000;
+}
+.p-8 {
+    padding: 0 8% 0 0;
+}
+
+.cuadro-carousel h6 {
+    padding: 10px;
+    text-align: justify;
+    margin-top: 35px !important;
+}
+
+#logo h3 {
+    font-family: "Orbitron", Arial, Tahoma, sans-serif;
+}
+
+.p-9 {
+    padding: 0 0 0 9%;
+}
+
+.p-6-4-7 {
+    padding: 60px 40px 70px;
+}
+
+.p-top90-bot50 {
+    padding-top: 90px;
+    padding-bottom: 50px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.desc p{
+    text-align: justify;
+}
+.desc p a {
+    display: inline-block !important;
+}
+
+.desc p a:hover {
+    color: #000;
 }
