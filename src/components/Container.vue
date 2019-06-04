@@ -177,41 +177,42 @@
                                     <div class="column_attr">
                                         <div class="img-background-document">
                                             <h4>Otros Sitios Relacionados:</h4>
-                                            <div class="site-content">
-                                                <div v-for="(site,index) in detailsSite" :key="site.id_item_set"
-                                                     :class="'cuadro-'+index">
-                                                    <div v-if="site.exist_img">
-                                                        <div class="list_item lists_2 clearfix">
-                                                            <div class="list_left list_image">
-                                                                <a :href="'/'+site.slug"><img
-                                                                        :src="site.url_img_site"
-                                                                        alt="Tincidunt mauris" class="scale-with-grid"
-                                                                        width="150" height="150"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="list_right">
-                                                                <h4>
-                                                                    <a :href="'/'+site.slug" class="text-dark">{{site.title_site}}</a>
-                                                                </h4>
-                                                                <div class="desc"
-                                                                     v-if="typeof site.description === 'string'">
-                                                                    <p v-if="site.description.length > 100">
-                                                                        {{site.description.slice(0,130)}}... <a
-                                                                            :href="'/'+site.slug" class="text-dark">Leer
-                                                                        m&aacute;s</a>
-                                                                    </p>
-                                                                    <p v-else>
-                                                                        {{site.description}}... <a
-                                                                            :href="'/'+site.slug">Leer
-                                                                        m&aacute;s</a>
-                                                                    </p>
+                                            <scrolly class="foo" style="width: 100%;height: 100%;" >
+                                                <scrolly-viewport>
+                                                    <div v-for="site in detailsSite" :key="site.id_item_set">
+                                                        <div v-if="site.exist_img">
+                                                            <div class="list_item lists_2 clearfix">
+                                                                <div class="list_left list_image">
+                                                                    <a :href="'/'+site.slug"><img
+                                                                            :src="site.url_img_site"
+                                                                            alt="Tincidunt mauris" class="scale-with-grid"
+                                                                            width="150" height="150"/>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="list_right">
+                                                                    <h4 class="text-dark">
+                                                                        <a :href="'/'+site.slug" class="text-dark">{{site.title_site}}</a>
+                                                                    </h4>
+                                                                    <div class="desc"
+                                                                         v-if="typeof site.description === 'string'">
+                                                                        <p v-if="site.description.length > 100">
+                                                                            {{site.description.slice(0,130)}}... <a
+                                                                                :href="'/'+site.slug" >Leer
+                                                                            m&aacute;s</a>
+                                                                        </p>
+                                                                        <p v-else>
+                                                                            {{site.description}}... <a
+                                                                                :href="'/'+site.slug">Leer
+                                                                            m&aacute;s</a>
+                                                                        </p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-
+                                                </scrolly-viewport>
+                                                <scrolly-bar axis="y"></scrolly-bar>
+                                            </scrolly>
                                         </div>
                                     </div>
                                 </div>
@@ -254,11 +255,15 @@
 
 <script>
     import Timeline from './Timeline';
+    import { Scrolly, ScrollyViewport, ScrollyBar } from 'vue-scrolly';
 
     export default {
         name: "Container",
         components: {
-            Timeline
+            Timeline,
+            Scrolly,
+            ScrollyViewport,
+            ScrollyBar
         },
         props: [
             'slides',
@@ -363,8 +368,10 @@
     }
 
     .img-size{
-        width: 100%; height: 100%; object-fit: cover;
+        width: 100%; height: 100% !important;
     }
-
+    .scrolly-bar.axis-y{
+        width: 5px !important;
+    }
 
 </style>

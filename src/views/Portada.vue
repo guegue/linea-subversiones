@@ -93,13 +93,13 @@
                             }
                             array_items.forEach((data, index) => {
                                 let found = page['o:item_pool']['item_set_id'].indexOf(data.id_item_set.toString());
-                                //&& page['o:id'] !== idSite
-                                if (found > -1 ) {
+                                if (found > -1 && page['o:id'] !== idSite) {
                                     array_items[index]["title_site"] = page['o:title'];
                                     array_items[index]["slug"] = page['o:slug'];
                                     array_items[index]["description"] = page['o:summary'];
                                     array_items[index]["exist_img"] = true;
-                                } else if (found <= -1 && array_items[index]["exist_img"] !== undefined && array_items[index]["exist_img"] !== true) {
+                                } else if (found <= -1 && array_items[index]["exist_img"] !== undefined
+                                    && array_items[index]["exist_img"] !== true) {
                                     array_items[index]["exist_img"] = false;
                                 }
                             });
