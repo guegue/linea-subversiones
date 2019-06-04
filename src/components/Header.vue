@@ -20,7 +20,7 @@
                                     <ul id="menu-main-menu" class="menu">
                                         <li class="current_page_item" v-for="(option,index) in optionMenu"
                                             :key="index">
-                                            <a :href="'/'+nameSite+'/page/'+option.slug"><span>{{option.title}}</span></a>
+                                            <a :href="'/'+slugSite+'/page/'+option.slug"><span>{{option.title}}</span></a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -60,7 +60,7 @@
         components: {
             Slide,
         },
-        props: ['optionMenu', 'nameSite'],
+        props: ['optionMenu', 'nameSite','slugSite'],
         mounted() {
             window.addEventListener('scroll', () => {
                 let menu = document.getElementById('Top_bar');

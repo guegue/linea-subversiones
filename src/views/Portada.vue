@@ -3,7 +3,9 @@
         <div class="layout-full-width mobile-tb-left button-stroke no-content-padding header-transparent header-fw minimalist-header
          sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
             <div id="Wrapper">
-                <Header v-bind:optionMenu="optionMenu" v-bind:name-site="nameSite"></Header>
+                <Header v-bind:optionMenu="optionMenu"
+                        v-bind:name-site="nameSite"
+                        v-bind:slug-site="slugSite"></Header>
                 <Container v-bind:slides="containerImgs"
                            v-bind:aboutSite="aboutSite"
                            v-bind:constribuitors="dataContribuitors"

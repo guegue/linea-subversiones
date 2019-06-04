@@ -1,9 +1,6 @@
 <template>
     <div>
-        <pre>
-<!--            {{window.localStorage.getItem('data')}}-->
-        </pre>
-        <Header></Header>
+        <Header v-bind:optionMenu="optionMenu" v-bind:name-site="nameSite"></Header>
     </div>
 </template>
 
@@ -25,9 +22,9 @@
         },
         mounted() {
             this.getDetailsSite([])
-                .then((response) => {
-                    console.log(response);
-                });
+                .then((respose) => {
+                console.log(respose);
+            })
         }
     }
 </script>

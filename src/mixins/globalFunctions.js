@@ -12,7 +12,6 @@ export default {
             return new Promise((solved) => {
                 this.$axios(this.$domainOmeka + 'api/sites')
                     .then((response) => {
-
                         let siteName = this.$route.params.namesite;
                         let idSite = 0;
                         response.data.forEach((page) => {
