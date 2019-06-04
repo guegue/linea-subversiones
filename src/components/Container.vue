@@ -11,9 +11,9 @@
                                 <div id="slider">
                                     <transition-group tag="div" :name="transitionName" class="slides-group">
                                         <div v-if="slides.length > 0" :key="current" class="slide">
-                                            <div style="width: 100%;height: 550px; !important;">
+                                            <div class="cuadro-img-size">
                                                 <img :src="slides[current].mediaurl" alt=""
-                                                     style="width: 100%; height: 100%; object-fit: cover;">
+                                                     class="img-size">
                                             </div>
                                             <div class="cuadro">
                                                 <div class="cuadro-carousel">
@@ -177,36 +177,41 @@
                                     <div class="column_attr">
                                         <div class="img-background-document">
                                             <h4>Otros Sitios Relacionados:</h4>
-                                            <div v-for="(site) in detailsSite" :key="site.id_item_set">
-                                                <div v-if="site.exist_img">
-                                                    <hr class="no_line hrmargin_b_30"/>
-                                                    <div class="list_item lists_2 clearfix">
-                                                        <div class="list_left list_image">
-                                                            <a :href="'/'+site.slug"><img
-                                                                    :src="site.url_img_site"
-                                                                    alt="Tincidunt mauris" class="scale-with-grid"
-                                                                    width="150" height="150"/>
-                                                            </a>
-                                                        </div>
-                                                        <div class="list_right">
-                                                            <h4>
-                                                                <a :href="'/'+site.slug" class="text-dark">{{site.title_site}}</a>
-                                                            </h4>
-                                                            <div class="desc"
-                                                                 v-if="typeof site.description === 'string'">
-                                                                <p v-if="site.description.length > 100">
-                                                                    {{site.description.slice(0,130)}}... <a
-                                                                        :href="'/'+site.slug" class="text-dark">Leer m&aacute;s</a>
-                                                                </p>
-                                                                <p v-else>
-                                                                    {{site.description}}... <a :href="'/'+site.slug">Leer
-                                                                    m&aacute;s</a>
-                                                                </p>
+                                            <div class="site-content">
+                                                <div v-for="(site,index) in detailsSite" :key="site.id_item_set"
+                                                     :class="'cuadro-'+index">
+                                                    <div v-if="site.exist_img">
+                                                        <div class="list_item lists_2 clearfix">
+                                                            <div class="list_left list_image">
+                                                                <a :href="'/'+site.slug"><img
+                                                                        :src="site.url_img_site"
+                                                                        alt="Tincidunt mauris" class="scale-with-grid"
+                                                                        width="150" height="150"/>
+                                                                </a>
+                                                            </div>
+                                                            <div class="list_right">
+                                                                <h4>
+                                                                    <a :href="'/'+site.slug" class="text-dark">{{site.title_site}}</a>
+                                                                </h4>
+                                                                <div class="desc"
+                                                                     v-if="typeof site.description === 'string'">
+                                                                    <p v-if="site.description.length > 100">
+                                                                        {{site.description.slice(0,130)}}... <a
+                                                                            :href="'/'+site.slug" class="text-dark">Leer
+                                                                        m&aacute;s</a>
+                                                                    </p>
+                                                                    <p v-else>
+                                                                        {{site.description}}... <a
+                                                                            :href="'/'+site.slug">Leer
+                                                                        m&aacute;s</a>
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -292,44 +297,7 @@
 
 <style scoped>
     /*Slider*/
-    @import url("https://fonts.googleapis.com/css?family=Crimson+Text");
-
-    /* FADE IN */
-    .fade-enter-active {
-        transition: opacity 1s;
-    }
-
-    .fade-enter {
-        opacity: 0;
-    }
-
-    /* GO TO NEXT SLIDE */
-    .slide-next-enter-active,
-    .slide-next-leave-active {
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .slide-next-enter {
-        transform: translate(100%);
-    }
-
-    .slide-next-leave-to {
-        transform: translate(-100%);
-    }
-
-    /* GO TO PREVIOUS SLIDE */
-    .slide-prev-enter-active,
-    .slide-prev-leave-active {
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .slide-prev-enter {
-        transform: translate(-100%);
-    }
-
-    .slide-prev-leave-to {
-        transform: translate(100%);
-    }
+    @import url("https://fonts.googleapis.com/css?family=CrimsonCrimson+Text");
 
     /* SLIDER STYLES */
     body {
@@ -389,6 +357,13 @@
 
     .list-unstyled li {
         list-style-type: none;
+    }
+    .cuadro-img-size{
+        width: 100%;height: 550px !important;
+    }
+
+    .img-size{
+        width: 100%; height: 100%; object-fit: cover;
     }
 
 

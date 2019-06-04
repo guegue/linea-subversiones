@@ -93,7 +93,8 @@
                             }
                             array_items.forEach((data, index) => {
                                 let found = page['o:item_pool']['item_set_id'].indexOf(data.id_item_set.toString());
-                                if (found > -1 && page['o:id'] !== idSite) {
+                                //&& page['o:id'] !== idSite
+                                if (found > -1 ) {
                                     array_items[index]["title_site"] = page['o:title'];
                                     array_items[index]["slug"] = page['o:slug'];
                                     array_items[index]["description"] = page['o:summary'];
