@@ -20,7 +20,7 @@
                                     <ul id="menu-main-menu" class="menu">
                                         <li class="current_page_item" v-for="(option,index) in optionMenu"
                                             :key="index">
-                                            <a href="javascript:"><span>{{option.title}}</span></a>
+                                            <a :href="'/'+nameSite+'/page/'+option.slug"><span>{{option.title}}</span></a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -45,7 +45,7 @@
         </header>
         <!--menu lateral derecho-->
         <Slide right>
-            <a v-for="option in optionMenu" :key="option.id" :href="option.url">
+            <a v-for="option in optionMenu" :key="option.id" :href="'/'+nameSite+'/page/'+option.slug">
                 <span>{{option.title}}</span>
             </a>
         </Slide>

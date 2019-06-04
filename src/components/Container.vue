@@ -302,17 +302,6 @@
 
 <style scoped>
     /*Slider*/
-    @import url("https://fonts.googleapis.com/css?family=CrimsonCrimson+Text");
-
-    /* SLIDER STYLES */
-    body {
-        overflow: hidden;
-        margin: 0;
-        font-size: 50px;
-        font-family: "Crimson Text", sans-serif;
-        color: #fff;
-    }
-
     #slider {
         width: 100%;
         height: 550px;

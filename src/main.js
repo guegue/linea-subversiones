@@ -22,7 +22,7 @@ import 'lg-fullscreen.js/dist/lg-fullscreen.js';
 Vue.config.productionTip = false;
 
 //variables globales
-Vue.prototype.$domainOmeka='https://sub-versiones.hijosdeperu.org/';
+Vue.prototype.$domainOmeka = 'https://sub-versiones.hijosdeperu.org/';
 Vue.prototype.$axios = Axios;
 
 new Vue({

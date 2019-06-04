@@ -20,8 +20,11 @@
     import Container from '../components/Container';
     import Footer from '../components/Footer';
 
+    import GlobalFuncion from '../mixins/globalFunctions';
+
     export default {
         name: "Portada",
+        mixins: [GlobalFuncion],
         components: {
             Header,
             Container,
@@ -30,8 +33,6 @@
         data() {
             return {
                 optionMenu: [],
-                pageSites: [],
-                nameSite: '',
                 detailsSite: [],
                 urlSite: this.$domainOmeka + 'api/sites/',
                 urlItem: this.$domainOmeka + 'api/item_sets/',
@@ -39,7 +40,6 @@
                 urlImage: this.$domainOmeka + 'api/media/',
                 id_items: [],
                 containerImgs: [],
-                aboutSite: '',
                 dataContribuitors: [],
                 dataVideos: []
             }
@@ -47,10 +47,15 @@
         mounted() {
             this.getItemsSetId()
                 .then((response) => {
-                    this.getDetailsSite(response);
+                    this.getDetailsSite(response)
+                        .then((responseData => {
+                            this.detailsSite = responseData[0];
+                            this.buildMenu(responseData[1])
+                                .then((dataSite) => {
+                                    this.buildBodyPage(dataSite);
+                                });
+                        }))
                 });
-
-
         },
         methods: {
             getItemsSetId() {
@@ -60,10 +65,10 @@
                         .then((response) => {
                             //recorro los items
                             response.data.forEach((item) => {
-                                // consulto a la url guardada en la propiedad ['o:items']['@id'] del item para obtener los detalles
+
                                 this.$axios(item['o:items']['@id'])
                                     .then((response2) => {
-                                        // consulto a la url guardada en la propiedad [0]['o:media'][0]['@id'] de los detalles de un item
+
                                         this.$axios(response2.data[0]['o:media'][0]['@id'])
                                             .then((response3) => {
 
@@ -75,91 +80,27 @@
                                             });
 
                                     });
+
                             });
 
                         });
                 })
             },
-            getDetailsSite(array_items) {
-                this.$axios(this.$domainOmeka + 'api/sites')
-                    .then((response) => {
-                        let siteName = this.$route.params.namepage;
-                        let idSite = 0;
-                        response.data.forEach((page) => {
-
-                            if (page['o:slug'] === siteName) {
-                                idSite = page['o:id'];
-                                this.nameSite = page['o:title'];
-                            }
-                            array_items.forEach((data, index) => {
-                                let found = page['o:item_pool']['item_set_id'].indexOf(data.id_item_set.toString());
-                                if (found > -1 && page['o:id'] !== idSite) {
-                                    array_items[index]["title_site"] = page['o:title'];
-                                    array_items[index]["slug"] = page['o:slug'];
-                                    array_items[index]["description"] = page['o:summary'];
-                                    array_items[index]["exist_img"] = true;
-                                } else if (found <= -1 && array_items[index]["exist_img"] !== undefined
-                                    && array_items[index]["exist_img"] !== true) {
-                                    array_items[index]["exist_img"] = false;
-                                }
-                            });
-                        });
-                        this.detailsSite = array_items;
-                        this.buildMenu(idSite);
-                    });
-            },
-            buildMenu(idSite) {
-                this.$axios(this.urlSite + idSite)
-                    .then((response) => {
-                        if (response.data['o:page'] !== undefined) {
-                            let pages = response.data['o:page'];
-                            let items = response.data['o:item_pool'];
-                            if (response.data['o:summary'] !== null){
-                                this.aboutSite = response.data['o:summary'].replace(/\r/g, '').split('\n');
-                            }
-
-                            pages.forEach((page) => {
-                                this.pageSites.push(page['@id']);
-                            });
-
-                            items.item_set_id.forEach((id) => {
-                                this.id_items.push(id);
-                            })
-                        }
-
-                        if (this.pageSites.length > 0) {
-                            this.pageSites.forEach((page) => {
-                                this.$axios(page)
-                                    .then((response2) => {
-                                        let dataResponse = response2.data;
-
-                                        let pageData = {
-                                            id: dataResponse['o:ID'],
-                                            url: dataResponse['@id'],
-                                            slug: dataResponse['o:slug'],
-                                            title: dataResponse['o:title'],
-                                        };
-
-                                        this.optionMenu.push(pageData)
-                                    })
-                            })
-                        }
-
-                        this.buildBodyPage(this.id_items);
-                    });
-            },
             buildBodyPage(id_items) {
                 //recorremos los ids de los items
                 id_items.forEach((id_item) => {
-                    //consultamos a una url para obtener detalles de cada item que es recorrido
+
                     this.$axios(this.urlItem + id_item)
                         .then((response) => {
-                            let dataItem = response.data;//almacenamos la respuesta
+                            let dataItem = response.data;
+
                             //validamos si la propiedad 'o:resource_class' existe previamente
                             if (dataItem['o:resource_class'] !== null) {
                                 this.$axios(this.urlListItem + id_item)
                                     .then((response2) => {
+
                                         response2.data.forEach((dataResponse) => {
+
                                             this.$axios(dataResponse['o:media'][0]['@id'])
                                                 .then((response3) => {
                                                     // 27 = InteractiveResource, 38 = AudioVisualDocument
@@ -192,6 +133,7 @@
 
                                                     }
                                                 });
+
                                         })
                                     });
 
