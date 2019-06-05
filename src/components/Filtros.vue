@@ -21,8 +21,7 @@
                                 class="icon-down-dir"></i></a>
                     </li>
                     <li class="reset">
-                        <a class="close" data-rel="*" href="javascript:;"><i class="icon-cancel"></i>Show
-                            all</a>
+                        <a class="close" data-rel="*" href="javascript:;"><i class="icon-cancel"></i>Mostrar Todo</a>
                     </li>
                 </ul>
                 <div class="filters_wrapper">

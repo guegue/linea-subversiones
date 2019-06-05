@@ -41,7 +41,7 @@ export default {
 
         },
         buildMenu(idSite) {
-            return new Promise((resolved) => {
+            return new Promise((solved) => {
                 this.$axios(this.urlSite + idSite)
                     .then((response) => {
                         let pageSites = [];
@@ -60,21 +60,22 @@ export default {
                         }
 
                         if (pageSites.length > 0) {
-                            pageSites.forEach((page) => {
+                            for (const page of pageSites) {
                                 this.$axios(page)
                                     .then((response2) => {
                                         let dataResponse = response2.data;
 
                                         let pageData = {
+                                            id: dataResponse['o:id'],
+                                            url: dataResponse['@id'],
                                             slug: dataResponse['o:slug'],
                                             title: dataResponse['o:title'],
                                         };
-
                                         this.optionMenu.push(pageData)
                                     })
-                            })
+                            }
                         }
-                        resolved(items['item_set_id']);
+                        solved(items['item_set_id']);
                     });
             })
         }

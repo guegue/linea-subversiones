@@ -1,5 +1,6 @@
 <template>
-    <div class="blog layout-full-width mobile-tb-left button-stroke header-transparent header-fw minimalist-header sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
+    <div class="blog layout-full-width mobile-tb-left button-stroke header-transparent header-fw minimalist-header
+    sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
         <div id="Wrapper">
             <Header v-bind:optionMenu="optionMenu"
                     v-bind:name-site="nameSite"
@@ -36,10 +37,25 @@
                 .then((response) => {
                     let idSite = response[1];
                     this.buildMenu(idSite)
-                        // .then((responseSite)=>{
-                        //     // console.log(responseSite);
-                        // })
-                })
+                        .then(() => {
+                            let a = [];
+                            a.push({
+                                a:1,
+                                b:2
+                            });
+                            a.push({
+                                a:1,
+                                b:2
+                            });
+                            console.log(a);
+                            // console.log(this.$route.params);
+
+                            // for (let option in this.optionMenu) {
+                            //     console.log(this.optionMenu[option]);
+                            // }
+
+                        })
+                });
         }
     }
 </script>

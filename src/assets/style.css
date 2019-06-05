@@ -84,3 +84,11 @@
     width: 100%;
     background-image: url("http://c1430714.ferozo.com/wp-content/uploads/2018/12/view-of-machu-picchu-in-peru-a-peru-family-adventure.jpg")  !important;
 }
+
+.bm-burger-button{
+    display: none;
+}
+
+/*@media screen and (max-width: ) {*/
+/*    
+/*}*/

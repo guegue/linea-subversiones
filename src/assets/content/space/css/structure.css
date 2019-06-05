@@ -4778,7 +4778,7 @@ html, body {
 /*< 1240*/
 @media only screen and (max-width: 1239px) {
 	.bm-burger-button{
-		display: block;
+		display: block !important;
 		color: #000;
 		z-index: 10000;
 	}
