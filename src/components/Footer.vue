@@ -105,8 +105,8 @@
                 <div class="column one">
 
                     <div class="copyright">
-                        &copy; 2017 BeSpace - BeTheme. Muffin group - HTML by <a target="_blank" rel="nofollow"
-                                                                                 href="http://bit.ly/1M6lijQ">BeantownThemes</a>
+                        &copy; {{year}} BeSpace - BeTheme. Muffin group - HTML by <a rel="nofollow"
+                                                                                 href="javascript:;">BeantownThemes</a>
                     </div>
                     <!--Social info area-->
                     <ul class="social"></ul>
@@ -118,7 +118,15 @@
 
 <script>
     export default {
-        name: "Footer"
+        name: "Footer",
+        data() {
+            return {
+                year: null,
+            }
+        },
+        mounted() {
+            this.year = new Date().getFullYear();
+        }
     }
 </script>
 

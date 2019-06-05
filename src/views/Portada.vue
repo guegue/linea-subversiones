@@ -19,7 +19,7 @@
 
 <script>
     import Header from '../components/Header';
-    import Container from '../components/Container';
+    import Container from '../components/Container-Portada';
     import Footer from '../components/Footer';
 
     import GlobalFuncion from '../mixins/globalFunctions';
@@ -36,7 +36,6 @@
             return {
                 optionMenu: [],
                 detailsSite: [],
-                urlSite: this.$domainOmeka + 'api/sites/',
                 urlItem: this.$domainOmeka + 'api/item_sets/',
                 urlListItem: this.$domainOmeka + 'api/items?item_set_id=',
                 urlImage: this.$domainOmeka + 'api/media/',

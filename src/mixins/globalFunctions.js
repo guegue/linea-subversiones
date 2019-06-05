@@ -5,6 +5,7 @@ export default {
             slugSite: '',
             aboutSite: '',
             optionMenu: [],
+            urlSite: this.$domainOmeka + 'api/sites/',
         }
     },
     methods: {
@@ -44,12 +45,11 @@ export default {
                 this.$axios(this.urlSite + idSite)
                     .then((response) => {
                         let pageSites = [];
-                        let items = null;
+                        let items;
                         if (response.data['o:page'] !== undefined) {
                             let responseData = response.data;
                             let pages = responseData['o:page'];
                             items = responseData['o:item_pool'];
-
                             if (responseData['o:summary'] !== null) {
                                 this.aboutSite = responseData['o:summary'].replace(/\r/g, '').split('\n');
                             }
@@ -74,7 +74,7 @@ export default {
                                     })
                             })
                         }
-                        resolved(items.item_set_id);
+                        resolved(items['item_set_id']);
                     });
             })
         }

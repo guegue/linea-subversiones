@@ -73,3 +73,14 @@
 .img-background-document {
     height: 500px;
 }
+
+#menu-main-menu {
+    z-index: 100000 !important;
+    color: #000 !important;
+}
+
+.blog #Header_wrapper {
+    height: 480px;
+    width: 100%;
+    background-image: url("http://c1430714.ferozo.com/wp-content/uploads/2018/12/view-of-machu-picchu-in-peru-a-peru-family-adventure.jpg")  !important;
+}

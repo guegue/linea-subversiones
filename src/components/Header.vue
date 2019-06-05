@@ -1,6 +1,7 @@
 <template>
     <!-- Header Wrapper -->
     <div id="Header_wrapper">
+
         <!--Header-->
         <header id="Header">
             <!-- Header -  Logo and Menu area -->
@@ -18,25 +19,13 @@
                             <div class="menu_wrapper">
                                 <nav id="menu" class="menu-main-menu-container">
                                     <ul id="menu-main-menu" class="menu">
-                                        <li class="current_page_item" v-for="(option,index) in optionMenu"
+                                        <li v-for="(option,index) in optionMenu"
+                                            :class="{'current_page_item': (currentRoute === option.slug)}"
                                             :key="index">
                                             <a :href="'/'+slugSite+'/page/'+option.slug"><span>{{option.title}}</span></a>
                                         </li>
                                     </ul>
                                 </nav>
-                            </div>
-                            <!--Secondary menu area - only for certain pages -->
-                            <div class="secondary_menu_wrapper"></div>
-                            <!--Banner area - only for certain pages-->
-                            <div class="banner_wrapper"></div>
-                            <!--Header Searchform area-->
-                            <div class="search_wrapper">
-                                <form method="get" id="searchform" action="#">
-
-                                    <input type="text" class="field" name="s" id="s"
-                                           placeholder="Enter your search"/>
-                                    <input type="submit" class="submit flv_disp_none" value=""/>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -60,8 +49,14 @@
         components: {
             Slide,
         },
-        props: ['optionMenu', 'nameSite','slugSite'],
+        props: ['optionMenu', 'nameSite', 'slugSite'],
+        data() {
+            return {
+                currentRoute: null,
+            }
+        },
         mounted() {
+            this.currentRoute = this.$route.params.namepage;
             window.addEventListener('scroll', () => {
                 let menu = document.getElementById('Top_bar');
                 let windowWidth = window.innerWidth;
