@@ -37,23 +37,10 @@
                 .then((response) => {
                     let idSite = response[1];
                     this.buildMenu(idSite)
-                        .then((response) => {
-                            let a = [];
-                            a.push({
-                                a:1,
-                                b:2
-                            });
-                            a.push({
-                                a:1,
-                                b:2
-                            });
-                            //console.log(response);
-                            // console.log(this.$route.params);
-
-
-                            this.optionMenu.forEach((option) => {
-                                console.log(option);
-                            });
+                        .then(() => {
+                            // this.optionMenu.forEach((option) => {
+                            //     console.log(option.id);
+                            // });
 
                         })
                 });
