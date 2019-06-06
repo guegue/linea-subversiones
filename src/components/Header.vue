@@ -1,7 +1,6 @@
 <template>
     <!-- Header Wrapper -->
     <div id="Header_wrapper">
-
         <!--Header-->
         <header id="Header">
             <!-- Header -  Logo and Menu area -->

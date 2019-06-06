@@ -15,7 +15,7 @@ export default new VueRouter({
             component: Portada
         },
         {
-            path: '/:namesite/page/:namepage',
+            path: '/:namesite/:x/:namepage',
             name: 'page',
             component: Videos
         },

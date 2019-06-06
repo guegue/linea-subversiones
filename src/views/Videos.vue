@@ -32,18 +32,29 @@
                 data: null
             }
         },
-        mounted() {
+        mounted: function () {
             this.getDetailsSite([])
                 .then((response) => {
                     let idSite = response[1];
                     this.buildMenu(idSite)
                         .then(() => {
-                            // this.optionMenu.forEach((option) => {
-                            //     console.log(option.id);
-                            // });
+                            console.log(this.optionMenu);
 
+                            // this.optionMenu.forEach((option) => {
+                            //     if (option.slug === this.slugSite) {
+                            //         this.getContentFromPage(option.url).then((respueta) => {
+                            //             console.log(respueta['o:block'][0]);
+                            //         })
+                            //     }
+                            // })
                         })
                 });
+        },
+        methods: {
+            async getContentFromPage(urlPage) {
+                let answer = await this.$axios(urlPage);
+                return answer.data
+            }
         }
     }
 </script>

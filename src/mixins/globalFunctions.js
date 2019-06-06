@@ -40,39 +40,41 @@ export default {
         },
         async buildMenu(idSite) {
             const response = await this.$axios(this.urlSite + idSite);
-
             let pageSites = [];
             let items;
-            if (response.data['o:page'] !== undefined) {
+            if (response.data['o:navigation'] !== undefined) {
                 let responseData = response.data;
-                let pages = responseData['o:page'];
+                let pages = responseData['o:navigation'];
                 items = responseData['o:item_pool'];
                 if (responseData['o:summary'] !== null) {
                     this.aboutSite = responseData['o:summary'].replace(/\r/g, '').split('\n');
                 }
-
-                pages.forEach((page) => {
-                    pageSites.push(page['@id']);
-                });
-            }
-
-            if (pageSites.length > 0) {
-                for (const page of pageSites) {
-                    const response2 = await this.$axios(page);
-                    let dataResponse = response2.data;
-
-                    let pageData = {
-                        id: dataResponse['o:id'],
-                        url: dataResponse['@id'],
-                        slug: dataResponse['o:slug'],
-                        title: dataResponse['o:title'],
-                    };
-                    this.optionMenu.push(pageData)
+                for (const page of pages) {
+                    let url = '';
+                    if (page.type.toLowerCase() === 'page') {
+                        url = this.$domainOmeka + 'api/site_pages/' + page.data['id'];
+                        const details = await this.$axios(url);
+                        this.optionMenu.push({
+                            url: url,
+                            type: page.type,
+                            slug: details.data['o:slug'],
+                            title: details.data['o:title'],
+                        });
+                    } else if (page.type.toLowerCase() === 'url') {
+                        let position = page.data['url'].split('/');
+                        let url = this.$domainOmeka + 'api/item_sets/' + position[4];
+                        this.optionMenu.push({
+                            url: url,
+                            type: page.type,
+                            slug:  position[4],
+                            title:page.data['label']
+                        });
+                    }
                 }
 
-                return items['item_set_id'];
             }
-
-        }
+            // return a list of ids items
+            return items['item_set_id'];
+        },
     }
 }
