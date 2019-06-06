@@ -15,21 +15,21 @@
 
                 <div class="section">
                     <div class="section_wrapper clearfix">
-                        <!-- One full width row-->
+                        <!-- Contents -->
                         <div class="column one-second column_blog"
-                             v-for="i in 5" :key="i">
+                             v-for="(content,index) in contents" :key="index">
                             <div class="blog_wrapper isotope_wrapper">
                                 <div class="posts_group lm_wrapper photo col-3">
                                     <div class="post-item isotope-item clearfix post-2275 post format-standard has-post-thumbnail category-earth tag-grid">
                                         <div class="date_label">
-                                            May 9, 2014
+                                            {{content.date}}
                                         </div>
                                         <div class="image_frame post-photo-wrapper scale-with-grid">
                                             <div class="image_wrapper">
                                                 <a href="javascript:;">
                                                     <div class="mask"></div>
                                                     <img width="1200" height="480"
-                                                         src="https://www.peru.travel/perupaismasrico/latam/assets/images/facebook_share_1200x630.jpg"
+                                                         :src="content.url_img"
                                                          class="scale-with-grid wp-post-image" alt="home_space_blog3"/>
                                                 </a>
                                                 <div class="image_links double">
@@ -44,52 +44,29 @@
                                                 <div class="post-head">
                                                     <div class="post-meta clearfix">
                                                         <div class="author-date">
-                                                            <span class="vcard author post-author"><span class="label">Published by </span><i
-                                                                    class="icon-user"></i> <span class="fn"><a href="#">admin</a></span></span><span
-                                                                class="date"><span class="label">at </span><i
-                                                                class="icon-clock"></i> <span class="post-date updated">May 9, 2014</span></span>
-                                                        </div>
-                                                        <div class="category">
-                                                            <span class="cat-btn">Categories <i
-                                                                    class="icon-down-dir"></i></span>
-                                                            <div class="cat-wrapper">
-                                                                <ul class="post-categories">
-                                                                    <li>
-                                                                        <a href="javascript:;"
-                                                                           rel="category tag">Earth</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                            <span class="vcard author post-author" v-if="(content.author !== '')">
+                                                                <span class="label">Publicado por </span>
+                                                                <i class="icon-user"></i>
+                                                                <span class="fn">
+                                                                <a href="#">{{content.author}}</a>
+                                                            </span>
+                                                            </span>
+                                                            <span class="date" v-if="(content.date !== '')">
+                                                                <i class="icon-calendar"></i>
+                                                                <span class="post-date updated">{{content.date}}</span>
+                                                            </span>
                                                         </div>
                                                     </div>
-                                                    <div class="post-footer">
-                                                        <div class="button-love">
-                                                            <span class="love-text">Do you like it?</span><a href="#"
-                                                                                                             class="mfn-love "
-                                                                                                             data-id="2275"><span
-                                                                class="icons-wrapper"><i
-                                                                class="icon-heart-empty-fa"></i><i
-                                                                class="icon-heart-fa"></i></span><span
-                                                                class="label">82</span></a>
-                                                        </div>
-                                                        <div class="post-links">
-                                                            <i class="icon-doc-text"></i><a href="javascript:;"
-                                                                                            class="post-more">Read
-                                                            more</a>
-                                                        </div>
-                                                    </div>
+
                                                 </div>
-                                                <div class="post-title">
-                                                    <h2 class="entry-title"><a href="javascript:;">Vestibulum ante ipsum
-                                                        primis</a></h2>
+                                                <div class="post-title" v-if="(content.title !== '')">
+                                                    <h2 class="entry-title">
+                                                        <a href="javascript:;">{{content.title}}</a>
+                                                    </h2>
                                                 </div>
-                                                <div class="post-excerpt">
+                                                <div class="post-excerpt" v-if="(content.description !== '')">
                                                     <p class="big">
-                                                        Exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                        consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                                                        sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                                        deserunt mollit anim id est laborum.
+                                                      {{content.description}}
                                                     </p>
                                                 </div>
                                             </div>
@@ -111,13 +88,12 @@
 
     export default {
         name: "Container-Article",
+        props: ['contents'],
         components: {
             Filtro
         },
         data() {
-            return {
-                arreglo: [1, 2, 3, 4, 5]
-            }
+            return {}
         }
     }
 </script>

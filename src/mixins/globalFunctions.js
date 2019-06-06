@@ -10,10 +10,9 @@ export default {
     },
     methods: {
         async getDetailsSite(array_items) {
-
             const response = await this.$axios(this.$domainOmeka + 'api/sites');
 
-            let siteName = this.$route.params.namesite;
+            let siteName = this.$route.params.namesite.toLowerCase();
             let idSite = 0;
             response.data.forEach((page) => {
                 if (page['o:slug'] === siteName) {
@@ -40,7 +39,6 @@ export default {
         },
         async buildMenu(idSite) {
             const response = await this.$axios(this.urlSite + idSite);
-            let pageSites = [];
             let items;
             if (response.data['o:navigation'] !== undefined) {
                 let responseData = response.data;
@@ -59,15 +57,18 @@ export default {
                             type: page.type,
                             slug: details.data['o:slug'],
                             title: details.data['o:title'],
+
                         });
                     } else if (page.type.toLowerCase() === 'url') {
-                        let position = page.data['url'].split('/');
-                        let url = this.$domainOmeka + 'api/item_sets/' + position[4];
+                        let urlSplit = page.data['url'].split('/');
+                        urlSplit[3] = urlSplit[3].toLowerCase();
+                        let subOption = (urlSplit[3] === 'item-set') ? 'item_sets' : 'item';
+                        let url = this.$domainOmeka + 'api/'+subOption+'/' + urlSplit[4];
                         this.optionMenu.push({
                             url: url,
                             type: page.type,
-                            slug:  position[4],
-                            title:page.data['label']
+                            slug: urlSplit[4],
+                            title: page.data['label'],
                         });
                     }
                 }

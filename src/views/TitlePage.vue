@@ -19,7 +19,7 @@
 
 <script>
     import Header from '../components/Header';
-    import Container from '../components/Container-Portada';
+    import Container from '../components/Container-TitlePage';
     import Footer from '../components/Footer';
 
     import GlobalFuncion from '../mixins/globalFunctions';

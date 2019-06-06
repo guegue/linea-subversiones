@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Portada from './views/Portada'
-import Videos from './views/Videos'
+import TitlePage from './views/TitlePage'
+import ListView from './views/ListView'
 
 Vue.use(VueRouter);
 
@@ -12,12 +12,12 @@ export default new VueRouter({
         {
             path: '/:namesite',
             name: 'main',
-            component: Portada
+            component: TitlePage
         },
         {
             path: '/:namesite/:x/:namepage',
             name: 'page',
-            component: Videos
+            component: ListView
         },
     ]
 })
