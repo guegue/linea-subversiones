@@ -37,7 +37,7 @@
                 .then((response) => {
                     let idSite = response[1];
                     this.buildMenu(idSite)
-                        .then(() => {
+                        .then((response) => {
                             let a = [];
                             a.push({
                                 a:1,
@@ -47,12 +47,13 @@
                                 a:1,
                                 b:2
                             });
-                            console.log(a);
+                            //console.log(response);
                             // console.log(this.$route.params);
 
-                            // for (let option in this.optionMenu) {
-                            //     console.log(this.optionMenu[option]);
-                            // }
+
+                            this.optionMenu.forEach((option) => {
+                                console.log(option);
+                            });
 
                         })
                 });
