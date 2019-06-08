@@ -73,7 +73,6 @@
                         }
                     }
                 }
-                console.log(this.contents);
             },
             getAttribEmptyOrFilled(objectArray, attribName) {
                 return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : ''
