@@ -16,7 +16,6 @@
                 <div class="section">
                     <div class="section_wrapper clearfix">
 
-                        <pre>{{contents}}</pre>
                         <!-- Contents -->
                         <div class="column one-second column_blog"
                              v-for="(content,index) in contents" :key="index">
@@ -30,8 +29,12 @@
                                             <div class="image_wrapper">
                                                 <a href="javascript:;">
                                                     <div class="mask"></div>
-                                                    <img width="1200" height="480"
+                                                    <img v-if="content.url_img !== ''" width="1200" height="480"
                                                          :src="content.url_img"
+                                                         class="scale-with-grid wp-post-image img-cover"
+                                                         alt="home_space_blog3"/>
+                                                    <img v-else width="1200" height="480"
+                                                         src="@/assets/no-image-icon.png"
                                                          class="scale-with-grid wp-post-image img-cover"
                                                          alt="home_space_blog3"/>
                                                 </a>

@@ -83,7 +83,7 @@
                     let itemSetUrl = answer.data['o:items']['@id'];
                     let dataItemSet = await this.$axios(itemSetUrl);
                     for (const data of dataItemSet.data) {
-                        let media = 'images/home_space_blog3-1200x800.jpg';
+                        let media = '';
                         if (data['o:media'] !== null) {
                             for (const dataMedia of data['o:media']) {
                                 let imgData = await this.$axios(dataMedia['@id']);
@@ -113,7 +113,7 @@
                 return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
             },
             getMediaEmptyOrFilled(objectArray, attribName) {
-                return (objectArray[attribName] !== undefined) ? objectArray[attribName] : 'images/home_space_blog3-1200x800.jpg';
+                return (objectArray[attribName] !== undefined) ? objectArray[attribName] : '';
 
             }
         }
