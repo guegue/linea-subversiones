@@ -15,6 +15,8 @@
 
                 <div class="section">
                     <div class="section_wrapper clearfix">
+
+                        <pre>{{contents}}</pre>
                         <!-- Contents -->
                         <div class="column one-second column_blog"
                              v-for="(content,index) in contents" :key="index">
@@ -30,7 +32,8 @@
                                                     <div class="mask"></div>
                                                     <img width="1200" height="480"
                                                          :src="content.url_img"
-                                                         class="scale-with-grid wp-post-image" alt="home_space_blog3"/>
+                                                         class="scale-with-grid wp-post-image img-cover"
+                                                         alt="home_space_blog3"/>
                                                 </a>
                                                 <div class="image_links double">
                                                     <a href="images/home_space_blog3-1200x800.jpg" class="zoom"
@@ -44,7 +47,8 @@
                                                 <div class="post-head">
                                                     <div class="post-meta clearfix">
                                                         <div class="author-date">
-                                                            <span class="vcard author post-author" v-if="(content.author !== '')">
+                                                            <span class="vcard author post-author"
+                                                                  v-if="(content.author !== '')">
                                                                 <span class="label">Publicado por </span>
                                                                 <i class="icon-user"></i>
                                                                 <span class="fn">
@@ -65,8 +69,11 @@
                                                     </h2>
                                                 </div>
                                                 <div class="post-excerpt" v-if="(content.description !== '')">
-                                                    <p class="big">
-                                                      {{content.description}}
+                                                    <p class="big text-justify" v-if="content.description.length > 200">
+                                                        {{content.description.slice(0,200)}}
+                                                    </p>
+                                                    <p class="big text-justify" v-else>
+                                                        {{content.description}}
                                                     </p>
                                                 </div>
                                             </div>
@@ -99,5 +106,8 @@
 </script>
 
 <style scoped>
-
+    .img-cover {
+        height: 400px !important;
+        object-fit: cover !important;
+    }
 </style>

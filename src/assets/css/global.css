@@ -110,8 +110,7 @@ big, .big {
 dt {
 	font-weight: 700;
 }
-/* #Links
-================================================== */
+/* #Links*/
 
 a, a:visited, a:focus {
 	text-decoration: none;
@@ -123,8 +122,7 @@ a:hover {
 p a, p a:visited {
 	line-height: inherit;
 }
-/* #Images
-================================================== */
+/* #Images*/
 
 img.scale-with-grid, #Content img {
 	max-width: 100%;

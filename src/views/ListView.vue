@@ -31,6 +31,10 @@
             return {
                 namePage: null,
                 contents: [],
+                typeImgs: [
+                    'image/jpeg',
+                    'image/png',
+                ]
             }
         },
         mounted: function () {
@@ -54,31 +58,62 @@
         methods: {
             async getContentFromPage(urlPage) {
                 const answer = await this.$axios(urlPage);
-                for (const detail of answer.data['o:block']) {
-                    if (detail['o:layout'].toLowerCase() === 'itemwithmetadata') {
-                        for (const data of detail['o:attachment']) {
-                            const item = await this.$axios(data['o:item']['@id']);
-                            const media = await this.$axios(data['o:media']['@id']);
+                if (answer.data['o:block'] != null) {
+                    for (const detail of answer.data['o:block']) {
+                        let typeLayout = detail['o:layout'].toLowerCase();
+                        if (typeLayout === 'itemwithmetadata') {
+                            for (const data of detail['o:attachment']) {
+                                const item = await this.$axios(data['o:item']['@id']);
+                                const media = await this.$axios(data['o:media']['@id']);
 
-                            this.contents.push({
-                                title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
-                                description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
-                                url_img: this.getMediaEmptyOrFilled(media.data,'o:original_url'),
-                                alternative: this.getAttribEmptyOrFilled(item.data, 'dcterms:alternative'),
-                                date: this.getAttribEmptyOrFilled(item.data, 'dcterms:date'),
-                                provenance: this.getAttribEmptyOrFilled(item.data, 'dcterms:provenance'),
-                                source: this.getAttribEmptyOrFilled(item.data, 'dcterms:source'),
-                                author: this.getAttribEmptyOrFilled(item.data, 'bibo:citedBy'),
-                            });
+                                this.contents.push({
+                                    title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
+                                    description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
+                                    url_img: this.getMediaEmptyOrFilled(media.data, 'o:original_url'),
+                                    alternative: this.getAttribEmptyOrFilled(item.data, 'dcterms:alternative'),
+                                    date: this.getAttribEmptyOrFilled(item.data, 'dcterms:date'),
+                                    provenance: this.getAttribEmptyOrFilled(item.data, 'dcterms:provenance'),
+                                    source: this.getAttribEmptyOrFilled(item.data, 'dcterms:source'),
+                                    author: this.getAttribEmptyOrFilled(item.data, 'bibo:citedBy'),
+                                });
+                            }
                         }
+                    }
+                } else {
+                    let itemSetUrl = answer.data['o:items']['@id'];
+                    let dataItemSet = await this.$axios(itemSetUrl);
+                    for (const data of dataItemSet.data) {
+                        let media = 'images/home_space_blog3-1200x800.jpg';
+                        if (data['o:media'] !== null) {
+                            for (const dataMedia of data['o:media']) {
+                                let imgData = await this.$axios(dataMedia['@id']);
+                                let mediaType = imgData.data['o:media_type'];
+                                if (this.typeImgs.indexOf(mediaType) >= 0 && imgData.data['o:original_url'] !== null) {
+                                    media = this.getMediaEmptyOrFilled(imgData.data, 'o:original_url');
+                                    break;
+                                }
+                            }
+                        }
+                        this.contents.push({
+                            title: this.getAttribEmptyOrFilled(data, 'dcterms:title'),
+                            description: this.getAttribEmptyOrFilled(data, 'dcterms:description'),
+                            url_img: media,
+                            alternative: this.getAttribEmptyOrFilled(data, 'dcterms:alternative'),
+                            date: this.getAttribEmptyOrFilled(data, 'dcterms:date'),
+                            provenance: this.getAttribEmptyOrFilled(data, 'dcterms:provenance'),
+                            source: this.getAttribEmptyOrFilled(data, 'dcterms:source'),
+                            author: this.getAttribEmptyOrFilled(data, 'bibo:citedBy'),
+                        });
+
+
                     }
                 }
             },
             getAttribEmptyOrFilled(objectArray, attribName) {
-                return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : ''
+                return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
             },
-            getMediaEmptyOrFilled(objectArray, attribName){
-                return (objectArray[attribName] !== undefined) ? objectArray[attribName] : 'images/home_space_blog3-1200x800.jpg'
+            getMediaEmptyOrFilled(objectArray, attribName) {
+                return (objectArray[attribName] !== undefined) ? objectArray[attribName] : 'images/home_space_blog3-1200x800.jpg';
 
             }
         }
@@ -86,5 +121,7 @@
 </script>
 
 <style scoped>
+
+
 
 </style>

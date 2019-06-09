@@ -89,6 +89,11 @@
     display: none;
 }
 
+.text-justify{
+    text-align: justify;
+}
+
+
 /*@media screen and (max-width: ) {*/
-/*    
+/*
 /*}*/
