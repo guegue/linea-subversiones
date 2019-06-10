@@ -60,28 +60,26 @@ export default {
                     this.aboutSite = responseData['o:summary'].replace(/\r/g, '').split('\n');
                 }
                 for (const page of pages) {
-                    let url = '';
+                    let url = '', title = '', slug = '';
                     if (page.type.toLowerCase() === 'page') {
                         url = this.$domainOmeka + 'api/site_pages/' + page.data['id'];
                         const details = await this.$axios(url);
-                        this.optionMenu.push({
-                            url: url,
-                            type: page.type,
-                            slug: this.formatStringToUrl(details.data['o:title']),
-                            title: details.data['o:title'],
-                        });
+                        title = details.data['o:title'];
+                        slug = this.formatStringToUrl(details.data['o:title']);
                     } else if (page.type.toLowerCase() === 'url') {
                         let urlSplit = page.data['url'].split('/');
                         urlSplit[3] = urlSplit[3].toLowerCase();
                         let subOption = (urlSplit[3] === 'item-set') ? 'item_sets' : 'item';
                         url = this.$domainOmeka + 'api/' + subOption + '/' + urlSplit[4];
-                        this.optionMenu.push({
-                            url: url,
-                            type: page.type,
-                            slug: this.formatStringToUrl(page.data['label']),
-                            title: page.data['label'],
-                        });
+                        title = page.data['label'];
+                        slug = this.formatStringToUrl(page.data['label']);
                     }
+                    this.optionMenu.push({
+                        url: url,
+                        type: page.type,
+                        slug: slug,
+                        title: title,
+                    });
                 }
 
             }
