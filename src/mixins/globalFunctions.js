@@ -5,39 +5,43 @@ export default {
             slugSite: '',
             aboutSite: '',
             optionMenu: [],
-            urlSite: this.$domainOmeka + 'api/sites/',
         }
     },
     methods: {
         async getDetailsSite(array_items) {
+            //obtenemos todos los sitios de omeka
             const response = await this.$axios(this.$domainOmeka + 'api/sites');
             let siteName = '';
+            let idSite = 0;
+            //validamos que el parametro namesite no este indefinido
             if (this.$route.params.namesite !== undefined) {
                 siteName = this.$route.params.namesite.toLowerCase();
-                let idSite = 0;
-                response.data.forEach((page) => {
-                    if (page['o:slug'] === siteName) {
-                        idSite = page['o:id'];
-                        this.nameSite = page['o:title'];
-                        this.slugSite = page['o:slug'];
+                response.data.forEach((site) => {
+                    if (site['o:slug'] === siteName) {
+                        idSite = site['o:id'];
+                        this.nameSite = site['o:title'];
+                        this.slugSite = site['o:slug'];
                     }
-                    // console.log(array_items);
+                    //recorrelos el arreglo de id de items sets
                     array_items.forEach((data, index) => {
+                        //obtenemos el id de cada item set con la propiedad id_item_set
                         let idItemSet = data.id_item_set.toString();
-                        let listItemSet = page['o:item_pool']['item_set_id'];
+                        //obtenemos el arreglo de item set del sitio en iteracion
+                        let listItemSet = site['o:item_pool']['item_set_id'];
+                        //validamos que la propiedad item_set_id exista
                         if (listItemSet !== undefined) {
+                            //buscamos en el arreglo de item set del sitio en iteracion buscamos si existe un id que obtivumos previamente
                             let found = listItemSet.indexOf(idItemSet);
-                            if (found > -1 && page['o:id'] !== idSite) {
-                                array_items[index]["title_site"] = page['o:title'];
-                                array_items[index]["slug"] = page['o:slug'];
-                                array_items[index]["description"] = page['o:summary'];
+                            if (found > -1 && site['o:id'] !== idSite) {
+                                array_items[index]["title_site"] = site['o:title'];
+                                array_items[index]["slug"] = site['o:slug'];
+                                array_items[index]["description"] = site['o:summary'];
                                 array_items[index]["exist_img"] = true;
                             } else if (found <= -1 && array_items[index]["exist_img"] !== undefined
                                 && array_items[index]["exist_img"] !== true) {
                                 array_items[index]["exist_img"] = false;
                             }
                         }
-
                     });
                 });
 
@@ -45,7 +49,7 @@ export default {
             }
         },
         async buildMenu(idSite) {
-            const response = await this.$axios(this.urlSite + idSite);
+            const response = await this.$axios(this.$domainOmeka + 'api/sites/' + idSite);
             let items;
             //validamos que la propiedad de navegacion este definida
             if (response.data['o:navigation'] !== undefined) {
@@ -63,19 +67,18 @@ export default {
                         this.optionMenu.push({
                             url: url,
                             type: page.type,
-                            slug: details.data['o:slug'],
+                            slug: this.formatStringToUrl(details.data['o:title']),
                             title: details.data['o:title'],
-
                         });
                     } else if (page.type.toLowerCase() === 'url') {
                         let urlSplit = page.data['url'].split('/');
                         urlSplit[3] = urlSplit[3].toLowerCase();
                         let subOption = (urlSplit[3] === 'item-set') ? 'item_sets' : 'item';
-                        let url = this.$domainOmeka + 'api/' + subOption + '/' + urlSplit[4];
+                        url = this.$domainOmeka + 'api/' + subOption + '/' + urlSplit[4];
                         this.optionMenu.push({
                             url: url,
                             type: page.type,
-                            slug: urlSplit[4],
+                            slug: this.formatStringToUrl(page.data['label']),
                             title: page.data['label'],
                         });
                     }
@@ -85,5 +88,27 @@ export default {
             // return a list of ids items
             return items['item_set_id'];
         },
+        formatStringToUrl(str) {
+
+            let from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
+                to = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+                mapping = {};
+
+            for (let i = 0, j = from.length; i < j; i++) {
+                mapping[from.charAt(i)] = to.charAt(i);
+            }
+
+            let ret = [];
+            for (let k = 0, l = str.length; k < l; k++) {
+                let c = str.charAt(k);
+                if (mapping.hasOwnProperty(str.charAt(k))) {
+                    ret.push(mapping[c]);
+                } else {
+                    ret.push(c);
+                }
+            }
+            return ret.join('').replace(/[^-A-Za-z0-9]+/g, '-').toLowerCase();
+
+        }
     }
 }

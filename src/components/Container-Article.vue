@@ -10,14 +10,34 @@
                         </div>
                     </div>
                 </div>
+                <!--descripcion del sitio-->
+                <div v-if="summary.length > 0" class="section">
+                    <div class="section_wrapper clearfix">
+                        <!--Descripcion conjunto de items-->
+                        <div class="column one column_column ">
+                            <div class="column_attr align_center" style=" padding:0 7%;">
+                                <h4>{{summary}}</h4>
+                                <!--                                <div class="text-justify" v-for="(description,index) in descriptions" :key="index" v-html="description">-->
+                                <!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <Filtro></Filtro>
 
                 <div class="section">
                     <div class="section_wrapper clearfix">
-
+                        <!--Descripcion conjunto de items-->
+                        <div class="column one column_column ">
+                            <div style=" padding:0 7%;">
+                                <div class="text-justify" v-for="(description,index) in descriptions" :key="index"
+                                     v-html="description">
+                                </div>
+                            </div>
+                        </div>
                         <!-- Contents -->
-                        <div class="column one-third column_blog"
+                        <div class="column one-third column_blog height-col"
                              v-for="(content,index) in contents" :key="index">
                             <div class="blog_wrapper isotope_wrapper">
                                 <div class="posts_group lm_wrapper photo col-3">
@@ -73,10 +93,13 @@
                                                 </div>
                                                 <div class="post-excerpt" v-if="(content.description !== '')">
                                                     <p class="big text-justify" v-if="content.description.length > 200">
-                                                        {{content.description.slice(0,190)}}...<a href="" class="color-azul-oscuro">Leer m&aacute;s</a>
+                                                        {{content.description.slice(0,190)}}...<a href=""
+                                                                                                  class="color-azul-oscuro">Leer
+                                                        m&aacute;s</a>
                                                     </p>
                                                     <p class="big text-justify" v-else>
-                                                        {{content.description}}<a href="" class="color-azul-oscuro">Leer m&aacute;s</a>
+                                                        {{content.description}}<a href="" class="color-azul-oscuro">Leer
+                                                        m&aacute;s</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -98,7 +121,7 @@
 
     export default {
         name: "Container-Article",
-        props: ['contents'],
+        props: ['contents', 'descriptions', 'summary'],
         components: {
             Filtro
         },

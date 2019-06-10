@@ -31,6 +31,14 @@
                 </div>
             </div>
         </header>
+        <!--Title-->
+        <div v-if="showTitleDescription" id="Subheader">
+            <div class="container">
+                <div class="column one">
+                    <h1 class="title">{{title}}</h1>
+                </div>
+            </div>
+        </div>
         <!--menu lateral derecho-->
         <Slide right>
             <a v-for="option in optionMenu" :key="option.id" :href="'/'+nameSite+'/page/'+option.slug">
@@ -48,7 +56,7 @@
         components: {
             Slide,
         },
-        props: ['optionMenu', 'nameSite', 'slugSite'],
+        props: ['optionMenu', 'nameSite', 'slugSite','showTitleDescription','title'],
         data() {
             return {
                 currentRoute: null,

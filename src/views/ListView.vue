@@ -4,8 +4,12 @@
         <div id="Wrapper">
             <Header v-bind:optionMenu="optionMenu"
                     v-bind:name-site="nameSite"
-                    v-bind:slug-site="slugSite"></Header>
-            <Container v-bind:contents="contents"></Container>
+                    v-bind:slug-site="slugSite"
+                    v-bind:show-title-description="(title.length > 0)"
+                    v-bind:title="title"></Header>
+            <Container v-bind:contents="contents"
+                       v-bind:summary="summary"
+                       v-bind:descriptions="descriptions"></Container>
             <Footer></Footer>
         </div>
     </div>
@@ -33,7 +37,11 @@
                 typeImgs: [
                     'image/jpeg',
                     'image/png',
-                ]
+                ],
+                title: '',
+                summary: '',
+                descriptions: [],
+                urlPath: ''
             }
         },
         mounted: function () {
@@ -46,6 +54,7 @@
                             this.$nextTick(() => {
                                 this.optionMenu.forEach((option) => {
                                     if (option.slug === this.namePage) {
+                                        this.title = option.title;
                                         this.getContentFromPage(option.url);
                                     }
                                 })
@@ -57,12 +66,16 @@
         methods: {
             async getContentFromPage(urlPage) {
                 const answer = await this.$axios(urlPage);
+                //valido si la propiedad o:block existe para poder recorrer los items,conjuntos,etc relacionados
                 if (answer.data['o:block'] != null) {
                     for (const detail of answer.data['o:block']) {
                         let typeLayout = detail['o:layout'].toLowerCase();
                         if (typeLayout === 'itemwithmetadata') {
+                            //recorro los items relacionados a una pagina
                             for (const data of detail['o:attachment']) {
+                                //consultamos a url para obtener los detalles del item
                                 const item = await this.$axios(data['o:item']['@id']);
+                                //consultamos a url de media que trae un item
                                 const media = await this.$axios(data['o:media']['@id']);
 
                                 this.contents.push({
@@ -76,13 +89,22 @@
                                     author: this.getAttribEmptyOrFilled(item.data, 'bibo:citedBy'),
                                 });
                             }
+                        } else if (typeLayout === 'html') {
+                            //agregamos las descripciones de una pagina a un arreglo de descripciones que estan en html
+                            this.descriptions.push(detail['o:data']['html'])
                         }
                     }
                 } else {
+                    //sino informacion del conjunto de items que relacionados a una pagina
                     let itemSetUrl = answer.data['o:items']['@id'];
                     let dataItemSet = await this.$axios(itemSetUrl);
+                    //guardo la descripcion del conjunto de items
+                    this.summary = answer.data['dcterms:description'][0]['@value'];
+
+                    //recorro todos los registros que me trae la consulta de itemSetUrl
                     for (const data of dataItemSet.data) {
                         let media = '';
+                        //valido si la propiedad o:media existe
                         if (data['o:media'] !== null) {
                             for (const dataMedia of data['o:media']) {
                                 let imgData = await this.$axios(dataMedia['@id']);

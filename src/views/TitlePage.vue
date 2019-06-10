@@ -5,7 +5,8 @@
             <div id="Wrapper">
                 <Header v-bind:optionMenu="optionMenu"
                         v-bind:name-site="nameSite"
-                        v-bind:slug-site="slugSite"></Header>
+                        v-bind:slug-site="slugSite"
+                        v-bind:show-title-description="false"></Header>
                 <Container v-bind:slides="containerImgs"
                            v-bind:aboutSite="aboutSite"
                            v-bind:constribuitors="dataContribuitors"
