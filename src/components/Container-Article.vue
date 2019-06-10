@@ -17,7 +17,7 @@
                     <div class="section_wrapper clearfix">
 
                         <!-- Contents -->
-                        <div class="column one-second column_blog"
+                        <div class="column one-third column_blog"
                              v-for="(content,index) in contents" :key="index">
                             <div class="blog_wrapper isotope_wrapper">
                                 <div class="posts_group lm_wrapper photo col-3">
@@ -67,16 +67,16 @@
 
                                                 </div>
                                                 <div class="post-title" v-if="(content.title !== '')">
-                                                    <h2 class="entry-title">
+                                                    <h2 class="entry-title mb-8px">
                                                         <a href="javascript:;">{{content.title}}</a>
                                                     </h2>
                                                 </div>
                                                 <div class="post-excerpt" v-if="(content.description !== '')">
                                                     <p class="big text-justify" v-if="content.description.length > 200">
-                                                        {{content.description.slice(0,200)}}...<a href="">Leer m&aacute;s</a>
+                                                        {{content.description.slice(0,190)}}...<a href="" class="color-azul-oscuro">Leer m&aacute;s</a>
                                                     </p>
                                                     <p class="big text-justify" v-else>
-                                                        {{content.description}}
+                                                        {{content.description}}<a href="" class="color-azul-oscuro">Leer m&aacute;s</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -109,8 +109,5 @@
 </script>
 
 <style scoped>
-    .img-cover {
-        height: 400px !important;
-        object-fit: cover !important;
-    }
+
 </style>

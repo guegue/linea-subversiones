@@ -14,8 +14,6 @@ export default {
             let siteName = '';
             if (this.$route.params.namesite !== undefined) {
                 siteName = this.$route.params.namesite.toLowerCase();
-
-
                 let idSite = 0;
                 response.data.forEach((page) => {
                     if (page['o:slug'] === siteName) {
@@ -23,18 +21,23 @@ export default {
                         this.nameSite = page['o:title'];
                         this.slugSite = page['o:slug'];
                     }
-
+                    // console.log(array_items);
                     array_items.forEach((data, index) => {
-                        let found = page['o:item_pool']['item_set_id'].indexOf(data.id_item_set.toString());
-                        if (found > -1 && page['o:id'] !== idSite) {
-                            array_items[index]["title_site"] = page['o:title'];
-                            array_items[index]["slug"] = page['o:slug'];
-                            array_items[index]["description"] = page['o:summary'];
-                            array_items[index]["exist_img"] = true;
-                        } else if (found <= -1 && array_items[index]["exist_img"] !== undefined
-                            && array_items[index]["exist_img"] !== true) {
-                            array_items[index]["exist_img"] = false;
+                        let idItemSet = data.id_item_set.toString();
+                        let listItemSet = page['o:item_pool']['item_set_id'];
+                        if (listItemSet !== undefined) {
+                            let found = listItemSet.indexOf(idItemSet);
+                            if (found > -1 && page['o:id'] !== idSite) {
+                                array_items[index]["title_site"] = page['o:title'];
+                                array_items[index]["slug"] = page['o:slug'];
+                                array_items[index]["description"] = page['o:summary'];
+                                array_items[index]["exist_img"] = true;
+                            } else if (found <= -1 && array_items[index]["exist_img"] !== undefined
+                                && array_items[index]["exist_img"] !== true) {
+                                array_items[index]["exist_img"] = false;
+                            }
                         }
+
                     });
                 });
 
@@ -44,6 +47,7 @@ export default {
         async buildMenu(idSite) {
             const response = await this.$axios(this.urlSite + idSite);
             let items;
+            //validamos que la propiedad de navegacion este definida
             if (response.data['o:navigation'] !== undefined) {
                 let responseData = response.data;
                 let pages = responseData['o:navigation'];

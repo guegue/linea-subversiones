@@ -6,8 +6,8 @@ import Axios from 'axios';
 //css
 import '@/assets/css/global.min.css';
 import '@/assets/content/space/css/structure.css';
-import '@/assets/content/space/css/space.min.css';
-import '@/assets/plugins/rs-plugin/css/settings.min.css';
+import '@/assets/content/space/css/space.css';
+import '@/assets/plugins/rs-plugin/css/settings.css';
 import 'lightgallery.js/dist/css/lightgallery.min.css';
 import 'lightgallery.js/dist/css/lg-fb-comment-box.min.css';
 import 'lightgallery.js/dist/css/lg-transitions.min.css';
