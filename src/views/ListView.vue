@@ -7,21 +7,20 @@
                     v-bind:slug-site="slugSite"></Header>
             <Container v-bind:contents="contents"></Container>
             <Footer></Footer>
-
         </div>
     </div>
 </template>
 
 <script>
 
-    import GlobalFuncion from '../mixins/globalFunctions';
+    import GlobalFunction from '../mixins/globalFunctions';
     import Header from '../components/Header';
     import Container from '../components/Container-Article';
     import Footer from '../components/Footer';
 
     export default {
         name: "Videos",
-        mixins: [GlobalFuncion],
+        mixins: [GlobalFunction],
         components: {
             Header,
             Container,

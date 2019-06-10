@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import TitlePage from './views/TitlePage'
 import ListView from './views/ListView'
+import DetailView from './views/DetailView'
 
 Vue.use(VueRouter);
 
@@ -19,5 +20,10 @@ export default new VueRouter({
             name: 'page',
             component: ListView
         },
+        {
+            path: '/',
+            name: 'detalles',
+            component: DetailView
+        }
     ]
 })

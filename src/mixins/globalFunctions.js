@@ -11,31 +11,35 @@ export default {
     methods: {
         async getDetailsSite(array_items) {
             const response = await this.$axios(this.$domainOmeka + 'api/sites');
+            let siteName = '';
+            if (this.$route.params.namesite !== undefined) {
+                siteName = this.$route.params.namesite.toLowerCase();
 
-            let siteName = this.$route.params.namesite.toLowerCase();
-            let idSite = 0;
-            response.data.forEach((page) => {
-                if (page['o:slug'] === siteName) {
-                    idSite = page['o:id'];
-                    this.nameSite = page['o:title'];
-                    this.slugSite = page['o:slug'];
-                }
 
-                array_items.forEach((data, index) => {
-                    let found = page['o:item_pool']['item_set_id'].indexOf(data.id_item_set.toString());
-                    if (found > -1 && page['o:id'] !== idSite) {
-                        array_items[index]["title_site"] = page['o:title'];
-                        array_items[index]["slug"] = page['o:slug'];
-                        array_items[index]["description"] = page['o:summary'];
-                        array_items[index]["exist_img"] = true;
-                    } else if (found <= -1 && array_items[index]["exist_img"] !== undefined
-                        && array_items[index]["exist_img"] !== true) {
-                        array_items[index]["exist_img"] = false;
+                let idSite = 0;
+                response.data.forEach((page) => {
+                    if (page['o:slug'] === siteName) {
+                        idSite = page['o:id'];
+                        this.nameSite = page['o:title'];
+                        this.slugSite = page['o:slug'];
                     }
-                });
-            });
 
-            return [array_items, idSite];
+                    array_items.forEach((data, index) => {
+                        let found = page['o:item_pool']['item_set_id'].indexOf(data.id_item_set.toString());
+                        if (found > -1 && page['o:id'] !== idSite) {
+                            array_items[index]["title_site"] = page['o:title'];
+                            array_items[index]["slug"] = page['o:slug'];
+                            array_items[index]["description"] = page['o:summary'];
+                            array_items[index]["exist_img"] = true;
+                        } else if (found <= -1 && array_items[index]["exist_img"] !== undefined
+                            && array_items[index]["exist_img"] !== true) {
+                            array_items[index]["exist_img"] = false;
+                        }
+                    });
+                });
+
+                return [array_items, idSite];
+            }
         },
         async buildMenu(idSite) {
             const response = await this.$axios(this.urlSite + idSite);
@@ -63,7 +67,7 @@ export default {
                         let urlSplit = page.data['url'].split('/');
                         urlSplit[3] = urlSplit[3].toLowerCase();
                         let subOption = (urlSplit[3] === 'item-set') ? 'item_sets' : 'item';
-                        let url = this.$domainOmeka + 'api/'+subOption+'/' + urlSplit[4];
+                        let url = this.$domainOmeka + 'api/' + subOption + '/' + urlSplit[4];
                         this.optionMenu.push({
                             url: url,
                             type: page.type,

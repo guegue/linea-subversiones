@@ -10,7 +10,7 @@
                         <div class="top_bar_left clearfix">
                             <!--  Logo-->
                             <div class="logo">
-                                <a id="logo" href="" title="BeSpace - BeTheme">
+                                <a id="logo" :href="'/'+slugSite" title="BeSpace - BeTheme">
                                     <h3>{{nameSite}}</h3>
                                 </a>
                             </div>

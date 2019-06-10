@@ -22,11 +22,11 @@
     import Container from '../components/Container-TitlePage';
     import Footer from '../components/Footer';
 
-    import GlobalFuncion from '../mixins/globalFunctions';
+    import GlobalFunction from '../mixins/globalFunctions';
 
     export default {
         name: "Portada",
-        mixins: [GlobalFuncion],
+        mixins: [GlobalFunction],
         components: {
             Header,
             Container,

@@ -73,7 +73,7 @@
                                                 </div>
                                                 <div class="post-excerpt" v-if="(content.description !== '')">
                                                     <p class="big text-justify" v-if="content.description.length > 200">
-                                                        {{content.description.slice(0,200)}}
+                                                        {{content.description.slice(0,200)}}...<a href="">Leer m&aacute;s</a>
                                                     </p>
                                                     <p class="big text-justify" v-else>
                                                         {{content.description}}
