@@ -132,6 +132,10 @@ a.color-azul-oscuro:hover {
     height: 420px
 }
 
+.d-none {
+    display: none;
+}
+
 /*@media screen and (max-width: ) {*/
 /*
 /*}*/

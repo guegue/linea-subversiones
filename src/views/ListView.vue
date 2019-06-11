@@ -56,7 +56,7 @@
                                 this.optionMenu.forEach((option) => {
                                     if (option.slug === this.namePage) {
                                         this.title = option.title;
-                                        this.urlPath = '/' + this.$route.params.namesite + '/page/' + this.namePage + '/detail/';
+                                        this.urlPath = '/' + this.$route.params.namesite + '/page/' + this.$route.params.namepage + '/detail/';
                                         this.getContentFromPage(option.url);
                                     }
                                 })

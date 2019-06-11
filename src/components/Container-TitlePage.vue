@@ -345,9 +345,7 @@
         transform: scale(1.2);
     }
 
-    .d-none {
-        display: none;
-    }
+
 
     .list-unstyled li {
         list-style-type: none;

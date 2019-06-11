@@ -86,20 +86,53 @@ export default {
             return items['item_set_id'];
         },
         async getArrayMedia(data) {
-            let array_Media = [];
+            let array_img = [], array_video = [], array_audio = [];
             for (const datum of data) {
                 let mediaData = await this.$axios(datum['@id']);
-                array_Media.push(mediaData.data['o:original_url']);
+                let media_type = this.getTypeMedia(mediaData.data);
+                switch (media_type) {
+                    case 'image':
+                        array_img.push({
+                            title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
+                            type: media_type,
+                            url: this.getMediaEmptyOrFilled(mediaData.data, 'o:original_url'),
+                        });
+                        break;
+                    case 'video' :
+                        array_video.push({
+                            title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
+                            type: media_type,
+                            url: this.getMediaEmptyOrFilled(mediaData.data, 'o:original_url'),
+                        });
+                        break;
+                    case 'youtube':
+                    case 'vimeo':
+                        array_video.push({
+                            title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
+                            type: media_type,
+                            url: this.getMediaEmptyOrFilled(mediaData.data, 'o:source'),
+                        });
+                        break;
+                    case 'audio':
+                        array_audio.push({
+                            title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
+                            type: media_type,
+                            url: this.getMediaEmptyOrFilled(mediaData.data, 'o:original_url'),
+                        });
+                        break;
+                }
             }
-            // return a list of url media
-            return array_Media;
+            // return a array of arrays images,videos,audios
+            return [array_img, array_video, array_audio];
         },
         getAttribEmptyOrFilled(objectArray, attribName) {
             return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
         },
         getMediaEmptyOrFilled(objectArray, attribName) {
             return (objectArray[attribName] !== undefined) ? objectArray[attribName] : '';
-
+        },
+        getTypeMedia(objectArray) {
+            return (objectArray['o:media_type'] !== null) ? objectArray['o:media_type'].split('/')[0] : objectArray['o:ingester'];
         },
         formatStringToUrl(str) {
             let from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",

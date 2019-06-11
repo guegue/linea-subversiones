@@ -10,21 +10,9 @@
 
                             <!-- One full width row-->
                             <div class="column one post-nav">
-                                <a class="fixed-nav fixed-nav-prev " href="item-3.html"><span class="arrow"><i
-                                        class="icon-left-open-big"></i></span>
-                                    <div class="photo"><img width="80" height="80"
-                                                            src="images/home_space_blog1-80x80.jpg"
-                                                            class="attachment-blog-navi wp-post-image"
-                                                            alt="home_space_blog1"/>
-                                    </div>
-                                    <div class="desc">
-                                        <h6>Vestibulum commodo volutpat laoreet</h6><span class="date"><i
-                                            class="icon-clock"></i>May 8, 2014</span>
-                                    </div>
-                                </a>
                                 <ul class="next-prev-nav">
                                     <li class="prev">
-                                        <a class="button button_js" href="item-3.html"><span class="button_icon"><i
+                                        <a class="button button_js" :href="backPage"><span class="button_icon"><i
                                                 class="icon-left-open"></i></span></a>
                                     </li>
                                 </ul>
@@ -41,13 +29,13 @@
                                                 Publicado por
                                                 <i class="icon-user"></i>
                                                 <span class="fn">
-                                                    <a href="javascript:;">detailsItem.author</a>
+                                                    <a href="javascript:;">{{detailsItem.author}}</a>
                                                 </span>
                                             </span>
                                             <span class="date" v-if="detailsItem.date.length>0">
                                                 <i class="icon-clock"></i>
                                                 <time class="entry-date" datetime="2014-05-09T09:28:12+00:00"
-                                                      itemprop="datePublished" pubdate>
+                                                      itemprop="datePublished">
 													{{detailsItem.date}}
 												</time>
                                             </span>
@@ -83,21 +71,46 @@
                             </div>
                             <!-- Post Featured Element (image / video / gallery)-->
                             <!-- One full width row-->
-                            <div class="column one single-photo-wrapper">
-                                <div class="image_frame scale-with-grid ">
-                                    <div class="image_wrapper">
-                                        <a href="images/home_space_blog3-1200x800.jpg" rel="prettyphoto">
-                                            <div class="mask"></div>
-                                            <img width="1200" height="480" src="images/home_space_blog3-1200x480.jpg"
-                                                 class="scale-with-grid wp-post-image" alt="home_space_blog3"/>
-                                        </a>
-                                        <div class="image_links">
-                                            <a href="images/home_space_blog3-1200x800.jpg" class="zoom"
-                                               rel="prettyphoto"><i class="icon-search"></i></a>
+                            <div class="column one">
+                                <pre>{{detailsItem.videos}}</pre>
+                            </div>
+
+                            <div class="section">
+                                <div class="section_wrapper clearfix">
+                                    <div class="column one">
+                                        <!--Imagenes-->
+                                        <div class="column one-fourth single-photo-wrapper" id="aniimated-thumbnials"
+                                             v-for="(image,index) in detailsItem.images" :key="index">
+                                            <a :href="image.url" data-sub-html=".caption">
+                                                <img :src="image.url" :alt="image.title"/>
+                                                <div class="caption">
+                                                    <h5>{{image.title}}</h5>
+                                                </div>
+                                            </a>
                                         </div>
+                                    </div>
+
+                                    <div class="column one">
+                                        <!-- Hidden video div -->
+                                        <div class="d-none" v-for="(video,index) in detailsItem.images" :key="index" :id="'video'+index">
+                                            <video class="lg-video-object lg-html5" controls preload="none">
+                                                <source :src="video.url" type="video/mp4">
+                                                Your browser does not support HTML5 video.
+                                            </video>
+                                        </div>
+                                        <!--Videos-->
+                                        <ul class="column one-fourth" id="video-gallery"
+                                             v-for="(image,index) in detailsItem.images" :key="index">
+                                            <li data-poster="video-poster1.jpg" data-sub-html="video caption1" data-html="#video1" >
+                                                <img src="img/thumb1.jpg" />
+                                            </li>
+                                        </ul>
+
+
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <!-- Post Content-->
@@ -198,7 +211,14 @@
 <script>
     export default {
         name: "Container-Detail",
-        props: ['detailsItem']
+        props: ['detailsItem', 'backPage'],
+        updated() {
+            this.$nextTick(() => {
+                window.lightGallery(document.getElementById('aniimated-thumbnials'), {
+                    thumbnail: true,
+                })
+            });
+        }
     }
 </script>
 
