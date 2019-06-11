@@ -81,7 +81,7 @@
                                 const media = await this.$axios(data['o:media']['@id']);
 
                                 this.contents.push({
-                                    id:'',
+                                    id: '',
                                     title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
                                     description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
                                     url_img: this.getMediaEmptyOrFilled(media.data, 'o:original_url'),

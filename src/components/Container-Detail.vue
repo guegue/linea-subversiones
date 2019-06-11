@@ -85,14 +85,14 @@
                                 <div class="section_wrapper">
                                     <div class="the_content_wrapper">
                                         <h5>Praesent consequat. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum massa dui sed nulla ut nulla a mi. Fusce wisi nibh malesuada aliquet, lacus vitae mauris. Nam sit amet justo. Vestibulum ante ipsum eleifend adipiscing elit. Mauris viverra nunc.</h5>
-                                        <p>
-                                        <div class="big">
+
+                                        <p class="big">
                                             Maecenas tincidunt. Aliquam semper. Sed eget nisl. Aenean gravida vitae, consequat lorem fermentum rutrum.
                                         Nunc id risus. Donec ullamcorper convallis. Donec urna quis sollicitudin mi eget ipsum adipiscing non, iaculis scelerisque.
                                         Duis sodales at, elit. Sed dignissim justo. Suspendisse fermentum erat. Duis consequat tortor. Mauris ut tellus a dolor.
                                         Suspendisse nec tellus.
-                                        </div>
                                         </p>
+
                                         <div class="blockquote">
                                             <blockquote>
                                                 Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Vitae adipiscing turpis. Aenean ligula nibh, molestie id viverra a, dapibus at dolor. In iaculis viverra neque, ac eleifend ante lobortis id. In viverra ipsum &#8230;
