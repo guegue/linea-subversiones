@@ -21,7 +21,7 @@ export default new VueRouter({
             component: ListView
         },
         {
-            path: '/',
+            path: '/:namesite/:x/:namepage/detail/:id',
             name: 'detalles',
             component: DetailView
         }

@@ -9,6 +9,7 @@
                     v-bind:title="title"></Header>
             <Container v-bind:contents="contents"
                        v-bind:summary="summary"
+                       v-bind:url-path="urlPath"
                        v-bind:descriptions="descriptions"></Container>
             <Footer></Footer>
         </div>
@@ -55,6 +56,7 @@
                                 this.optionMenu.forEach((option) => {
                                     if (option.slug === this.namePage) {
                                         this.title = option.title;
+                                        this.urlPath = '/' + this.$route.params.namesite + '/page/' + this.namePage + '/detail/';
                                         this.getContentFromPage(option.url);
                                     }
                                 })
@@ -79,6 +81,7 @@
                                 const media = await this.$axios(data['o:media']['@id']);
 
                                 this.contents.push({
+                                    id:'',
                                     title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
                                     description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
                                     url_img: this.getMediaEmptyOrFilled(media.data, 'o:original_url'),
@@ -116,6 +119,7 @@
                             }
                         }
                         this.contents.push({
+                            id: data['o:id'],
                             title: this.getAttribEmptyOrFilled(data, 'dcterms:title'),
                             description: this.getAttribEmptyOrFilled(data, 'dcterms:description'),
                             url_img: media,

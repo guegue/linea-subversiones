@@ -88,17 +88,18 @@
                                                 </div>
                                                 <div class="post-title" v-if="(content.title !== '')">
                                                     <h2 class="entry-title mb-8px">
-                                                        <a href="javascript:;">{{content.title}}</a>
+                                                        <a :href="urlPath +content.id">{{content.title}}</a>
                                                     </h2>
                                                 </div>
                                                 <div class="post-excerpt" v-if="(content.description !== '')">
                                                     <p class="big text-justify" v-if="content.description.length > 200">
-                                                        {{content.description.slice(0,190)}}...<a href=""
-                                                                                                  class="color-azul-oscuro">Leer
-                                                        m&aacute;s</a>
+                                                        {{content.description.slice(0,190)}}...
+                                                        <a :href="urlPath +content.id" class="color-azul-oscuro">Leer
+                                                            m&aacute;s</a>
                                                     </p>
                                                     <p class="big text-justify" v-else>
-                                                        {{content.description}}<a href="" class="color-azul-oscuro">Leer
+                                                        {{content.description}}<a :href="urlPath +content.id"
+                                                                                  class="color-azul-oscuro">Leer
                                                         m&aacute;s</a>
                                                     </p>
                                                 </div>
@@ -121,7 +122,7 @@
 
     export default {
         name: "Container-Article",
-        props: ['contents', 'descriptions', 'summary'],
+        props: ['contents', 'descriptions', 'summary', 'urlPath'],
         components: {
             Filtro
         },
