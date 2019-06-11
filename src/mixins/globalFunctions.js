@@ -61,17 +61,15 @@ export default {
                 }
                 for (const option of navigation) {
                     let url = '', title = '', slug = '';
+                    let type = option.type.toLowerCase();
                     //validamos si cada opcion de navegacion es tipo pagina o url para crear obtener los datos de la opcion
-                    if (option.type.toLowerCase() === 'page') {
+                    if (type === 'page') {
                         url = this.$domainOmeka + 'api/site_pages/' + option.data['id'];
                         const details = await this.$axios(url);
                         title = details.data['o:title'];
                         slug = this.formatStringToUrl(details.data['o:title']);
-                    } else if (option.type.toLowerCase() === 'url') {
-                        let urlSplit = option.data['url'].split('/');
-                        urlSplit[3] = urlSplit[3].toLowerCase();
-                        let subOption = (urlSplit[3] === 'item-set') ? 'item_sets' : 'item';
-                        url = this.$domainOmeka + 'api/' + subOption + '/' + urlSplit[4];
+                    } else if (type === 'url') {
+                        url = this.$domainOmeka + 'api/item_sets/' + option.data['url'];
                         title = option.data['label'];
                         slug = this.formatStringToUrl(option.data['label']);
                     }
