@@ -9,20 +9,20 @@ export default {
     },
     methods: {
         async getDetailsSite(array_items) {
-            //obtenemos todos los sitios de omeka
-            const response = await this.$axios(this.$domainOmeka + 'api/sites');
-            let siteName = '';
-            let idSite = 0;
-            //validamos que el parametro namesite no este indefinido
+
+            //validamos que el parametro namesite este definido
             if (this.$route.params.namesite !== undefined) {
-                siteName = this.$route.params.namesite.toLowerCase();
+                //obtenemos todos los sitios de omeka
+                const response = await this.$axios(this.$domainOmeka + 'api/sites');
+                let siteName = this.$route.params.namesite.toLowerCase();
+                let idSite = 0;
                 response.data.forEach((site) => {
                     if (site['o:slug'] === siteName) {
                         idSite = site['o:id'];
                         this.nameSite = site['o:title'];
                         this.slugSite = site['o:slug'];
                     }
-                    //recorrelos el arreglo de id de items sets
+                    //recorrelo el arreglo de id de items sets
                     array_items.forEach((data, index) => {
                         //obtenemos el id de cada item set con la propiedad id_item_set
                         let idItemSet = data.id_item_set.toString();
@@ -44,11 +44,11 @@ export default {
                         }
                     });
                 });
-
                 return [array_items, idSite];
             }
         },
         async buildMenu(idSite) {
+
             const response = await this.$axios(this.$domainOmeka + 'api/sites/' + idSite);
             let items;
             //validamos que la propiedad de navegacion este definida
