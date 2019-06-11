@@ -129,17 +129,8 @@
                             source: this.getAttribEmptyOrFilled(data, 'dcterms:source'),
                             author: this.getAttribEmptyOrFilled(data, 'bibo:citedBy'),
                         });
-
-
                     }
                 }
-            },
-            getAttribEmptyOrFilled(objectArray, attribName) {
-                return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
-            },
-            getMediaEmptyOrFilled(objectArray, attribName) {
-                return (objectArray[attribName] !== undefined) ? objectArray[attribName] : '';
-
             }
         }
     }

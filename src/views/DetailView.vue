@@ -5,9 +5,8 @@
             <Header v-bind:optionMenu="optionMenu"
                     v-bind:name-site="nameSite"
                     v-bind:slug-site="slugSite"></Header>
-            <Container></Container>
+            <Container v-bind:details-item="detailsItem"></Container>
             <Footer></Footer>
-
         </div>
     </div>
 
@@ -26,20 +25,48 @@
             Header,
             Container,
             Footer
-        },mounted() {
+        },
+        data() {
+            return {
+                detailsItem: {
+                    title: '',
+                    author: '',
+                    description: '',
+                    abstract: '',
+                    date: '',
+                    source: '',
+                    provenance: '',
+                    media:[],
+                }
+            }
+        },
+        mounted() {
             this.getDetailsSite([])
                 .then((response) => {
                     let idSite = response[1];
                     this.buildMenu(idSite)
                         .then(() => {
+                            let idItem = this.$route.params.id;
+                            this.$axios(this.$domainOmeka + 'api/items/' + idItem)
+                                .then((detailItem) => {
+                                    let data = detailItem.data;
 
+                                   this.getArrayMedia(data['o:media'])
+                                       .then((media)=>{
+                                           this.detailsItem.title = this.getAttribEmptyOrFilled(data, 'dcterms:title');
+                                           this.detailsItem.description = this.getAttribEmptyOrFilled(data, 'dcterms:description');
+                                           this.detailsItem.abstract = this.getAttribEmptyOrFilled(data, 'dcterms:abstract');
+                                           this.detailsItem.date = this.getAttribEmptyOrFilled(data, 'dcterms:date');
+                                           this.detailsItem.source = this.getAttribEmptyOrFilled(data, 'dcterms:source');
+                                           this.detailsItem.provenance = this.getAttribEmptyOrFilled(data, 'dcterms:provenance');
+                                           this.detailsItem.media = media;
+                                           this.detailsItem.author = this.getAttribEmptyOrFilled(data, 'bibo:citedBy');
+                                       });
+
+                                })
 
                         })
                 });
         }
     }
 </script>
-
-<style scoped>
-
-</style>

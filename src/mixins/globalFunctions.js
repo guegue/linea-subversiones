@@ -54,29 +54,30 @@ export default {
             //validamos que la propiedad de navegacion este definida
             if (response.data['o:navigation'] !== undefined) {
                 let responseData = response.data;
-                let pages = responseData['o:navigation'];
+                let navigation = responseData['o:navigation'];
                 items = responseData['o:item_pool'];
                 if (responseData['o:summary'] !== null) {
                     this.aboutSite = responseData['o:summary'].replace(/\r/g, '').split('\n');
                 }
-                for (const page of pages) {
+                for (const option of navigation) {
                     let url = '', title = '', slug = '';
-                    if (page.type.toLowerCase() === 'page') {
-                        url = this.$domainOmeka + 'api/site_pages/' + page.data['id'];
+                    //validamos si cada opcion de navegacion es tipo pagina o url para crear obtener los datos de la opcion
+                    if (option.type.toLowerCase() === 'page') {
+                        url = this.$domainOmeka + 'api/site_pages/' + option.data['id'];
                         const details = await this.$axios(url);
                         title = details.data['o:title'];
                         slug = this.formatStringToUrl(details.data['o:title']);
-                    } else if (page.type.toLowerCase() === 'url') {
-                        let urlSplit = page.data['url'].split('/');
+                    } else if (option.type.toLowerCase() === 'url') {
+                        let urlSplit = option.data['url'].split('/');
                         urlSplit[3] = urlSplit[3].toLowerCase();
                         let subOption = (urlSplit[3] === 'item-set') ? 'item_sets' : 'item';
                         url = this.$domainOmeka + 'api/' + subOption + '/' + urlSplit[4];
-                        title = page.data['label'];
-                        slug = this.formatStringToUrl(page.data['label']);
+                        title = option.data['label'];
+                        slug = this.formatStringToUrl(option.data['label']);
                     }
                     this.optionMenu.push({
                         url: url,
-                        type: page.type,
+                        type: option.type,
                         slug: slug,
                         title: title,
                     });
@@ -86,8 +87,23 @@ export default {
             // return a list of ids items
             return items['item_set_id'];
         },
-        formatStringToUrl(str) {
+        async getArrayMedia(data) {
+            let array_Media = [];
+            for (const datum of data) {
+                let mediaData = await this.$axios(datum['@id']);
+                array_Media.push(mediaData.data['o:original_url']);
+            }
+            // return a list of url media
+            return array_Media;
+        },
+        getAttribEmptyOrFilled(objectArray, attribName) {
+            return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
+        },
+        getMediaEmptyOrFilled(objectArray, attribName) {
+            return (objectArray[attribName] !== undefined) ? objectArray[attribName] : '';
 
+        },
+        formatStringToUrl(str) {
             let from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
                 to = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
                 mapping = {};
