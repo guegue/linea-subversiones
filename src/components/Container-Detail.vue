@@ -106,7 +106,6 @@
                             <div class="section the_content has_content">
                                 <div class="section_wrapper">
                                     <div class="the_content_wrapper">
-                                        <pre>{{detailsItem}}</pre>
                                         <h3>{{detailsItem.title}}</h3>
                                         <p class="big">
                                             {{detailsItem.description}}
