@@ -102,15 +102,24 @@ export default {
                         array_video.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
+                            extension: mediaData.data['o:media_type'],
+                            img_large: 'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg',
+                            img_medium: 'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg',
                             url: this.getMediaEmptyOrFilled(mediaData.data, 'o:original_url'),
                         });
                         break;
                     case 'youtube':
                     case 'vimeo':
+                        let id_youtube = mediaData.data['data']['id'];
+                        // let url ='//youtube.com/embed/' + id_youtube + '?wmode=opaque&amp;enablejsapi=1' :
+                        // '//player.vimeo.com/video/' + id_youtube + '?autoplay=1&amp;api=1'
                         array_video.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
-                            url: this.getMediaEmptyOrFilled(mediaData.data, 'o:source'),
+                            extension: '',
+                            img_large: mediaData.data['o:thumbnail_urls']['large'],
+                            img_medium: mediaData.data['o:thumbnail_urls']['medium'],
+                            url: '//youtube.com/embed/' + id_youtube + '?wmode=opaque&amp;enablejsapi=1',
                         });
                         break;
                     case 'audio':

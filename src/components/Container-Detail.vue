@@ -74,37 +74,8 @@
 
                             <div class="section">
                                 <div class="section_wrapper clearfix">
-                                    <div class="column one">
-                                        <!--Imagenes-->
-                                        <div class="column one-fourth single-photo-wrapper" id="aniimated-thumbnials"
-                                             v-for="(image,index) in detailsItem.images" :key="index">
-                                            <a :href="image.url" data-sub-html=".caption">
-                                                <img :src="image.url" :alt="image.title"/>
-                                                <div class="caption">
-                                                    <h5>{{image.title}}</h5>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <!--                                    <div class="column one">-->
-                                    <!--                                        &lt;!&ndash; Hidden video div &ndash;&gt;-->
-                                    <!--                                        <div class="d-none" v-for="(video,index) in detailsItem.images" :key="index"-->
-                                    <!--                                             :id="'video'+index">-->
-                                    <!--                                            <video class="lg-video-object lg-html5" controls preload="none">-->
-                                    <!--                                                <source :src="video.url" type="video/mp4">-->
-                                    <!--                                                Your browser does not support HTML5 video.-->
-                                    <!--                                            </video>-->
-                                    <!--                                        </div>-->
-                                    <!--                                        &lt;!&ndash;Videos&ndash;&gt;-->
-                                    <!--                                        <ul class="column one-fourth" id="video-gallery"-->
-                                    <!--                                            v-for="(image,index) in detailsItem.images" :key="index">-->
-                                    <!--                                            <li data-poster="video-poster1.jpg" data-sub-html="video caption1"-->
-                                    <!--                                                :data-html="'#video'+index">-->
-                                    <!--                                                <img src="img/thumb1.jpg"/>-->
-                                    <!--                                            </li>-->
-                                    <!--                                        </ul>-->
-                                    <!--                                    </div>-->
+                                    <Viewer v-bind:images="detailsItem.images"></Viewer>
+                                    <video-player  v-bind:videos="detailsItem.videos"></video-player>
                                 </div>
                             </div>
 
@@ -112,14 +83,6 @@
                     </div>
 
                     <audio-player v-bind:audios="detailsItem.audios"></audio-player>
-<!--                    <br>-->
-<!--                    <div class="column one-second" v-for="(audio,index) in detailsItem.audios" :key="index">-->
-<!--                        <audio controls>-->
-<!--                            <source :src="audio.url" :type="audio.type">-->
-<!--                            Your browser does not support the audio element.-->
-<!--                        </audio>-->
-<!--                    </div>-->
-<!--                    <br>-->
                     <!-- Post Content-->
                     <div class="post-wrapper-content">
                         <div class="entry-content">
@@ -144,23 +107,6 @@
                                                 {{detailsItem.abstract}}
                                             </blockquote>
                                         </div>
-                                        <!--                                        <p>-->
-                                        <!--                                            Pellentesque suscipit urna mauris, interdum dapibus ac, rhoncus purus,-->
-                                        <!--                                            dictum a, euismod id, felis.-->
-                                        <!--                                            Fusce blandit eu, ullamcorper in, iaculis et, ultricies lobortis velit.-->
-                                        <!--                                            Mauris imperdiet, urna mi, gravida sodales.-->
-                                        <!--                                            Vivamus hendrerit nulla erat ornare tortor in vestibulum id, eleifend neque-->
-                                        <!--                                            odio fermentum vel, consectetuer at, imperdiet sapien.-->
-                                        <!--                                            Donec blandit, dui eu diam. In gravida ornare. Nullam accumsan. In hac-->
-                                        <!--                                            habitasse platea dictumst. Praesent feugiat. Cum sociis natoque.-->
-                                        <!--                                        </p>-->
-                                        <!--                                        <p>-->
-                                        <!--                                            Sed dignissim justo. Suspendisse fermentum erat. Duis consequat tortor.-->
-                                        <!--                                            Mauris ut tellus a dolor.-->
-                                        <!--                                            Suspendisse nec tellus. Donec quis lacus magna, sollicitudin id, turpis.-->
-                                        <!--                                            Mauris in velit vel sollicitudin justo.-->
-                                        <!--                                            Proin vitae massa nec cursus magna.-->
-                                        <!--                                        </p>-->
                                     </div>
                                 </div>
                             </div>
@@ -217,18 +163,19 @@
 
 <script>
     import AudioPlayer from '../components/AudioPlayer'
+    import Viewer from '../components/Viewer'
+    import VideoPlayer from '../components/VideoPlayer'
+
     export default {
         name: "Container-Detail",
         props: ['detailsItem', 'backPage'],
         components: {
-            AudioPlayer
+            AudioPlayer,
+            Viewer,
+            VideoPlayer,
         },
         updated() {
-            this.$nextTick(() => {
-                window.lightGallery(document.getElementById('aniimated-thumbnials'), {
-                    thumbnail: true,
-                })
-            });
+
         }
     }
 </script>
