@@ -116,7 +116,7 @@ export default {
                     case 'audio':
                         array_audio.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
-                            type: media_type,
+                            type: mediaData.data['o:media_type'],
                             url: this.getMediaEmptyOrFilled(mediaData.data, 'o:original_url'),
                         });
                         break;

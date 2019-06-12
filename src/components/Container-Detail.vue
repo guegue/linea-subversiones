@@ -111,11 +111,15 @@
                         </div>
                     </div>
 
-                    <br>
-                    <div v-for="(audio,index) in detailsItem.audios" :key="index">
-
-                    </div>
-                    <br>
+                    <audio-player v-bind:audios="detailsItem.audios"></audio-player>
+<!--                    <br>-->
+<!--                    <div class="column one-second" v-for="(audio,index) in detailsItem.audios" :key="index">-->
+<!--                        <audio controls>-->
+<!--                            <source :src="audio.url" :type="audio.type">-->
+<!--                            Your browser does not support the audio element.-->
+<!--                        </audio>-->
+<!--                    </div>-->
+<!--                    <br>-->
                     <!-- Post Content-->
                     <div class="post-wrapper-content">
                         <div class="entry-content">
@@ -212,11 +216,12 @@
 </template>
 
 <script>
-
+    import AudioPlayer from '../components/AudioPlayer'
     export default {
         name: "Container-Detail",
         props: ['detailsItem', 'backPage'],
         components: {
+            AudioPlayer
         },
         updated() {
             this.$nextTick(() => {
