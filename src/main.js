@@ -3,8 +3,9 @@ import App from './App.vue';
 import router from './router';
 import Axios from 'axios';
 
+
 //css
-import '@/assets/css/global.min.css';
+import '@/assets/css/global.css';
 import '@/assets/content/space/css/structure.css';
 import '@/assets/content/space/css/space.css';
 import '@/assets/plugins/rs-plugin/css/settings.css';
@@ -18,6 +19,7 @@ import 'lightgallery.js/src/js/lightgallery.js';
 import 'lg-video.js/dist/lg-video.js';
 import 'lg-thumbnail.js/dist/lg-thumbnail.js';
 import 'lg-fullscreen.js/dist/lg-fullscreen.js';
+
 
 Vue.config.productionTip = false;
 

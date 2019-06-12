@@ -1300,7 +1300,7 @@ a:hover.tp-button.lightgrey {
 	content: '\e8b6'
 }
 .icon-left-open:before {
-	content: '\e8b7'
+	content: '\e8b7' !important;
 }
 .icon-left-open-big:before {
 	content: '\e8b8'

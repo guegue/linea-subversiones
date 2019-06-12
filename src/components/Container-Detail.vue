@@ -71,9 +71,6 @@
                             </div>
                             <!-- Post Featured Element (image / video / gallery)-->
                             <!-- One full width row-->
-                            <div class="column one">
-                                <pre>{{detailsItem.videos}}</pre>
-                            </div>
 
                             <div class="section">
                                 <div class="section_wrapper clearfix">
@@ -90,29 +87,35 @@
                                         </div>
                                     </div>
 
-                                    <div class="column one">
-                                        <!-- Hidden video div -->
-                                        <div class="d-none" v-for="(video,index) in detailsItem.images" :key="index" :id="'video'+index">
-                                            <video class="lg-video-object lg-html5" controls preload="none">
-                                                <source :src="video.url" type="video/mp4">
-                                                Your browser does not support HTML5 video.
-                                            </video>
-                                        </div>
-                                        <!--Videos-->
-                                        <ul class="column one-fourth" id="video-gallery"
-                                             v-for="(image,index) in detailsItem.images" :key="index">
-                                            <li data-poster="video-poster1.jpg" data-sub-html="video caption1" data-html="#video1" >
-                                                <img src="img/thumb1.jpg" />
-                                            </li>
-                                        </ul>
-
-
-                                    </div>
+                                    <!--                                    <div class="column one">-->
+                                    <!--                                        &lt;!&ndash; Hidden video div &ndash;&gt;-->
+                                    <!--                                        <div class="d-none" v-for="(video,index) in detailsItem.images" :key="index"-->
+                                    <!--                                             :id="'video'+index">-->
+                                    <!--                                            <video class="lg-video-object lg-html5" controls preload="none">-->
+                                    <!--                                                <source :src="video.url" type="video/mp4">-->
+                                    <!--                                                Your browser does not support HTML5 video.-->
+                                    <!--                                            </video>-->
+                                    <!--                                        </div>-->
+                                    <!--                                        &lt;!&ndash;Videos&ndash;&gt;-->
+                                    <!--                                        <ul class="column one-fourth" id="video-gallery"-->
+                                    <!--                                            v-for="(image,index) in detailsItem.images" :key="index">-->
+                                    <!--                                            <li data-poster="video-poster1.jpg" data-sub-html="video caption1"-->
+                                    <!--                                                :data-html="'#video'+index">-->
+                                    <!--                                                <img src="img/thumb1.jpg"/>-->
+                                    <!--                                            </li>-->
+                                    <!--                                        </ul>-->
+                                    <!--                                    </div>-->
                                 </div>
                             </div>
 
                         </div>
                     </div>
+
+                    <br>
+                    <div v-for="(audio,index) in detailsItem.audios" :key="index">
+
+                    </div>
+                    <br>
                     <!-- Post Content-->
                     <div class="post-wrapper-content">
                         <div class="entry-content">
@@ -209,9 +212,12 @@
 </template>
 
 <script>
+
     export default {
         name: "Container-Detail",
         props: ['detailsItem', 'backPage'],
+        components: {
+        },
         updated() {
             this.$nextTick(() => {
                 window.lightGallery(document.getElementById('aniimated-thumbnials'), {
@@ -223,6 +229,4 @@
 </script>
 
 <style scoped>
-
-
 </style>
