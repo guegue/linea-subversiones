@@ -5,6 +5,8 @@ export default {
             slugSite: '',
             aboutSite: '',
             optionMenu: [],
+            id_video: null,
+            url: '',
         }
     },
     methods: {
@@ -110,16 +112,20 @@ export default {
                         break;
                     case 'youtube':
                     case 'vimeo':
-                        let id_youtube = mediaData.data['data']['id'];
-                        // let url ='//youtube.com/embed/' + id_youtube + '?wmode=opaque&amp;enablejsapi=1' :
-                        // '//player.vimeo.com/video/' + id_youtube + '?autoplay=1&amp;api=1'
+                        this.id_video = mediaData.data['data']['id'];
+                        if (media_type === 'youtube') {
+                            this.url = '//youtube.com/embed/' + this.id_video + '?wmode=opaque&amp;enablejsapi=1';
+                        } else {
+                            this.url = '//player.vimeo.com/video/' + this.id_video + '?autoplay=1&amp;api=1';
+                        }
+
                         array_video.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
                             extension: '',
                             img_large: mediaData.data['o:thumbnail_urls']['large'],
                             img_medium: mediaData.data['o:thumbnail_urls']['medium'],
-                            url: '//youtube.com/embed/' + id_youtube + '?wmode=opaque&amp;enablejsapi=1',
+                            url: this.url,
                         });
                         break;
                     case 'audio':

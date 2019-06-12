@@ -4,7 +4,9 @@
         <div id="Wrapper">
             <Header v-bind:optionMenu="optionMenu"
                     v-bind:name-site="nameSite"
-                    v-bind:slug-site="slugSite"></Header>
+                    v-bind:slug-site="slugSite"
+                    v-bind:title="detailsItem.title"
+                    v-bind:show-title-description="true"></Header>
             <Container v-bind:details-item="detailsItem"
                        v-bind:back-page="urlPath"></Container>
             <Footer></Footer>
