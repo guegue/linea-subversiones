@@ -87,7 +87,7 @@
                                             {{detailsItem.provenance}}
                                         </p>
                                         <h4>Descripci&oacute;n</h4>
-                                        <p class="big">
+                                        <p class="big text-justify">
                                             {{detailsItem.description}}
                                         </p>
                                         <h4>Fuente</h4>

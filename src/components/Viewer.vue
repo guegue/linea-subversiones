@@ -4,7 +4,7 @@
             <!--Imagenes-->
             <div class="column one-fourth single-photo-wrapper" id="div-images"
                  v-for="(image,index) in images" :key="index">
-                <a :href="image.url" data-sub-html=".caption">
+                <a :href="image.url" :data-sub-html="image.title">
                     <img :src="image.url" :alt="image.title"/>
                     <div class="caption">
                         <h5>{{image.title}}</h5>

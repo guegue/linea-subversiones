@@ -17,8 +17,6 @@
                         <div class="column one column_column ">
                             <div class="column_attr align_center" style=" padding:0 7%;">
                                 <h4>{{summary}}</h4>
-                                <!--                                <div class="text-justify" v-for="(description,index) in descriptions" :key="index" v-html="description">-->
-                                <!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -46,15 +44,16 @@
                                             {{content.date}}
                                         </div>
                                         <div class="image_frame post-photo-wrapper scale-with-grid">
-                                            <div class="image_wrapper">
-                                                <a href="javascript:;">
+                                            <div class="image_wrapper" id="image_wrapper">
+                                                <a v-if="content.url_img !== ''" :href="content.url_img">
                                                     <div class="mask"></div>
-                                                    <img v-if="content.url_img !== ''" width="1200" height="480"
-                                                         :src="content.url_img"
+                                                    <img :src="content.url_img"
                                                          class="scale-with-grid wp-post-image img-cover"
                                                          alt="home_space_blog3"/>
-                                                    <img v-else width="1200" height="480"
-                                                         src="@/assets/no-image-icon.png"
+                                                </a>
+                                                <a v-else href="@/assets/no-image-icon.png">
+                                                    <div class="mask"></div>
+                                                    <img src="@/assets/no-image-icon.png"
                                                          class="scale-with-grid wp-post-image img-cover"
                                                          alt="home_space_blog3"/>
                                                 </a>
@@ -126,8 +125,13 @@
         components: {
             Filtro
         },
-        data() {
-            return {}
+        updated() {
+            this.$nextTick(() => {
+                window.lightGallery(document.getElementById('image_wrapper'), {
+                    thumbnail: true,
+                });
+
+            });
         }
     }
 </script>

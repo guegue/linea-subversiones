@@ -45,7 +45,7 @@
                 urlPath: ''
             }
         },
-        mounted: function () {
+        mounted() {
             this.namePage = this.$route.params.namepage.toLowerCase();
             this.getDetailsSite([])
                 .then((response) => {

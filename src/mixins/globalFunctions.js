@@ -11,7 +11,6 @@ export default {
     },
     methods: {
         async getDetailsSite(array_items) {
-
             //validamos que el parametro namesite este definido
             if (this.$route.params.namesite !== undefined) {
                 //obtenemos todos los sitios de omeka
