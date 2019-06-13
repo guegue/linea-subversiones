@@ -24,7 +24,7 @@
 
                                 <div class="title_wrapper">
                                     <div class="post-meta clearfix">
-                                        <div class="author-date" v-if="detailsItem.author.length>0">
+                                        <div class="author-date" v-if="detailsItem.author.length > 0">
                                             <span class="vcard author post-author">
                                                 Publicado por
                                                 <i class="icon-user"></i>
@@ -32,7 +32,7 @@
                                                     <a href="javascript:;">{{detailsItem.author}}</a>
                                                 </span>
                                             </span>
-                                            <span class="date" v-if="detailsItem.date.length>0">
+                                            <span class="date" v-if="detailsItem.date.length > 0">
                                                 <i class="icon-clock"></i>
                                                 <time class="entry-date" datetime="2014-05-09T09:28:12+00:00"
                                                       itemprop="datePublished">
@@ -108,7 +108,7 @@
                             <div class="section_wrapper clearfix">
                                 <!-- One full width row-->
                                 <div class="column one author-box">
-                                    <div class="author-box-wrapper" v-if="detailsItem.author.length>0">
+                                    <div class="author-box-wrapper" v-if="detailsItem.author.length > 0">
                                         <div class="avatar-wrapper">
                                             <img alt='admin'
                                                  src='http://0.gravatar.com/avatar/057e2eb392b95a2ecfc9d32d554e3917?s=64&amp;d=mm&amp;r=g'
@@ -130,13 +130,15 @@
                                 <main>
 
                                     <input v-if="(detailsItem.images.length > 0)" id="tab1" type="radio" name="tabs"
-                                           checked>
+                                           :checked="exist_img">
                                     <label v-if="(detailsItem.images.length > 0)" for="tab1">Imagenes</label>
 
-                                    <input v-if="(detailsItem.audios.length > 0)" id="tab2" type="radio" name="tabs">
+                                    <input v-if="(detailsItem.audios.length > 0)" id="tab2" type="radio" name="tabs"
+                                           :checked="exist_audio">
                                     <label v-if="(detailsItem.audios.length > 0)" for="tab2">Audios</label>
 
-                                    <input v-if="(detailsItem.videos.length > 0)" id="tab3" type="radio" name="tabs">
+                                    <input v-if="(detailsItem.videos.length > 0)" id="tab3" type="radio" name="tabs"
+                                           :checked="exist_video">
                                     <label v-if="(detailsItem.videos.length > 0)" for="tab3">Videos</label>
 
                                     <section id="content1" v-if="(detailsItem.images.length > 0)">
@@ -197,9 +199,26 @@
             Viewer,
             VideoPlayer,
         },
+        data() {
+            return {
+                exist_img: false,
+                exist_audio: false,
+                exist_video: false,
+            }
+        },
         updated() {
+            let size_img = this.detailsItem.images.length;
+            let size_audio = this.detailsItem.audios.length;
+            let size_video = this.detailsItem.videos.length;
 
-        }
+            if (size_img > 0) {
+                this.exist_img = true;
+            } else if (size_audio > 0) {
+                this.exist_audio = true;
+            } else if (size_video > 0) {
+                this.exist_video = true;
+            }
+        },
     }
 </script>
 
