@@ -21,9 +21,12 @@
         props: ['images'],
         updated() {
             this.$nextTick(() => {
-                window.lightGallery(document.getElementById('div-images'), {
-                    thumbnail: true,
-                });
+                if (this.images.length > 0) {
+                    window.lightGallery(document.getElementById('div-images'), {
+                        thumbnail: true,
+                    });
+
+                }
 
             });
         }

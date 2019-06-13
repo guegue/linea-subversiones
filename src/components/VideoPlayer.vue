@@ -1,6 +1,5 @@
 <template>
     <div class="column one">
-        <h4>Videos</h4>
         <!-- Hidden video div -->
         <div class="d-none" v-for="(video,index) in videos" :key="index">
             <div v-if="video.type === 'video'" :id="'video'+index">

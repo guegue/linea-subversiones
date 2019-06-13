@@ -44,7 +44,7 @@
                                             {{content.date}}
                                         </div>
                                         <div class="image_frame post-photo-wrapper scale-with-grid">
-                                            <div class="image_wrapper" id="image_wrapper">
+                                            <div class="image_wrapper" :id="'img-item_'+content.id">
                                                 <a v-if="content.url_img !== ''" :href="content.url_img">
                                                     <div class="mask"></div>
                                                     <img :src="content.url_img"
@@ -58,9 +58,14 @@
                                                          alt="home_space_blog3"/>
                                                 </a>
                                                 <div class="image_links double">
-                                                    <a href="images/home_space_blog3-1200x800.jpg" class="zoom"
-                                                       rel="prettyphoto"><i class="icon-search"></i></a><a
-                                                        href="javascript:;" class="link"><i class="icon-link"></i></a>
+                                                    <a role="button" class="zoom cursor-hand"
+                                                       @click="showImage('img-item_'+content.id,content.url_img,content.title)"
+                                                       rel="prettyphoto">
+                                                        <i class="icon-search"></i>
+                                                    </a>
+                                                    <a :href="content.url_img" class="link">
+                                                        <i class="icon-link"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,17 +130,48 @@
         components: {
             Filtro
         },
-        updated() {
-            this.$nextTick(() => {
-                window.lightGallery(document.getElementById('image_wrapper'), {
-                    thumbnail: true,
-                });
+        mounted() {
+            // let wii = document.getElementById('imagewrapper');
+            //  this.lightGallery(wii);
 
-            });
+
+        },
+        updated() {
+            // this.$nextTick(() => {
+            //     if (this.contents.length > 0) {
+            //         // console.log(div);
+            //         window.lightGallery(document.getElementById('image-wrapper'), {
+            //             thumbnail: true,
+            //         });
+            //     }
+            //
+            //
+            // });
+        },
+        methods: {
+            showImage(id, url, title) {
+                // console.log(id, url, title);
+                let source = {
+                    src: url,
+                    thumb: url,
+                    subHtml: '<h4>' + title + '</h4>',
+                    caption: '<h4>' + title + '</h4>',
+                };
+
+                window.lightGallery(document.getElementById(id), {
+                    dynamic: true,
+                    subHtmlSelectorRelative: true,
+                    dynamicEl: [source],
+                });
+            }
         }
     }
 </script>
 
 <style scoped>
+
+    .cursor-hand {
+        cursor: pointer;
+    }
 
 </style>

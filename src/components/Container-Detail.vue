@@ -129,24 +129,25 @@
                             <div class="column one">
                                 <main>
 
-                                    <input id="tab1" type="radio" name="tabs" checked>
-                                    <label for="tab1">Imagenes</label>
+                                    <input v-if="(detailsItem.images.length > 0)" id="tab1" type="radio" name="tabs"
+                                           checked>
+                                    <label v-if="(detailsItem.images.length > 0)" for="tab1">Imagenes</label>
 
-                                    <input id="tab2" type="radio" name="tabs">
-                                    <label for="tab2">Audios</label>
+                                    <input v-if="(detailsItem.audios.length > 0)" id="tab2" type="radio" name="tabs">
+                                    <label v-if="(detailsItem.audios.length > 0)" for="tab2">Audios</label>
 
-                                    <input id="tab3" type="radio" name="tabs">
-                                    <label for="tab3">Videos</label>
+                                    <input v-if="(detailsItem.videos.length > 0)" id="tab3" type="radio" name="tabs">
+                                    <label v-if="(detailsItem.videos.length > 0)" for="tab3">Videos</label>
 
-                                    <section id="content1">
+                                    <section id="content1" v-if="(detailsItem.images.length > 0)">
                                         <Viewer v-bind:images="detailsItem.images"></Viewer>
                                     </section>
 
-                                    <section id="content2">
+                                    <section id="content2" v-if="(detailsItem.audios.length > 0)">
                                         <audio-player v-bind:audios="detailsItem.audios"></audio-player>
                                     </section>
 
-                                    <section id="content3">
+                                    <section id="content3" v-if="(detailsItem.videos.length > 0)">
                                         <div class="section">
                                             <div class="section_wrapper clearfix">
 
@@ -205,6 +206,7 @@
 <style scoped>
     @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
     @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
     *, *::before, *::after {
         margin: 0;
         padding: 0;
@@ -220,7 +222,7 @@
         align-items: center;
         justify-content: center;
         padding: 40px;
-        font: 14px/1.5 'Open Sans',sans-serif;
+        font: 14px/1.5 'Open Sans', sans-serif;
         color: #345;
         background: #f0f2f4;
     }
@@ -305,6 +307,7 @@
             font-size: 18px;
         }
     }
+
     @media screen and (max-width: 500px) {
         label {
             padding: 15px;
