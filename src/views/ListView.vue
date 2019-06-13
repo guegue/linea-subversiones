@@ -68,7 +68,10 @@
         methods: {
             async getContentFromPage(urlPage) {
                 const answer = await this.$axios(urlPage);
-                //valido si la propiedad o:block existe para poder recorrer los items,conjuntos,etc relacionados
+                /* *
+                 * valido si la propiedad o:block cuando la opcion de menu es una pagina y sino es item set
+                 * para luego obtener la informacion dentro de esa pagina o item set
+                * */
                 if (answer.data['o:block'] != null) {
                     for (const detail of answer.data['o:block']) {
                         let typeLayout = detail['o:layout'].toLowerCase();
@@ -98,14 +101,15 @@
                         }
                     }
                 } else {
-                    //sino informacion del conjunto de items que relacionados a una pagina
                     let itemSetUrl = answer.data['o:items']['@id'];
                     let dataItemSet = await this.$axios(itemSetUrl);
-                    //guardo la descripcion del conjunto de items
-                    this.summary = answer.data['dcterms:description'][0]['@value'];
 
+                    //guardo la descripcion del conjunto de items
+                    this.summary = this.getAttribEmptyOrFilled(answer.data,'dcterms:description');
+                    console.log(itemSetUrl);
                     //recorro todos los registros que me trae la consulta de itemSetUrl
                     for (const data of dataItemSet.data) {
+
                         let media = '';
                         //valido si la propiedad o:media existe
                         if (data['o:media'] !== null) {
