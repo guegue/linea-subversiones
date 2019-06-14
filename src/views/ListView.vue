@@ -124,11 +124,10 @@
                                     });
                                 });
                         }
-
                     }
+                    console.log(this.contents);
 
                     if (answer.data['dcterms:isPartOf'] !== undefined) {
-
                         for (const related of answer.data['dcterms:isPartOf']) {
                             let type_resource = related['value_resource_name'];
                             if (type_resource === 'item_sets') {
@@ -153,7 +152,6 @@
                             }
                         }
                     }
-
                 }
             }
         }

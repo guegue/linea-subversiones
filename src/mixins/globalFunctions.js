@@ -10,6 +10,7 @@ export default {
             type_img: [
                 'image/jpeg',
                 'image/png',
+                'application/pdf',
             ]
         }
     },
@@ -100,7 +101,7 @@ export default {
                         array_img.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
-                            url: this.getMediaEmptyOrFilled(mediaData.data, 'o:original_url'),
+                            url: this.getMediaEmptyOrFilled(mediaData.data),
                         });
                         break;
                     case 'video' :
@@ -110,7 +111,7 @@ export default {
                             extension: mediaData.data['o:media_type'],
                             img_large: 'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg',
                             img_medium: 'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg',
-                            url: this.getMediaEmptyOrFilled(mediaData.data, 'o:original_url'),
+                            url: this.getMediaEmptyOrFilled(mediaData.data),
                         });
                         break;
                     case 'youtube':
@@ -135,7 +136,7 @@ export default {
                         array_audio.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: mediaData.data['o:media_type'],
-                            url: this.getMediaEmptyOrFilled(mediaData.data, 'o:original_url'),
+                            url: this.getMediaEmptyOrFilled(mediaData.data),
                         });
                         break;
                 }
@@ -148,8 +149,14 @@ export default {
             for (const dataMedia of array['o:media']) {
                 let imgData = await this.$axios(dataMedia['@id']);
                 let mediaType = imgData.data['o:media_type'];
-                if (this.type_img.indexOf(mediaType) >= 0 && imgData.data['o:original_url'] !== null) {
-                    media = this.getMediaEmptyOrFilled(imgData.data, 'o:original_url');
+
+                media = this.getMediaEmptyOrFilled(imgData.data);
+                console.log(media);
+                if (this.type_img.indexOf(mediaType) <= 1 && mediaType !== null) {
+                    media = this.getMediaEmptyOrFilled(imgData.data);
+                    break;
+                } else if (this.type_img.indexOf(mediaType) === 2) {
+                    media = this.getMediaEmptyOrFilled(imgData.data, false);
                     break;
                 }
             }
@@ -158,8 +165,28 @@ export default {
         getAttribEmptyOrFilled(objectArray, attribName) {
             return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
         },
-        getMediaEmptyOrFilled(objectArray, attribName) {
-            return (objectArray[attribName] !== undefined) ? objectArray[attribName] : '@/assets/no-image-icon.png';
+        getMediaEmptyOrFilled(objectArray) {
+            let media = '';
+
+            if (objectArray['o:thumbnail_urls'].length > 0) {
+                media = objectArray['o:thumbnail_urls']['large'];
+            } else {
+                media = objectArray['o:original_url'];
+            }
+
+            // if (objectArray['o:original_url'] !== undefined && originalUrlBoolean) {
+            //
+            //     media = objectArray['o:original_url'];
+            //     if (media.search('.mp4') > 0) {
+            //         media = objectArray['o:thumbnail_urls']['large'];
+            //     }
+            //
+            // } else if (objectArray['o:thumbnail_urls'] !== undefined && originalUrlBoolean === false) {
+            //     media = objectArray['o:thumbnail_urls']['large'];
+            // }/*else if (objectArray['o:thumbnail_urls'] !== undefined && originalUrlBoolean === false) {
+            //     media = objectArray['o:thumbnail_urls']['large'];
+            // }*/
+            return media;
         },
         getTypeMedia(objectArray) {
             return (objectArray['o:media_type'] !== null) ? objectArray['o:media_type'].split('/')[0] : objectArray['o:ingester'];
