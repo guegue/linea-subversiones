@@ -7,6 +7,10 @@ export default {
             optionMenu: [],
             id_video: null,
             url: '',
+            type_img: [
+                'image/jpeg',
+                'image/png',
+            ]
         }
     },
     methods: {
@@ -138,6 +142,18 @@ export default {
             }
             // return a array of arrays images,videos,audios
             return [array_img, array_video, array_audio];
+        },
+        async getFirstImageFound(array) {
+            let media = '';
+            for (const dataMedia of array['o:media']) {
+                let imgData = await this.$axios(dataMedia['@id']);
+                let mediaType = imgData.data['o:media_type'];
+                if (this.type_img.indexOf(mediaType) >= 0 && imgData.data['o:original_url'] !== null) {
+                    media = this.getMediaEmptyOrFilled(imgData.data, 'o:original_url');
+                    break;
+                }
+            }
+            return media;
         },
         getAttribEmptyOrFilled(objectArray, attribName) {
             return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';

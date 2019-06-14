@@ -8,6 +8,7 @@
                     v-bind:show-title-description="(title.length > 0)"
                     v-bind:title="title"></Header>
             <Container v-bind:contents="contents"
+                       v-bind:related_content="relatedContent"
                        v-bind:summary="summary"
                        v-bind:url-path="urlPath"
                        v-bind:descriptions="descriptions"></Container>
@@ -35,14 +36,11 @@
             return {
                 namePage: null,
                 contents: [],
-                typeImgs: [
-                    'image/jpeg',
-                    'image/png',
-                ],
                 title: '',
                 summary: '',
                 descriptions: [],
-                urlPath: ''
+                urlPath: '',
+                relatedContent: [],
             }
         },
         mounted() {
@@ -105,35 +103,57 @@
                     let dataItemSet = await this.$axios(itemSetUrl);
 
                     //guardo la descripcion del conjunto de items
-                    this.summary = this.getAttribEmptyOrFilled(answer.data,'dcterms:description');
-                    console.log(itemSetUrl);
+                    this.summary = this.getAttribEmptyOrFilled(answer.data, 'dcterms:description');
+
                     //recorro todos los registros que me trae la consulta de itemSetUrl
                     for (const data of dataItemSet.data) {
-
-                        let media = '';
-                        //valido si la propiedad o:media existe
+                        //valido si la propiedad o:media existe, para obtener una imagen que represente a cada contenido
                         if (data['o:media'] !== null) {
-                            for (const dataMedia of data['o:media']) {
-                                let imgData = await this.$axios(dataMedia['@id']);
-                                let mediaType = imgData.data['o:media_type'];
-                                if (this.typeImgs.indexOf(mediaType) >= 0 && imgData.data['o:original_url'] !== null) {
-                                    media = this.getMediaEmptyOrFilled(imgData.data, 'o:original_url');
-                                    break;
+                            this.getFirstImageFound(data)
+                                .then((image) => {
+                                    this.contents.push({
+                                        id: data['o:id'],
+                                        title: this.getAttribEmptyOrFilled(data, 'dcterms:title'),
+                                        description: this.getAttribEmptyOrFilled(data, 'dcterms:description'),
+                                        url_img: image,
+                                        alternative: this.getAttribEmptyOrFilled(data, 'dcterms:alternative'),
+                                        date: this.getAttribEmptyOrFilled(data, 'dcterms:date'),
+                                        provenance: this.getAttribEmptyOrFilled(data, 'dcterms:provenance'),
+                                        source: this.getAttribEmptyOrFilled(data, 'dcterms:source'),
+                                        author: this.getAttribEmptyOrFilled(data, 'bibo:citedBy'),
+                                    });
+                                });
+                        }
+
+                    }
+
+                    if (answer.data['dcterms:isPartOf'] !== undefined) {
+
+                        for (const related of answer.data['dcterms:isPartOf']) {
+                            let type_resource = related['value_resource_name'];
+                            if (type_resource === 'item_sets') {
+                                let url = this.$domainOmeka + 'api/items?item_set_id=' + related['value_resource_id'];
+                                let item_set = await this.$axios(url);
+                                for (const item of item_set.data) {
+                                    if (item['o:media'] !== null) {
+                                        this.getFirstImageFound(item)
+                                            .then((image) => {
+                                                this.relatedContent.push({
+                                                    id: item['o:id'],
+                                                    title: this.getAttribEmptyOrFilled(item, 'dcterms:title'),
+                                                    description: this.getAttribEmptyOrFilled(item, 'dcterms:description'),
+                                                    date: this.getAttribEmptyOrFilled(item, 'dcterms:date'),
+                                                    source: this.getAttribEmptyOrFilled(item, 'dcterms:source'),
+                                                    url_img: image,
+                                                    author: this.getAttribEmptyOrFilled(item, 'bibo:citedBy'),
+                                                });
+                                            })
+                                    }
                                 }
                             }
                         }
-                        this.contents.push({
-                            id: data['o:id'],
-                            title: this.getAttribEmptyOrFilled(data, 'dcterms:title'),
-                            description: this.getAttribEmptyOrFilled(data, 'dcterms:description'),
-                            url_img: media,
-                            alternative: this.getAttribEmptyOrFilled(data, 'dcterms:alternative'),
-                            date: this.getAttribEmptyOrFilled(data, 'dcterms:date'),
-                            provenance: this.getAttribEmptyOrFilled(data, 'dcterms:provenance'),
-                            source: this.getAttribEmptyOrFilled(data, 'dcterms:source'),
-                            author: this.getAttribEmptyOrFilled(data, 'bibo:citedBy'),
-                        });
                     }
+
                 }
             }
         }
