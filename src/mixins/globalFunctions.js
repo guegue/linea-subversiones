@@ -159,7 +159,7 @@ export default {
             return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
         },
         getMediaEmptyOrFilled(objectArray, attribName) {
-            return (objectArray[attribName] !== undefined) ? objectArray[attribName] : '';
+            return (objectArray[attribName] !== undefined) ? objectArray[attribName] : '@/assets/no-image-icon.png';
         },
         getTypeMedia(objectArray) {
             return (objectArray['o:media_type'] !== null) ? objectArray['o:media_type'].split('/')[0] : objectArray['o:ingester'];
