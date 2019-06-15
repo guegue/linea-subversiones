@@ -144,6 +144,7 @@ export default {
                             title: mediaData.data['o:source'],
                             type: mediaData.data['o:media_type'],
                             url: mediaData.data['o:original_url'],
+                            img: mediaData.data['o:thumbnail_urls']['large'],
                         });
                         break;
                 }

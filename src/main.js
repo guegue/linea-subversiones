@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import Axios from 'axios';
+import VModal from 'vue-js-modal';
 
 
 //css
@@ -26,6 +27,8 @@ Vue.config.productionTip = false;
 //variables globales
 Vue.prototype.$domainOmeka = 'https://sub-versiones.hijosdeperu.org/';
 Vue.prototype.$axios = Axios;
+
+Vue.use(VModal);
 
 new Vue({
     router,

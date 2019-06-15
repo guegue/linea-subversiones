@@ -104,13 +104,6 @@
                         </div>
                         <!--Pagination-->
 
-                        <pre>
-                            {{detailsItem.documents}}
-                        </pre>
-
-                        <document></document>
-
-
 
                         <!--Author Info Area-->
                         <div class="section section-post-about">
@@ -150,6 +143,10 @@
                                            :checked="exist_video">
                                     <label v-if="(detailsItem.videos.length > 0)" for="tab3">Videos</label>
 
+                                    <input v-if="(detailsItem.documents.length > 0)" id="tab4" type="radio" name="tabs"
+                                           :checked="exist_document">
+                                    <label v-if="(detailsItem.documents.length > 0)" for="tab3">Documentos</label>
+
                                     <section id="content1" v-if="(detailsItem.images.length > 0)">
                                         <Viewer v-bind:images="detailsItem.images"></Viewer>
                                     </section>
@@ -161,8 +158,16 @@
                                     <section id="content3" v-if="(detailsItem.videos.length > 0)">
                                         <div class="section">
                                             <div class="section_wrapper clearfix">
-
                                                 <video-player v-bind:videos="detailsItem.videos"></video-player>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <section id="content4" v-if="(detailsItem.documents.length > 0)">
+                                        <div class="section">
+                                            <div class="section_wrapper clearfix">
+
+                                                <document v-bind:documents="detailsItem.documents"></document>
                                             </div>
                                         </div>
                                     </section>
@@ -215,12 +220,14 @@
                 exist_img: false,
                 exist_audio: false,
                 exist_video: false,
+                exist_document: false,
             }
         },
         updated() {
             let size_img = this.detailsItem.images.length;
             let size_audio = this.detailsItem.audios.length;
             let size_video = this.detailsItem.videos.length;
+            let size_document = this.detailsItem.documents.length;
 
             if (size_img > 0) {
                 this.exist_img = true;
@@ -228,6 +235,8 @@
                 this.exist_audio = true;
             } else if (size_video > 0) {
                 this.exist_video = true;
+            } else if (size_document > 0) {
+                this.exist_document = true;
             }
         },
     }
@@ -306,6 +315,10 @@
 
     label[for*='3']:before {
         content: '\f008';
+    }
+
+    label[for*='4']:before {
+        content: '\f15c';
     }
 
     label:hover {
