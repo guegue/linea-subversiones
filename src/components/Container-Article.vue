@@ -138,12 +138,12 @@
                                         <div style="margin-right: 20%;">
                                             <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                                 <div class="image_wrapper">
-                                                    <img v-if="content.url_img !== ''" class="scale-with-grid"
+                                                    <img v-if="content.url_img !== ''" class="scale-with-grid img-cover"
                                                          :src="content.url_img"
-                                                         alt="" width="380" height="342"/>
-                                                    <img v-else class="scale-with-grid"
+                                                         :alt="content.title"/>
+                                                    <img v-else class="scale-with-grid img-cover"
                                                          src="@/assets/no-image-icon.png"
-                                                         alt="" width="380" height="342"/>
+                                                         :alt="content.title"/>
                                                 </div>
                                             </div>
                                             <hr class="no_line hrmargin_b_20"/>
