@@ -92,7 +92,7 @@ export default {
             return items['item_set_id'];
         },
         async getArrayMedia(data) {
-            let array_img = [], array_video = [], array_audio = [];
+            let array_img = [], array_video = [], array_audio = [], array_document = [];
             for (const datum of data) {
                 let mediaData = await this.$axios(datum['@id']);
                 let media_type = this.getTypeMedia(mediaData.data);
@@ -137,6 +137,13 @@ export default {
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: mediaData.data['o:media_type'],
                             url: this.getMediaEmptyOrFilled(mediaData.data),
+                        });
+                        break;
+                    case 'application':
+                        array_document.push({
+                            title: mediaData.data['o:source'],
+                            type: mediaData.data['o:media_type'],
+                            url: mediaData.data['o:original_url'],
                         });
                         break;
                 }

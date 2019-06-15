@@ -57,7 +57,6 @@
                             this.$axios(this.$domainOmeka + 'api/items/' + idItem)
                                 .then((detailItem) => {
                                     let data = detailItem.data;
-
                                     this.getArrayMedia(data['o:media'])
                                         .then((media) => {
                                             this.detailsItem.title = this.getAttribEmptyOrFilled(data, 'dcterms:title');

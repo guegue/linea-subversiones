@@ -147,7 +147,7 @@
                                                 </div>
                                             </div>
                                             <hr class="no_line hrmargin_b_20"/>
-                                            <h5>{{content.title}}</h5>
+                                            <h5><a :href="urlPath +content.id">{{content.title}}</a></h5>
                                             <p class="text-justify">{{content.description.slice(0,115)}} <a
                                                     :href="urlPath +content.id" class="color-azul-oscuro">...Leer
                                                 m&aacute;s</a></p>
