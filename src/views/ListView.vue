@@ -125,7 +125,7 @@
                                 });
                         }
                     }
-                    console.log(this.contents);
+                    // console.log(this.contents);
 
                     if (answer.data['dcterms:isPartOf'] !== undefined) {
                         for (const related of answer.data['dcterms:isPartOf']) {

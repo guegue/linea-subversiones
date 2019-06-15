@@ -7,7 +7,7 @@ export default {
             optionMenu: [],
             id_video: null,
             url: '',
-            type_img: [
+            type_file: [
                 'image/jpeg',
                 'image/png',
                 'application/pdf',
@@ -148,15 +148,8 @@ export default {
             let media = '';
             for (const dataMedia of array['o:media']) {
                 let imgData = await this.$axios(dataMedia['@id']);
-                let mediaType = imgData.data['o:media_type'];
-
                 media = this.getMediaEmptyOrFilled(imgData.data);
-                console.log(media);
-                if (this.type_img.indexOf(mediaType) <= 1 && mediaType !== null) {
-                    media = this.getMediaEmptyOrFilled(imgData.data);
-                    break;
-                } else if (this.type_img.indexOf(mediaType) === 2) {
-                    media = this.getMediaEmptyOrFilled(imgData.data, false);
+                if (media !== '') {
                     break;
                 }
             }
@@ -166,26 +159,24 @@ export default {
             return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
         },
         getMediaEmptyOrFilled(objectArray) {
-            let media = '';
+            let media;
+            switch (objectArray['o:media_type']) {
+                case 'image/jpeg':
+                    media = objectArray['o:original_url'];
+                    break;
+                case 'application/pdf':
+                    media = objectArray['o:thumbnail_urls']['large'];
+                    break;
+                case 'video/mp4':
+                case null:
+                    if (objectArray['o:thumbnail_urls'].length > 0) {
+                        media = objectArray['o:thumbnail_urls']['large'];
+                    } else {
+                        media = '';
+                    }
+                    break;
 
-            if (objectArray['o:thumbnail_urls'].length > 0) {
-                media = objectArray['o:thumbnail_urls']['large'];
-            } else {
-                media = objectArray['o:original_url'];
             }
-
-            // if (objectArray['o:original_url'] !== undefined && originalUrlBoolean) {
-            //
-            //     media = objectArray['o:original_url'];
-            //     if (media.search('.mp4') > 0) {
-            //         media = objectArray['o:thumbnail_urls']['large'];
-            //     }
-            //
-            // } else if (objectArray['o:thumbnail_urls'] !== undefined && originalUrlBoolean === false) {
-            //     media = objectArray['o:thumbnail_urls']['large'];
-            // }/*else if (objectArray['o:thumbnail_urls'] !== undefined && originalUrlBoolean === false) {
-            //     media = objectArray['o:thumbnail_urls']['large'];
-            // }*/
             return media;
         },
         getTypeMedia(objectArray) {
