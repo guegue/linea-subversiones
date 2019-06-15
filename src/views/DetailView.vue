@@ -42,6 +42,7 @@
                     images: [],
                     videos: [],
                     audios: [],
+                    documents: [],
                 },
                 urlPath: '',
             }
@@ -68,6 +69,7 @@
                                             this.detailsItem.images = media[0];
                                             this.detailsItem.videos = media[1];
                                             this.detailsItem.audios = media[2];
+                                            this.detailsItem.documents = media[3];
                                             this.detailsItem.author = this.getAttribEmptyOrFilled(data, 'bibo:citedBy');
                                         });
 

@@ -103,6 +103,15 @@
                             </div>
                         </div>
                         <!--Pagination-->
+
+                        <pre>
+                            {{detailsItem.documents}}
+                        </pre>
+
+                        <document></document>
+
+
+
                         <!--Author Info Area-->
                         <div class="section section-post-about">
                             <div class="section_wrapper clearfix">
@@ -190,6 +199,7 @@
     import AudioPlayer from '../components/AudioPlayer'
     import Viewer from '../components/Viewer'
     import VideoPlayer from '../components/VideoPlayer'
+    import Document from '../components/Document'
 
     export default {
         name: "Container-Detail",
@@ -198,6 +208,7 @@
             AudioPlayer,
             Viewer,
             VideoPlayer,
+            Document,
         },
         data() {
             return {

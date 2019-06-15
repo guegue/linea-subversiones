@@ -149,7 +149,7 @@ export default {
                 }
             }
             // return a array of arrays images,videos,audios
-            return [array_img, array_video, array_audio];
+            return [array_img, array_video, array_audio,array_document];
         },
         async getFirstImageFound(array) {
             let media = '';
