@@ -150,7 +150,7 @@ export default {
                 }
             }
             // return a array of arrays images,videos,audios
-            return [array_img, array_video, array_audio,array_document];
+            return [array_img, array_video, array_audio, array_document];
         },
         async getFirstImageFound(array) {
             let media = '';
@@ -161,13 +161,36 @@ export default {
                     break;
                 }
             }
+            //return the url of the first img found
             return media;
+        },
+        async getCoordinatesMapArray(dataArray) {
+            let coordinates = [];
+            for (const coordinate of dataArray) {
+                let img = '';
+                if (coordinate['o:media'] !== null) {
+                    let media = await this.$axios(coordinate['o:media']['@id']);
+                    img = this.getMediaEmptyOrFilled(media.data);
+                }
+
+                coordinates.push({
+                    img: img,
+                    title:this.getEmptyStringOrValue(coordinate,'o-module-mapping:label'),
+                    lng:this.getEmptyStringOrValue(coordinate,'o-module-mapping:lng'),
+                    lat:this.getEmptyStringOrValue(coordinate,'o-module-mapping:lat'),
+                });
+            }
+            //return array of coordinates
+            return coordinates
+        },
+        getEmptyStringOrValue(objectArray, attribName) {
+            return (objectArray[attribName] !== null) ? objectArray[attribName] : '';
         },
         getAttribEmptyOrFilled(objectArray, attribName) {
             return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
         },
         getMediaEmptyOrFilled(objectArray) {
-            let media;
+            let media = '';
             switch (objectArray['o:media_type']) {
                 case 'image/png':
                 case 'image/jpeg':

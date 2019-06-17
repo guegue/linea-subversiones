@@ -43,6 +43,7 @@
                     videos: [],
                     audios: [],
                     documents: [],
+                    coordinates: [],
                 },
                 urlPath: '',
             }
@@ -58,7 +59,6 @@
                             this.$axios(this.$domainOmeka + 'api/items/' + idItem)
                                 .then((detailItem) => {
                                     let data = detailItem.data;
-                                    console.log(data);
                                     this.getArrayMedia(data['o:media'])
                                         .then((media) => {
                                             this.detailsItem.title = this.getAttribEmptyOrFilled(data, 'dcterms:title');
@@ -71,6 +71,7 @@
                                             this.detailsItem.videos = media[1];
                                             this.detailsItem.audios = media[2];
                                             this.detailsItem.documents = media[3];
+                                            this.detailsItem.coordinates = this.getCoordinatesMapArray(data['o-module-mapping:marker']);
                                             this.detailsItem.author = this.getAttribEmptyOrFilled(data, 'bibo:citedBy');
                                         });
 
