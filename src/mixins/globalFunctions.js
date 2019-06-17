@@ -7,11 +7,6 @@ export default {
             optionMenu: [],
             id_video: null,
             url: '',
-            type_file: [
-                'image/jpeg',
-                'image/png',
-                'application/pdf',
-            ]
         }
     },
     methods: {

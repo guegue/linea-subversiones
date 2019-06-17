@@ -98,12 +98,10 @@
                             </div>
                         </div>
                         <!--Pagination-->
-
                     </div>
 
                     <div class="section">
                         <div class="section_wrapper clearfix">
-                            <pre>{{detailsItem}}</pre>
                             <div class="column one">
                                 <main>
 
@@ -162,10 +160,10 @@
                                         </div>
                                     </section>
 
-                                    <section id="content5" v-if="(detailsItem.documents.length > 0)">
+                                    <section id="content5" v-if="(detailsItem.coordinates.length > 0)">
                                         <div class="section">
                                             <div class="section_wrapper clearfix">
-                                                <document v-bind:documents="detailsItem.documents"></document>
+                                                <coordinates-map></coordinates-map>
                                             </div>
                                         </div>
                                     </section>
@@ -182,18 +180,7 @@
 
                 </div>
             </div>
-            <!-- Sidebar area-->
-            <div class="sidebar sidebar-1 four columns">
-                <div class="widget-area clearfix m-2">
 
-                    <!-- Text Area -->
-
-                    <!-- Categories Area -->
-
-                    <!-- Archives Area -->
-
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -203,6 +190,7 @@
     import Viewer from '../components/Viewer'
     import VideoPlayer from '../components/VideoPlayer'
     import Document from '../components/Document'
+    import CoordinatesMap from '../components/Coordinates-Map'
 
     export default {
         name: "Container-Detail",
@@ -212,6 +200,7 @@
             Viewer,
             VideoPlayer,
             Document,
+            CoordinatesMap,
         },
         data() {
             return {
@@ -321,7 +310,8 @@
     #tab1:checked ~ #content1,
     #tab2:checked ~ #content2,
     #tab3:checked ~ #content3,
-    #tab4:checked ~ #content4 {
+    #tab4:checked ~ #content4,
+    #tab5:checked ~ #content5 {
         display: block;
     }
 
