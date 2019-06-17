@@ -16,7 +16,6 @@
                                                 class="icon-left-open"></i></span></a>
                                     </li>
                                 </ul>
-
                             </div>
                             <!-- Post Header-->
                             <!-- One full width row-->
@@ -69,10 +68,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Post Featured Element (image / video / gallery)-->
-                            <!-- One full width row-->
-
-
                         </div>
                     </div>
 
@@ -82,20 +77,20 @@
                             <div class="section the_content has_content">
                                 <div class="section_wrapper">
                                     <div class="the_content_wrapper">
-                                        <h4>Resumen</h4>
-                                        <p class="big">
-                                            {{detailsItem.provenance}}
+                                        <h4 v-if="detailsItem.abstract.length > 0">Resumen</h4>
+                                        <p class="big" v-if="detailsItem.abstract.length > 0">
+                                            {{detailsItem.abstract}}
                                         </p>
-                                        <h4>Descripci&oacute;n</h4>
-                                        <p class="big text-justify">
+                                        <h4 v-if="detailsItem.description.length > 0">Descripci&oacute;n</h4>
+                                        <p class="big text-justify" v-if="detailsItem.description.length > 0">
                                             {{detailsItem.description}}
                                         </p>
-                                        <h4>Fuente</h4>
-                                        <p class="big">
+                                        <h4 v-if="detailsItem.source.length > 0">Fuente</h4>
+                                        <p class="big" v-if="detailsItem.source.length > 0">
                                             {{detailsItem.source}}
                                         </p>
-                                        <h4>Procedencia</h4>
-                                        <p class="big">
+                                        <h4 v-if="detailsItem.provenance.length > 0">Procedencia</h4>
+                                        <p class="big" v-if="detailsItem.provenance.length > 0">
                                             {{detailsItem.provenance}}
                                         </p>
                                     </div>
@@ -104,26 +99,6 @@
                         </div>
                         <!--Pagination-->
 
-
-                        <!--Author Info Area-->
-                        <div class="section section-post-about">
-                            <div class="section_wrapper clearfix">
-                                <!-- One full width row-->
-                                <div class="column one author-box">
-                                    <div class="author-box-wrapper" v-if="detailsItem.author.length > 0">
-                                        <div class="avatar-wrapper">
-                                            <img alt='admin'
-                                                 src='http://0.gravatar.com/avatar/057e2eb392b95a2ecfc9d32d554e3917?s=64&amp;d=mm&amp;r=g'
-                                                 class='avatar avatar-64 photo' height='64' width='64'/>
-                                        </div>
-                                        <div class="desc-wrapper">
-                                            <h5><a href="javascript:;">{{detailsItem.author}}</a></h5>
-                                            <div class="desc"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="section">

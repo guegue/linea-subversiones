@@ -157,32 +157,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <!-- One Third (1/3) Column -->
-                                    <div class="column one-third m-1" v-for="(content,index) in related_content"
-                                         :key="index">
-                                        <div style="margin-right: 20%;margin-bottom: 15px;">
-                                            <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
-                                                <div class="image_wrapper">
-                                                    <img v-if="content.url_img !== ''"
-                                                         class="scale-with-grid img-cover-2"
-                                                         :src="content.url_img"
-                                                         :alt="content.title"/>
-                                                    <img v-else class="scale-with-grid img-cover-2"
-                                                         src="@/assets/no-image-icon.png"
-                                                         :alt="content.title"/>
-                                                </div>
-                                            </div>
-                                            <hr class="no_line hrmargin_b_5"/>
-                                            <h5 class="hrmargin_b_5">
-                                                <a :href="urlPath +content.id">{{content.title}}</a>
-                                            </h5>
-                                            <p class="text-justify">
-                                                {{content.description.slice(0,115)}}
-                                                <a :href="urlPath +content.id" class="color-azul-oscuro">...Leer
-                                                    m&aacute;s</a>
-                                            </p>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
