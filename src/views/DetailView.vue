@@ -59,8 +59,10 @@
                             this.$axios(this.$domainOmeka + 'api/items/' + idItem)
                                 .then((detailItem) => {
                                     let data = detailItem.data;
-                                    this.getArrayMedia(data['o:media'])
+                                    /* metodo para obtener las imagenes,videos, audios, documentos y coordenadas*/
+                                    this.getArrayMedia(data)
                                         .then((media) => {
+
                                             this.detailsItem.title = this.getAttribEmptyOrFilled(data, 'dcterms:title');
                                             this.detailsItem.description = this.getAttribEmptyOrFilled(data, 'dcterms:description');
                                             this.detailsItem.abstract = this.getAttribEmptyOrFilled(data, 'dcterms:abstract');
@@ -71,8 +73,9 @@
                                             this.detailsItem.videos = media[1];
                                             this.detailsItem.audios = media[2];
                                             this.detailsItem.documents = media[3];
-                                            this.detailsItem.coordinates = this.getCoordinatesMapArray(data['o-module-mapping:marker']);
+                                            this.detailsItem.coordinates = media[4];
                                             this.detailsItem.author = this.getAttribEmptyOrFilled(data, 'bibo:citedBy');
+
                                         });
 
                                 })

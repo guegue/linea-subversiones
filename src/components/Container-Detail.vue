@@ -103,24 +103,40 @@
 
                     <div class="section">
                         <div class="section_wrapper clearfix">
+                            <pre>{{detailsItem}}</pre>
                             <div class="column one">
                                 <main>
 
                                     <input v-if="(detailsItem.images.length > 0)" id="tab1" type="radio" name="tabs"
                                            :checked="exist_img">
-                                    <label v-if="(detailsItem.images.length > 0)" for="tab1">Imagenes</label>
+                                    <label v-if="(detailsItem.images.length > 0)" for="tab1">
+                                        <i class="fa fa-picture-o" aria-hidden="true"></i> Imagenes
+                                    </label>
 
                                     <input v-if="(detailsItem.audios.length > 0)" id="tab2" type="radio" name="tabs"
                                            :checked="exist_audio">
-                                    <label v-if="(detailsItem.audios.length > 0)" for="tab2">Audios</label>
+                                    <label v-if="(detailsItem.audios.length > 0)" for="tab2">
+                                        <i class="fa fa-volume-up" aria-hidden="true"></i> Audios
+                                    </label>
 
                                     <input v-if="(detailsItem.videos.length > 0)" id="tab3" type="radio" name="tabs"
                                            :checked="exist_video">
-                                    <label v-if="(detailsItem.videos.length > 0)" for="tab3">Videos</label>
+                                    <label v-if="(detailsItem.videos.length > 0)" for="tab3">
+                                        <i class="fa fa-film" aria-hidden="true"></i> Videos
+                                    </label>
 
                                     <input v-if="(detailsItem.documents.length > 0)" id="tab4" type="radio" name="tabs"
                                            :checked="exist_document">
-                                    <label v-if="(detailsItem.documents.length > 0)" for="tab3">Documentos</label>
+                                    <label v-if="(detailsItem.documents.length > 0)" for="tab4">
+                                        <i class="fa fa-file" aria-hidden="true"></i> Documentos
+                                    </label>
+
+                                    <input v-if="(detailsItem.coordinates.length > 0)" id="tab5" type="radio"
+                                           name="tabs"
+                                           :checked="exist_coordinates">
+                                    <label v-if="(detailsItem.coordinates.length > 0)" for="tab5">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i> Ubicaciones
+                                    </label>
 
                                     <section id="content1" v-if="(detailsItem.images.length > 0)">
                                         <Viewer v-bind:images="detailsItem.images"></Viewer>
@@ -141,7 +157,14 @@
                                     <section id="content4" v-if="(detailsItem.documents.length > 0)">
                                         <div class="section">
                                             <div class="section_wrapper clearfix">
+                                                <document v-bind:documents="detailsItem.documents"></document>
+                                            </div>
+                                        </div>
+                                    </section>
 
+                                    <section id="content5" v-if="(detailsItem.documents.length > 0)">
+                                        <div class="section">
+                                            <div class="section_wrapper clearfix">
                                                 <document v-bind:documents="detailsItem.documents"></document>
                                             </div>
                                         </div>
@@ -196,6 +219,7 @@
                 exist_audio: false,
                 exist_video: false,
                 exist_document: false,
+                exist_coordinates: false,
             }
         },
         updated() {
@@ -203,6 +227,7 @@
             let size_audio = this.detailsItem.audios.length;
             let size_video = this.detailsItem.videos.length;
             let size_document = this.detailsItem.documents.length;
+            let size_coordinates = this.detailsItem.coordinates.length;
 
             if (size_img > 0) {
                 this.exist_img = true;
@@ -212,6 +237,8 @@
                 this.exist_video = true;
             } else if (size_document > 0) {
                 this.exist_document = true;
+            } else if (size_coordinates > 0) {
+                this.exist_coordinates = true;
             }
         },
     }
@@ -277,23 +304,6 @@
         font-family: fontawesome;
         font-weight: normal;
         margin-right: 10px;
-    }
-
-    label[for*='1']:before {
-
-        content: '\f03e';
-    }
-
-    label[for*='2']:before {
-        content: '\f028';
-    }
-
-    label[for*='3']:before {
-        content: '\f008';
-    }
-
-    label[for*='4']:before {
-        content: '\f15c';
     }
 
     label:hover {
