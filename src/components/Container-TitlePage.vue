@@ -114,7 +114,7 @@
                           </div>
                     </span>
                     <!--Video Section-->
-                    <div class="section" style="padding-top:90px; padding-bottom:50px; ">
+                    <div class="section" style="padding-top:90px; padding-bottom:50px; " v-if="videos.length >0">
                         <div class="section_wrapper clearfix">
                             <div class="items_group clearfix">
                                 <!--One Fourth (1/4) Column -->
@@ -133,7 +133,7 @@
                                     <div class="column_attr p-8">
                                         <hr class="no_line hrmargin_b_40"/>
                                         <!--square of videos-->
-                                        <div v-if="videos.length >0">
+                                        <div >
                                             <ul id="video-gallery" class="video list-unstyled">
                                                 <li class="column one-third video"
                                                     v-for="(video,index) in videos"
@@ -151,14 +151,6 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </div>
-                                        <div v-else class="text-center">
-                                            <hr class="no_line hrmargin_b_30"/>
-                                            <h1>
-                                                No Hay videos disponibles.
-                                            </h1>
-                                            <hr class="no_line hrmargin_b_30"/>
-                                            <hr class="no_line hrmargin_b_30"/>
                                         </div>
                                     </div>
                                 </div>

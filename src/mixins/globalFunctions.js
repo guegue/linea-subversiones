@@ -169,6 +169,7 @@ export default {
         getMediaEmptyOrFilled(objectArray) {
             let media;
             switch (objectArray['o:media_type']) {
+                case 'image/png':
                 case 'image/jpeg':
                     media = objectArray['o:original_url'];
                     break;

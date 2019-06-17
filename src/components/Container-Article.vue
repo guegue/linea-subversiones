@@ -114,7 +114,7 @@
             <br>
             <hr>
 
-            <div class="sections_group">
+            <div class="sections_group" v-if="related_content.length > 0">
                 <div class="section" style="padding-top:90px; padding-bottom:50px; ">
                     <div class="section_wrapper clearfix">
                         <div class="items_group clearfix">
@@ -131,29 +131,32 @@
                             <!-- Three Fourth (3/4) Column -->
                             <div class="column three-fourth column_column space-border">
                                 <div class="column_attr" style=" padding:0 0 0 8%;">
-
                                     <!-- One Third (1/3) Column -->
-                                    <div class="column one-third" v-for="(content,index) in related_content"
+                                    <div class="column one-third m-1" v-for="(content,index) in related_content"
                                          :key="index">
                                         <div style="margin-right: 20%;">
                                             <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
                                                 <div class="image_wrapper">
-                                                    <img v-if="content.url_img !== ''" class="scale-with-grid img-cover"
+                                                    <img v-if="content.url_img !== ''"
+                                                         class="scale-with-grid img-cover-2"
                                                          :src="content.url_img"
                                                          :alt="content.title"/>
-                                                    <img v-else class="scale-with-grid img-cover"
+                                                    <img v-else class="scale-with-grid img-cover-2"
                                                          src="@/assets/no-image-icon.png"
                                                          :alt="content.title"/>
                                                 </div>
                                             </div>
-                                            <hr class="no_line hrmargin_b_20"/>
-                                            <h5><a :href="urlPath +content.id">{{content.title}}</a></h5>
-                                            <p class="text-justify">{{content.description.slice(0,115)}} <a
-                                                    :href="urlPath +content.id" class="color-azul-oscuro">...Leer
-                                                m&aacute;s</a></p>
+                                            <hr class="no_line hrmargin_b_5"/>
+                                            <h5 class="hrmargin_b_5">
+                                                <a :href="urlPath +content.id">{{content.title}}</a>
+                                            </h5>
+                                            <p class="text-justify">
+                                                {{content.description.slice(0,115)}}
+                                                <a :href="urlPath +content.id" class="color-azul-oscuro">...Leer
+                                                    m&aacute;s</a>
+                                            </p>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

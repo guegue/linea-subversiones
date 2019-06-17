@@ -114,6 +114,11 @@
     width: 100%;
     object-fit: cover !important;
 }
+.img-cover-2 {
+    height: 190px !important;
+    width: 100%;
+    object-fit: cover !important;
+}
 
 .photo .post-desc-wrapper {
     width: 100%;
