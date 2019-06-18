@@ -10,12 +10,10 @@
     export default {
         name: "Coordinates-Map",
         props: ['coordinates'],
-        components: {
-        },
+        components: {},
         data() {
             return {
-                zoom: 4,
-                center: window.L.latLng(47.413220, -1.219482),
+                zoom: 5,
                 url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
                 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
                 marker: [],
@@ -23,25 +21,33 @@
         },
         mounted() {
             let map = new window.L.Map('map');
+            let latitud = 0, longitud = 0;
 
             window.L.tileLayer(this.url, {
                 attribution: this.attribution,
                 maxZoom: 13,
             }).addTo(map);
 
-            // latitud -12.0431800,longitud  -77.0282400
-            let PeruPosition = new window.L.LatLng(-12.0431800, -77.0282400);
-            map.attributionControl.setPrefix('');
-            map.setView(PeruPosition, this.zoom);
 
-            for (const coordinate of this.coordinates){
-                let marker_location = new window.L.LatLng(coordinate.lat,coordinate.lng);
+            for (const coordinate of this.coordinates) {
+                latitud = latitud + coordinate.lat;
+                longitud = longitud + coordinate.lng;
+                //posicion del marcador latitud, longitud
+                let marker_location = new window.L.LatLng(coordinate.lat, coordinate.lng);
+                //creamos un marcador  y le establecemos su posicion
                 let marker = new window.L.Marker(marker_location);
+                //agregamos el marcador al mapa
                 map.addLayer(marker);
-
+                //agregamos un popup al marcador que contiene el titulo
                 marker.bindPopup(coordinate.title);
             }
-
+            //contenemos la cantidad de coordinadas
+            let length = this.coordinates.length;
+            //realizamos el calculo medio de n cantidad de puntos
+            let center_position = new window.L.LatLng(latitud / length, longitud / length);
+            map.attributionControl.setPrefix('');
+            //pasamos al mapa el punto medio de lo puntos y zoom por defecto del mapa
+            map.setView(center_position, this.zoom);
         }
     }
 </script>
