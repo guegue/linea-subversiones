@@ -87,7 +87,7 @@ export default {
             return items['item_set_id'];
         },
         async getArrayMedia(data) {
-            let array_img = [], array_video = [], array_audio = [], array_document = [],array_coordinate=[];
+            let array_img = [], array_video = [], array_audio = [], array_document = [], array_coordinate = [];
             for (const datum of data['o:media']) {
                 let mediaData = await this.$axios(datum['@id']);
                 let media_type = this.getTypeMedia(mediaData.data);
@@ -152,14 +152,14 @@ export default {
                 }
                 array_coordinate.push({
                     img: img,
-                    title:this.getEmptyStringOrValue(coordinate,'o-module-mapping:label'),
-                    lng:this.getEmptyStringOrValue(coordinate,'o-module-mapping:lng'),
-                    lat:this.getEmptyStringOrValue(coordinate,'o-module-mapping:lat'),
+                    title: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:label'),
+                    lng: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:lng'),
+                    lat: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:lat'),
                 });
             }
 
             // return a array of arrays images,videos,audios
-            return [array_img, array_video, array_audio, array_document,array_coordinate];
+            return [array_img, array_video, array_audio, array_document, array_coordinate];
         },
         async getFirstImageFound(array) {
             let media = '';

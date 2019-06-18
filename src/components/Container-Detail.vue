@@ -76,9 +76,9 @@
                         <div class="entry-content">
                             <div class="section the_content has_content">
                                 <div class="section_wrapper">
-                                    <div class="the_content_wrapper">
+                                    <div class="column" :class="{'one-second':(detailsItem.coordinates.length > 0)}">
                                         <h4 v-if="detailsItem.abstract.length > 0">Resumen</h4>
-                                        <p class="big" v-if="detailsItem.abstract.length > 0">
+                                        <p class="big text-justify" v-if="detailsItem.abstract.length > 0">
                                             {{detailsItem.abstract}}
                                         </p>
                                         <h4 v-if="detailsItem.description.length > 0">Descripci&oacute;n</h4>
@@ -86,13 +86,17 @@
                                             {{detailsItem.description}}
                                         </p>
                                         <h4 v-if="detailsItem.source.length > 0">Fuente</h4>
-                                        <p class="big" v-if="detailsItem.source.length > 0">
+                                        <p class="big text-justify" v-if="detailsItem.source.length > 0">
                                             {{detailsItem.source}}
                                         </p>
                                         <h4 v-if="detailsItem.provenance.length > 0">Procedencia</h4>
-                                        <p class="big" v-if="detailsItem.provenance.length > 0">
+                                        <p class="big text-justify" v-if="detailsItem.provenance.length > 0">
                                             {{detailsItem.provenance}}
                                         </p>
+                                    </div>
+
+                                    <div v-if="detailsItem.coordinates.length > 0" class="column one-second">
+                                        <coordinates-map v-bind:coordinates="detailsItem.coordinates"></coordinates-map>
                                     </div>
                                 </div>
                             </div>
@@ -102,6 +106,7 @@
 
                     <div class="section">
                         <div class="section_wrapper clearfix">
+
                             <div class="column one">
                                 <main>
 
@@ -129,13 +134,6 @@
                                         <i class="fa fa-file" aria-hidden="true"></i> Documentos
                                     </label>
 
-                                    <input v-if="(detailsItem.coordinates.length > 0)" id="tab5" type="radio"
-                                           name="tabs"
-                                           :checked="exist_coordinates">
-                                    <label v-if="(detailsItem.coordinates.length > 0)" for="tab5">
-                                        <i class="fa fa-map-marker" aria-hidden="true"></i> Ubicaciones
-                                    </label>
-
                                     <section id="content1" v-if="(detailsItem.images.length > 0)">
                                         <Viewer v-bind:images="detailsItem.images"></Viewer>
                                     </section>
@@ -156,14 +154,6 @@
                                         <div class="section">
                                             <div class="section_wrapper clearfix">
                                                 <document v-bind:documents="detailsItem.documents"></document>
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <section id="content5" v-if="(detailsItem.coordinates.length > 0)">
-                                        <div class="section">
-                                            <div class="section_wrapper clearfix">
-                                                <coordinates-map></coordinates-map>
                                             </div>
                                         </div>
                                     </section>
@@ -208,7 +198,6 @@
                 exist_audio: false,
                 exist_video: false,
                 exist_document: false,
-                exist_coordinates: false,
             }
         },
         updated() {
@@ -216,7 +205,6 @@
             let size_audio = this.detailsItem.audios.length;
             let size_video = this.detailsItem.videos.length;
             let size_document = this.detailsItem.documents.length;
-            let size_coordinates = this.detailsItem.coordinates.length;
 
             if (size_img > 0) {
                 this.exist_img = true;
@@ -226,40 +214,13 @@
                 this.exist_video = true;
             } else if (size_document > 0) {
                 this.exist_document = true;
-            } else if (size_coordinates > 0) {
-                this.exist_coordinates = true;
             }
         },
     }
 </script>
 
 <style scoped>
-    @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
     @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
-    *, *::before, *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html, body {
-        height: 100vh;
-    }
-
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 40px;
-        font: 14px/1.5 'Open Sans', sans-serif;
-        color: #345;
-        background: #f0f2f4;
-    }
-
-    p:not(:last-child) {
-        margin: 0 0 20px;
-    }
 
     main {
         max-width: 100%;
@@ -310,8 +271,7 @@
     #tab1:checked ~ #content1,
     #tab2:checked ~ #content2,
     #tab3:checked ~ #content3,
-    #tab4:checked ~ #content4,
-    #tab5:checked ~ #content5 {
+    #tab4:checked ~ #content4 {
         display: block;
     }
 

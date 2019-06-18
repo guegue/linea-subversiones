@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import Axios from 'axios';
 import VModal from 'vue-js-modal';
+import { Icon } from 'leaflet'
 
 
 //css
@@ -21,6 +22,13 @@ import 'lg-video.js/dist/lg-video.js';
 import 'lg-thumbnail.js/dist/lg-thumbnail.js';
 import 'lg-fullscreen.js/dist/lg-fullscreen.js';
 
+delete Icon.Default.prototype._getIconUrl;
+
+Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
 
 Vue.config.productionTip = false;
 
