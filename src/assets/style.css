@@ -146,6 +146,6 @@ a.color-azul-oscuro:hover {
     display: none;
 }
 
-/*@media screen and (max-width: ) {*/
-/*
-/*}*/
+.space-border:after{
+    color: #fff;
+}

@@ -91,7 +91,7 @@
                                                 </div>
                                                 <div class="post-excerpt" v-if="(content.description !== '')">
                                                     <p class="big text-justify" v-if="content.description.length > 200">
-                                                        {{content.description.slice(0,190)}}
+                                                        {{content.description.slice(0,153)}}
                                                         <a :href="urlPath +content.id" class="color-azul-oscuro">...Leer
                                                             m&aacute;s</a>
                                                     </p>
@@ -111,21 +111,18 @@
                     </div>
                 </div>
             </div>
-            <br>
+<!--            <br>-->
             <hr>
-
             <div class="sections_group" v-if="related_content.length > 0">
-                <div class="section" style="padding-top:90px; padding-bottom:50px; background-color: #152f4e;color: #fff !important;">
+                <div class="section" style="padding-top:90px; padding-bottom:50px">
                     <div class="section_wrapper clearfix">
                         <div class="items_group clearfix">
                             <!-- One Fourth (1/4) Column -->
                             <div class="column one-fourth column_column ">
                                 <div class="column_attr" style=" padding:0 8% 0 0;">
                                     <hr class="no_line hrmargin_b_40"/>
-                                    <h3 class="text-white">Recursos Relacionados</h3>
+                                    <h3>Recursos Relacionados</h3>
                                     <hr class="no_line hrmargin_b_30"/>
-                                    <a class="button button_large button_theme button_js"
-                                       href="content/space/stuff.html"><span class="button_label">Read more</span></a>
                                 </div>
                             </div>
                             <!-- Three Fourth (3/4) Column -->
@@ -135,23 +132,11 @@
                                     <div class="column one-third m-1" v-for="(content,index) in related_content"
                                          :key="index">
                                         <div style="margin-right: 20%;margin-bottom: 15px;">
-                                            <div class="image_frame image_item no_link scale-with-grid alignnone no_border">
-                                                <div class="image_wrapper">
-                                                    <img v-if="content.url_img !== ''"
-                                                         class="scale-with-grid img-cover-2"
-                                                         :src="content.url_img"
-                                                         :alt="content.title"/>
-                                                    <img v-else class="scale-with-grid img-cover-2"
-                                                         src="@/assets/no-image-icon.png"
-                                                         :alt="content.title"/>
-                                                </div>
-                                            </div>
-                                            <hr class="no_line hrmargin_b_5"/>
                                             <h5 class="hrmargin_b_5 text-white">
-                                                <a :href="urlPath +content.id" class="text-white">{{content.title}}</a>
+                                                <a :href="urlPath +content.id">{{content.title}}</a>
                                             </h5>
                                             <p class="text-justify">
-                                                {{content.description.slice(0,115)}}
+                                                {{content.description.slice(0,119)}}
                                                 <a :href="urlPath +content.id" class="color-azul-oscuro">...Leer
                                                     m&aacute;s</a>
                                             </p>
