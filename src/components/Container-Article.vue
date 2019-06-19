@@ -111,8 +111,7 @@
                     </div>
                 </div>
             </div>
-<!--            <br>-->
-            <hr>
+            <hr v-if="related_content.length > 0">
             <div class="sections_group" v-if="related_content.length > 0">
                 <div class="section" style="padding-top:90px; padding-bottom:50px">
                     <div class="section_wrapper clearfix">
