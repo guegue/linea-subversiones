@@ -51,8 +51,9 @@
                                                          class="scale-with-grid wp-post-image img-cover"
                                                          alt="home_space_blog3"/>
                                                 </a>
-                                                <div class="image_links double">
-                                                    <a role="button" class="zoom cursor-hand"
+                                                <div class="image_links " :class="{'double':(content.url_img !== '')}">
+                                                    <a v-if="content.url_img !== ''" role="button"
+                                                       class="zoom cursor-hand"
                                                        @click="showImage('img-item_'+content.id,content.url_img,content.title)"
                                                        rel="prettyphoto">
                                                         <i class="icon-search"></i>
@@ -90,8 +91,8 @@
                                                     </h2>
                                                 </div>
                                                 <div class="post-excerpt" v-if="(content.description !== '')">
-                                                    <p class="big text-justify" v-if="content.description.length > 200">
-                                                        {{content.description.slice(0,153)}}
+                                                    <p class="big text-justify" v-if="content.description.length > 150">
+                                                        {{content.description.slice(0,150)}}
                                                         <a :href="urlPath +content.id" class="color-azul-oscuro">...Leer
                                                             m&aacute;s</a>
                                                     </p>
@@ -106,6 +107,13 @@
                                     </div>
 
                                 </div>
+                            </div>
+                        </div>
+                        <!--pagination-->
+                        <div class="column one post-pager">
+                            <!-- Navigation Area -->
+                            <div class="pager-single">
+                                <span>1</span><a href="#"><span>2</span></a>
                             </div>
                         </div>
                     </div>
@@ -176,7 +184,7 @@
                     subHtmlSelectorRelative: true,
                     dynamicEl: [source],
                 });
-            }
+            },
         }
     }
 </script>

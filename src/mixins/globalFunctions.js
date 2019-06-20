@@ -157,7 +157,6 @@ export default {
                     lat: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:lat'),
                 });
             }
-
             // return a array of arrays images,videos,audios
             return [array_img, array_video, array_audio, array_document, array_coordinate];
         },
@@ -223,7 +222,6 @@ export default {
                 }
             }
             return ret.join('').replace(/[^-A-Za-z0-9]+/g, '-').toLowerCase();
-
-        }
+        },
     }
 }

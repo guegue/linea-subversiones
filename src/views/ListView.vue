@@ -41,6 +41,9 @@
                 descriptions: [],
                 urlPath: '',
                 relatedContent: [],
+                array_to_10: [],
+                quantity_page: 1,
+                itemsShow: [],
             }
         },
         mounted() {
@@ -109,23 +112,21 @@
                     for (const data of dataItemSet.data) {
                         //valido si la propiedad o:media existe, para obtener una imagen que represente a cada contenido
                         if (data['o:media'] !== null) {
-                            this.getFirstImageFound(data)
-                                .then((image) => {
-                                    this.contents.push({
-                                        id: data['o:id'],
-                                        title: this.getAttribEmptyOrFilled(data, 'dcterms:title'),
-                                        description: this.getAttribEmptyOrFilled(data, 'dcterms:description'),
-                                        url_img: image,
-                                        alternative: this.getAttribEmptyOrFilled(data, 'dcterms:alternative'),
-                                        date: this.getAttribEmptyOrFilled(data, 'dcterms:date'),
-                                        provenance: this.getAttribEmptyOrFilled(data, 'dcterms:provenance'),
-                                        source: this.getAttribEmptyOrFilled(data, 'dcterms:source'),
-                                        author: this.getAttribEmptyOrFilled(data, 'bibo:citedBy'),
-                                    });
-                                });
+                            let image = await this.getFirstImageFound(data);
+                            this.contents.push({
+                                id: data['o:id'],
+                                title: this.getAttribEmptyOrFilled(data, 'dcterms:title'),
+                                description: this.getAttribEmptyOrFilled(data, 'dcterms:description'),
+                                url_img: image,
+                                alternative: this.getAttribEmptyOrFilled(data, 'dcterms:alternative'),
+                                date: this.getAttribEmptyOrFilled(data, 'dcterms:date'),
+                                provenance: this.getAttribEmptyOrFilled(data, 'dcterms:provenance'),
+                                source: this.getAttribEmptyOrFilled(data, 'dcterms:source'),
+                                author: this.getAttribEmptyOrFilled(data, 'bibo:citedBy'),
+                            });
                         }
                     }
-
+                    // console.log(dataItemSet.data.length);
                     if (answer.data['dcterms:isPartOf'] !== undefined) {
                         for (const related of answer.data['dcterms:isPartOf']) {
                             let type_resource = related['value_resource_name'];
@@ -152,7 +153,7 @@
                         }
                     }
                 }
-            }
+            },
         }
     }
 </script>
