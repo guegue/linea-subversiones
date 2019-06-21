@@ -88,11 +88,13 @@ export default {
         },
         async getArrayMedia(data) {
             let array_img = [], array_video = [], array_audio = [], array_document = [], array_coordinate = [];
+            //recorremos toda la media que viene de un item
             for (const datum of data['o:media']) {
                 let mediaData = await this.$axios(datum['@id']);
                 let media_type = this.getTypeMedia(mediaData.data);
                 switch (media_type) {
                     case 'image':
+                        //llenamos el arreglo de images subidas a la plataforma de omeka
                         array_img.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
@@ -100,6 +102,7 @@ export default {
                         });
                         break;
                     case 'video' :
+                        //llenamos el arreglo de videos subidos a la plataforma de omeka
                         array_video.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
@@ -112,12 +115,13 @@ export default {
                     case 'youtube':
                     case 'vimeo':
                         this.id_video = mediaData.data['data']['id'];
+                        //validamos si el video que de youtube o vimeo para generar una url para un embed
                         if (media_type === 'youtube') {
                             this.url = '//youtube.com/embed/' + this.id_video + '?wmode=opaque&amp;enablejsapi=1';
                         } else {
                             this.url = '//player.vimeo.com/video/' + this.id_video + '?autoplay=1&amp;api=1';
                         }
-
+                    //llenamos el arreglo de videos
                         array_video.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
@@ -128,13 +132,16 @@ export default {
                         });
                         break;
                     case 'audio':
+                        //llenamos el arreglo de audios
                         array_audio.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: mediaData.data['o:media_type'],
                             url: this.getMediaEmptyOrFilled(mediaData.data),
                         });
+                        console.log(array_audio);
                         break;
                     case 'application':
+                        //llenamos el arreglo de documentos generalmente son pdfs
                         array_document.push({
                             title: mediaData.data['o:source'],
                             type: mediaData.data['o:media_type'],
@@ -183,6 +190,7 @@ export default {
         getMediaEmptyOrFilled(objectArray) {
             let media = '';
             switch (objectArray['o:media_type']) {
+                case 'audio/mpeg':
                 case 'image/png':
                 case 'image/jpeg':
                     media = objectArray['o:original_url'];
@@ -198,7 +206,6 @@ export default {
                         media = '';
                     }
                     break;
-
             }
             return media;
         },
