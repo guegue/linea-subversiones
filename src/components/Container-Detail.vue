@@ -103,10 +103,9 @@
                         </div>
                         <!--Pagination-->
                     </div>
-
+                    <!--Media Tabs-->
                     <div class="section">
                         <div class="section_wrapper clearfix">
-
                             <div class="column one">
                                 <main>
 
@@ -163,14 +162,34 @@
                         </div>
                     </div>
 
-                    <!-- Related posts area-->
-                    <div class="section section-post-related">
-                        <div class="section_wrapper clearfix"></div>
-                    </div>
 
                 </div>
             </div>
+            <!-- Sidebar area-->
+            <div class="sidebar sidebar-1 four columns">
+                <div class="widget-area clearfix ">
+                    <br>
+                    <!-- Text Area -->
+                    <aside class="widget widget_text">
+                        <h3>About us</h3>
+                        <div class="textwidget">
+                            Mauris imperdiet, urna mi, gravida sod ales. Vivamus hendrerit nulla erat ornare tortor in
+                            vestibulum id.
+                        </div>
+                    </aside>
+                    <!-- Categories Area -->
+                    <aside id="categories-2" class="widget widget_categories">
+                        <h3>Otros Sitios</h3>
+                        <ul>
+                            <li class="cat-item cat-item-14" v-for="site in sites" :key="site.id">
+                                <a :href="'/'+site.slug">{{site.title}}</a>
+                            </li>
+                        </ul>
+                    </aside>
 
+
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -184,7 +203,7 @@
 
     export default {
         name: "Container-Detail",
-        props: ['detailsItem', 'backPage'],
+        props: ['detailsItem', 'backPage', 'sites'],
         components: {
             AudioPlayer,
             Viewer,

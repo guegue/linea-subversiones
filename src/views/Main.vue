@@ -9,25 +9,13 @@
 </template>
 
 <script>
+    import GlobalFunction from '../mixins/globalFunctions'
+
     export default {
         name: "Main",
-        data() {
-            return {
-                sites: []
-            }
-        },
+        mixins: [GlobalFunction],
         mounted() {
-            this.$axios(this.$domainOmeka + 'api/sites')
-                .then((response) => {
-                    let data_sites = response.data;
-                    data_sites.forEach((site) => {
-                        this.sites.push({
-                            id: site['o:id'],
-                            slug: site['o:slug'],
-                            title: site['o:title']
-                        })
-                    })
-                })
+            this.getAllSites()
         }
     }
 </script>

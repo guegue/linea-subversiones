@@ -8,6 +8,7 @@
                     v-bind:title="detailsItem.title"
                     v-bind:show-title-description="true"></Header>
             <Container v-bind:details-item="detailsItem"
+                       v-bind:sites="sites"
                        v-bind:back-page="urlPath"></Container>
             <Footer></Footer>
         </div>
@@ -82,6 +83,8 @@
 
                         })
                 });
+            this.getAllSites('no');
+
         }
     }
 </script>

@@ -7,6 +7,7 @@ export default {
             optionMenu: [],
             id_video: null,
             url: '',
+            sites: [],
         }
     },
     methods: {
@@ -23,7 +24,7 @@ export default {
                         this.nameSite = site['o:title'];
                         this.slugSite = site['o:slug'];
                     }
-                    //recorrelo el arreglo de id de items sets
+                    //recorro el arreglo de id de items sets
                     array_items.forEach((data, index) => {
                         //obtenemos el id de cada item set con la propiedad id_item_set
                         let idItemSet = data.id_item_set.toString();
@@ -121,7 +122,7 @@ export default {
                         } else {
                             this.url = '//player.vimeo.com/video/' + this.id_video + '?autoplay=1&amp;api=1';
                         }
-                    //llenamos el arreglo de videos
+                        //llenamos el arreglo de videos
                         array_video.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
@@ -138,7 +139,6 @@ export default {
                             type: mediaData.data['o:media_type'],
                             url: this.getMediaEmptyOrFilled(mediaData.data),
                         });
-                        console.log(array_audio);
                         break;
                     case 'application':
                         //llenamos el arreglo de documentos generalmente son pdfs
@@ -180,6 +180,30 @@ export default {
             }
             //return the url of the first img found
             return media;
+        },
+        getAllSites(getCurrentSite = 'si') {
+            this.$axios(this.$domainOmeka + 'api/sites')
+                .then((response) => {
+                    let data_sites = response.data;
+                    data_sites.forEach((site) => {
+                        if (getCurrentSite === 'si') {
+                            this.sites.push({
+                                id: site['o:id'],
+                                slug: site['o:slug'],
+                                title: site['o:title']
+                            })
+                        } else {
+                            if (this.slugSite !== site['o:slug']) {
+                                this.sites.push({
+                                    id: site['o:id'],
+                                    slug: site['o:slug'],
+                                    title: site['o:title']
+                                });
+                            }
+                        }
+
+                    })
+                })
         },
         getEmptyStringOrValue(objectArray, attribName) {
             return (objectArray[attribName] !== null) ? objectArray[attribName] : '';
