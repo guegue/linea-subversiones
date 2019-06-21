@@ -16,7 +16,7 @@
                     </div>
                 </div>
 
-                <Filtro></Filtro>
+                <Filters></Filters>
 
                 <div class="section">
                     <div class="section_wrapper clearfix">
@@ -136,8 +136,8 @@
                             <div class="column three-fourth column_column space-border">
                                 <div class="column_attr" style=" padding:0 0 0 8%;">
                                     <!-- One Third (1/3) Column -->
-                                    <div class="column one-third m-1" v-for="(content,index) in related_content"
-                                         :key="index">
+                                    <div class="column one-third m-1 height-item-related" v-for="(content,index) in related_content"
+                                         :key="index" >
                                         <div style="margin-right: 20%;margin-bottom: 15px;">
                                             <h5 class="hrmargin_b_5 text-white">
                                                 <a :href="urlPath +content.id">{{content.title}}</a>
@@ -162,13 +162,13 @@
 </template>
 
 <script>
-    import Filtro from '../components/Filtros'
+    import Filters from './Filters'
 
     export default {
         name: "Container-Article",
         props: ['contents', 'descriptions', 'summary', 'urlPath', 'related_content'],
         components: {
-            Filtro
+            Filters
         },
         methods: {
             showImage(id, url, title) {

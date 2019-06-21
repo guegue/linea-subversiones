@@ -144,18 +144,20 @@ export default {
                         break;
                 }
             }
-            for (const coordinate of data['o-module-mapping:marker']) {
-                let img = '';
-                if (coordinate['o:media'] !== null) {
-                    let media = await this.$axios(coordinate['o:media']['@id']);
-                    img = this.getMediaEmptyOrFilled(media.data);
+            if (data['o-module-mapping:marker'] !== undefined) {
+                for (const coordinate of data['o-module-mapping:marker']) {
+                    let img = '';
+                    if (coordinate['o:media'] !== null) {
+                        let media = await this.$axios(coordinate['o:media']['@id']);
+                        img = this.getMediaEmptyOrFilled(media.data);
+                    }
+                    array_coordinate.push({
+                        img: img,
+                        title: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:label'),
+                        lng: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:lng'),
+                        lat: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:lat'),
+                    });
                 }
-                array_coordinate.push({
-                    img: img,
-                    title: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:label'),
-                    lng: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:lng'),
-                    lat: this.getEmptyStringOrValue(coordinate, 'o-module-mapping:lat'),
-                });
             }
             // return a array of arrays images,videos,audios
             return [array_img, array_video, array_audio, array_document, array_coordinate];

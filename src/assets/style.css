@@ -149,3 +149,7 @@ a.color-azul-oscuro:hover {
 .space-border:after{
     color: #fff;
 }
+
+.height-item-related{
+    height: 150px !important;
+}
