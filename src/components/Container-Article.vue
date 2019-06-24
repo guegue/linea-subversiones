@@ -29,9 +29,10 @@
                             </div>
                         </div>
                         <!-- Contents -->
-                        <div v-for="(contentPagination,i) in contents" :key="contentPagination.id_page"
-                             class="container-main">
-                            <div class="column one-third column_blog height-col" :class="{'d-none':(i !== 0)}"
+                        <div v-for="contentPagination in contents" :key="contentPagination.id_page"
+                             class="container-main" :id="'pagination'+contentPagination.id_page"
+                             :class="{'d-none': (currentPage !== contentPagination.id_page)}">
+                            <div class="column one-third column_blog height-col"
                                  v-for="(content,index) in contentPagination.content" :key="index">
                                 <div class="blog_wrapper isotope_wrapper">
                                     <div class="posts_group lm_wrapper photo col-3">
@@ -41,7 +42,8 @@
                                             </div>
                                             <div class="image_frame post-photo-wrapper scale-with-grid">
                                                 <div class="image_wrapper" :id="'img-item_'+content.id">
-                                                    <a v-if="content.url_img !== ''" :href="content.url_img" target="_blank">
+                                                    <a v-if="content.url_img !== ''" :href="content.url_img"
+                                                       target="_blank">
                                                         <div class="mask"></div>
                                                         <img :src="content.url_img"
                                                              class="scale-with-grid wp-post-image img-cover"
@@ -134,8 +136,10 @@
                         <div class="column one post-pager">
                             <!-- Navigation Area -->
                             <div class="pager-single">
-                                <a href="javascript:;" :class="{'active-pagination-option':(numberPage === 1)}"
+                                <a href="javascript:;"
                                    v-for="(numberPage,index) in contents.length"
+                                   @click="showNextPagination(numberPage)"
+                                   :class="{'active-pagination-option': (currentPage === numberPage)}"
                                    :key="index">
                                     <span>{{numberPage}}</span>
                                 </a>
@@ -198,7 +202,8 @@
         },
         data() {
             return {
-                urlPath: ''
+                urlPath: '',
+                currentPage: 1,
             }
         },
         methods: {
@@ -216,6 +221,9 @@
                     dynamicEl: [source],
                 });
             },
+            showNextPagination(numberPageCurrent) {
+                this.currentPage = numberPageCurrent;
+            }
         }
     }
 </script>
