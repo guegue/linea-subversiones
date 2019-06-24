@@ -19,7 +19,7 @@
     export default {
         name: "Viewer",
         props: ['images'],
-        updated() {
+        mounted() {
             this.$nextTick(() => {
                 if (this.images.length > 0) {
                     window.lightGallery(document.getElementById('div-images'), {
