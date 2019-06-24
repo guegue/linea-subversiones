@@ -92,12 +92,12 @@
                                                     </div>
                                                     <div class="post-title" v-if="(content.title !== '')">
                                                         <h2 class="entry-title mb-8px">
-                                                            <a :to="{ name:'detail',
+                                                            <router-link tag="a" :to="{ name:'detail',
                                                             params: {
                                                                 namesite:names.site,
                                                                 namepage:names.page,
                                                                 iditem:contentPagination.id_page,
-                                                            } }">{{content.title}} {{contentPagination.id_page}} </a>
+                                                            } }">{{content.title}}</router-link>
                                                         </h2>
                                                     </div>
                                                     <div class="post-excerpt" v-if="(content.description !== '')">
