@@ -160,25 +160,33 @@
                     if (answer.data['dcterms:isPartOf'] !== undefined) {
                         for (const related of answer.data['dcterms:isPartOf']) {
                             let type_resource = related['value_resource_name'];
+                            let url = '';
+                            let image = '';
                             if (type_resource === 'item_sets') {
-                                let url = this.$domainOmeka + 'api/items?item_set_id=' + related['value_resource_id'];
+                                url = this.$domainOmeka + 'api/items?item_set_id=' + related['value_resource_id'];
                                 let item_set = await this.$axios(url);
                                 for (const item of item_set.data) {
-                                    if (item['o:media'] !== null) {
-                                        this.getFirstImageFound(item)
-                                            .then((image) => {
-                                                this.relatedContent.push({
-                                                    id: item['o:id'],
-                                                    title: this.getAttribEmptyOrFilled(item, 'dcterms:title'),
-                                                    description: this.getAttribEmptyOrFilled(item, 'dcterms:description'),
-                                                    date: this.getAttribEmptyOrFilled(item, 'dcterms:date'),
-                                                    source: this.getAttribEmptyOrFilled(item, 'dcterms:source'),
-                                                    url_img: image,
-                                                    author: this.getAttribEmptyOrFilled(item, 'bibo:citedBy'),
-                                                });
-                                            })
-                                    }
+                                    this.relatedContent.push({
+                                        id: item['o:id'],
+                                        title: this.getAttribEmptyOrFilled(item, 'dcterms:title'),
+                                        description: this.getAttribEmptyOrFilled(item, 'dcterms:description'),
+                                        date: this.getAttribEmptyOrFilled(item, 'dcterms:date'),
+                                        source: this.getAttribEmptyOrFilled(item, 'dcterms:source'),
+                                        author: this.getAttribEmptyOrFilled(item, 'bibo:citedBy'),
+                                    });
                                 }
+                            } else {
+                                url = this.$domainOmeka + 'api/items/' + related['value_resource_id'];
+                                let item = await this.$axios(url);
+
+                                this.relatedContent.push({
+                                    id: item.data['o:id'],
+                                    title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
+                                    description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
+                                    date: this.getAttribEmptyOrFilled(item.data, 'dcterms:date'),
+                                    source: this.getAttribEmptyOrFilled(item.data, 'dcterms:source'),
+                                    author: this.getAttribEmptyOrFilled(item.data, 'bibo:citedBy'),
+                                });
                             }
                         }
                     }
