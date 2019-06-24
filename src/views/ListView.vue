@@ -10,7 +10,7 @@
             <Container v-bind:contents="contents"
                        v-bind:related_content="relatedContent"
                        v-bind:summary="summary"
-                       v-bind:url-path="urlPath"
+                       v-bind:names="names"
                        v-bind:descriptions="descriptions"></Container>
             <Footer></Footer>
         </div>
@@ -34,20 +34,23 @@
         },
         data() {
             return {
-                namePage: null,
+                names: {
+                    site: null,
+                    page: null,
+                },
                 contents: [],
                 title: '',
                 summary: '',
                 descriptions: [],
                 urlPath: '',
                 relatedContent: [],
-                array_to_10: [],
+                littleArray: [],
                 quantity_page: 1,
                 itemsShow: [],
             }
         },
         mounted() {
-            this.namePage = this.$route.params.namepage.toLowerCase();
+            this.names.page = this.$route.params.namepage.toLowerCase();
             this.getDetailsSite([])
                 .then((response) => {
                     let idSite = response[1];
@@ -55,9 +58,9 @@
                         .then(() => {
                             this.$nextTick(() => {
                                 this.optionMenu.forEach((option) => {
-                                    if (option.slug === this.namePage) {
+                                    if (option.slug === this.names.page) {
                                         this.title = option.title;
-                                        this.urlPath = '/' + this.$route.params.namesite + '/page/' + this.$route.params.namepage + '/detail/';
+                                        this.names.site = this.$route.params.namesite;
                                         this.getContentFromPage(option.url);
                                     }
                                 })
@@ -65,18 +68,24 @@
 
                         })
                 });
+
+
         },
         methods: {
             async getContentFromPage(urlPage) {
                 const answer = await this.$axios(urlPage);
+                let counter = 0, counter_page = 0, limit_array = 10;
                 /* *
                  * valido si la propiedad o:block cuando la opcion de menu es una pagina y sino es item set
                  * para luego obtener la informacion dentro de esa pagina o item set
                 * */
                 if (answer.data['o:block'] != null) {
+
                     for (const detail of answer.data['o:block']) {
                         let typeLayout = detail['o:layout'].toLowerCase();
                         if (typeLayout === 'itemwithmetadata') {
+
+                            let size_item_set = detail['o:attachment'].length;
                             //recorro los items relacionados a una pagina
                             for (const data of detail['o:attachment']) {
                                 //consultamos a url para obtener los detalles del item
@@ -84,7 +93,7 @@
                                 //consultamos a url de media que trae un item
                                 const media = await this.$axios(data['o:media']['@id']);
 
-                                this.contents.push({
+                                this.littleArray.push({
                                     id: '',
                                     title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
                                     description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
@@ -95,6 +104,16 @@
                                     source: this.getAttribEmptyOrFilled(item.data, 'dcterms:source'),
                                     author: this.getAttribEmptyOrFilled(item.data, 'bibo:citedBy'),
                                 });
+                                counter++;
+
+                                if ((counter === size_item_set) || (counter % limit_array === 0)) {
+                                    counter_page++;
+                                    this.contents.push({
+                                        id_page: counter_page,
+                                        content: this.littleArray,
+                                    });
+                                    this.littleArray = [];
+                                }
                             }
                         } else if (typeLayout === 'html') {
                             //agregamos las descripciones de una pagina a un arreglo de descripciones que estan en html
@@ -107,13 +126,14 @@
 
                     //guardo la descripcion del conjunto de items
                     this.summary = this.getAttribEmptyOrFilled(answer.data, 'dcterms:description');
+                    let size_item_set = dataItemSet.data.length;
 
                     //recorro todos los registros que me trae la consulta de itemSetUrl
                     for (const data of dataItemSet.data) {
                         //valido si la propiedad o:media existe, para obtener una imagen que represente a cada contenido
                         if (data['o:media'] !== null) {
                             let image = await this.getFirstImageFound(data);
-                            this.contents.push({
+                            this.littleArray.push({
                                 id: data['o:id'],
                                 title: this.getAttribEmptyOrFilled(data, 'dcterms:title'),
                                 description: this.getAttribEmptyOrFilled(data, 'dcterms:description'),
@@ -125,8 +145,18 @@
                                 author: this.getAttribEmptyOrFilled(data, 'bibo:citedBy'),
                             });
                         }
+                        counter++;
+
+                        if ((counter === size_item_set) || (counter % limit_array === 0)) {
+                            counter_page++;
+                            this.contents.push({
+                                id_page: counter_page,
+                                content: this.littleArray,
+                            });
+                            this.littleArray = [];
+                        }
                     }
-                    // console.log(dataItemSet.data.length);
+
                     if (answer.data['dcterms:isPartOf'] !== undefined) {
                         for (const related of answer.data['dcterms:isPartOf']) {
                             let type_resource = related['value_resource_name'];

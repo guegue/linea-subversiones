@@ -55,7 +55,7 @@
                     let idSite = response[1];
                     this.buildMenu(idSite)
                         .then(() => {
-                            let idItem = this.$route.params.id;
+                            let idItem = this.$route.params.iditem;
                             this.urlPath = '/' + this.$route.params.namesite + '/page/' + this.$route.params.namepage;
                             this.$axios(this.$domainOmeka + 'api/items/' + idItem)
                                 .then((detailItem) => {

@@ -22,12 +22,12 @@ export default new VueRouter({
             component: TitlePage
         },
         {
-            path: '/:namesite/:x/:namepage',
+            path: '/:namesite/page/:namepage',
             name: 'page',
             component: ListView
         },
         {
-            path: '/:namesite/:x/:namepage/detail/:id',
+            path: '/:namesite/page/:namepage/detail/:iditem',
             name: 'detail',
             component: DetailView
         }

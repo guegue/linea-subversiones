@@ -29,46 +29,49 @@
                             </div>
                         </div>
                         <!-- Contents -->
-                        <div class="column one-third column_blog height-col"
-                             v-for="(content,index) in contents" :key="index">
-                            <div class="blog_wrapper isotope_wrapper">
-                                <div class="posts_group lm_wrapper photo col-3">
-                                    <div class="post-item isotope-item clearfix post-2275 post format-standard has-post-thumbnail category-earth tag-grid">
-                                        <div class="date_label">
-                                            {{content.date}}
-                                        </div>
-                                        <div class="image_frame post-photo-wrapper scale-with-grid">
-                                            <div class="image_wrapper" :id="'img-item_'+content.id">
-                                                <a v-if="content.url_img !== ''" :href="content.url_img">
-                                                    <div class="mask"></div>
-                                                    <img :src="content.url_img"
-                                                         class="scale-with-grid wp-post-image img-cover"
-                                                         alt="home_space_blog3"/>
-                                                </a>
-                                                <a v-else href="@/assets/no-image-icon.png">
-                                                    <div class="mask"></div>
-                                                    <img src="@/assets/no-image-icon.png"
-                                                         class="scale-with-grid wp-post-image img-cover"
-                                                         alt="home_space_blog3"/>
-                                                </a>
-                                                <div class="image_links " :class="{'double':(content.url_img !== '')}">
-                                                    <a v-if="content.url_img !== ''" role="button"
-                                                       class="zoom cursor-hand"
-                                                       @click="showImage('img-item_'+content.id,content.url_img,content.title)"
-                                                       rel="prettyphoto">
-                                                        <i class="icon-search"></i>
+                        <div v-for="(contentPagination,i) in contents" :key="contentPagination.id_page"
+                             class="container-main">
+                            <div class="column one-third column_blog height-col" :class="{'d-none':(i !== 0)}"
+                                 v-for="(content,index) in contentPagination.content" :key="index">
+                                <div class="blog_wrapper isotope_wrapper">
+                                    <div class="posts_group lm_wrapper photo col-3">
+                                        <div class="post-item isotope-item clearfix post-2275 post format-standard has-post-thumbnail category-earth tag-grid">
+                                            <div class="date_label">
+                                                {{content.date}}
+                                            </div>
+                                            <div class="image_frame post-photo-wrapper scale-with-grid">
+                                                <div class="image_wrapper" :id="'img-item_'+content.id">
+                                                    <a v-if="content.url_img !== ''" :href="content.url_img" target="_blank">
+                                                        <div class="mask"></div>
+                                                        <img :src="content.url_img"
+                                                             class="scale-with-grid wp-post-image img-cover"
+                                                             alt="home_space_blog3"/>
                                                     </a>
-                                                    <a :href="content.url_img" class="link">
-                                                        <i class="icon-link"></i>
+                                                    <a v-else href="@/assets/no-image-icon.png" target="_blank">
+                                                        <div class="mask"></div>
+                                                        <img src="@/assets/no-image-icon.png"
+                                                             class="scale-with-grid wp-post-image img-cover"
+                                                             alt="home_space_blog3"/>
                                                     </a>
+                                                    <div class="image_links "
+                                                         :class="{'double':(content.url_img !== '')}">
+                                                        <a v-if="content.url_img !== ''" role="button"
+                                                           class="zoom cursor-hand"
+                                                           @click="showImage('img-item_'+content.id,content.url_img,content.title)"
+                                                           rel="prettyphoto">
+                                                            <i class="icon-search"></i>
+                                                        </a>
+                                                        <a :href="content.url_img" class="link">
+                                                            <i class="icon-link"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="post-desc-wrapper">
-                                            <div class="post-desc">
-                                                <div class="post-head">
-                                                    <div class="post-meta clearfix">
-                                                        <div class="author-date">
+                                            <div class="post-desc-wrapper">
+                                                <div class="post-desc">
+                                                    <div class="post-head">
+                                                        <div class="post-meta clearfix">
+                                                            <div class="author-date">
                                                             <span class="vcard author post-author"
                                                                   v-if="(content.author !== '')">
                                                                 <span class="label">Publicado por </span>
@@ -77,43 +80,65 @@
                                                                 <a href="#">{{content.author}}</a>
                                                             </span>
                                                             </span>
-                                                            <span class="date" v-if="(content.date !== '')">
+                                                                <span class="date" v-if="(content.date !== '')">
                                                                 <i class="icon-calendar"></i>
                                                                 <span class="post-date updated">{{content.date}}</span>
                                                             </span>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                </div>
-                                                <div class="post-title" v-if="(content.title !== '')">
-                                                    <h2 class="entry-title mb-8px">
-                                                        <a :href="urlPath +content.id">{{content.title}}</a>
-                                                    </h2>
-                                                </div>
-                                                <div class="post-excerpt" v-if="(content.description !== '')">
-                                                    <p class="big text-justify" v-if="content.description.length > 150">
-                                                        {{content.description.slice(0,150)}}
-                                                        <a :href="urlPath +content.id" class="color-azul-oscuro">...Leer
-                                                            m&aacute;s</a>
-                                                    </p>
-                                                    <p class="big text-justify" v-else>
-                                                        {{content.description}}<a :href="urlPath +content.id"
-                                                                                  class="color-azul-oscuro">...Leer
-                                                        m&aacute;s</a>
-                                                    </p>
+                                                    </div>
+                                                    <div class="post-title" v-if="(content.title !== '')">
+                                                        <h2 class="entry-title mb-8px">
+                                                            <a :to="{ name:'detail',
+                                                            params: {
+                                                                namesite:names.site,
+                                                                namepage:names.page,
+                                                                iditem:contentPagination.id_page,
+                                                            } }">{{content.title}} {{contentPagination.id_page}} </a>
+                                                        </h2>
+                                                    </div>
+                                                    <div class="post-excerpt" v-if="(content.description !== '')">
+                                                        <p class="big text-justify"
+                                                           v-if="content.description.length > 150">
+                                                            {{content.description.slice(0,149)}}
+                                                            <router-link tag="a" :to="{ name:'detail',
+                                                            params: {
+                                                                namesite:names.site,
+                                                                namepage:names.page,
+                                                                iditem:contentPagination.id_page,
+                                                            } }" class="color-azul-oscuro">...Leer m&aacute;s
+                                                            </router-link>
+                                                        </p>
+                                                        <p class="big text-justify" v-else>
+                                                            {{content.description}}
+                                                            <router-link tag="a" :to="{ name:'detail',
+                                                            params: {
+                                                                namesite:names.site,
+                                                                namepage:names.page,
+                                                                iditem:contentPagination.id_page,
+                                                            } }" class="color-azul-oscuro">...Leer m&aacute;s
+                                                            </router-link>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <!--pagination-->
                         <div class="column one post-pager">
                             <!-- Navigation Area -->
                             <div class="pager-single">
-                                <span>1</span><a href="#"><span>2</span></a>
+                                <a href="javascript:;" :class="{'active-pagination-option':(numberPage === 1)}"
+                                   v-for="(numberPage,index) in contents.length"
+                                   :key="index">
+                                    <span>{{numberPage}}</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -136,8 +161,9 @@
                             <div class="column three-fourth column_column space-border">
                                 <div class="column_attr" style=" padding:0 0 0 8%;">
                                     <!-- One Third (1/3) Column -->
-                                    <div class="column one-third m-1 height-item-related" v-for="(content,index) in related_content"
-                                         :key="index" >
+                                    <div class="column one-third m-1 height-item-related"
+                                         v-for="(content,index) in related_content"
+                                         :key="index">
                                         <div style="margin-right: 20%;margin-bottom: 15px;">
                                             <h5 class="hrmargin_b_5 text-white">
                                                 <a :href="urlPath +content.id">{{content.title}}</a>
@@ -166,9 +192,14 @@
 
     export default {
         name: "Container-Article",
-        props: ['contents', 'descriptions', 'summary', 'urlPath', 'related_content'],
+        props: ['contents', 'descriptions', 'summary', 'names', 'related_content'],
         components: {
             Filters
+        },
+        data() {
+            return {
+                urlPath: ''
+            }
         },
         methods: {
             showImage(id, url, title) {
@@ -193,6 +224,15 @@
 
     .cursor-hand {
         cursor: pointer;
+    }
+
+    .active-pagination-option {
+        color: #000 !important;
+
+    }
+
+    .active-pagination-option span {
+        border-bottom: 1px solid rgba(0, 0, 0, 1);
     }
 
 </style>
