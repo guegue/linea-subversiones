@@ -21,7 +21,9 @@
                                         <li v-for="(option,index) in optionMenu"
                                             :class="{'current_page_item': (currentRoute === option.slug)}"
                                             :key="index">
-                                            <a :href="'/'+slugSite+'/page/'+option.slug"><span>{{option.title}}</span></a>
+                                            <a :href="'/'+slugSite+'/page/'+option.slug">
+                                                <span>{{option.title}}</span>
+                                            </a>
                                         </li>
                                     </ul>
                                 </nav>

@@ -12,7 +12,7 @@
                                     <transition-group tag="div" :name="transitionName" class="slides-group">
                                         <div v-if="slides.length > 0" :key="current" class="slide">
                                             <div class="cuadro-img-size">
-                                                <img :src="slides[current].mediaurl" alt=""
+                                                <img :src="slides[current].media_url" alt=""
                                                      class="img-size">
                                             </div>
                                             <div class="cuadro">
@@ -89,29 +89,28 @@
                     <!--Timeline Portada-->
                     <Timeline></Timeline>
                     <!--Timeline Portada-->
-                    <!--html list of videos from the website-->
-                    <span v-for="(video,index) in videos" :key="'a'+index">
+                    <div v-for="(video,index) in videos" :key="'a'+index">
                         <div v-if="video.typeUpload === 'upload'" class="d-none" :id="'video'+index">
                             <video class="lg-video-object lg-html5 video-js vjs-default-skin" controls preload="none">
-                                <source :src="video.mediaurl"
+                                <source :src="video.media_url"
                                         :type="video.typefile">
                                 Your browser does not support HTML5 video.
                             </video>
                         </div>
 
-                        <div v-else-if="video.typeUpload === 'vimeo'" class="d-none" :id="'video'+indice">
+                        <div v-else-if="video.typeUpload === 'vimeo'" class="d-none" :id="'video'+index">
                              <iframe class="lg-video-object lg-vimeo" width="560" height="315"
                                      :src="video.mediaurl" frameborder="0"
                                      webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">
                              </iframe>
                         </div>
 
-                           <div v-else-if="video.typeUpload === 'youtube'" class="d-none" :id="'video'+indice">
+                           <div v-else-if="video.typeUpload === 'youtube'" class="d-none" :id="'video'+index">
                               <iframe class="lg-video-object lg-youtube" width="560" height="315"
                                       :src="video.mediaurl"
                                       frameborder="0" allowfullscreen=""></iframe>
                           </div>
-                    </span>
+                    </div>
                     <!--Video Section-->
                     <div class="section" style="padding-top:90px; padding-bottom:50px; " v-if="videos.length >0">
                         <div class="section_wrapper clearfix">
@@ -123,7 +122,7 @@
                                         <h3>Videos</h3>
                                         <hr class="no_line hrmargin_b_30"/>
                                         <a class="button button_large button_theme button_js"
-                                           href="content/space/stuff.html"><span
+                                           :href="urlVideos"><span
                                                 class="button_label">Ver m&aacute;s</span></a>
                                     </div>
                                 </div>
@@ -261,7 +260,8 @@
             'aboutSite',
             'constribuitors',
             'videos',
-            'detailsSite'
+            'detailsSite',
+            'urlVideos'
         ],
         data() {
             return {

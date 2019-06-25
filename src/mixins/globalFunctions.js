@@ -8,6 +8,7 @@ export default {
             id_video: null,
             url: '',
             sites: [],
+            urlVideoPage: '',
         }
     },
     methods: {
@@ -69,26 +70,34 @@ export default {
                         url = this.$domainOmeka + 'api/site_pages/' + option.data['id'];
                         const details = await this.$axios(url);
                         title = details.data['o:title'];
+                        type = option.type;
                         slug = this.formatStringToUrl(details.data['o:title']);
                     } else if (type === 'url') {
                         url = this.$domainOmeka + 'api/item_sets/' + option.data['url'];
+                        let dataItemSet = await this.$axios(url);
+                        type = (dataItemSet.data['o:resource_class'] !== null) ? dataItemSet.data['o:resource_class']['o:id'] : option.type;
                         title = option.data['label'];
                         slug = this.formatStringToUrl(option.data['label']);
+                        if (type === 38) {
+                            this.urlVideoPage = '/' + this.$route.params.namesite + '/page/' + slug;
+                        }
                     }
-                    this.optionMenu.push({
-                        url: url,
-                        type: option.type,
-                        slug: slug,
-                        title: title,
-                    });
+                    if (title !== '') {
+                        this.optionMenu.push({
+                            url: url,
+                            type: type,
+                            slug: slug,
+                            title: title,
+                        });
+                    }
                 }
-
             }
             // return a list of ids items
             return items['item_set_id'];
         },
         async getArrayMedia(data) {
             let array_img = [], array_video = [], array_audio = [], array_document = [], array_coordinate = [];
+            let id = 0;
             //recorremos toda la media que viene de un item
             for (const datum of data['o:media']) {
                 let mediaData = await this.$axios(datum['@id']);
@@ -115,13 +124,7 @@ export default {
                         break;
                     case 'youtube':
                     case 'vimeo':
-                        this.id_video = mediaData.data['data']['id'];
-                        //validamos si el video que de youtube o vimeo para generar una url para un embed
-                        if (media_type === 'youtube') {
-                            this.url = '//youtube.com/embed/' + this.id_video + '?wmode=opaque&amp;enablejsapi=1';
-                        } else {
-                            this.url = '//player.vimeo.com/video/' + this.id_video + '?autoplay=1&amp;api=1';
-                        }
+                        id = mediaData.data['data']['id'];
                         //llenamos el arreglo de videos
                         array_video.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
@@ -129,7 +132,7 @@ export default {
                             extension: '',
                             img_large: mediaData.data['o:thumbnail_urls']['large'],
                             img_medium: mediaData.data['o:thumbnail_urls']['medium'],
-                            url: this.url,
+                            url: this.buildUrlVimeoYoutube(media_type, id),
                         });
                         break;
                     case 'audio':
@@ -181,29 +184,49 @@ export default {
             //return the url of the first img found
             return media;
         },
-        getAllSites(getCurrentSite = 'si') {
-            this.$axios(this.$domainOmeka + 'api/sites')
-                .then((response) => {
-                    let data_sites = response.data;
-                    data_sites.forEach((site) => {
-                        if (getCurrentSite === 'si') {
-                            this.sites.push({
-                                id: site['o:id'],
-                                slug: site['o:slug'],
-                                title: site['o:title']
-                            })
-                        } else {
-                            if (this.slugSite !== site['o:slug']) {
-                                this.sites.push({
-                                    id: site['o:id'],
-                                    slug: site['o:slug'],
-                                    title: site['o:title']
-                                });
-                            }
-                        }
+        async getAllSites(getCurrentSite = 'si') {
+            const response = await this.$axios(this.$domainOmeka + 'api/sites');
 
+            let data_sites = response.data;
+            let summary = '';
+            for (const site of data_sites) {
+
+                summary = this.getEmptyStringOrValue(site, 'o:summary')
+                    .replace(/\r/g, '')
+                    .split('\n');
+
+                for (const item_set of site['o:site_item_set']) {
+                    let id = item_set['o:item_set']['o:id'];
+                    let image_url ='';
+                    let url = this.$domainOmeka + 'api/items?item_set_id=' + id;
+                    let items = await this.$axios(url);
+                    for (const item of items.data) {
+                        if (item['o:media'].length > 0) {
+                            image_url = await this.getFirstImageFound(item);
+                        }
+                    }
+                }
+                if (getCurrentSite === 'si') {
+
+                    this.sites.push({
+                        id: site['o:id'],
+                        slug: site['o:slug'],
+                        title: site['o:title'],
+                        summary: summary,
                     })
-                })
+                } else {
+                    if (this.slugSite !== site['o:slug']) {
+
+                        this.sites.push({
+                            id: site['o:id'],
+                            slug: site['o:slug'],
+                            title: site['o:title'],
+                            summary: summary,
+                        });
+                    }
+                }
+
+            }
         },
         getEmptyStringOrValue(objectArray, attribName) {
             return (objectArray[attribName] !== null) ? objectArray[attribName] : '';
@@ -235,6 +258,15 @@ export default {
         },
         getTypeMedia(objectArray) {
             return (objectArray['o:media_type'] !== null) ? objectArray['o:media_type'].split('/')[0] : objectArray['o:ingester'];
+        },
+        buildUrlVimeoYoutube(mediaType, id) {
+            let url = ``;
+            if (mediaType === 'youtube') {
+                url = `//youtube.com/embed/${id}?wmode=opaque&amp;enablejsapi=1`;
+            } else {
+                url = `//player.vimeo.com/video/${id}?autoplay=1&amp;api=1`;
+            }
+            return url
         },
         formatStringToUrl(str) {
             let from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",

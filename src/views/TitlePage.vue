@@ -11,6 +11,7 @@
                            v-bind:aboutSite="aboutSite"
                            v-bind:constribuitors="dataContribuitors"
                            v-bind:videos="dataVideos"
+                           v-bind:urlVideos="urlVideoPage"
                            v-bind:details-site="detailsSite"></Container>
                 <Footer></Footer>
             </div>
@@ -35,20 +36,22 @@
         },
         data() {
             return {
-                optionMenu: [],
                 detailsSite: [],
                 urlItem: this.$domainOmeka + 'api/item_sets/',
                 urlListItem: this.$domainOmeka + 'api/items?item_set_id=',
                 urlImage: this.$domainOmeka + 'api/media/',
-                id_items: [],
                 containerImgs: [],
                 dataContribuitors: [],
-                dataVideos: []
+                dataVideos: [],
             }
         },
         mounted() {
+            this.getAllSites();
+
+
             this.getItemsSetId()
                 .then((response) => {
+                    // console.log(response);
                     this.getDetailsSite(response)
                         .then((responseData => {
                             this.detailsSite = responseData[0];
@@ -63,6 +66,7 @@
             getItemsSetId() {
                 return new Promise((resolve) => {
                     let item_set_id = [];
+                    // console.log(this.$domainOmeka + 'api/item_sets?resource_class_id=27');
                     this.$axios(this.$domainOmeka + 'api/item_sets?resource_class_id=27')
                         .then((response) => {
                             //recorro los items
@@ -101,6 +105,7 @@
                                 this.$axios(this.urlListItem + id_item)
                                     .then((response2) => {
 
+                                        let contadorVideos = 0;
                                         response2.data.forEach((dataResponse) => {
 
                                             this.$axios(dataResponse['o:media'][0]['@id'])
@@ -109,26 +114,36 @@
                                                     if (dataItem['o:resource_class']['o:id'] === 27) {
                                                         let dataImage = {
                                                             id: dataResponse['o:media'][0]['o:id'],
-                                                            title: dataResponse['dcterms:title'][0]['@value'],
-                                                            description: dataResponse['dcterms:description'][0]['@value'],
-                                                            mediaurl: response3.data['o:original_url'],
+                                                            title: this.getAttribEmptyOrFilled(dataResponse, 'dcterms:title'),
+                                                            description: this.getAttribEmptyOrFilled(dataResponse, 'dcterms:description'),
+                                                            media_url: this.getMediaEmptyOrFilled(response3.data),
                                                         };
                                                         this.containerImgs.push(dataImage);
-                                                    } else if (dataItem['o:resource_class']['o:id'] === 38) {
+                                                    } else if (dataItem['o:resource_class']['o:id'] === 38 && contadorVideos <= 6) {
+                                                        let url_media = '';
+                                                        if (response3.data['o:original_url'] !== null) {
+                                                            url_media = response3.data['o:original_url']
+                                                        } else {
+                                                            let media_type = this.getTypeMedia(response3.data);
+                                                            let id_video = response3.data['data']['id'];
+                                                            url_media = this.buildUrlVimeoYoutube(media_type, id_video);
+                                                        }
+
                                                         let dataVideo = {
                                                             id: response3.data['o:item']['o:id'],
-                                                            title: dataResponse['dcterms:title'][0]['@value'],
-                                                            mediaurl: response3.data['o:original_url'],
-                                                            typefile: response3.data['o:media_type'],
-                                                            typeUpload: response3.data['o:ingester'].toLowerCase(),
+                                                            title: this.getAttribEmptyOrFilled(dataResponse, 'dcterms:title'),
+                                                            media_url: url_media,
+                                                            type_file: this.getEmptyStringOrValue(response3.data, 'o:media_type'),
+                                                            typeUpload: this.getEmptyStringOrValue(response3.data, 'o:ingester').toLowerCase(),
                                                         };
                                                         this.dataVideos.push(dataVideo);
+                                                        contadorVideos++;
                                                     } else {
                                                         if (dataResponse['bibo:contributorList'] !== undefined) {
                                                             let dataContribuitors = {
-                                                                img: response3.data['o:original_url'],
-                                                                descripcion: dataResponse['dcterms:description'][0]['@value'],
-                                                                list: dataResponse['bibo:contributorList'][0]['@value'].split('\n'),
+                                                                img: this.getEmptyStringOrValue(response3.data, 'o:original_url'),
+                                                                description: this.getAttribEmptyOrFilled(dataResponse, 'dcterms:description'),
+                                                                list: this.getAttribEmptyOrFilled(dataResponse, 'bibo:contributorList').split('\n'),
                                                             };
                                                             this.dataContribuitors.push(dataContribuitors);
                                                         }
