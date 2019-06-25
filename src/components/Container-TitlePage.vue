@@ -56,8 +56,7 @@
                                             <p v-if="paragraph !== '' ">{{paragraph}}</p>
                                             <hr v-if="paragraph !== '' " class="no_line hrmargin_b_30"/>
                                         </div>
-                                        <a class="button button_large button_theme button_js" href=""><span
-                                                class="button_label">Leer m&aacute;s</span></a>
+
                                     </div>
                                 </div>
 
@@ -278,7 +277,7 @@
                 dir === 1
                     ? (this.transitionName = "slide-next")
                     : (this.transitionName = "slide-prev");
-                var len = this.slides.length;
+                let len = this.slides.length;
                 this.current = (this.current + dir % len + len) % len;
             }
         },

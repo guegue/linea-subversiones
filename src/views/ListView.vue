@@ -161,7 +161,6 @@
                         for (const related of answer.data['dcterms:isPartOf']) {
                             let type_resource = related['value_resource_name'];
                             let url = '';
-                            let image = '';
                             if (type_resource === 'item_sets') {
                                 url = this.$domainOmeka + 'api/items?item_set_id=' + related['value_resource_id'];
                                 let item_set = await this.$axios(url);

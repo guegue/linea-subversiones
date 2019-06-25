@@ -169,14 +169,7 @@
             <div class="sidebar sidebar-1 four columns">
                 <div class="widget-area clearfix ">
                     <br>
-                    <!-- Text Area -->
-                    <aside class="widget widget_text">
-                        <h3>About us</h3>
-                        <div class="textwidget">
-                            Mauris imperdiet, urna mi, gravida sod ales. Vivamus hendrerit nulla erat ornare tortor in
-                            vestibulum id.
-                        </div>
-                    </aside>
+
                     <!-- Categories Area -->
                     <aside id="categories-2" class="widget widget_categories">
                         <h3>Otros Sitios</h3>
