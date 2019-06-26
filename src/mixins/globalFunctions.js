@@ -9,6 +9,7 @@ export default {
             url: '',
             sites: [],
             urlVideoPage: '',
+            urlImageVideo:'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg'
         }
     },
     methods: {
@@ -117,8 +118,8 @@ export default {
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
                             extension: mediaData.data['o:media_type'],
-                            img_large: 'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg',
-                            img_medium: 'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg',
+                            img_large: this.urlImageVideo,
+                            img_medium: this.urlImageVideo,
                             url: this.getMediaEmptyOrFilled(mediaData.data),
                         });
                         break;

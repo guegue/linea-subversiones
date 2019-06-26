@@ -49,8 +49,6 @@
             this.getAllSites();
 
 
-
-
             this.getItemsSetId()
                 .then((response) => {
                     let itemSet = response;
@@ -121,20 +119,27 @@
                                                         this.containerImgs.push(dataImage);
                                                     } else if (dataItem['o:resource_class']['o:id'] === 38 && counter <= 6) {
                                                         let url_media = '';
+                                                        let media_type = this.getTypeMedia(response3.data);
+                                                        let urls_images = {
+                                                            large: this.urlImageVideo,
+                                                            medium: this.urlImageVideo,
+                                                        };
                                                         if (response3.data['o:original_url'] !== null) {
                                                             url_media = response3.data['o:original_url']
                                                         } else {
-                                                            let media_type = this.getTypeMedia(response3.data);
                                                             let id_video = response3.data['data']['id'];
+                                                            urls_images.large = response3.data['o:thumbnail_urls']['large'];
+                                                            urls_images.me = response3.data['o:thumbnail_urls']['medium'];
                                                             url_media = this.buildUrlVimeoYoutube(media_type, id_video);
                                                         }
 
                                                         let dataVideo = {
                                                             id: response3.data['o:item']['o:id'],
                                                             title: this.getAttribEmptyOrFilled(dataResponse, 'dcterms:title'),
-                                                            media_url: url_media,
-                                                            type_file: this.getEmptyStringOrValue(response3.data, 'o:media_type'),
-                                                            typeUpload: this.getEmptyStringOrValue(response3.data, 'o:ingester').toLowerCase(),
+                                                            url: url_media,
+                                                            type: media_type,
+                                                            img_large: urls_images.large,
+                                                            img_medium: urls_images.medium,
                                                         };
                                                         this.dataVideos.push(dataVideo);
                                                         counter++;

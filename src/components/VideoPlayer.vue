@@ -62,4 +62,8 @@
         height: 200px !important;
         object-fit: cover;
     }
+
+    li{
+        list-style: none !important;
+    }
 </style>

@@ -104,7 +104,8 @@
                         <!--Pagination-->
                     </div>
                     <!--Media Tabs-->
-                    <div class="section">
+                    <div class="section" v-if="(detailsItem.images.length > 0) || (detailsItem.audios.length > 0) ||
+                    (detailsItem.videos.length > 0) || (detailsItem.documents.length > 0)">
                         <div class="section_wrapper clearfix">
                             <div class="column one">
                                 <main>
