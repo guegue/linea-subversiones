@@ -97,7 +97,8 @@
                                                                 namesite:names.site,
                                                                 namepage:names.page,
                                                                 iditem:contentPagination.id_page,
-                                                            } }">{{content.title}}</router-link>
+                                                            } }">{{content.title}}
+                                                            </router-link>
                                                         </h2>
                                                     </div>
                                                     <div class="post-excerpt" v-if="(content.description !== '')">
@@ -222,13 +223,25 @@
                 });
             },
             showNextPagination(numberPageCurrent) {
+
                 this.currentPage = numberPageCurrent;
+                const elm = document.querySelector('.content_wrapper');
+                setTimeout(function () {
+                    window.scrollTo({
+                        'behavior': 'smooth',
+                        'left': 0,
+                        'top': elm.offsetTop
+                    });
+                }, 500);
             }
         }
     }
 </script>
 
 <style scoped>
+    html {
+        scroll-behavior: smooth;
+    }
 
     .cursor-hand {
         cursor: pointer;

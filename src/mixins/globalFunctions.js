@@ -59,9 +59,9 @@ export default {
                 let responseData = response.data;
                 let navigation = responseData['o:navigation'];
                 items = responseData['o:item_pool'];
-                if (responseData['o:summary'] !== null) {
-                    this.aboutSite = responseData['o:summary'].replace(/\r/g, '').split('\n');
-                }
+                this.aboutSite = this.getEmptyStringOrValue(responseData, 'o:summary')
+                    .replace(/\r/g, '')
+                    .split('\n');
                 for (const option of navigation) {
                     let url = '', title = '', slug = '';
                     let type = option.type.toLowerCase();
@@ -188,42 +188,21 @@ export default {
             const response = await this.$axios(this.$domainOmeka + 'api/sites');
 
             let data_sites = response.data;
-            let summary = '';
             for (const site of data_sites) {
 
-                summary = this.getEmptyStringOrValue(site, 'o:summary')
-                    .replace(/\r/g, '')
-                    .split('\n');
 
-                for (const item_set of site['o:site_item_set']) {
-                    let id = item_set['o:item_set']['o:id'];
-                    let image_url ='';
-                    let url = this.$domainOmeka + 'api/items?item_set_id=' + id;
-                    let items = await this.$axios(url);
-                    for (const item of items.data) {
-                        if (item['o:media'].length > 0) {
-                            image_url = await this.getFirstImageFound(item);
-                        }
-                    }
-                }
                 if (getCurrentSite === 'si') {
-
                     this.sites.push({
                         id: site['o:id'],
                         slug: site['o:slug'],
                         title: site['o:title'],
-                        summary: summary,
-                    })
-                } else {
-                    if (this.slugSite !== site['o:slug']) {
-
-                        this.sites.push({
-                            id: site['o:id'],
-                            slug: site['o:slug'],
-                            title: site['o:title'],
-                            summary: summary,
-                        });
-                    }
+                    });
+                } else if (getCurrentSite !== 'si' && this.slugSite !== site['o:slug']) {
+                    this.sites.push({
+                        id: site['o:id'],
+                        slug: site['o:slug'],
+                        title: site['o:title'],
+                    });
                 }
 
             }

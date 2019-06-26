@@ -49,10 +49,12 @@
             this.getAllSites();
 
 
+
+
             this.getItemsSetId()
                 .then((response) => {
-                    // console.log(response);
-                    this.getDetailsSite(response)
+                    let itemSet = response;
+                    this.getDetailsSite(itemSet)
                         .then((responseData => {
                             this.detailsSite = responseData[0];
                             this.buildMenu(responseData[1])
@@ -66,7 +68,6 @@
             getItemsSetId() {
                 return new Promise((resolve) => {
                     let item_set_id = [];
-                    // console.log(this.$domainOmeka + 'api/item_sets?resource_class_id=27');
                     this.$axios(this.$domainOmeka + 'api/item_sets?resource_class_id=27')
                         .then((response) => {
                             //recorro los items
@@ -77,7 +78,6 @@
 
                                         this.$axios(response2.data[0]['o:media'][0]['@id'])
                                             .then((response3) => {
-
                                                 item_set_id.push({
                                                     id_item_set: item['o:id'],
                                                     url_img_site: response3.data['o:original_url'],
@@ -105,7 +105,7 @@
                                 this.$axios(this.urlListItem + id_item)
                                     .then((response2) => {
 
-                                        let contadorVideos = 0;
+                                        let counter = 0;
                                         response2.data.forEach((dataResponse) => {
 
                                             this.$axios(dataResponse['o:media'][0]['@id'])
@@ -119,7 +119,7 @@
                                                             media_url: this.getMediaEmptyOrFilled(response3.data),
                                                         };
                                                         this.containerImgs.push(dataImage);
-                                                    } else if (dataItem['o:resource_class']['o:id'] === 38 && contadorVideos <= 6) {
+                                                    } else if (dataItem['o:resource_class']['o:id'] === 38 && counter <= 6) {
                                                         let url_media = '';
                                                         if (response3.data['o:original_url'] !== null) {
                                                             url_media = response3.data['o:original_url']
@@ -137,7 +137,7 @@
                                                             typeUpload: this.getEmptyStringOrValue(response3.data, 'o:ingester').toLowerCase(),
                                                         };
                                                         this.dataVideos.push(dataVideo);
-                                                        contadorVideos++;
+                                                        counter++;
                                                     } else {
                                                         if (dataResponse['bibo:contributorList'] !== undefined) {
                                                             let dataContribuitors = {
