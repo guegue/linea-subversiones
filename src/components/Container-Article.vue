@@ -94,9 +94,9 @@
                                                         <h2 class="entry-title mb-8px">
                                                             <router-link tag="a" :to="{ name:'detail',
                                                             params: {
-                                                                namesite:names.site,
-                                                                namepage:names.page,
-                                                                iditem:contentPagination.id_page,
+                                                                namesite: names.site,
+                                                                namepage: names.page,
+                                                                iditem: content.id,
                                                             } }">{{content.title}}
                                                             </router-link>
                                                         </h2>
@@ -107,9 +107,9 @@
                                                             {{content.description.slice(0,149)}}
                                                             <router-link tag="a" :to="{ name:'detail',
                                                             params: {
-                                                                namesite:names.site,
-                                                                namepage:names.page,
-                                                                iditem:contentPagination.id_page,
+                                                                namesite: names.site,
+                                                                namepage: names.page,
+                                                                iditem: content.id,
                                                             } }" class="color-azul-oscuro">...Leer m&aacute;s
                                                             </router-link>
                                                         </p>
@@ -117,9 +117,9 @@
                                                             {{content.description}}
                                                             <router-link tag="a" :to="{ name:'detail',
                                                             params: {
-                                                                namesite:names.site,
-                                                                namepage:names.page,
-                                                                iditem:contentPagination.id_page,
+                                                                namesite: names.site,
+                                                                namepage: names.page,
+                                                                iditem: content.id,
                                                             } }" class="color-azul-oscuro">...Leer m&aacute;s
                                                             </router-link>
                                                         </p>
