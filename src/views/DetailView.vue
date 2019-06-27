@@ -60,6 +60,7 @@
                             this.$axios(this.$domainOmeka + 'api/items/' + idItem)
                                 .then((detailItem) => {
                                     let data = detailItem.data;
+                                    console.log(data);
                                     /* metodo para obtener las imagenes,videos, audios, documentos y coordenadas*/
                                     this.getArrayMedia(data)
                                         .then((media) => {

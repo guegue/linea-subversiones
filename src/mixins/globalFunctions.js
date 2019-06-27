@@ -1,6 +1,12 @@
 export default {
     data() {
         return {
+            dataSite: {
+                id: '',
+                name: '',
+                slug: this.$route.params.namesite,
+                summary: '',
+            },
             nameSite: '',
             slugSite: '',
             aboutSite: '',
@@ -9,10 +15,31 @@ export default {
             url: '',
             sites: [],
             urlVideoPage: '',
-            urlImageVideo:'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg'
+            urlImageVideo: 'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg'
         }
     },
     methods: {
+        async getAllAboutSite() {
+            if (localStorage.getItem('dataSite') === null) {
+                let sites = await this.$axios
+                    .get(this.$domainOmeka + 'api/sites');
+                for (const site of sites.data) {
+                    if (site['o:slug'] === this.dataSite.slug) {
+                        this.dataSite.id = site['o:id'];
+                        this.dataSite.name = site['o:title'];
+                        this.dataSite.summary = this.getEmptyStringOrValue(site, 'o:summary')
+                            .replace(/\r/g, '')
+                            .split('\n');
+                        localStorage.setItem('dataSite', JSON.stringify(this.dataSite));
+                    }
+                }
+            } else {
+                let data = JSON.parse(localStorage.getItem('dataSite'));
+                this.dataSite.id = data.id;
+                this.dataSite.name = data.name;
+                this.dataSite.summary = data.summary;
+            }
+        },
         async getDetailsSite(array_items) {
             //validamos que el parametro namesite este definido
             if (this.$route.params.namesite !== undefined) {
@@ -23,6 +50,9 @@ export default {
                 response.data.forEach((site) => {
                     if (site['o:slug'] === siteName) {
                         idSite = site['o:id'];
+                        this.id = site['o:id'];
+                        this.name = site['o:title'];
+                        this.slugSite = site['o:slug'];
                         this.nameSite = site['o:title'];
                         this.slugSite = site['o:slug'];
                     }
@@ -51,50 +81,49 @@ export default {
                 return [array_items, idSite];
             }
         },
-        async buildMenu(idSite) {
-
-            const response = await this.$axios(this.$domainOmeka + 'api/sites/' + idSite);
-            let items;
-            //validamos que la propiedad de navegacion este definida
-            if (response.data['o:navigation'] !== undefined) {
-                let responseData = response.data;
-                let navigation = responseData['o:navigation'];
-                items = responseData['o:item_pool'];
-                this.aboutSite = this.getEmptyStringOrValue(responseData, 'o:summary')
-                    .replace(/\r/g, '')
-                    .split('\n');
-                for (const option of navigation) {
-                    let url = '', title = '', slug = '';
-                    let type = option.type.toLowerCase();
-                    //validamos si cada opcion de navegacion es tipo pagina o url para crear obtener los datos de la opcion
-                    if (type === 'page') {
-                        url = this.$domainOmeka + 'api/site_pages/' + option.data['id'];
-                        const details = await this.$axios(url);
-                        title = details.data['o:title'];
-                        type = option.type;
-                        slug = this.formatStringToUrl(details.data['o:title']);
-                    } else if (type === 'url') {
-                        url = this.$domainOmeka + 'api/item_sets/' + option.data['url'];
-                        let dataItemSet = await this.$axios(url);
-                        type = (dataItemSet.data['o:resource_class'] !== null) ? dataItemSet.data['o:resource_class']['o:id'] : option.type;
-                        title = option.data['label'];
-                        slug = this.formatStringToUrl(option.data['label']);
-                        if (type === 38) {
-                            this.urlVideoPage = '/' + this.$route.params.namesite + '/page/' + slug;
+        async buildMenu() {
+            if (localStorage.getItem('optionMenu') === null) {
+                const response = await this.$axios(this.$domainOmeka + 'api/sites/' + this.dataSite.id);
+                //validamos que la propiedad de navegacion este definida
+                if (response.data['o:navigation'] !== undefined) {
+                    let responseData = response.data;
+                    let navigation = responseData['o:navigation'];
+                    for (const option of navigation) {
+                        let url = '', title = '', slug = '';
+                        let type = option.type.toLowerCase();
+                        //validamos si cada opcion de navegacion es tipo pagina o url para crear obtener los datos de la opcion
+                        if (type === 'page') {
+                            url = this.$domainOmeka + 'api/site_pages/' + option.data['id'];
+                            const details = await this.$axios(url);
+                            title = details.data['o:title'];
+                            type = option.type;
+                            slug = this.formatStringToUrl(details.data['o:title']);
+                        } else if (type === 'url') {
+                            url = this.$domainOmeka + 'api/item_sets/' + option.data['url'];
+                            let dataItemSet = await this.$axios(url);
+                            type = (dataItemSet.data['o:resource_class'] !== null) ? dataItemSet.data['o:resource_class']['o:id'] : option.type;
+                            title = option.data['label'];
+                            slug = this.formatStringToUrl(option.data['label']);
+                            if (type === 38) {
+                                this.urlVideoPage = '/' + this.$route.params.namesite + '/page/' + slug;
+                            }
+                        }
+                        if (title !== '') {
+                            this.optionMenu.push({
+                                url: url,
+                                type: type,
+                                slug: slug,
+                                title: title,
+                            });
                         }
                     }
-                    if (title !== '') {
-                        this.optionMenu.push({
-                            url: url,
-                            type: type,
-                            slug: slug,
-                            title: title,
-                        });
-                    }
+                    localStorage.setItem('optionMenu', JSON.stringify(this.optionMenu));
                 }
+            } else {
+                let option_menu;
+                option_menu = JSON.parse(localStorage.getItem('optionMenu'));
+                this.optionMenu = option_menu;
             }
-            // return a list of ids items
-            return items['item_set_id'];
         },
         async getArrayMedia(data) {
             let array_img = [], array_video = [], array_audio = [], array_document = [], array_coordinate = [];
@@ -115,12 +144,12 @@ export default {
                     case 'video' :
                         //llenamos el arreglo de videos subidos a la plataforma de omeka
                         array_video.push({
+                            id: this.getEmptyStringOrValue(mediaData.data, 'o:id'),
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
-                            extension: mediaData.data['o:media_type'],
                             img_large: this.urlImageVideo,
                             img_medium: this.urlImageVideo,
-                            url: this.getMediaEmptyOrFilled(mediaData.data),
+                            url: this.getEmptyStringOrValue(mediaData.data, 'o:original_url'),
                         });
                         break;
                     case 'youtube':
@@ -128,9 +157,9 @@ export default {
                         id = mediaData.data['data']['id'];
                         //llenamos el arreglo de videos
                         array_video.push({
+                            id: this.getEmptyStringOrValue(mediaData.data, 'o:id'),
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
-                            extension: '',
                             img_large: mediaData.data['o:thumbnail_urls']['large'],
                             img_medium: mediaData.data['o:thumbnail_urls']['medium'],
                             url: this.buildUrlVimeoYoutube(media_type, id),

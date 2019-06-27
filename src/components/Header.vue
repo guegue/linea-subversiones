@@ -65,6 +65,7 @@
             }
         },
         mounted() {
+
             this.currentRoute = this.$route.params.namepage;
             window.addEventListener('scroll', () => {
                 let menu = document.getElementById('Top_bar');

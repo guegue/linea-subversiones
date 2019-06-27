@@ -1,39 +1,22 @@
 <template>
     <div class="column one">
         <!-- Hidden video div -->
-        <div class="d-none" v-for="(video,index) in videos" :key="index">
-            <div v-if="video.type === 'video'" :id="'video'+index">
-                <video class="lg-video-object lg-html5" controls
-                       preload="none">
-                    <source :src="video.url" :type="video.extension">
-                    Your browser does not support HTML5 video.
-                </video>
-            </div>
-            <div v-else-if="video.type === 'vimeo'" :id="'video'+index">
-                <iframe class="lg-video-object lg-vimeo" width="560" height="315"
-                        :src="video.url" frameborder="0"
-                        webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">
-                </iframe>
-            </div>
 
-            <div v-else-if="video.type === 'youtube'" :id="'video'+index">
-                <iframe class="lg-video-object lg-youtube" width="560" height="315"
-                        :src="video.url"
-                        frameborder="0" allowfullscreen=""></iframe>
-            </div>
-        </div>
 
         <!--Videos-->
         <div>
             <ul id="div-videos" class="video list-unstyled w-video">
                 <li class="m-1 column one-third video-square video" v-for="(video,index) in videos" :key="index"
-                    :data-poster="video.img_large"
-                    :data-sub-html="video.title" :data-html="'#video'+index">
-                    <a href="" onclick="return false">
+                    @click="showVideos(index)">
+                    <a href="javascript:;">
                         <img class="img-responsive img-video"
                              :src="video.img_large" :alt="video.title"/>
+                        <div class="demo-gallery-poster d-none">
+                            <img src="http://sachinchoolur.github.io/lightgallery.js/static/img/play-button.png">
+                        </div>
                         <div class="video_item_section video_item_stats clearfix">
                             <span class="pb-1"> {{video.title}}</span>
+
                         </div>
                     </a>
                 </li>
@@ -46,12 +29,36 @@
     export default {
         name: "VideoPlayer",
         props: ['videos'],
-        updated() {
-            this.$nextTick(() => {
+        methods: {
+            showVideos(idvideo) {
+                let videos = [];
+                console.log(this.videos);
+                for (const video of this.videos) {
+                    videos.push({
+                        src: video.url,
+                        thumb: video.img_medium,
+                    });
+                }
+
                 window.lightGallery(document.getElementById('div-videos'), {
+                    dynamic: true,
+                    dynamicEl: videos,
+                    index: idvideo,
                     videojs: true,
+                    cssEasing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+                    controls: true,
+                    progressBar: true,
+                    thumbnail: true,
                 });
-            });
+            }
+        },
+        updated() {
+            // console.log(this.videos);
+            // this.$nextTick(() => {
+            //     window.lightGallery(document.getElementById('div-videos'), {
+            //         videojs: true,
+            //     });
+            // });
         }
     }
 </script>
@@ -63,7 +70,7 @@
         object-fit: cover;
     }
 
-    li{
+    li {
         list-style: none !important;
     }
 </style>

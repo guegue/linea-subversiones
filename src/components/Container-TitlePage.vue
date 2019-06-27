@@ -89,28 +89,7 @@
                     <!--Timeline Portada-->
                     <Timeline></Timeline>
                     <!--Timeline Portada-->
-<!--                    <div v-for="(video,index) in videos" :key="'a'+index">-->
-<!--                        <div v-if="video.typeUpload === 'upload'" class="d-none" :id="'video'+index">-->
-<!--                            <video class="lg-video-object lg-html5 video-js vjs-default-skin" controls preload="none">-->
-<!--                                <source :src="video.media_url"-->
-<!--                                        :type="video.typefile">-->
-<!--                                Your browser does not support HTML5 video.-->
-<!--                            </video>-->
-<!--                        </div>-->
 
-<!--                        <div v-else-if="video.typeUpload === 'vimeo'" class="d-none" :id="'video'+index">-->
-<!--                             <iframe class="lg-video-object lg-vimeo" width="560" height="315"-->
-<!--                                     :src="video.mediaurl" frameborder="0"-->
-<!--                                     webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">-->
-<!--                             </iframe>-->
-<!--                        </div>-->
-
-<!--                           <div v-else-if="video.typeUpload === 'youtube'" class="d-none" :id="'video'+index">-->
-<!--                              <iframe class="lg-video-object lg-youtube" width="560" height="315"-->
-<!--                                      :src="video.mediaurl"-->
-<!--                                      frameborder="0" allowfullscreen=""></iframe>-->
-<!--                          </div>-->
-<!--                    </div>-->
                     <!--Video Section-->
                     <div class="section" style="padding-top:90px; padding-bottom:50px; " v-if="videos.length >0">
                         <div class="section_wrapper clearfix">
@@ -129,32 +108,10 @@
                                 <!-- Three Fourth (3/4) Column -->
                                 <div class="column three-fourth column_column space-border">
                                     <div class="column_attr p-8">
-<!--                                        <pre>{{videos}}</pre>-->
                                         <hr class="no_line hrmargin_b_40"/>
+                                        <pre>{{videos}}</pre>
                                         <VideoPlayer v-bind:videos="videos"></VideoPlayer>
-                                        <!--square of videos-->
-<!--                                        <div >-->
-<!--                                            <ul id="video-gallery" class="video list-unstyled">-->
-<!--                                                <li class="column one-third video"-->
-<!--                                                    v-for="(video,index) in videos"-->
-<!--                                                    :key="index"-->
-<!--                                                    data-poster="@/assets/content/space/images/home_space_staff1.jpg"-->
-<!--                                                    :data-sub-html="video.title"-->
-<!--                                                    :data-html="'#video'+index">-->
-<!--                                                    <a href="" onclick="return false">-->
-<!--                                                        <img src="@/assets/content/space/images/home_space_staff1.jpg"-->
-<!--                                                             alt="">-->
-<!--                                                        <div class="demo-gallery-poster d-none">-->
-<!--                                                            <img src="http://sachinchoolur.github.io/lightgallery.js/static/img/play-button.png"-->
-<!--                                                                 alt="">-->
-<!--                                                        </div>-->
-<!--                                                        <div class="video_item_section video_item_stats clearfix">-->
-<!--                                                            <span class="pb-1"> {{video.title}}</span>-->
-<!--                                                        </div>-->
-<!--                                                    </a>-->
-<!--                                                </li>-->
-<!--                                            </ul>-->
-<!--                                        </div>-->
+
                                     </div>
                                 </div>
                             </div>
@@ -288,13 +245,6 @@
                 this.current = (this.current + dir % len + len) % len;
             }
         },
-        updated() {
-            this.$nextTick(() => {
-                window.lightGallery(document.getElementById('video-gallery'), {
-                    videojs: true
-                })
-            });
-        }
     }
 </script>
 

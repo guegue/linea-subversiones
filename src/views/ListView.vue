@@ -3,13 +3,13 @@
     sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
         <div id="Wrapper">
             <Header v-bind:optionMenu="optionMenu"
-                    v-bind:name-site="nameSite"
-                    v-bind:slug-site="slugSite"
+                    v-bind:name-site="dataSite.name"
+                    v-bind:slug-site="dataSite.slug"
                     v-bind:show-title-description="(title.length > 0)"
                     v-bind:title="title"></Header>
             <Container v-bind:contents="contents"
                        v-bind:related_content="relatedContent"
-                       v-bind:summary="summary"
+                       v-bind:summary="dataSite.summary"
                        v-bind:names="names"
                        v-bind:descriptions="descriptions"></Container>
             <Footer></Footer>
@@ -50,24 +50,29 @@
             }
         },
         mounted() {
-            this.names.page = this.$route.params.namepage.toLowerCase();
-            this.getDetailsSite([])
-                .then((response) => {
-                    let idSite = response[1];
-                    this.buildMenu(idSite)
-                        .then(() => {
-                            this.$nextTick(() => {
-                                this.optionMenu.forEach((option) => {
-                                    if (option.slug === this.names.page) {
-                                        this.title = option.title;
-                                        this.names.site = this.$route.params.namesite;
-                                        this.getContentFromPage(option.url);
-                                    }
-                                })
-                            })
 
-                        })
+            this.getAllAboutSite()
+                .then(() => {
+                    this.buildMenu();
                 });
+            // this.names.page = this.$route.params.namepage.toLowerCase();
+            // this.getDetailsSite([])
+            //     .then((response) => {
+            //         let idSite = response[1];
+            //         this.buildMenu(idSite)
+            //             .then(() => {
+            //                 this.$nextTick(() => {
+            //                     this.optionMenu.forEach((option) => {
+            //                         if (option.slug === this.names.page) {
+            //                             this.title = option.title;
+            //                             this.names.site = this.$route.params.namesite;
+            //                             this.getContentFromPage(option.url);
+            //                         }
+            //                     })
+            //                 })
+            //
+            //             })
+            //     });
 
 
         },
