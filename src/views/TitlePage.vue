@@ -51,8 +51,29 @@
                     this.buildMenu()
                         .then(() => {
                             this.buildCarousel()
+                                .then(() => {
+                                    this.buildBodyPage();
+                                })
+                                .catch((error) => {
+                                    // eslint-disable-next-line no-console
+                                    console.log('error construyendo el carousel de imagenes');
+                                    // eslint-disable-next-line no-console
+                                    console.log(error);
+                                })
                         })
-                });
+                        .catch((error) => {
+                            // eslint-disable-next-line no-console
+                            console.log('error construyendo el menu');
+                            // eslint-disable-next-line no-console
+                            console.log(error);
+                        })
+                })
+                .catch((error) => {
+                    // eslint-disable-next-line no-console
+                    console.log('error obteniendo datos del sitio');
+                    // eslint-disable-next-line no-console
+                    console.log(error);
+                })
 
 
             // this.getItemsSetId()
@@ -98,19 +119,30 @@
             },
             buildBodyPage(id_items_set) {
 
-                for (const id_item of id_items_set) {
-                    this.$axios(this.urlListItem + id_item)
-                        .then((response) => {
-                            let dataItem = response.data;
-                            // for (const item of dataItem) {
-                                // console.log(item);
-                            // }
-                            // if (dataItem['o:resource_class'] !== null) {
-                            //     console.log(dataItem['o:resource_class']);
-                            // }
-                        });
+                let urlColaboradores='',urlVideos='';
+                urlColaboradores = this.$domainOmeka + 'api/item_sets?resource_class_id=97&site_id=' + this.dataSite.id;
+                urlVideos = this.$domainOmeka + 'api/item_sets?resource_class_id=38&site_id=' + this.dataSite.id;
+                // this.$axios.all([
+                //     this.$axios.get(urlColaboradores),
+                //     this.$axios.get(urlVideos),
+                // ])
+                //     .then(this.$axios.spread(responseColaborares,responseVideos)=>{
+                //
+                // })
 
-                }
+                // for (const id_item of id_items_set) {
+                //     this.$axios(this.urlListItem + id_item)
+                //         .then((response) => {
+                //             let dataItem = response.data;
+                //             // for (const item of dataItem) {
+                //             // console.log(item);
+                //             // }
+                //             // if (dataItem['o:resource_class'] !== null) {
+                //             //     console.log(dataItem['o:resource_class']);
+                //             // }
+                //         });
+                //
+                // }
                 //recorremos los ids de los items
                 // id_items.forEach((id_item) => {
                 //
@@ -209,10 +241,9 @@
                     localStorage.setItem('carousel', JSON.stringify(this.imagesArray));
                 } else {
                     let images;
-                    images = JSON.parse(localStorage.get('carousel'));
+                    images = JSON.parse(localStorage.getItem('carousel'));
                     this.imagesArray = images;
                 }
-
             }
         }
     }
