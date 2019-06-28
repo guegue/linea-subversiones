@@ -109,7 +109,6 @@
                                 <div class="column three-fourth column_column space-border">
                                     <div class="column_attr p-8">
                                         <hr class="no_line hrmargin_b_40"/>
-                                        <pre>{{videos}}</pre>
                                         <VideoPlayer v-bind:videos="videos"></VideoPlayer>
 
                                     </div>
@@ -307,7 +306,7 @@
     }
 
     .img-size {
-        width: 100%;
+
         height: 100% !important;
     }
     .img-size-site {
