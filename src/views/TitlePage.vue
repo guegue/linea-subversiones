@@ -37,14 +37,14 @@
         data() {
             return {
                 detailsSite: [],
-                urlListItem: this.$domainOmeka + 'api/items?item_set_id=',
-                urlImage: this.$domainOmeka + 'api/media/',
                 imagesArray: [],
                 dataContribuitors: [],
                 dataVideos: [],
             }
         },
         mounted() {
+
+            this.getAllSites();
             this.getAllAboutSite()
                 .then(() => {
                     this.buildMenu()
@@ -77,33 +77,6 @@
 
         },
         methods: {
-            getItemsSetId() {
-                return new Promise((resolve) => {
-                    let item_set_id = [];
-                    this.$axios(this.$domainOmeka + 'api/item_sets?resource_class_id=27')
-                        .then((response) => {
-                            //recorro los items
-                            response.data.forEach((item) => {
-
-                                this.$axios(item['o:items']['@id'])
-                                    .then((response2) => {
-
-                                        this.$axios(response2.data[0]['o:media'][0]['@id'])
-                                            .then((response3) => {
-                                                item_set_id.push({
-                                                    id_item_set: item['o:id'],
-                                                    url_img_site: response3.data['o:original_url'],
-                                                });
-                                                resolve(item_set_id);
-                                            });
-
-                                    });
-
-                            });
-
-                        });
-                })
-            },
             async buildBodyPage() {
 
                 let quantity_page = 10;
@@ -168,7 +141,7 @@
                 }
             },
             async buildCarousel() {
-                let url_item_set = this.$domainOmeka + 'api/item_sets?resource_class_label=slider&site_id=' + this.dataSite.id;
+                let url_item_set = this.$domainOmeka + `api/item_sets?resource_class_label=slider&site_id=${ this.dataSite.id}`;
                 const item_set = await this.$axios.get(url_item_set);
                 if (localStorage.getItem('carousel') === null) {
                     for (const data of item_set.data) {

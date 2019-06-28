@@ -7,11 +7,7 @@ export default {
                 slug: this.$route.params.namesite,
                 summary: '',
             },
-            nameSite: '',
-            slugSite: '',
-            aboutSite: '',
             optionMenu: [],
-            id_video: null,
             url: '',
             sites: [],
             urlVideoPage: '',
@@ -38,47 +34,6 @@ export default {
                 this.dataSite.id = data.id;
                 this.dataSite.name = data.name;
                 this.dataSite.summary = data.summary;
-            }
-        },
-        async getDetailsSite(array_items) {
-            //validamos que el parametro namesite este definido
-            if (this.$route.params.namesite !== undefined) {
-                //obtenemos todos los sitios de omeka
-                const response = await this.$axios(this.$domainOmeka + 'api/sites');
-                let siteName = this.$route.params.namesite.toLowerCase();
-                let idSite = 0;
-                response.data.forEach((site) => {
-                    if (site['o:slug'] === siteName) {
-                        idSite = site['o:id'];
-                        this.id = site['o:id'];
-                        this.name = site['o:title'];
-                        this.slugSite = site['o:slug'];
-                        this.nameSite = site['o:title'];
-                        this.slugSite = site['o:slug'];
-                    }
-                    //recorro el arreglo de id de items sets
-                    array_items.forEach((data, index) => {
-                        //obtenemos el id de cada item set con la propiedad id_item_set
-                        let idItemSet = data.id_item_set.toString();
-                        //obtenemos el arreglo de item set del sitio en iteracion
-                        let listItemSet = site['o:item_pool']['item_set_id'];
-                        //validamos que la propiedad item_set_id exista
-                        if (listItemSet !== undefined) {
-                            //buscamos en el arreglo de item set del sitio en iteracion buscamos si existe un id que obtivumos previamente
-                            let found = listItemSet.indexOf(idItemSet);
-                            if (found > -1 && site['o:id'] !== idSite) {
-                                array_items[index]["title_site"] = site['o:title'];
-                                array_items[index]["slug"] = site['o:slug'];
-                                array_items[index]["description"] = site['o:summary'];
-                                array_items[index]["exist_img"] = true;
-                            } else if (found <= -1 && array_items[index]["exist_img"] !== undefined
-                                && array_items[index]["exist_img"] !== true) {
-                                array_items[index]["exist_img"] = false;
-                            }
-                        }
-                    });
-                });
-                return [array_items, idSite];
             }
         },
         async buildMenu() {
@@ -216,10 +171,23 @@ export default {
         },
         async getAllSites(getCurrentSite = 'si') {
             const response = await this.$axios(this.$domainOmeka + 'api/sites');
-
+            let url_media = '', image_urls_site = {original: '', large: '', medium: ''};
             let data_sites = response.data;
             for (const site of data_sites) {
-
+                let id_site = site['o:id'];
+                url_media = this.$domainOmeka + `api/media?site_id=${id_site}&per_page=10`;
+                let mediaData = await this.$axios.get(url_media);
+                if (mediaData.data.length > 0) {
+                    for (const media of mediaData.data) {
+                        let type = this.getTypeMedia(media);
+                        if (type === 'image') {
+                            image_urls_site.original = media['o:original_url'];
+                            image_urls_site.large = media['o:thumbnail_urls'].large;
+                            image_urls_site.medium = media['o:thumbnail_urls'].medium;
+                            break;
+                        }
+                    }
+                }
 
                 if (getCurrentSite === 'si') {
                     this.sites.push({
@@ -227,7 +195,7 @@ export default {
                         slug: site['o:slug'],
                         title: site['o:title'],
                     });
-                } else if (getCurrentSite !== 'si' && this.slugSite !== site['o:slug']) {
+                } else if (getCurrentSite !== 'si' && this.dataSite.slug !== site['o:slug']) {
                     this.sites.push({
                         id: site['o:id'],
                         slug: site['o:slug'],

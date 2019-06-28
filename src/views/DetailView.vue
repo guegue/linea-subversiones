@@ -3,8 +3,8 @@
     minimalist-header sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
         <div id="Wrapper">
             <Header v-bind:optionMenu="optionMenu"
-                    v-bind:name-site="nameSite"
-                    v-bind:slug-site="slugSite"
+                    v-bind:name-site="dataSite.name"
+                    v-bind:slug-site="dataSite.slug"
                     v-bind:title="detailsItem.title"
                     v-bind:show-title-description="true"></Header>
             <Container v-bind:details-item="detailsItem"
@@ -50,6 +50,7 @@
         mounted() {
             this.getAllAboutSite()
                 .then(() => {
+
                     this.buildMenu()
                         .then(() => {
                             let idItem = this.$route.params.iditem;
@@ -91,15 +92,6 @@
                     console.log(error);
                 });
 
-            this.getDetailsSite([])
-                .then((response) => {
-                    let idSite = response[1];
-                    this.buildMenu(idSite)
-                        .then(() => {
-
-
-                        })
-                });
             this.getAllSites('no');
 
         }
