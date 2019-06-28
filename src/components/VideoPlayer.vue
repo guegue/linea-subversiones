@@ -31,7 +31,6 @@
         props: ['videos'],
         methods: {
             showVideos(idvideo) {
-                console.log(idvideo);
                 let videos = [];
                 for (const video of this.videos) {
                     videos.push({
@@ -52,9 +51,6 @@
                 });
             }
         },
-        mounted() {
-            console.log(this.videos);
-        }
     }
 </script>
 

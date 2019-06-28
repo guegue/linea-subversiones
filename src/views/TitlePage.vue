@@ -12,7 +12,7 @@
                            v-bind:constribuitors="dataContribuitors"
                            v-bind:videos="dataVideos"
                            v-bind:urlVideos="urlVideoPage"
-                           v-bind:details-site="detailsSite"></Container>
+                           v-bind:details-site="sites"></Container>
                 <Footer></Footer>
             </div>
         </div>
@@ -44,7 +44,7 @@
         },
         mounted() {
 
-            this.getAllSites();
+
             this.getAllAboutSite()
                 .then(() => {
                     this.buildMenu()
@@ -52,6 +52,8 @@
                             this.buildCarousel()
                                 .then(() => {
                                     this.buildBodyPage();
+
+                                    this.getAllSites('no');
                                 })
                                 .catch((error) => {
                                     // eslint-disable-next-line no-console
@@ -72,7 +74,7 @@
                     console.log('error obteniendo datos del sitio');
                     // eslint-disable-next-line no-console
                     console.log(error);
-                })
+                });
 
 
         },

@@ -128,31 +128,34 @@
                                     <div class="column_attr">
                                         <div class="img-background-document">
                                             <h4>Otros Sitios Relacionados:</h4>
-                                            <scrolly class="foo" style="width: 100%;height: 100%;" >
+                                            <scrolly class="foo" style="width: 100%;height: 100%;">
                                                 <scrolly-viewport>
-                                                    <div v-for="site in detailsSite" :key="site.id_item_set">
+                                                    <div v-for="(site,index) in detailsSite" :key="index*9">
                                                         <div v-if="site.exist_img">
                                                             <div class="list_item lists_2 clearfix">
                                                                 <div class="list_left list_image">
-                                                                    <a :href="'/'+site.slug"><img
-                                                                            :src="site.url_img_site"
-                                                                            alt="Tincidunt mauris" class="scale-with-grid"
-                                                                            width="150" height="150"/>
-                                                                    </a>
+                                                                    <router-link tag="a"
+                                                                                 to="{ name:'site', params:{'namesite':site.slug}">
+                                                                        <img
+                                                                                :src="site.img_medium"
+                                                                                alt="Tincidunt mauris"
+                                                                                class="scale-with-grid img-size-site"
+                                                                                width="150" height="140"/>
+                                                                    </router-link>
                                                                 </div>
                                                                 <div class="list_right">
                                                                     <h4 class="text-dark">
-                                                                        <a :href="'/'+site.slug" class="text-dark">{{site.title_site}}</a>
+                                                                        <a :href="'/'+site.slug" class="text-dark">{{site.title}}</a>
                                                                     </h4>
                                                                     <div class="desc"
-                                                                         v-if="typeof site.description === 'string'">
-                                                                        <p v-if="site.description.length > 100">
-                                                                            {{site.description.slice(0,130)}}... <a
-                                                                                :href="'/'+site.slug" >Leer
+                                                                         v-if="typeof site.summary === 'string'">
+                                                                        <p v-if="site.summary.length > 100">
+                                                                            {{site.summary.slice(0,130)}}... <a
+                                                                                :href="'/'+site.slug">Leer
                                                                             m&aacute;s</a>
                                                                         </p>
                                                                         <p v-else>
-                                                                            {{site.description}}... <a
+                                                                            {{site.summary}}... <a
                                                                                 :href="'/'+site.slug">Leer
                                                                             m&aacute;s</a>
                                                                         </p>
@@ -207,7 +210,7 @@
 <script>
     import Timeline from './Timeline';
     import VideoPlayer from '../components/VideoPlayer'
-    import { Scrolly, ScrollyViewport, ScrollyBar } from 'vue-scrolly';
+    import {Scrolly, ScrollyViewport, ScrollyBar} from 'vue-scrolly';
 
     export default {
         name: "Container",
@@ -293,18 +296,25 @@
     }
 
 
-
     .list-unstyled li {
         list-style-type: none;
     }
-    .cuadro-img-size{
-        width: 100%;height: 550px !important;
+
+    .cuadro-img-size {
+        width: 100%;
+        height: 550px !important;
     }
 
-    .img-size{
-        width: 100%; height: 100% !important;
+    .img-size {
+        width: 100%;
+        height: 100% !important;
     }
-    .scrolly-bar.axis-y{
+    .img-size-site {
+        width: 80px;
+        height: 70px !important;
+    }
+
+    .scrolly-bar.axis-y {
         width: 5px !important;
     }
 

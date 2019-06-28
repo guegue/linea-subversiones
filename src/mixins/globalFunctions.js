@@ -173,37 +173,58 @@ export default {
             const response = await this.$axios(this.$domainOmeka + 'api/sites');
             let url_media = '', image_urls_site = {original: '', large: '', medium: ''};
             let data_sites = response.data;
-            for (const site of data_sites) {
-                let id_site = site['o:id'];
-                url_media = this.$domainOmeka + `api/media?site_id=${id_site}&per_page=10`;
-                let mediaData = await this.$axios.get(url_media);
-                if (mediaData.data.length > 0) {
-                    for (const media of mediaData.data) {
-                        let type = this.getTypeMedia(media);
-                        if (type === 'image') {
-                            image_urls_site.original = media['o:original_url'];
-                            image_urls_site.large = media['o:thumbnail_urls'].large;
-                            image_urls_site.medium = media['o:thumbnail_urls'].medium;
-                            break;
+
+            if (localStorage.getItem('sites') === null) {
+                for (const site of data_sites) {
+                    let id_site = site['o:id'];
+                    url_media = this.$domainOmeka + `api/media?site_id=${id_site}&per_page=10`;
+                    let mediaData = await this.$axios.get(url_media);
+                    if (mediaData.data.length > 0) {
+                        for (const media of mediaData.data) {
+                            let type = this.getTypeMedia(media);
+                            if (type === 'image') {
+                                image_urls_site.original = media['o:original_url'];
+                                image_urls_site.large = media['o:thumbnail_urls'].large;
+                                image_urls_site.medium = media['o:thumbnail_urls'].medium;
+                                break;
+                            }
                         }
+                    }
+
+                    if (getCurrentSite === 'si') {
+                        this.sites.push({
+                            id: site['o:id'],
+                            slug: site['o:slug'],
+                            title: site['o:title'],
+                            summary: site['o:summary'],
+                            img_original: image_urls_site.original,
+                            img_large: image_urls_site.large,
+                            img_medium: image_urls_site.medium,
+                            exist_img: (image_urls_site.original !== ''),
+                        });
+                        localStorage.setItem('sites', JSON.stringify(this.sites));
+                    } else if (getCurrentSite !== 'si' && this.dataSite.slug !== site['o:slug']) {
+                        this.sites.push({
+                            id: site['o:id'],
+                            slug: site['o:slug'],
+                            title: site['o:title'],
+                            summary: site['o:summary'],
+                            img_original: image_urls_site.original,
+                            img_large: image_urls_site.large,
+                            img_medium: image_urls_site.medium,
+                            exist_img: (image_urls_site.original !== ''),
+                        });
+                        localStorage.setItem('sites', JSON.stringify(this.sites));
                     }
                 }
 
-                if (getCurrentSite === 'si') {
-                    this.sites.push({
-                        id: site['o:id'],
-                        slug: site['o:slug'],
-                        title: site['o:title'],
-                    });
-                } else if (getCurrentSite !== 'si' && this.dataSite.slug !== site['o:slug']) {
-                    this.sites.push({
-                        id: site['o:id'],
-                        slug: site['o:slug'],
-                        title: site['o:title'],
-                    });
-                }
+            } else {
+                let site;
+                site = JSON.parse(localStorage.getItem('sites'));
 
+                this.sites = site;
             }
+
         },
         getEmptyStringOrValue(objectArray, attribName) {
             return (objectArray[attribName] !== null) ? objectArray[attribName] : '';
