@@ -21,7 +21,7 @@
 
     import GlobalFunction from '../mixins/globalFunctions';
     import Header from '../components/Header';
-    import Container from '../components/Container-Article';
+    import Container from '../components/Container-ListView';
     import Footer from '../components/Footer';
 
     export default {

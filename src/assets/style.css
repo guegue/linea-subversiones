@@ -114,6 +114,7 @@
     width: 100%;
     object-fit: cover !important;
 }
+
 .img-cover-2 {
     height: 100px !important;
     width: 100%;
@@ -146,10 +147,16 @@ a.color-azul-oscuro:hover {
     display: none;
 }
 
-.space-border:after{
+.space-border:after {
     color: #fff;
 }
 
-.height-item-related{
+.height-item-related {
     height: 150px !important;
+}
+
+.square-size-image {
+    height: 150px !important;
+    width: 100%;
+    object-fit: cover;
 }

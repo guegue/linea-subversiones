@@ -14,7 +14,8 @@
     export default {
         name: "Main",
         mixins: [GlobalFunction],
-        mounted() {
+        created() {
+            localStorage.clear();
             this.getAllSites()
         }
     }

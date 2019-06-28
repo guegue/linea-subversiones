@@ -232,8 +232,8 @@
 
     main {
         max-width: 100%;
-        padding: 40px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        /*padding: 40px;*/
+        /*border: 1px solid rgba(0, 0, 0, 0.2);*/
         background: #fff;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
