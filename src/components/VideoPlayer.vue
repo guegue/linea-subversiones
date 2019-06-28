@@ -31,8 +31,8 @@
         props: ['videos'],
         methods: {
             showVideos(idvideo) {
+                console.log(idvideo);
                 let videos = [];
-                console.log(this.videos);
                 for (const video of this.videos) {
                     videos.push({
                         src: video.url,
@@ -52,13 +52,8 @@
                 });
             }
         },
-        updated() {
-            // console.log(this.videos);
-            // this.$nextTick(() => {
-            //     window.lightGallery(document.getElementById('div-videos'), {
-            //         videojs: true,
-            //     });
-            // });
+        mounted() {
+            console.log(this.videos);
         }
     }
 </script>

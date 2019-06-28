@@ -75,18 +75,6 @@
                 })
 
 
-            // this.getItemsSetId()
-            //     .then((response) => {
-            //         let itemSet = response;
-            //         this.getDetailsSite(itemSet)
-            //             .then((responseData => {
-            //                 this.detailsSite = responseData[0];
-            //                 this.buildMenu(responseData[1])
-            //                     .then((dataSite) => {
-            //                         this.buildBodyPage(dataSite);
-            //                     });
-            //             }))
-            //     });
         },
         methods: {
             getItemsSetId() {
@@ -118,10 +106,10 @@
             },
             async buildBodyPage() {
 
+                let quantity_page = 10;
                 let urlColaboradores = '', urlVideos = '', responseColaborares, responseVideos;
-                urlColaboradores = this.$domainOmeka + 'api/item_sets?resource_class_id=97&site_id=' + this.dataSite.id;
-                urlVideos = this.$domainOmeka + 'api/item_sets?resource_class_id=38&site_id=' + this.dataSite.id;
-
+                urlColaboradores = this.$domainOmeka + `api/item_sets?resource_class_id=97&site_id=${this.dataSite.id}`;
+                urlVideos = this.$domainOmeka + `api/items?site_id=${this.dataSite.id}&per_page=${quantity_page}&resource_class_id=38`;
 
                 [responseColaborares, responseVideos] = await this.$axios.all([
                     this.$axios.get(urlColaboradores),
@@ -143,7 +131,41 @@
                         list: this.getAttribEmptyOrFilled(detail.data[0], 'bibo:contributorList').split('\n'),
                     });
                 }
+                let id;
+                //recorremoslos items para videos
+                for (const video of videos) {
+                    // console.log(data);
+                    for (const media of video['o:media']) {
+                        let url_media = media['@id'];
+                        let media_data = await this.$axios.get(url_media);
+                        let type = this.getTypeMedia(media_data.data);
+                        switch (type) {
+                            case 'video' :
+                                this.dataVideos.push({
+                                    id: this.getEmptyStringOrValue(video, 'o:id'),
+                                    title: this.getAttribEmptyOrFilled(video, 'dcterms:title'),
+                                    type: type,
+                                    img_large: this.urlImageVideo,
+                                    img_medium: this.urlImageVideo,
+                                    url: this.getEmptyStringOrValue(media_data.data, 'o:original_url'),
+                                });
+                                break;
+                            case 'youtube':
+                            case 'vimeo':
+                                id = media_data.data['data']['id'];
+                                this.dataVideos.push({
+                                    id: this.getEmptyStringOrValue(media_data.data, 'o:id'),
+                                    title: this.getAttribEmptyOrFilled(media_data.data, 'dcterms:title'),
+                                    type: type,
+                                    img_large: media_data.data['o:thumbnail_urls']['large'],
+                                    img_medium: media_data.data['o:thumbnail_urls']['medium'],
+                                    url: this.buildUrlVimeoYoutube(type, id),
+                                });
+                                break;
+                        }
 
+                    }
+                }
             },
             async buildCarousel() {
                 let url_item_set = this.$domainOmeka + 'api/item_sets?resource_class_label=slider&site_id=' + this.dataSite.id;

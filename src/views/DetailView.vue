@@ -8,8 +8,7 @@
                     v-bind:title="detailsItem.title"
                     v-bind:show-title-description="true"></Header>
             <Container v-bind:details-item="detailsItem"
-                       v-bind:sites="sites"
-                       v-bind:back-page="urlPath"></Container>
+                       v-bind:sites="sites"></Container>
             <Footer></Footer>
         </div>
     </div>
@@ -45,22 +44,18 @@
                     audios: [],
                     documents: [],
                     coordinates: [],
-                },
-                urlPath: '',
+                }
             }
         },
         mounted() {
-            this.getDetailsSite([])
-                .then((response) => {
-                    let idSite = response[1];
-                    this.buildMenu(idSite)
+            this.getAllAboutSite()
+                .then(() => {
+                    this.buildMenu()
                         .then(() => {
                             let idItem = this.$route.params.iditem;
-                            this.urlPath = '/' + this.$route.params.namesite + '/page/' + this.$route.params.namepage;
                             this.$axios(this.$domainOmeka + 'api/items/' + idItem)
                                 .then((detailItem) => {
                                     let data = detailItem.data;
-                                    console.log(data);
                                     /* metodo para obtener las imagenes,videos, audios, documentos y coordenadas*/
                                     this.getArrayMedia(data)
                                         .then((media) => {
@@ -81,6 +76,27 @@
                                         });
 
                                 })
+                        })
+                        .catch((error) => {
+                            // eslint-disable-next-line no-console
+                            console.log('error construyendo el menu');
+                            // eslint-disable-next-line no-console
+                            console.log(error);
+                        })
+                })
+                .catch((error) => {
+                    // eslint-disable-next-line no-console
+                    console.log('error obteniendo datos del sitio');
+                    // eslint-disable-next-line no-console
+                    console.log(error);
+                });
+
+            this.getDetailsSite([])
+                .then((response) => {
+                    let idSite = response[1];
+                    this.buildMenu(idSite)
+                        .then(() => {
+
 
                         })
                 });

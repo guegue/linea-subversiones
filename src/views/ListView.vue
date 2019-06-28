@@ -9,7 +9,7 @@
                     v-bind:title="title"></Header>
             <Container v-bind:contents="contents"
                        v-bind:related_content="relatedContent"
-                       v-bind:summary="dataSite.summary"
+                       v-bind:summary="summary"
                        v-bind:names="names"
                        v-bind:descriptions="descriptions"></Container>
             <Footer></Footer>
@@ -42,7 +42,6 @@
                 title: '',
                 summary: '',
                 descriptions: [],
-                urlPath: '',
                 relatedContent: [],
                 littleArray: [],
                 quantity_page: 1,
@@ -53,27 +52,30 @@
 
             this.getAllAboutSite()
                 .then(() => {
-                    this.buildMenu();
+                    this.buildMenu()
+                        .then(() => {
+                            this.names.page = this.$route.params.namepage;
+                            for (const option of this.optionMenu) {
+                                if (option.slug === this.names.page) {
+                                    this.title = option.title;
+                                    this.names.site = this.$route.params.namesite;
+                                    this.getContentFromPage(option.url);
+                                }
+                            }
+                        })
+                        .catch((error) => {
+                            // eslint-disable-next-line no-console
+                            console.log('error construyendo el menu');
+                            // eslint-disable-next-line no-console
+                            console.log(error);
+                        })
+                })
+                .catch((error) => {
+                    // eslint-disable-next-line no-console
+                    console.log('error obteniendo datos del sitio');
+                    // eslint-disable-next-line no-console
+                    console.log(error);
                 });
-            // this.names.page = this.$route.params.namepage.toLowerCase();
-            // this.getDetailsSite([])
-            //     .then((response) => {
-            //         let idSite = response[1];
-            //         this.buildMenu(idSite)
-            //             .then(() => {
-            //                 this.$nextTick(() => {
-            //                     this.optionMenu.forEach((option) => {
-            //                         if (option.slug === this.names.page) {
-            //                             this.title = option.title;
-            //                             this.names.site = this.$route.params.namesite;
-            //                             this.getContentFromPage(option.url);
-            //                         }
-            //                     })
-            //                 })
-            //
-            //             })
-            //     });
-
 
         },
         methods: {
@@ -97,9 +99,8 @@
                                 const item = await this.$axios(data['o:item']['@id']);
                                 //consultamos a url de media que trae un item
                                 const media = await this.$axios(data['o:media']['@id']);
-
                                 this.littleArray.push({
-                                    id: '',
+                                    id: item.data['o:id'],
                                     title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
                                     description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
                                     url_img: this.getMediaEmptyOrFilled(media.data, 'o:original_url'),

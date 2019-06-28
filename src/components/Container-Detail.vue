@@ -10,12 +10,7 @@
 
                             <!-- One full width row-->
                             <div class="column one post-nav">
-                                <ul class="next-prev-nav">
-                                    <li class="prev">
-                                        <a class="button button_js" :href="backPage"><span class="button_icon"><i
-                                                class="icon-left-open"></i></span></a>
-                                    </li>
-                                </ul>
+
                             </div>
                             <!-- Post Header-->
                             <!-- One full width row-->
@@ -197,7 +192,7 @@
 
     export default {
         name: "Container-Detail",
-        props: ['detailsItem', 'backPage', 'sites'],
+        props: ['detailsItem', 'sites'],
         components: {
             AudioPlayer,
             Viewer,
