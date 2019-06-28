@@ -16,7 +16,6 @@
                     </div>
                 </div>
 
-                <Filters></Filters>
 
                 <div class="section">
                     <div class="section_wrapper clearfix">
@@ -193,7 +192,6 @@
 </template>
 
 <script>
-    import Filters from './Filters'
 
     export default {
         name: "Container-Article",
