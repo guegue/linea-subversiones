@@ -196,9 +196,6 @@
     export default {
         name: "Container-Article",
         props: ['contents', 'descriptions', 'summary', 'names', 'related_content'],
-        components: {
-            Filters
-        },
         data() {
             return {
                 urlPath: '',
