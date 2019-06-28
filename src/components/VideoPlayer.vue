@@ -31,12 +31,21 @@
         props: ['videos'],
         methods: {
             showVideos(idvideo) {
+
                 let videos = [];
                 for (const video of this.videos) {
-                    videos.push({
-                        src: video.url,
-                        thumb: video.img_medium,
-                    });
+                    if (video.type === 'video'){
+                        videos.push({
+                            html: `<video class="lg-video-object lg-html5" controls preload="none"><source src="${video.url}" type="video/mp4">${video.title}</video>`,
+                            thumb: video.img_medium,
+                        });
+                    }else{
+                        videos.push({
+                            src: video.url,
+                            thumb: video.img_medium,
+                        });
+                    }
+
                 }
 
                 window.lightGallery(document.getElementById('div-videos'), {
