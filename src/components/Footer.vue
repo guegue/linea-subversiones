@@ -1,16 +1,6 @@
 <template>
     <!-- Footer-->
     <footer id="Footer" class="clearfix">
-        <!-- Footer - First area -->
-        <div class="footer_action">
-            <div class="container">
-                <!--                         One full width row-->
-                <div class="column one column_column">
-                    <h4 style="color: #a6a6a8; margin: 15px 0;">Vestibulum commodo volutpat convallis ac</h4>
-                </div>
-            </div>
-        </div>
-
         <!-- Footer copyright-->
         <div class="footer_copy">
             <div class="container">

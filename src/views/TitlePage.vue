@@ -141,7 +141,6 @@
                                 break;
                         }
                         if (counter === MAX_VIDEOS) {
-                            console.log(1);
                             break;
                         }
                     }
