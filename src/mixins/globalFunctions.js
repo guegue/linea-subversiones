@@ -21,6 +21,7 @@ export default {
                     .get(this.$domainOmeka + 'api/sites');
                 for (const site of sites.data) {
                     if (site['o:slug'] === this.dataSite.slug) {
+                        console.log(1);
                         this.dataSite.id = site['o:id'];
                         this.dataSite.name = site['o:title'];
                         this.dataSite.summary = this.getEmptyStringOrValue(site, 'o:summary')
@@ -38,7 +39,7 @@ export default {
         },
         async buildMenu() {
             if (localStorage.getItem('optionMenu') === null) {
-                const response = await this.$axios(this.$domainOmeka + 'api/sites/' + this.dataSite.id);
+                const response = await this.$axios(this.$domainOmeka + `api/sites/${this.dataSite.id}`);
                 //validamos que la propiedad de navegacion este definida
                 if (response.data['o:navigation'] !== undefined) {
                     let responseData = response.data;
