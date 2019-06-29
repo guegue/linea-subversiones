@@ -81,7 +81,7 @@
         methods: {
             async buildBodyPage() {
 
-                let quantity_page = 10;
+                let quantity_page = 2;
                 let urlColaboradores = '', urlVideos = '', responseColaborares, responseVideos;
                 urlColaboradores = this.$domainOmeka + `api/item_sets?resource_class_id=97&site_id=${this.dataSite.id}`;
                 urlVideos = this.$domainOmeka + `api/items?site_id=${this.dataSite.id}&per_page=${quantity_page}&resource_class_id=38`;
@@ -106,10 +106,10 @@
                         list: this.getAttribEmptyOrFilled(detail.data[0], 'bibo:contributorList').split('\n'),
                     });
                 }
-                let id;
+                const MAX_VIDEOS = 3;
+                let id, counter = 0;
                 //recorremoslos items para videos
                 for (const video of videos) {
-                    // console.log(data);
                     for (const media of video['o:media']) {
                         let url_media = media['@id'];
                         let media_data = await this.$axios.get(url_media);
@@ -124,6 +124,7 @@
                                     img_medium: this.urlImageVideo,
                                     url: this.getEmptyStringOrValue(media_data.data, 'o:original_url'),
                                 });
+                                counter++;
                                 break;
                             case 'youtube':
                             case 'vimeo':
@@ -136,14 +137,18 @@
                                     img_medium: media_data.data['o:thumbnail_urls']['medium'],
                                     url: this.buildUrlVimeoYoutube(type, id),
                                 });
+                                counter++;
                                 break;
                         }
-
+                        if (counter === MAX_VIDEOS) {
+                            console.log(1);
+                            break;
+                        }
                     }
                 }
             },
             async buildCarousel() {
-                let url_item_set = this.$domainOmeka + `api/item_sets?resource_class_label=slider&site_id=${ this.dataSite.id}`;
+                let url_item_set = this.$domainOmeka + `api/item_sets?resource_class_label=slider&site_id=${this.dataSite.id}`;
                 const item_set = await this.$axios.get(url_item_set);
                 if (localStorage.getItem('carousel') === null) {
                     for (const data of item_set.data) {

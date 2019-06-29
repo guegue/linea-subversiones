@@ -18,7 +18,7 @@
                                             <div class="cuadro">
                                                 <div class="cuadro-carousel">
                                                     <hr class="no_line hrmargin_b_30"/>
-                                                    <h2 style="padding: 15px;text-align: justify">
+                                                    <h2 style="padding: 15px;" class="font-size-50 text-justify">
                                                         {{slides[current].title}}
                                                     </h2>
                                                     <div style="position: relative; margin-left: -15%;"><img
@@ -316,6 +316,9 @@
 
     .scrolly-bar.axis-y {
         width: 5px !important;
+    }
+    h2.font-size-50{
+        font-size: 50px;
     }
 
 </style>
