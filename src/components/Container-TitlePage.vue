@@ -137,7 +137,7 @@
                                                                     <router-link tag="a"
                                                                                  to="{ name:'site', params:{'namesite':site.slug}">
                                                                         <img
-                                                                                :src="site.img_medium"
+                                                                                :src="site.img_square"
                                                                                 alt="Tincidunt mauris"
                                                                                 class="scale-with-grid img-size-site"
                                                                                 width="150" height="140"/>

@@ -33,6 +33,7 @@
                              :class="{'d-none': (currentPage !== contentPagination.id_page)}">
                             <div class="column one-third column_blog height-col"
                                  v-for="(content,index) in contentPagination.content" :key="index">
+
                                 <div class="blog_wrapper isotope_wrapper">
                                     <div class="posts_group lm_wrapper photo col-3">
                                         <div class="post-item isotope-item clearfix post-2275 post format-standard has-post-thumbnail category-earth tag-grid">
@@ -255,7 +256,6 @@
 
     .active-pagination-option {
         color: #000 !important;
-
     }
 
     .active-pagination-option span {

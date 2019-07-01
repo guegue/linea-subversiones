@@ -198,7 +198,7 @@ export default {
 
             if (localStorage.getItem('sites') === null) {
                 for (const site of data_sites) {
-                    let image_urls_site = {original: '', large: '', medium: ''};
+                    let image_urls_site = {original: '', square: ''};
                     let id_site = site['o:id'];
                     item_set_url = this.$domainOmeka + `api/item_sets?resource_class_label=slider&site_id=${id_site}`;
                     const item_set = await this.$axios.get(item_set_url);
@@ -209,8 +209,7 @@ export default {
                         media_url = details.data[0]['o:media'][0]['@id'];
                         const media = await this.$axios.get(media_url);
                         image_urls_site.original = media.data['o:original_url'];
-                        image_urls_site.large = media.data['o:thumbnail_urls'].large;
-                        image_urls_site.medium = media.data['o:thumbnail_urls'].medium;
+                        image_urls_site.square = media.data['o:thumbnail_urls'].square;
                     }
                     if (getCurrentSite === 'si') {
                         this.sites.push({
@@ -219,8 +218,7 @@ export default {
                             title: site['o:title'],
                             summary: site['o:summary'],
                             img_original: image_urls_site.original,
-                            img_large: image_urls_site.large,
-                            img_medium: image_urls_site.medium,
+                            img_square: image_urls_site.square,
                             exist_img: (image_urls_site.original !== ''),
                         });
                     } else if (getCurrentSite !== 'si' && this.dataSite.slug !== site['o:slug']) {
@@ -230,8 +228,7 @@ export default {
                             title: site['o:title'],
                             summary: site['o:summary'],
                             img_original: image_urls_site.original,
-                            img_large: image_urls_site.large,
-                            img_medium: image_urls_site.medium,
+                            img_square: image_urls_site.square,
                             exist_img: (image_urls_site.original !== ''),
                         });
                     }
