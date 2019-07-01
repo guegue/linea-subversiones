@@ -43,8 +43,6 @@
             }
         },
         mounted() {
-
-
             this.getAllAboutSite()
                 .then(() => {
                     this.buildMenu()
@@ -163,11 +161,22 @@
                             });
                         }
                     }
-                    localStorage.setItem('carousel', JSON.stringify(this.imagesArray));
+                    let storageLocal;
+                    storageLocal = {
+                        idPage: this.dataSite.id,
+                        data: this.imagesArray,
+                    };
+                    localStorage.setItem('carousel', JSON.stringify(storageLocal));
                 } else {
                     let images;
                     images = JSON.parse(localStorage.getItem('carousel'));
-                    this.imagesArray = images;
+
+                    if (images.id === this.dataSite.id){
+                        this.imagesArray = images;
+                    } else{
+                        localStorage.removeItem('carousel');
+                        this.buildCarousel();
+                    }
                 }
             }
         }

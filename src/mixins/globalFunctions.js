@@ -17,24 +17,34 @@ export default {
     methods: {
         async getAllAboutSite() {
             if (localStorage.getItem('dataSite') === null) {
-                let sites = await this.$axios
+                const sites = await this.$axios
                     .get(this.$domainOmeka + 'api/sites');
                 for (const site of sites.data) {
                     if (site['o:slug'] === this.dataSite.slug) {
-                        console.log(1);
                         this.dataSite.id = site['o:id'];
                         this.dataSite.name = site['o:title'];
                         this.dataSite.summary = this.getEmptyStringOrValue(site, 'o:summary')
                             .replace(/\r/g, '')
                             .split('\n');
-                        localStorage.setItem('dataSite', JSON.stringify(this.dataSite));
+
+                        let storageLocal;
+                        storageLocal = {
+                            slug: this.dataSite.slug,
+                            data: this.dataSite
+                        };
+                        localStorage.setItem('dataSite', JSON.stringify(storageLocal));
                     }
                 }
             } else {
-                let data = JSON.parse(localStorage.getItem('dataSite'));
-                this.dataSite.id = data.id;
-                this.dataSite.name = data.name;
-                this.dataSite.summary = data.summary;
+                let site = JSON.parse(localStorage.getItem('dataSite'));
+                if (site.data.slug === this.dataSite.slug) {
+                    this.dataSite.id = site.data.id;
+                    this.dataSite.name = site.data.name;
+                    this.dataSite.summary = site.data.summary;
+                } else {
+                    localStorage.removeItem('dataSite');
+                    await this.getAllAboutSite();
+                }
             }
         },
         async buildMenu() {
@@ -73,12 +83,23 @@ export default {
                             });
                         }
                     }
-                    localStorage.setItem('optionMenu', JSON.stringify(this.optionMenu));
+                    let storageLocal;
+                    storageLocal = {
+                        idPage: this.dataSite.id,
+                        data: this.optionMenu,
+                    };
+                    localStorage.setItem('optionMenu', JSON.stringify(storageLocal));
                 }
             } else {
                 let option_menu;
                 option_menu = JSON.parse(localStorage.getItem('optionMenu'));
-                this.optionMenu = option_menu;
+
+                if (option_menu.idPage === this.dataSite.id) {
+                    this.optionMenu = option_menu.data;
+                } else {
+                    localStorage.removeItem('optionMenu');
+                    this.buildMenu();
+                }
             }
         },
         async getArrayMedia(data) {
@@ -172,26 +193,25 @@ export default {
         },
         async getAllSites(getCurrentSite = 'si') {
             const response = await this.$axios(this.$domainOmeka + 'api/sites');
-            let url_media = '', image_urls_site = {original: '', large: '', medium: ''};
+            let item_set_url = '', media_url = '';
             let data_sites = response.data;
 
             if (localStorage.getItem('sites') === null) {
                 for (const site of data_sites) {
+                    let image_urls_site = {original: '', large: '', medium: ''};
                     let id_site = site['o:id'];
-                    url_media = this.$domainOmeka + `api/media?site_id=${id_site}&per_page=10`;
-                    let mediaData = await this.$axios.get(url_media);
-                    if (mediaData.data.length > 0) {
-                        for (const media of mediaData.data) {
-                            let type = this.getTypeMedia(media);
-                            if (type === 'image') {
-                                image_urls_site.original = media['o:original_url'];
-                                image_urls_site.large = media['o:thumbnail_urls'].large;
-                                image_urls_site.medium = media['o:thumbnail_urls'].medium;
-                                break;
-                            }
-                        }
+                    item_set_url = this.$domainOmeka + `api/item_sets?resource_class_label=slider&site_id=${id_site}`;
+                    const item_set = await this.$axios.get(item_set_url);
+                    if (item_set.data.length > 0) {
+                        //is -> item set
+                        let is_detail_url = item_set.data[0]['o:items']['@id'];
+                        const details = await this.$axios.get(is_detail_url);
+                        media_url = details.data[0]['o:media'][0]['@id'];
+                        const media = await this.$axios.get(media_url);
+                        image_urls_site.original = media.data['o:original_url'];
+                        image_urls_site.large = media.data['o:thumbnail_urls'].large;
+                        image_urls_site.medium = media.data['o:thumbnail_urls'].medium;
                     }
-
                     if (getCurrentSite === 'si') {
                         this.sites.push({
                             id: site['o:id'],
@@ -203,7 +223,6 @@ export default {
                             img_medium: image_urls_site.medium,
                             exist_img: (image_urls_site.original !== ''),
                         });
-                        localStorage.setItem('sites', JSON.stringify(this.sites));
                     } else if (getCurrentSite !== 'si' && this.dataSite.slug !== site['o:slug']) {
                         this.sites.push({
                             id: site['o:id'],
@@ -215,15 +234,26 @@ export default {
                             img_medium: image_urls_site.medium,
                             exist_img: (image_urls_site.original !== ''),
                         });
-                        localStorage.setItem('sites', JSON.stringify(this.sites));
                     }
                 }
+
+                let storageLocal;
+                storageLocal = {
+                    idPage: this.dataSite.id,
+                    data: this.sites
+                };
+                localStorage.setItem('sites', JSON.stringify(storageLocal));
 
             } else {
                 let site;
                 site = JSON.parse(localStorage.getItem('sites'));
+                if (this.dataSite.id === site.idPage) {
+                    this.sites = site.data;
+                } else {
+                    localStorage.removeItem('sites');
+                    this.getAllSites(getCurrentSite);
+                }
 
-                this.sites = site;
             }
 
         },
