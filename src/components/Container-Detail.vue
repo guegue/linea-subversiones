@@ -108,25 +108,25 @@
                                     <input v-if="(detailsItem.images.length > 0)" id="tab1" type="radio" name="tabs"
                                            :checked="exist_img">
                                     <label v-if="(detailsItem.images.length > 0)" for="tab1">
-                                        <i class="fa fa-picture-o" aria-hidden="true"></i> Imagenes
+                                        <i class="far fa-image"></i> Imagenes
                                     </label>
 
                                     <input v-if="(detailsItem.audios.length > 0)" id="tab2" type="radio" name="tabs"
                                            :checked="exist_audio">
                                     <label v-if="(detailsItem.audios.length > 0)" for="tab2">
-                                        <i class="fa fa-volume-up" aria-hidden="true"></i> Audios
+                                        <i class="fas fa-volume-up"></i> Audios
                                     </label>
 
                                     <input v-if="(detailsItem.videos.length > 0)" id="tab3" type="radio" name="tabs"
                                            :checked="exist_video">
                                     <label v-if="(detailsItem.videos.length > 0)" for="tab3">
-                                        <i class="fa fa-film" aria-hidden="true"></i> Videos
+                                        <i class="fas fa-film"></i> Videos
                                     </label>
 
                                     <input v-if="(detailsItem.documents.length > 0)" id="tab4" type="radio" name="tabs"
                                            :checked="exist_document">
                                     <label v-if="(detailsItem.documents.length > 0)" for="tab4">
-                                        <i class="fa fa-file" aria-hidden="true"></i> Documentos
+                                        <i class="far fa-file"></i> Documentos
                                     </label>
 
                                     <section id="content1" v-if="(detailsItem.images.length > 0)">
@@ -228,8 +228,6 @@
 </script>
 
 <style scoped>
-    @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
     main {
         max-width: 100%;
         /*padding: 40px;*/
@@ -259,7 +257,6 @@
     }
 
     label:before {
-        font-family: fontawesome;
         font-weight: normal;
         margin-right: 10px;
     }

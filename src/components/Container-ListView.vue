@@ -170,12 +170,24 @@
                                          :key="index">
                                         <div style="margin-right: 20%;margin-bottom: 15px;">
                                             <h5 class="hrmargin_b_5 text-white">
-                                                <a :href="urlPath +content.id">{{content.title}}</a>
+                                                <router-link tag="a" :to="{ name:'detail',
+                                                            params: {
+                                                                namesite: names.site,
+                                                                namepage: names.page,
+                                                                iditem: content.id,
+                                                            } }">{{content.title}}
+                                                </router-link>
                                             </h5>
                                             <p class="text-justify">
                                                 {{content.description.slice(0,119)}}
-                                                <a :href="urlPath +content.id" class="color-azul-oscuro">...Leer
-                                                    m&aacute;s</a>
+                                                <router-link tag="a" class="color-azul-oscuro"
+                                                             :to="{ name:'detail',
+                                                            params: {
+                                                                namesite: names.site,
+                                                                namepage: names.page,
+                                                                iditem: content.id,
+                                                            } }">...Leer m&aacute;s
+                                                </router-link>
                                             </p>
                                         </div>
                                     </div>
@@ -198,7 +210,6 @@
         props: ['contents', 'descriptions', 'summary', 'names', 'related_content'],
         data() {
             return {
-                urlPath: '',
                 currentPage: 1,
             }
         },
