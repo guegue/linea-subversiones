@@ -173,7 +173,7 @@
                                 <!-- One Second (1/2) Column -->
                                 <div class="column one-second column_column ">
                                     <div class="column_attr p-6-4-7">
-                                        <h3 class="text-white">Lorem ipsum dolor mit samet</h3>
+                                        <h3 class="text-white">Contacto</h3>
                                         <h5 class="text-white">Nunc non ante ipsum. Aliquam et malesuada
                                             felis! Vivamus at velit ac mauris ornare dapibus vitae sit amet est.
                                             Etiam porttitor semper sem at mollis turpis duis.</h5>

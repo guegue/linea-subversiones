@@ -104,10 +104,7 @@
                                     title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
                                     description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
                                     url_img: this.getMediaEmptyOrFilled(media.data, 'o:original_url'),
-                                    alternative: this.getAttribEmptyOrFilled(item.data, 'dcterms:alternative'),
                                     date: this.getAttribEmptyOrFilled(item.data, 'dcterms:date'),
-                                    provenance: this.getAttribEmptyOrFilled(item.data, 'dcterms:provenance'),
-                                    source: this.getAttribEmptyOrFilled(item.data, 'dcterms:source'),
                                     author: this.getAttribEmptyOrFilled(item.data, 'bibo:citedBy'),
                                 });
                                 counter++;
@@ -144,10 +141,7 @@
                                 title: this.getAttribEmptyOrFilled(data, 'dcterms:title'),
                                 description: this.getAttribEmptyOrFilled(data, 'dcterms:description'),
                                 url_img: image,
-                                alternative: this.getAttribEmptyOrFilled(data, 'dcterms:alternative'),
                                 date: this.getAttribEmptyOrFilled(data, 'dcterms:date'),
-                                provenance: this.getAttribEmptyOrFilled(data, 'dcterms:provenance'),
-                                source: this.getAttribEmptyOrFilled(data, 'dcterms:source'),
                                 author: this.getAttribEmptyOrFilled(data, 'bibo:citedBy'),
                             });
                         }
@@ -167,29 +161,26 @@
                         for (const related of answer.data['dcterms:isPartOf']) {
                             let type_resource = related['value_resource_name'];
                             let url = '';
+                            let id_resource = related['value_resource_id'];
                             if (type_resource === 'item_sets') {
-                                url = this.$domainOmeka + 'api/items?item_set_id=' + related['value_resource_id'];
-                                let item_set = await this.$axios(url);
+                                url = this.$domainOmeka + `api/items?item_set_id=${id_resource}`;
+                                const item_set = await this.$axios(url);
                                 for (const item of item_set.data) {
                                     this.relatedContent.push({
                                         id: item['o:id'],
                                         title: this.getAttribEmptyOrFilled(item, 'dcterms:title'),
                                         description: this.getAttribEmptyOrFilled(item, 'dcterms:description'),
-                                        date: this.getAttribEmptyOrFilled(item, 'dcterms:date'),
-                                        source: this.getAttribEmptyOrFilled(item, 'dcterms:source'),
                                         author: this.getAttribEmptyOrFilled(item, 'bibo:citedBy'),
                                     });
                                 }
                             } else {
-                                url = this.$domainOmeka + 'api/items/' + related['value_resource_id'];
-                                let item = await this.$axios(url);
-
+                                url = this.$domainOmeka + `api/items/${id_resource}`;
+                                const item = await this.$axios(url);
                                 this.relatedContent.push({
                                     id: item.data['o:id'],
                                     title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
                                     description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
                                     date: this.getAttribEmptyOrFilled(item.data, 'dcterms:date'),
-                                    source: this.getAttribEmptyOrFilled(item.data, 'dcterms:source'),
                                     author: this.getAttribEmptyOrFilled(item.data, 'bibo:citedBy'),
                                 });
                             }
