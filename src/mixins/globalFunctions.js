@@ -8,7 +8,6 @@ export default {
                 summary: '',
             },
             optionMenu: [],
-            url: '',
             sites: [],
             urlVideoPage: '',
             urlImageVideo: 'https://sub-versiones.hijosdeperu.org/files/medium/bd560d32c4900d5b594951d717640ebb582c41ab.jpg'
@@ -18,7 +17,7 @@ export default {
         async getAllAboutSite() {
             if (localStorage.getItem('dataSite') === null) {
                 const sites = await this.$axios
-                    .get(this.$domainOmeka + 'api/sites');
+                    .get(this.$domainOmeka + `api/sites`);
                 for (const site of sites.data) {
                     if (site['o:slug'] === this.dataSite.slug) {
                         this.dataSite.id = site['o:id'];
@@ -55,24 +54,24 @@ export default {
                     let responseData = response.data;
                     let navigation = responseData['o:navigation'];
                     for (const option of navigation) {
-                        let url = '', title = '', slug = '';
+                        let url = '', title = '', slug = '', id;
                         let type = option.type.toLowerCase();
                         //validamos si cada opcion de navegacion es tipo pagina o url para crear obtener los datos de la opcion
                         if (type === 'page') {
-                            url = this.$domainOmeka + 'api/site_pages/' + option.data['id'];
+                            id = option.data['id'];
+                            url = this.$domainOmeka + `api/site_pages/${id}`;
                             const details = await this.$axios(url);
                             title = details.data['o:title'];
                             type = option.type;
                             slug = this.formatStringToUrl(details.data['o:title']);
                         } else if (type === 'url') {
-                            url = this.$domainOmeka + 'api/item_sets/' + option.data['url'];
+                            id = option.data['url'];
+                            url = this.$domainOmeka + `api/item_sets/${id}`;
                             let dataItemSet = await this.$axios(url);
                             type = (dataItemSet.data['o:resource_class'] !== null) ? dataItemSet.data['o:resource_class']['o:id'] : option.type;
                             title = option.data['label'];
                             slug = this.formatStringToUrl(option.data['label']);
-                            if (type === 38) {
-                                this.urlVideoPage = '/' + this.$route.params.namesite + '/page/' + slug;
-                            }
+                            this.urlVideoPage = (type === 38) ? `/${this.dataSite.slug}/page/${slug}` : ``;
                         }
                         if (title !== '') {
                             this.optionMenu.push({
@@ -156,7 +155,7 @@ export default {
                             title: mediaData.data['o:source'],
                             type: mediaData.data['o:media_type'],
                             url: mediaData.data['o:original_url'],
-                            img: mediaData.data['o:thumbnail_urls']['large'],
+                            img: mediaData.data['o:thumbnail_urls'].medium,
                         });
                         break;
                 }

@@ -9,9 +9,9 @@
                         v-bind:show-title-description="false"></Header>
                 <Container v-bind:slides="imagesArray"
                            v-bind:aboutSite="dataSite.summary"
-                           v-bind:constribuitors="dataContribuitors"
+                           v-bind:constribuitors="dataContributors"
                            v-bind:videos="dataVideos"
-                           v-bind:urlVideos="urlVideoPage"
+                           v-bind:urlVideos="this.urlVideoPage"
                            v-bind:details-site="sites"></Container>
                 <Footer></Footer>
             </div>
@@ -38,7 +38,7 @@
             return {
                 detailsSite: [],
                 imagesArray: [],
-                dataContribuitors: [],
+                dataContributors: [],
                 dataVideos: [],
             }
         },
@@ -79,25 +79,24 @@
         methods: {
             async buildBodyPage() {
                 let quantity_page = 2;
-                let urlColaboradores = '', urlVideos = '', responseColaborares, responseVideos;
-                urlColaboradores = this.$domainOmeka + `api/item_sets?resource_class_id=97&site_id=${this.dataSite.id}`;
+                let urlCollaborators = '', urlVideos = '', responseCollaborators, responseVideos;
+                urlCollaborators = this.$domainOmeka + `api/item_sets?resource_class_id=97&site_id=${this.dataSite.id}`;
                 urlVideos = this.$domainOmeka + `api/items?site_id=${this.dataSite.id}&per_page=${quantity_page}&resource_class_id=38`;
 
-                [responseColaborares, responseVideos] = await this.$axios.all([
-                    this.$axios.get(urlColaboradores),
+                [responseCollaborators, responseVideos] = await this.$axios.all([
+                    this.$axios.get(urlCollaborators),
                     this.$axios.get(urlVideos),
                 ]);
 
-                let colaboradores = responseColaborares.data;
+                let collaborators = responseCollaborators.data;
                 let videos = responseVideos.data;
-                //recorremos los colaboradores
-                for (const data of colaboradores) {
+                for (const data of collaborators) {
                     let url_item_set = data['o:items']['@id'];
                     let detail = await this.$axios.get(url_item_set);
                     let url_media = detail.data[0]['o:media'][0]['@id'];
                     let media_item = await this.$axios.get(url_media);
 
-                    this.dataContribuitors.push({
+                    this.dataContributors.push({
                         img: this.getEmptyStringOrValue(media_item.data, 'o:original_url'),
                         description: this.getAttribEmptyOrFilled(detail.data[0], 'dcterms:description'),
                         list: this.getAttribEmptyOrFilled(detail.data[0], 'bibo:contributorList').split('\n'),
@@ -105,7 +104,6 @@
                 }
                 const MAX_VIDEOS = 3;
                 let id, counter = 0;
-                //recorremoslos items para videos
                 for (const video of videos) {
                     for (const media of video['o:media']) {
                         let url_media = media['@id'];

@@ -233,7 +233,6 @@
             return {
                 current: 0,
                 direction: 1,
-                info: null,
                 transitionName: "fade"
             }
         },

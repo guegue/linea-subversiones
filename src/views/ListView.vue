@@ -95,17 +95,21 @@
                             let size_item_set = detail['o:attachment'].length;
                             //recorro los items relacionados a una pagina
                             for (const data of detail['o:attachment']) {
-                                //consultamos a url para obtener los detalles del item
-                                const item = await this.$axios(data['o:item']['@id']);
-                                //consultamos a url de media que trae un item
-                                const media = await this.$axios(data['o:media']['@id']);
+                                let url_media = data['o:media']['@id'], url_item = data['o:item']['@id'];
+                                let responseItem, responseMedia;
+
+                                [responseItem, responseMedia] = await this.$axios.all([
+                                    this.$axios.get(url_item),
+                                    this.$axios.get(url_media),
+                                ]);
+
                                 this.littleArray.push({
-                                    id: item.data['o:id'],
-                                    title: this.getAttribEmptyOrFilled(item.data, 'dcterms:title'),
-                                    description: this.getAttribEmptyOrFilled(item.data, 'dcterms:description'),
-                                    url_img: this.getMediaEmptyOrFilled(media.data, 'o:original_url'),
-                                    date: this.getAttribEmptyOrFilled(item.data, 'dcterms:date'),
-                                    author: this.getAttribEmptyOrFilled(item.data, 'bibo:citedBy'),
+                                    id: responseItem.data['o:id'],
+                                    title: this.getAttribEmptyOrFilled(responseItem.data, 'dcterms:title'),
+                                    description: this.getAttribEmptyOrFilled(responseItem.data, 'dcterms:description'),
+                                    url_img: this.getMediaEmptyOrFilled(responseMedia.data, 'o:original_url'),
+                                    date: this.getAttribEmptyOrFilled(responseItem.data, 'dcterms:date'),
+                                    author: this.getAttribEmptyOrFilled(responseItem.data, 'bibo:citedBy'),
                                 });
                                 counter++;
 

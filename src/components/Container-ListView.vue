@@ -42,19 +42,18 @@
                                             </div>
                                             <div class="image_frame post-photo-wrapper scale-with-grid">
                                                 <div class="image_wrapper" :id="'img-item_'+content.id">
-                                                    <a v-if="content.url_img !== ''" :href="content.url_img"
-                                                       target="_blank">
+                                                    <div v-if="content.url_img !== ''">
                                                         <div class="mask"></div>
-                                                        <img :src="content.url_img"
+                                                        <img :src="content.url_img.replace('original','large')"
                                                              class="scale-with-grid wp-post-image img-cover"
                                                              alt="home_space_blog3"/>
-                                                    </a>
-                                                    <a v-else href="@/assets/no-image-icon.png" target="_blank">
+                                                    </div>
+                                                    <div v-else >
                                                         <div class="mask"></div>
                                                         <img src="@/assets/no-image-icon.png"
                                                              class="scale-with-grid wp-post-image img-cover"
                                                              alt="home_space_blog3"/>
-                                                    </a>
+                                                    </div>
                                                     <div class="image_links "
                                                          :class="{'double':(content.url_img !== '')}">
                                                         <a v-if="content.url_img !== ''" role="button"
