@@ -44,7 +44,7 @@
                                                 <div class="image_wrapper" :id="'img-item_'+content.id">
                                                     <div v-if="content.url_img !== ''">
                                                         <div class="mask"></div>
-                                                        <img :src="content.url_img.replace('original','large')"
+                                                        <img :src="content.url_img_large"
                                                              class="scale-with-grid wp-post-image img-cover"
                                                              alt="home_space_blog3"/>
                                                     </div>
@@ -259,6 +259,10 @@
 
     .active-pagination-option span {
         border-bottom: 1px solid rgba(0, 0, 0, 1);
+    }
+
+    .d-none img {
+        display: none;
     }
 
 </style>

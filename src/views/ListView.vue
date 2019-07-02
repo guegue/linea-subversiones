@@ -102,12 +102,12 @@
                                     this.$axios.get(url_item),
                                     this.$axios.get(url_media),
                                 ]);
-
                                 this.littleArray.push({
                                     id: responseItem.data['o:id'],
                                     title: this.getAttribEmptyOrFilled(responseItem.data, 'dcterms:title'),
                                     description: this.getAttribEmptyOrFilled(responseItem.data, 'dcterms:description'),
-                                    url_img: this.getMediaEmptyOrFilled(responseMedia.data, 'o:original_url'),
+                                    url_img: this.getMediaEmptyOrFilled(responseMedia.data, 'o:original_url').original,
+                                    url_img_large: responseMedia.data['o:thumbnail_urls'].large,
                                     date: this.getAttribEmptyOrFilled(responseItem.data, 'dcterms:date'),
                                     author: this.getAttribEmptyOrFilled(responseItem.data, 'bibo:citedBy'),
                                 });
@@ -119,6 +119,7 @@
                                         id_page: counter_page,
                                         content: this.littleArray,
                                     });
+
                                     this.littleArray = [];
                                 }
                             }
@@ -144,7 +145,8 @@
                                 id: data['o:id'],
                                 title: this.getAttribEmptyOrFilled(data, 'dcterms:title'),
                                 description: this.getAttribEmptyOrFilled(data, 'dcterms:description'),
-                                url_img: image,
+                                url_img: image.original,
+                                url_img_large: image.large,
                                 date: this.getAttribEmptyOrFilled(data, 'dcterms:date'),
                                 author: this.getAttribEmptyOrFilled(data, 'bibo:citedBy'),
                             });

@@ -179,11 +179,11 @@ export default {
             return [array_img, array_video, array_audio, array_document, array_coordinate];
         },
         async getFirstImageFound(array) {
-            let media = '';
+            let media = {original: '', large: ''};
             for (const dataMedia of array['o:media']) {
                 let imgData = await this.$axios(dataMedia['@id']);
                 media = this.getMediaEmptyOrFilled(imgData.data);
-                if (media !== '') {
+                if (media.original !== '') {
                     break;
                 }
             }
@@ -260,12 +260,13 @@ export default {
             return (objectArray[attribName] !== undefined) ? objectArray[attribName][0]['@value'] : '';
         },
         getMediaEmptyOrFilled(objectArray) {
-            let media = '';
+            let media = {original: '', large: ''};
             switch (objectArray['o:media_type']) {
                 case 'audio/mpeg':
                 case 'image/png':
                 case 'image/jpeg':
-                    media = objectArray['o:original_url'];
+                    media.original = objectArray['o:original_url'];
+                    media.large = objectArray['o:thumbnail_urls']['large'];
                     break;
                 case 'application/pdf':
                     media = objectArray['o:thumbnail_urls']['large'];
