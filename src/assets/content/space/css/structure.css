@@ -312,7 +312,7 @@ body.nice-scroll:not(.layout-boxed) {
 }
 
 /* Slider | Pagination
-================================================== */
+ */
 
 .slider_pagination, .tp-bullets.simplebullets.round {
 	text-align: center;
@@ -516,7 +516,7 @@ body.nice-scroll:not(.layout-boxed) {
 }
 
 /* #Sliding top
-================================================== */
+ */
 
 #Sliding-top {
 	position: absolute;
@@ -660,7 +660,7 @@ body.nice-scroll:not(.layout-boxed) {
 .pager_lm:not(.loading) {	background: none;}
 
 /* #Pager single (blog post)
-================================================== */
+ */
 
 .pager-single {
 	text-align: center;
@@ -688,7 +688,7 @@ body.nice-scroll:not(.layout-boxed) {
 .pager-single a span:after {	display: none;}
 
 /* #Fixed nav
-================================================== */
+ */
 
 .post-nav .fixed-nav {
 	display: none;
@@ -1871,7 +1871,7 @@ body.header-stack:not(.template-slider) #Header {
 }
 
 /* #Overlay Menu
-================================================== */
+ */
 
 #Overlay {
 	position: fixed;
@@ -1933,7 +1933,7 @@ body.header-stack:not(.template-slider) #Header {
 }
 
 /* #Subheader
-================================================== */
+ */
 
 #Subheader {
 	background-color: rgba(0, 0, 0, .02);
@@ -2028,7 +2028,7 @@ body.header-stack:not(.template-slider) #Header {
 }
 
 /* #Post
-================================================== */
+ */
 
 .post-item {
 	margin-bottom: 40px;
@@ -3686,7 +3686,7 @@ body.error404:not(.events-archive) #Content {
 }
 
 /* #Contact form
-================================================== */
+ */
 
 .wpcf7-form .column {
 	margin-bottom: 10px;

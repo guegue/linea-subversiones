@@ -19,6 +19,9 @@
     export default {
         name: "Viewer",
         props: ['images'],
+        methods:{
+
+        },
         mounted() {
             this.$nextTick(() => {
                 if (this.images.length > 0) {

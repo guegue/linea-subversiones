@@ -34,32 +34,7 @@
 												</time>
                                             </span>
                                         </div>
-                                        <div class="category meta-categories">
-                                            <span class="cat-btn">Categories <i class="icon-down-dir"></i></span>
-                                            <div class="cat-wrapper">
-                                                <ul class="post-categories">
-                                                    <li>
-                                                        <a href="category-earth.html" rel="category tag">Earth</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="category mata-tags">
-                                            <span class="cat-btn">Tags <i class="icon-down-dir"></i></span>
-                                            <div class="cat-wrapper">
-                                                <ul>
-                                                    <li>
-                                                        <a href="tag-framework.html">Framework</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tag-grid.html">Grid</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tag-wordpress.html">Wordpress</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>

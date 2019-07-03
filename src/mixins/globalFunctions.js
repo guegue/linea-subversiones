@@ -103,18 +103,20 @@ export default {
         },
         async getArrayMedia(data) {
             let array_img = [], array_video = [], array_audio = [], array_document = [], array_coordinate = [];
-            let id = 0;
+            let id = 0, image_data;
             //recorremos toda la media que viene de un item
             for (const datum of data['o:media']) {
                 let mediaData = await this.$axios(datum['@id']);
                 let media_type = this.getTypeMedia(mediaData.data);
                 switch (media_type) {
                     case 'image':
+                        image_data = this.getMediaEmptyOrFilled(mediaData.data);
                         //llenamos el arreglo de images subidas a la plataforma de omeka
                         array_img.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: media_type,
-                            url: this.getMediaEmptyOrFilled(mediaData.data),
+                            url: image_data.original,
+                            url_large: image_data.large,
                         });
                         break;
                     case 'video' :
@@ -146,7 +148,7 @@ export default {
                         array_audio.push({
                             title: this.getAttribEmptyOrFilled(mediaData.data, 'dcterms:title'),
                             type: mediaData.data['o:media_type'],
-                            url: this.getMediaEmptyOrFilled(mediaData.data),
+                            url: this.getMediaEmptyOrFilled(mediaData.data).original,
                         });
                         break;
                     case 'application':
@@ -263,6 +265,8 @@ export default {
             let media = {original: '', large: ''};
             switch (objectArray['o:media_type']) {
                 case 'audio/mpeg':
+                    media.original = objectArray['o:original_url'];
+                    break;
                 case 'image/png':
                 case 'image/jpeg':
                     media.original = objectArray['o:original_url'];

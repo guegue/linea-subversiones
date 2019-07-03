@@ -73,18 +73,18 @@
                                                     <div class="post-head">
                                                         <div class="post-meta clearfix">
                                                             <div class="author-date">
-                                                            <span class="vcard author post-author"
-                                                                  v-if="(content.author !== '')">
-                                                                <span class="label">Publicado por </span>
-                                                                <i class="icon-user"></i>
-                                                                <span class="fn">
-                                                                <a href="#">{{content.author}}</a>
-                                                            </span>
-                                                            </span>
+                                                                <span class="vcard author post-author"
+                                                                      v-if="(content.author !== '')">
+                                                                    <span class="label">Publicado por </span>
+                                                                    <i class="fas fa-user"></i>
+                                                                    <span class="fn">
+                                                                        <a href="#">&nbsp;{{content.author}}&nbsp;</a>
+                                                                    </span>
+                                                                </span>
                                                                 <span class="date" v-if="(content.date !== '')">
-                                                                <i class="icon-calendar"></i>
-                                                                <span class="post-date updated">{{content.date}}</span>
-                                                            </span>
+                                                                   <i class="far fa-calendar"></i>
+                                                                    <span class="post-date updated">&nbsp;{{content.date}}&nbsp;</span>
+                                                                </span>
                                                             </div>
                                                         </div>
 

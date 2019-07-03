@@ -33,10 +33,6 @@
     margin-top: 35px !important;
 }
 
-#logo h3 {
-    font-family: "Orbitron", Arial, Tahoma, sans-serif;
-}
-
 .p-9 {
     padding: 0 0 0 9%;
 }
@@ -159,4 +155,8 @@ a.color-azul-oscuro:hover {
     height: 150px !important;
     width: 100%;
     object-fit: cover;
+}
+
+.top_bar_left a, .top_bar_left h3{
+    font-family: "Lato", Arial, Tahoma, sans-serif !important;
 }
