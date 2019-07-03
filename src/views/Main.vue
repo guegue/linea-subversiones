@@ -15,7 +15,6 @@
         name: "Main",
         mixins: [GlobalFunction],
         created() {
-            localStorage.clear();
             this.getAllSites()
         }
     }

@@ -154,7 +154,7 @@
                             this.imagesArray.push({
                                 title: this.getAttribEmptyOrFilled(item, 'dcterms:title'),
                                 description: this.getAttribEmptyOrFilled(item, 'dcterms:description'),
-                                media_url: this.getMediaEmptyOrFilled(media_item.data),
+                                media_url: this.getMediaEmptyOrFilled(media_item.data).original,
                             });
                         }
                     }
@@ -169,7 +169,7 @@
                     images = JSON.parse(localStorage.getItem('carousel'));
 
                     if (images.id === this.dataSite.id){
-                        this.imagesArray = images;
+                        this.imagesArray = images.data;
                     } else{
                         localStorage.removeItem('carousel');
                         this.buildCarousel();
