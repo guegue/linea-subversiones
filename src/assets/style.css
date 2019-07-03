@@ -160,3 +160,6 @@ a.color-azul-oscuro:hover {
 .top_bar_left a, .top_bar_left h3{
     font-family: "Lato", Arial, Tahoma, sans-serif !important;
 }
+.cursor-hand{
+    cursor: pointer;
+}
