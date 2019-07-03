@@ -218,8 +218,8 @@
                 let source = {
                     src: url,
                     thumb: url,
-                    subHtml: '<h4>' + title + '</h4>',
-                    caption: '<h4>' + title + '</h4>',
+                    subHtml: `<h4 style="color:white !important">${title}</h4>`,
+                    caption: `<h4 style="color:white !important">${title}</h4>`,
                 };
 
                 window.lightGallery(document.getElementById(id), {

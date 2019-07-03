@@ -269,14 +269,17 @@ export default {
                     media.large = objectArray['o:thumbnail_urls']['large'];
                     break;
                 case 'application/pdf':
-                    media = objectArray['o:thumbnail_urls']['large'];
+                    media.original = objectArray['o:thumbnail_urls']['large'];
+                    media.large = objectArray['o:thumbnail_urls']['large'];
                     break;
                 case 'video/mp4':
                 case null:
                     if (objectArray['o:thumbnail_urls'].length > 0) {
-                        media = objectArray['o:thumbnail_urls']['large'];
+                        media.original = objectArray['o:thumbnail_urls']['large'];
+                        media.large = objectArray['o:thumbnail_urls']['large'];
                     } else {
-                        media = '';
+                        media.original = '';
+                        media.large = '';
                     }
                     break;
             }
