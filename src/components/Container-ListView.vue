@@ -60,10 +60,10 @@
                                                            class="zoom cursor-hand"
                                                            @click="showImage('img-item_'+content.id,content.url_img,content.title)"
                                                            rel="prettyphoto">
-                                                            <i class="icon-search"></i>
+                                                            <i class="fas fa-search"></i>
                                                         </a>
                                                         <a :href="content.url_img" class="link">
-                                                            <i class="icon-link"></i>
+                                                            <i class="fas fa-link"></i>
                                                         </a>
                                                     </div>
                                                 </div>
