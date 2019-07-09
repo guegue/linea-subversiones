@@ -6,13 +6,7 @@
                      class="no-title no-share post-2275 post  format-standard has-post-thumbnail  category-earth  tag-grid ">
                     <div class="section section-post-header">
                         <div class="section_wrapper clearfix">
-                            <!-- Posts Navigation -->
 
-                            <!-- One full width row-->
-                            <div class="column one post-nav">
-
-                            </div>
-                            <!-- Post Header-->
                             <!-- One full width row-->
                             <div class="column one post-header">
 
