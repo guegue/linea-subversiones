@@ -2,7 +2,9 @@
     <div class="text-center m-3">
         <ul>
             <li v-for="site in sites" :key="site.id">
-                <a :href="'/'+site.slug">{{site.title}}</a>
+                <router-link tag="a" :to="{ name:'site', params:{ namesite: site.slug }}">
+                    <span>{{site.title}}</span>
+                </router-link>
             </li>
         </ul>
     </div>
