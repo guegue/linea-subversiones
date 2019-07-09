@@ -10,9 +10,9 @@
                         <div class="top_bar_left clearfix">
                             <!--  Logo-->
                             <div class="logo">
-                                <a id="logo" :href="'/'+slugSite" title="BeSpace - BeTheme">
+                                <router-link id="logo" :to="{ name:'site' , params:{ namesite:slugSite}}">
                                     <h3>{{nameSite}}</h3>
-                                </a>
+                                </router-link>
                             </div>
                             <!--  Main menu-->
                             <div class="menu_wrapper">
@@ -21,9 +21,10 @@
                                         <li v-for="(option,index) in optionMenu"
                                             :class="{'current_page_item': (currentRoute === option.slug)}"
                                             :key="index">
-                                            <a :href="'/'+slugSite+'/page/'+option.slug">
+                                            <router-link tag="a"
+                                                         :to="{ name: 'page' , params:{namesite:slugSite,namepage:option.slug}}">
                                                 <span>{{option.title}}</span>
-                                            </a>
+                                            </router-link>
                                         </li>
                                     </ul>
                                 </nav>
@@ -43,9 +44,10 @@
         </div>
         <!--menu lateral derecho-->
         <Slide right>
-            <a v-for="option in optionMenu" :key="option.id" :href="'/'+nameSite+'/page/'+option.slug">
+            <router-link tag="a" v-for="option in optionMenu" :key="option.id"
+                         :to="{ name: 'page' , params:{namesite:slugSite,namepage:option.slug}}">
                 <span>{{option.title}}</span>
-            </a>
+            </router-link>
         </Slide>
     </div>
 </template>
@@ -58,7 +60,7 @@
         components: {
             Slide,
         },
-        props: ['optionMenu', 'nameSite', 'slugSite','showTitleDescription','title'],
+        props: ['optionMenu', 'nameSite', 'slugSite', 'showTitleDescription', 'title'],
         data() {
             return {
                 currentRoute: null,
@@ -76,6 +78,9 @@
                     menu.classList.remove('float-menu');
                 }
             });
+        },
+        beforeRouteUpdate(to) {
+            console.log(to);
         }
     }
 </script>
