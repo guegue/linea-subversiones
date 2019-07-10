@@ -5845,20 +5845,12 @@ ul.portfolio_grid li .image_frame {
 	pointer-events: none;
 	z-index: 1
 }
-/* Variables * */
-
-/* #2991d6 - theme color, link, #2275ac - link hover, strong */
-
-/* Selections */
-
 ::-moz-selection {
 	color: #fff
 }
 ::selection {
 	color: #fff
 }
-/* Borders */
-
 .idea_box, .ui-tabs, .accordion .question, .accordion .question.active .title, .accordion .question .title:before, .ui-tabs .ui-tabs-nav, .ui-tabs .ui-tabs-nav li, .tabs_vertical.ui-tabs .ui-tabs-panel, table th, table td, .list_item .circle, input[type="date"], input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], select, textarea, .promo_box.has_border:after, dl>dt, dl>dd, .article_box .desc_wrapper p, a.icon_bar, a.content_link, .how_it_works .image, .opening_hours, .opening_hours .opening_hours_wrapper li, .icon_box.has_border:after, .chart_box:before, .pricing-box, .team_list .bq_wrapper, .post-footer .post-links, .format-link .post-title .icon-link, .share_wrapper, .post-header .title_wrapper, .section-post-related .section-related-adjustment, #comments> :first-child, .widget-area, .widget:after, .fixed-nav .desc h6, .portfolio_group.list .portfolio-item, .portfolio_group .portfolio-item .desc .details-wrapper, .Recent_posts ul li .desc h6, .widget_recent_entries ul li a, .woocommerce .widget_best_sellers li, .woocommerce .widget_featured_products li, .woocommerce .widget_recent_reviews li, .woocommerce .widget_recent_products li, .woocommerce .widget_recently_viewed_products li, .woocommerce .widget_random_products li, .woocommerce .widget_top_rated_products li, .woocommerce .widget_onsale li, .woocommerce .widget_layered_nav li, .woocommerce .widget_shopping_cart ul.product_list_widget li, .woocommerce .widget_products li, .woocommerce .product .related.products, .woocommerce .product .upsells.products, .woocommerce .product div.entry-summary h1.product_title:after, .woocommerce .quantity input.qty, .header-stack #Top_bar .logo, .offer_thumb .slider_pagination, .offer_thumb .slider_pagination a, .Latest_news ul li .desc_footer, .Latest_news ul li .photo, .offer_thumb.bottom .slider_pagination a, .style-simple .faq .question, .style-simple #Filters .filters_wrapper ul, #edd_checkout_cart th, #edd_checkout_cart td {
 	border-color: rgba(0, 0, 0, .08)
 }
@@ -16113,80 +16105,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .template-slider .section-portfolio-header {
 	margin-top: 30px
 }
-/* Intro * */
-#Intro {
-	text-align: center;
-	position: relative;
-	background-color: #000119;
-	background-position: center top;
-}
-#Intro .intro-inner {
-	position: relative;
-	padding: 250px 10%
-}
-#Intro .intro-title {
-	margin-bottom: 20px;
-	word-wrap: break-word
-}
-#Intro .intro-meta>div {
-	display: inline-block;
-	margin: 0 10px
-}
-#Intro .intro-next {
-	cursor: pointer;
-	font-size: 38px;
-	height: 50px;
-	left: 50%;
-	bottom: 30px;
-	line-height: 50px;
-	margin: 0 0 0 -25px;
-	position: absolute;
-	text-align: center;
-	width: 50px;
-	z-index: 1;
-	-webkit-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out
-}
-#Intro.parallax {
-	overflow: hidden
-}
-#Intro.parallax .mfn-parallax {
-	position: absolute;
-	left: 0;
-	top: 0;
-	max-width: auto !important;
-	transition: opacity .2s;
-}
-/* Light */
-#Intro .intro-title {
-	color: #fff
-}
-#Intro .intro-meta, #Intro .intro-meta a {
-	color: rgba(255, 255, 255, .7)
-}
-#Intro .intro-next {
-	color: rgba(255, 255, 255, 0.2)
-}
-#Intro .intro-next:hover {
-	color: rgba(255, 255, 255, 0.5)
-}
-/* Dark */
-#Intro.light .intro-title {
-	color: #212121
-}
-#Intro.light .intro-meta, #Intro.light .intro-meta a {
-	color: rgba(33, 33, 33, .7)
-}
-#Intro.light .intro-next {
-	color: rgba(33, 33, 33, 0.2)
-}
-#Intro.light .intro-next:hover {
-	color: rgba(33, 33, 33, 0.5)
-}
-.quick_fact .number {
-	font-size: 90px;
-	line-height: 90px;
-}
 a#back_to_top.button .button_icon {
 	padding: 2px 7px;
 }
@@ -16194,7 +16112,7 @@ a#back_to_top.button .button_icon {
 	opacity: 1;
 }
 /* Code Hightlighter ----------------------------------------------------------------- */
- pre{
+pre{
 	font-family: Consolas, monospace!important;
 	border: 1px solid #e8e8e8;
 	background: #fff;

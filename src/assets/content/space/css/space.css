@@ -29,15 +29,6 @@
 .header-classic #Action_bar, .header-plain #Action_bar, .header-stack #Action_bar {
 	background-color: #2C2C2C;
 }
-#Sliding-top {
-	background-color: #0c0f19;
-}
-#Sliding-top a.sliding-top-control {
-	border-right-color: #0c0f19;
-}
-#Sliding-top.st-center a.sliding-top-control, #Sliding-top.st-left a.sliding-top-control {
-	border-top-color: #0c0f19;
-}
 #Footer {
 	background-color: #0c0f19;
 }
