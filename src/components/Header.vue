@@ -20,7 +20,7 @@
                                     <ul id="menu-main-menu" class="menu">
                                         <li v-for="(option,index) in optionMenu"
                                             :class="{'current_page_item': (currentRoute === option.slug)}"
-                                            :key="index">
+                                            :key="index" @click="changeDataFromListView">
                                             <router-link tag="a"
                                                          :to="{ name: 'page' , params:{namesite:slugSite,namepage:option.slug}}">
                                                 <span>{{option.title}}</span>
@@ -69,6 +69,7 @@
         mounted() {
 
             this.currentRoute = this.$route.params.namepage;
+
             window.addEventListener('scroll', () => {
                 let menu = document.getElementById('Top_bar');
                 let windowWidth = window.innerWidth;
@@ -79,8 +80,11 @@
                 }
             });
         },
-        beforeRouteUpdate(to) {
-            console.log(to);
+        methods: {
+            changeDataFromListView() {
+                this.currentRoute = this.$route.params.namepage;
+                this.$eventBus.$emit('empty', '');
+            }
         }
     }
 </script>

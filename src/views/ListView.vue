@@ -49,37 +49,44 @@
             }
         },
         mounted() {
+            this.initData();
 
-            this.getAllAboutSite()
-                .then(() => {
-                    this.buildMenu()
-                        .then(() => {
-                            this.names.page = this.$route.params.namepage;
-                            for (const option of this.optionMenu) {
-                                if (option.slug === this.names.page) {
-                                    this.title = option.title;
-                                    this.names.site = this.$route.params.namesite;
-                                    this.getContentFromPage(option.url);
-                                }
-                            }
-                        })
-                        .catch((error) => {
-                            // eslint-disable-next-line no-console
-                            console.log('error construyendo el menu');
-                            // eslint-disable-next-line no-console
-                            console.log(error);
-                        })
-                })
-                .catch((error) => {
-                    // eslint-disable-next-line no-console
-                    console.log('error obteniendo datos del sitio');
-                    // eslint-disable-next-line no-console
-                    console.log(error);
-                });
-
+            this.$eventBus.$on('empty', () => {
+                this.initData();
+            });
         },
         methods: {
+            initData() {
+                this.clearVariables();
+                this.getAllAboutSite()
+                    .then(() => {
+                        this.buildMenu()
+                            .then(() => {
+                                this.names.page = this.$route.params.namepage;
+                                for (const option of this.optionMenu) {
+                                    if (option.slug === this.names.page) {
+                                        this.title = option.title;
+                                        this.names.site = this.$route.params.namesite;
+                                        this.getContentFromPage(option.url);
+                                    }
+                                }
+                            })
+                            .catch((error) => {
+                                // eslint-disable-next-line no-console
+                                console.log('error construyendo el menu');
+                                // eslint-disable-next-line no-console
+                                console.log(error);
+                            })
+                    })
+                    .catch((error) => {
+                        // eslint-disable-next-line no-console
+                        console.log('error obteniendo datos del sitio');
+                        // eslint-disable-next-line no-console
+                        console.log(error);
+                    });
+            },
             async getContentFromPage(urlPage) {
+
                 const answer = await this.$axios(urlPage);
                 let counter = 0, counter_page = 0, limit_array = 10;
                 /* *
@@ -194,6 +201,16 @@
                     }
                 }
             },
+            clearVariables() {
+                this.contents = [];
+                this.title = '';
+                this.summary = '';
+                this.descriptions = [];
+                this.relatedContent = [];
+                this.littleArray = [];
+                this.quantity_page = 1;
+                this.itemsShow = [];
+            }
         }
     }
 </script>

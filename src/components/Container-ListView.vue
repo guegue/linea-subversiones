@@ -16,7 +16,6 @@
                     </div>
                 </div>
 
-
                 <div class="section">
                     <div class="section_wrapper clearfix">
                         <!--Descripcion conjunto de items-->

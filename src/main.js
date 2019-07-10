@@ -37,6 +37,7 @@ Vue.config.productionTip = false;
 //variables globales
 Vue.prototype.$domainOmeka = 'https://sub-versiones.hijosdeperu.org/';
 Vue.prototype.$axios = Axios;
+Vue.prototype.$eventBus = new Vue();
 
 Vue.use(VModal);
 
