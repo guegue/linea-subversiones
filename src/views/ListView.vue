@@ -46,11 +46,18 @@
                 littleArray: [],
                 quantity_page: 1,
                 itemsShow: [],
+                abc: false,
             }
         },
         mounted() {
+            this.abc = true;
+            this.initData();
             this.$eventBus.$on('empty', () => {
-                this.initData();
+
+                if (!this.abc) {
+                    this.initData();
+                }
+
             });
         },
         methods: {
@@ -87,6 +94,7 @@
 
                 const answer = await this.$axios(urlPage);
                 let counter = 0, counter_page = 0, limit_array = 10;
+                this.abc = false;
                 /* *
                  * valido si la propiedad o:block cuando la opcion de menu es una pagina y sino es item set
                  * para luego obtener la informacion dentro de esa pagina o item set

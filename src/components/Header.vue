@@ -82,6 +82,7 @@
         },
         methods: {
             changeDataFromListView() {
+                console.log(1);
                 this.currentRoute = this.$route.params.namepage;
                 this.$eventBus.$emit('empty', '');
             }
