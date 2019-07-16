@@ -49,8 +49,6 @@
             }
         },
         mounted() {
-            this.initData();
-
             this.$eventBus.$on('empty', () => {
                 this.initData();
             });
