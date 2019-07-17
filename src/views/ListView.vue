@@ -2,6 +2,7 @@
     <div class="blog layout-full-width mobile-tb-left button-stroke header-transparent header-fw minimalist-header
     sticky-header sticky-dark ab-hide subheader-both-center menuo-right menuo-no-borders footer-copy-center">
         <div id="Wrapper">
+            <div class="background-loading"></div>
             <Header v-bind:optionMenu="optionMenu"
                     v-bind:name-site="dataSite.name"
                     v-bind:slug-site="dataSite.slug"
@@ -46,15 +47,15 @@
                 littleArray: [],
                 quantity_page: 1,
                 itemsShow: [],
-                abc: false,
+                flag: false,
             }
         },
         mounted() {
-            this.abc = true;
+            this.flag = true;
             this.initData();
             this.$eventBus.$on('empty', () => {
 
-                if (!this.abc) {
+                if (!this.flag) {
                     this.initData();
                 }
 
@@ -62,6 +63,7 @@
         },
         methods: {
             initData() {
+
                 this.clearVariables();
                 this.getAllAboutSite()
                     .then(() => {
@@ -91,10 +93,10 @@
                     });
             },
             async getContentFromPage(urlPage) {
-
+                this.$loading('Wrapper');
                 const answer = await this.$axios(urlPage);
                 let counter = 0, counter_page = 0, limit_array = 10;
-                this.abc = false;
+                this.flag = false;
                 /* *
                  * valido si la propiedad o:block cuando la opcion de menu es una pagina y sino es item set
                  * para luego obtener la informacion dentro de esa pagina o item set
@@ -206,6 +208,7 @@
                         }
                     }
                 }
+                this.$removeLoading('Wrapper');
             },
             clearVariables() {
                 this.contents = [];

@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router';
 import Axios from 'axios';
 import VModal from 'vue-js-modal';
-import { Icon } from 'leaflet'
+import {Icon} from 'leaflet'
 
 
 //css
@@ -37,6 +37,12 @@ Vue.config.productionTip = false;
 //variables globales
 Vue.prototype.$domainOmeka = 'https://sub-versiones.hijosdeperu.org/';
 Vue.prototype.$axios = Axios;
+Vue.prototype["$loading"] = id => {
+    id !== undefined ? document.getElementById(id).setAttribute('v-cloak', '') : '';
+};
+Vue.prototype["$removeLoading"] = id => {
+    id !== undefined ? document.getElementById(id).removeAttribute('v-cloak') : '';
+};
 Vue.prototype.$eventBus = new Vue();
 
 Vue.use(VModal);

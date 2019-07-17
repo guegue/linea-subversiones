@@ -47,7 +47,7 @@
                                                              class="scale-with-grid wp-post-image img-cover"
                                                              alt="home_space_blog3"/>
                                                     </div>
-                                                    <div v-else >
+                                                    <div v-else>
                                                         <div class="mask"></div>
                                                         <img src="@/assets/no-image-icon.png"
                                                              class="scale-with-grid wp-post-image img-cover"
@@ -239,6 +239,9 @@
                     });
                 }, 500);
             }
+        },
+        mounted() {
+
         }
     }
 </script>
