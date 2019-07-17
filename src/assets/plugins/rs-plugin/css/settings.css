@@ -451,7 +451,7 @@ img.tp-slider-alternative-image	{
 .rev-btn,
 .rev-btn:visited						{ 	outline:none !important; box-shadow:none !important; text-decoration: none !important; line-height: 44px; font-size: 17px; font-weight: 500; padding: 12px 35px; box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;  font-family: "Roboto", sans-serif;  cursor: pointer;}
 .rev-btn.rev-uppercase,
-.rev-btn.rev-uppercase:visited			{ 	text-transform: uppercase; letter-spacing: 1px; font-size: 15px; font-weight: 900; }
+.rev-btn.rev-uppercase:visited			{ 	text-transform: uppercase; letter-spacing: 1px; font-size: 15px; font-weight: 700; }
 .rev-btn.rev-withicon i					{ 	font-size: 15px; font-weight: normal; position: relative; top: 0; -webkit-transition: all 0.2s ease-out !important; -moz-transition: all 0.2s ease-out !important; -o-transition: all 0.2s ease-out !important; margin-left:10px !important;}
 .rev-btn.rev-hiddenicon i				{ 	font-size: 15px; font-weight: normal; position: relative; top: 0; -webkit-transition: all 0.2s ease-out !important; -moz-transition: all 0.2s ease-out !important; -o-transition: all 0.2s ease-out !important; opacity: 0; margin-left:0 !important; width:0 !important;  }
 .rev-btn.rev-hiddenicon:hover i			{   opacity: 1 !important; margin-left:10px !important; width:auto !important;}

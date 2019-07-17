@@ -18,7 +18,7 @@
                                             <div class="cuadro">
                                                 <div class="cuadro-carousel">
                                                     <hr class="no_line hrmargin_b_30"/>
-                                                    <h2 style="padding: 15px;" class="font-size-50 text-justify">
+                                                    <h2 style="padding: 15px;" class="font-size-40">
                                                         {{slides[current].title}}
                                                     </h2>
                                                     <div style="position: relative; margin-left: -15%;"><img
@@ -27,9 +27,9 @@
                                                             alt="">
                                                     </div>
                                                     <hr class="no_line hrmargin_b_30"/>
-
                                                     <h6>
-                                                        {{slides[current].description}}</h6>
+                                                        {{slides[current].description}}
+                                                    </h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,7 +213,7 @@
     import {Scrolly, ScrollyViewport, ScrollyBar} from 'vue-scrolly';
 
     export default {
-        name: "Container",
+        name: "Container-TitlePage",
         components: {
             Timeline,
             VideoPlayer,
@@ -316,8 +316,8 @@
     .scrolly-bar.axis-y {
         width: 5px !important;
     }
-    h2.font-size-50{
-        font-size: 50px;
+    h2.font-size-40{
+        font-size: 40px;
     }
 
 </style>

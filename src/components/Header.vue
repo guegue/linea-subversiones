@@ -56,7 +56,7 @@
     import {Slide} from 'vue-burger-menu'
 
     export default {
-        name: "Menu",
+        name: "Header",
         components: {
             Slide,
         },
