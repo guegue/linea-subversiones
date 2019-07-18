@@ -89,13 +89,22 @@
 
                                                     </div>
                                                     <div class="post-title" v-if="(content.title !== '')">
-                                                        <h2 class="entry-title mb-8px">
+                                                        <h2 v-if="content.title.length < 55" class="entry-title mb-8px" :title="content.title">
                                                             <router-link tag="a" :to="{ name:'detail',
                                                             params: {
                                                                 namesite: names.site,
                                                                 namepage: names.page,
                                                                 iditem: content.id,
                                                             } }">{{content.title}}
+                                                            </router-link>
+                                                        </h2>
+                                                        <h2 v-else class="entry-title mb-8px text-justify" :title="content.title">
+                                                            <router-link tag="a" :to="{ name:'detail',
+                                                            params: {
+                                                                namesite: names.site,
+                                                                namepage: names.page,
+                                                                iditem: content.id,
+                                                            } }">{{content.title.slice(0,50)}}...
                                                             </router-link>
                                                         </h2>
                                                     </div>
@@ -132,7 +141,7 @@
                         </div>
 
                         <!--pagination-->
-                        <div class="column one post-pager">
+                        <div class="column one post-pager" style="margin-top: 2em">
                             <!-- Navigation Area -->
                             <div class="pager-single">
                                 <a href="javascript:;"

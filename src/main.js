@@ -5,7 +5,6 @@ import Axios from 'axios';
 import VModal from 'vue-js-modal';
 import {Icon} from 'leaflet'
 
-
 //css
 import '@/assets/css/global.css';
 import '@/assets/content/space/css/structure.css';

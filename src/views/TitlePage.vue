@@ -78,7 +78,7 @@
         },
         methods: {
             async buildBodyPage() {
-                let quantity_page = 2;
+                let quantity_page = 3;
                 let urlCollaborators = '', urlVideos = '', responseCollaborators, responseVideos;
                 urlCollaborators = this.$domainOmeka + `api/item_sets?resource_class_id=97&site_id=${this.dataSite.id}`;
                 urlVideos = this.$domainOmeka + `api/items?site_id=${this.dataSite.id}&per_page=${quantity_page}&resource_class_id=38`;

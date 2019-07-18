@@ -6,10 +6,7 @@
             <div class="container">
                 <div class="column one">
 
-                    <div class="copyright">
-                        &copy; {{year}} BeSpace - BeTheme. Muffin group - HTML by <a rel="nofollow"
-                                                                                 href="javascript:;">BeantownThemes</a>
-                    </div>
+
                     <!--Social info area-->
                     <ul class="social"></ul>
                 </div>
