@@ -218,3 +218,14 @@ a.color-azul-oscuro:hover {
     font-size: 17px;
     text-align: justify;
 }
+
+
+.big {
+    font-size: 18px;
+    line-height: 180%;
+}
+
+.big2 {
+    font-size: 15px;
+    line-height: 160%;
+}

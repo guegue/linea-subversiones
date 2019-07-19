@@ -101,15 +101,10 @@ em, i {
 b, strong {
 	font-weight: 700;
 }
-big, .big {
-	font-size: 110%;
-	line-height: 180%;
-}
 dt {
 	font-weight: 700;
 }
 /* #Links*/
-
 a, a:visited, a:focus {
 	text-decoration: none;
 	outline: 0;
