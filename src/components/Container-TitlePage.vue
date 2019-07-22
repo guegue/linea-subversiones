@@ -175,15 +175,14 @@
                                         <h3 class="text-white">Contacto</h3>
                                         <h5 v-if="contact.description !== ''" class="text-white">{{contact.description}}</h5>
                                         <hr class="no_line hrmargin_b_30"/>
-                                        <ul class="contact-data">
-                                            <li></li>
+                                        <ul class="contact-data text-white">
+                                            <li v-if="contact.email !== ''">
+                                                 <i class="far fa-envelope"></i>&nbsp; {{contact.email}}
+                                            </li>
+                                             <li v-if="contact.phone !== ''">
+                                                 <i class="fas fa-phone"></i>&nbsp; {{contact.phone}}
+                                            </li>
                                         </ul>
-                                        <p>
-                                            <i class="far fa-envelope"></i> {{contact.email}}
-                                        </p>
-                                        <p>
-                                            <i class="fas fa-phone"></i> {{contact.phone}}
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -314,16 +313,9 @@
         font-size: 40px;
     }
 
-    ul.contact-data{
-
-    }
-
     ul.contact-data li{
-        list-style-type: none;    
-    }
-    
-    ul.contact-data li:nth-child(1){
-        content: 'f0e0'
+        list-style: none;
+        font-size: 15px;
     }
 
 </style>
