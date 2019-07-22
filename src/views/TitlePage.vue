@@ -80,7 +80,7 @@
         },
         methods: {
             async buildBodyPage() {
-                let quantity_page = 2;
+                let quantity_page = 3;
                 let urlCollaborators = '', urlVideos = '', urlContact, responseCollaborators, responseVideos, responseContact;
                 urlCollaborators = this.$domainOmeka + `api/item_sets?resource_class_id=97&site_id=${this.dataSite.id}`;
                 urlVideos = this.$domainOmeka + `api/items?site_id=${this.dataSite.id}&per_page=${quantity_page}&resource_class_id=38`;
@@ -96,6 +96,7 @@
                 let videos = responseVideos.data;
                 let contact = responseContact.data;
                 let id, counter = 0;
+                //recorremos los datos de colaboradores del sitio
                 for (const data of collaborators) {
                     let url_item_set = data['o:items']['@id'];
                     let detail = await this.$axios.get(url_item_set);
@@ -109,6 +110,7 @@
                     });
                 }
 
+                //recorremos los datos de contacto del sitio
                 for (const data of contact) {
                     let url_item = data['o:items']['@id'];
                     let detail = await this.$axios.get(url_item);
@@ -120,9 +122,8 @@
                         phone: this.getAttribEmptyOrFilled(detail.data[0],'foaf:phone'),
                     };
                 }
-                
-                console.log(this.dataContact);
               
+              //recorremos 3 videos del sitio
                 for (const video of videos) {
                     for (const media of video['o:media']) {
                         let url_media = media['@id'];
@@ -154,9 +155,9 @@
                                 counter++;
                                 break;
                         }
-                        if (counter === MAX_VIDEOS) {
-                            break;
-                        }
+                    }
+                    if (counter === MAX_VIDEOS) {
+                        break;
                     }
                 }
             },
