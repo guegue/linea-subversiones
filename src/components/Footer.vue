@@ -5,8 +5,8 @@
         <div class="footer_copy">
             <div class="container">
                 <div class="column one">
-
-                 
+                    <!--Social info area-->
+                    <ul class="social"></ul>
                 </div>
             </div>
         </div>

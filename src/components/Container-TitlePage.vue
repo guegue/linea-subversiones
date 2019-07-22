@@ -49,12 +49,11 @@
                             <div class="items_group clearfix">
                                 <!--One Second (1/2) Column -->
                                 <div class="column one-second column_column ">
-                                    <div class="column_attr p-8">
-                                        <hr class="no_line" style="margin: 0 auto 50px;"/>
+                                    <div class="column_attr p-8" id="aboutsite">
                                         <h3>Sobre el sitio</h3>
                                         <div v-for="(paragraph,index) in aboutSite" :key="index">
                                             <p v-if="paragraph !== '' ">{{paragraph}}</p>
-                                            <hr v-if="paragraph !== '' " class="no_line hrmargin_b_30"/>
+                                            <hr v-if="paragraph !== '' " class="no_line hrmargin_b_20"/>
                                         </div>
 
                                     </div>

@@ -46,15 +46,15 @@
                                             {{detailsItem.abstract}}
                                         </p>
                                         <h4 v-if="detailsItem.description.length > 0">Descripci&oacute;n</h4>
-                                        <p class="big text-justify" v-if="detailsItem.description.length > 0">
+                                        <p class="big2 text-justify" v-if="detailsItem.description.length > 0">
                                             {{detailsItem.description}}
                                         </p>
                                         <h4 v-if="detailsItem.source.length > 0">Fuente</h4>
-                                        <p class="big text-justify" v-if="detailsItem.source.length > 0">
+                                        <p class="big2 text-justify" v-if="detailsItem.source.length > 0">
                                             {{detailsItem.source}}
                                         </p>
                                         <h4 v-if="detailsItem.provenance.length > 0">Procedencia</h4>
-                                        <p class="big text-justify" v-if="detailsItem.provenance.length > 0">
+                                        <p class="big2 text-justify" v-if="detailsItem.provenance.length > 0">
                                             {{detailsItem.provenance}}
                                         </p>
                                     </div>

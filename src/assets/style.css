@@ -209,3 +209,23 @@ a.color-azul-oscuro:hover {
         transform: rotate(360deg);
     }
 }
+
+#aboutsite p{
+    line-height: 24px;
+    color: #505050;
+    font-weight: unset;
+    margin: 0;
+    font-size: 17px;
+    text-align: justify;
+}
+
+
+.big {
+    font-size: 18px;
+    line-height: 180%;
+}
+
+.big2 {
+    font-size: 15px;
+    line-height: 160%;
+}

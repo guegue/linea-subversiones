@@ -4,7 +4,7 @@
         <!--Header-->
         <header id="Header">
             <!-- Header -  Logo and Menu area -->
-            <div id="Top_bar">
+            <div id="Top_bar" class="float-menu">
                 <div class="container">
                     <div class="column one">
                         <div class="top_bar_left clearfix">
@@ -70,15 +70,15 @@
 
             this.currentRoute = this.$route.params.namepage;
 
-            window.addEventListener('scroll', () => {
-                let menu = document.getElementById('Top_bar');
-                let windowWidth = window.innerWidth;
-                if (window.scrollY > 0 && windowWidth >= 1240) {
-                    menu.classList.add('float-menu');
-                } else {
-                    menu.classList.remove('float-menu');
-                }
-            });
+            // window.addEventListener('scroll', () => {
+            //     let menu = document.getElementById('Top_bar');
+            //     let windowWidth = window.innerWidth;
+            //     if (window.scrollY > 0 && windowWidth >= 1240) {
+            //         menu.classList.add('float-menu');
+            //     } else {
+            //         menu.classList.remove('float-menu');
+            //     }
+            // });
         },
         methods: {
             changeDataFromListView() {
