@@ -172,25 +172,19 @@
                                 </div>
                                 <!-- One Second (1/2) Column -->
                                 <div class="column one-second column_column ">
-                                    <div class="column_attr p-6-4-7">
+                                    <div class="column_attr p-6-4-7 text-white">
                                         <h3 class="text-white">Contacto</h3>
-                                        <h5 class="text-white">Nunc non ante ipsum. Aliquam et malesuada
-                                            felis! Vivamus at velit ac mauris ornare dapibus vitae sit amet est.
-                                            Etiam porttitor semper sem at mollis turpis duis.</h5>
+                                        <h5 v-if="contact.description !== ''" class="text-white">{{contact.description}}</h5>
                                         <hr class="no_line hrmargin_b_30"/>
-                                        <ul class="list_check text-white" style="font-size: 13px;">
-                                            <li class="icons-list-w">
-                                                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                cillum dolore eu fugiat nulla pariatur.
-                                            </li>
-                                            <li class="icons-list-w">
-                                                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                                qui officia deserunt mollit anim id est laborum.
-                                            </li>
-                                            <li class="icons-list-w">
-                                                Incidunt ut labore et dolore magnam aliquam.
-                                            </li>
+                                        <ul class="contact-data">
+                                            <li></li>
                                         </ul>
+                                        <p>
+                                            <i class="far fa-envelope"></i> {{contact.email}}
+                                        </p>
+                                        <p>
+                                            <i class="fas fa-phone"></i> {{contact.phone}}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +221,8 @@
             'constribuitors',
             'videos',
             'detailsSite',
-            'urlVideos'
+            'urlVideos',
+            'contact'
         ],
         data() {
             return {
@@ -318,6 +313,18 @@
     }
     h2.font-size-40{
         font-size: 40px;
+    }
+
+    ul.contact-data{
+
+    }
+
+    ul.contact-data li{
+        list-style-type: none;    
+    }
+    
+    ul.contact-data li:nth-child(1){
+        content: 'f0e0'
     }
 
 </style>
