@@ -102,16 +102,16 @@
                  * para luego obtener la informacion dentro de esa pagina o item set
                 * */
                 if (answer.data['o:block'] != null) {
-
                     for (const detail of answer.data['o:block']) {
                         let typeLayout = detail['o:layout'].toLowerCase();
+                        let size_item_set = 0, url_item = '';
+                        let responseItem, responseMedia;
                         if (typeLayout === 'itemwithmetadata') {
-
-                            let size_item_set = detail['o:attachment'].length;
+                            size_item_set = detail['o:attachment'].length;
                             //recorro los items relacionados a una pagina
                             for (const data of detail['o:attachment']) {
-                                let url_media = data['o:media']['@id'], url_item = data['o:item']['@id'];
-                                let responseItem, responseMedia;
+                                let url_media = data['o:media']['@id'];
+                                url_item = data['o:item']['@id'];
 
                                 [responseItem, responseMedia] = await this.$axios.all([
                                     this.$axios.get(url_item),
@@ -135,6 +135,35 @@
                                         content: this.littleArray,
                                     });
 
+                                    this.littleArray = [];
+                                }
+                            }
+                        } else if (typeLayout === 'itemshowcase') {
+                            size_item_set = detail['o:attachment'].length;
+                            //recorro los items relacionados a una pagina
+                            for (const data of detail['o:attachment']) {
+                                url_item = data['o:item']['@id'];
+
+                                responseItem = await this.$axios.get(url_item);
+
+                                let media = await  this.getFirstImageFound(responseItem.data);
+                                this.littleArray.push({
+                                    id: responseItem.data['o:id'],
+                                    title: this.getAttribEmptyOrFilled(responseItem.data, 'dcterms:title'),
+                                    description: this.getAttribEmptyOrFilled(responseItem.data, 'dcterms:description'),
+                                    url_img: media.original,
+                                    url_img_large: media.large,
+                                    date: this.getAttribEmptyOrFilled(responseItem.data, 'dcterms:date'),
+                                    author: this.getAttribEmptyOrFilled(responseItem.data, 'bibo:citedBy'),
+                                });
+                                counter++;
+
+                                if ((counter === size_item_set) || (counter % limit_array === 0)) {
+                                    counter_page++;
+                                    this.contents.push({
+                                        id_page: counter_page,
+                                        content: this.littleArray,
+                                    });
                                     this.littleArray = [];
                                 }
                             }
