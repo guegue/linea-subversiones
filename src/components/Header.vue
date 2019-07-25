@@ -21,8 +21,12 @@
                                         <li v-for="(option,index) in optionMenu"
                                             :class="{'current_page_item': (currentRoute === option.slug)}"
                                             :key="index" @click="changeDataFromListView">
-                                            <router-link tag="a"
-                                                         :to="{ name: 'page' , params:{namesite:slugSite,namepage:option.slug}}">
+                                            <router-link v-if="option.slug.toLowerCase().search('historia') < 0 " tag="a"
+                                                         :to="{ name: 'page' , params:{ namesite: slugSite , namepage: option.slug }}">
+                                                <span>{{option.title}}</span>
+                                            </router-link>
+                                            <router-link v-else tag="a"
+                                                         :to="{ name: 'story' , params:{}}">
                                                 <span>{{option.title}}</span>
                                             </router-link>
                                         </li>
@@ -45,7 +49,7 @@
         <!--menu lateral derecho-->
         <Slide right>
             <router-link tag="a" v-for="option in optionMenu" :key="option.id"
-                         :to="{ name: 'page' , params:{namesite:slugSite,namepage:option.slug}}">
+                         :to="{ name: 'page' , params:{ namesite: slugSite , namepage: option.slug }}">
                 <span>{{option.title}}</span>
             </router-link>
         </Slide>

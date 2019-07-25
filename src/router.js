@@ -4,6 +4,7 @@ import Main from './views/Main'
 import TitlePage from './views/TitlePage'
 import ListView from './views/ListView'
 import DetailView from './views/DetailView'
+import Story from './views/Story'
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,11 @@ export default new VueRouter({
             path: '/:namesite/page/:namepage/detail/:iditem',
             name: 'detail',
             component: DetailView
-        }
+        },
+        {
+            path: '/:namesite/story',
+            name: 'story',
+            component: Story
+        },
     ]
 })
