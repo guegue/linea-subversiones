@@ -1,18 +1,13 @@
-<template>
-
-</template>
+<template></template>
 
 <script>
-    import GlobalFunctions from './../mixins/globalFunctions'
+import GlobalFunctions from '../mixins/globalFunctions';
 
-    export default {
-        name: "Story",
-        mixins: [GlobalFunctions],
-        methods: {}
-
-    }
+export default {
+  name: 'Story',
+  mixins: [GlobalFunctions],
+  methods: {},
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
